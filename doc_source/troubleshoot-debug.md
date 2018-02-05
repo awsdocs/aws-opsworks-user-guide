@@ -1,0 +1,8 @@
+# Debugging Recipes<a name="troubleshoot-debug"></a>
+
+When a lifecycle event occurs, or you run the Execute Recipes stack command, AWS OpsWorks Stacks issues a command to the agent to initiate a [Chef Solo run](http://docs.chef.io/chef_client.html#the-chef-client-title-run) on the specified instances to execute the appropriate recipes, including your custom recipes\. This section describes some ways that you can debug failed recipes\.
+
+
++ [Logging in to a Failed Instance](troubleshoot-debug-login.md)
++ [Chef Logs](troubleshoot-debug-log.md)
++ [Using the AWS OpsWorks Stacks Agent CLI](troubleshoot-debug-cli.md)
