@@ -12,3 +12,4 @@ You can monitor your stacks in the following ways\.
 + [Monitoring Stacks using Amazon CloudWatch](monitoring-cloudwatch.md)
 + [Logging AWS OpsWorks Stacks API Calls By Using AWS CloudTrail](monitoring-cloudtrail.md)
 + [Using Amazon CloudWatch Logs with AWS OpsWorks Stacks](monitoring-cloudwatch-logs.md)
++ [Monitoring Stacks using Amazon CloudWatch Events](monitoring-cloudwatch-events.md)
