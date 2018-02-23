@@ -1,17 +1,19 @@
 # History<a name="history"></a>
 
-The following table describes the important changes to the documentation in this release of AWS OpsWorks Stacks and AWS OpsWorks for Chef Automate\.
+The following table describes the important changes to the documentation in this release of AWS OpsWorks Stacks, AWS OpsWorks for Chef Automate, and AWS OpsWorks for Puppet Enterprise\.
 
-+ **AWS OpsWorks for Chef Automate API version:** 2016\-11\-01
++ **AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise API version:** 2016\-11\-01
 
 + **AWS OpsWorks Stacks API version: **2016\-03\-08
 
-+ **Latest documentation update: **January 25, 2018
++ **Latest documentation update: **February 20, 2018
 
 
 | Change | Description | Date Changed | 
 | --- | --- | --- | 
+| New Feature and New Documentation | Added support for AWS OpsWorks Stacks events in Amazon CloudWatch Events\. | February 20, 2018 | 
 | New Feature and New Documentation | Added support for new EBS volume types in AWS OpsWorks Stacks, and a new API, DescribeOperatingSystems\. | January 25, 2018 | 
+| New Feature and New Documentation | AWS OpsWorks for Puppet Enterprise and AWS OpsWorks for Chef Automate now support selecting multiple security groups when you are creating a server\. | January 18, 2018 | 
 | New Feature and New Documentation | Added support for AWS OpsWorks Stacks in the EU \(Paris\) Region\. | December 19, 2017 | 
 | New Feature and New Documentation | Added support for AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise in six additional regions, and added procedures for creating backups of AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise servers in the AWS Management Console\. | December 18, 2017 | 
 | New Feature and New Documentation | Added the new AWS OpsWorks for Puppet Enterprise service and documentation\. | November 16, 2017 | 

@@ -76,6 +76,6 @@ You can use RDP to connect to the instance and verify that your Setup recipe wor
 
 1. Open the Control Panel **Administrative Tools** application, and then open **Services**\. You should see the IIS service near the bottom of the list\. It is named World Wide Web Publishing Service, and the status should be **running**\.
 
-1. Return to the AWS OpsWorks Stacks console and choose the **iisexample1** instance's public IP address\. This automatically sends an HTTP request to the address, which should open the default IIS Welcome page\.
+1. Return to the AWS OpsWorks Stacks console and choose the **iisexample1** instance's public IP address\. Be sure you do this in AWS OpsWorks Stacks, and not in the Amazon EC2 console\. This automatically sends an HTTP request to the address, which should open the default IIS Welcome page\.
 
 The next topic discusses how to deploy an app to the instance, a simple static HTML page for this example\. However, if you would like to take a break, choose **stop** in the **iisexample1** instance's **Actions** column to stop the instance and avoid incurring unnecessary charges\. You can restart the instance when you are ready to continue\.

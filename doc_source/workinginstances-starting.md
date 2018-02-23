@@ -5,6 +5,9 @@ You can use 24/7 instances with both Linux and Windows stacks\.
 
 After you add a 24/7 instance to a layer, you must manually start the instance to launch the corresponding Amazon Elastic Compute Cloud \(Amazon EC2 \) instance and manually stop it to terminate the Amazon EC2 instance\. You can also manually reboot instances that are not functioning properly\. AWS OpsWorks Stacks automatically starts and stops time\-based and load\-based instances\. For more information, see [Managing Load with Time\-based and Load\-based Instances](workinginstances-autoscaling.md)\.
 
+**Important**  
+AWS OpsWorks Stacks instances must be started, stopped, and restarted only in the AWS OpsWorks console\. AWS OpsWorks doesn't recognize start, stop, or restart operations performed in the Amazon EC2 console\.
+
 
 + [Starting or Restarting an Instance](#workinginstances-starting-start)
 + [Stopping an Instance](#workinginstances-starting-stop)

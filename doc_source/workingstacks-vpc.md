@@ -44,7 +44,7 @@ For AWS OpsWorks Stacks to connect to the VPC endpoints that you enable, you mus
 
 For a detailed discussion of VPCs, see [Amazon Virtual Private Cloud](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html)\. Briefly, a VPC consists of one or more *subnets*, each of which contains one or more instances\. Each subnet has an associated routing table that directs outbound traffic based on its destination IP address\.
 
-+ Instances within a VPC can generally communicate with each other, regardless of their subnet\.
++ Instances within a VPC can communicate with each other by default, regardless of their subnet\. However, changes to network access control lists \(ACLs\), security group policies, or using static IP addresses can break this communication\.
 
 + Subnets whose instances can communicate with the Internet are referred to as *public subnets*\.
 

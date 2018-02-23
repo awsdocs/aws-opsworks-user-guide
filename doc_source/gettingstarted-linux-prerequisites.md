@@ -2,7 +2,7 @@
 
 Complete the following setup steps before you can start the walkthrough\. These setup steps include signing up for an AWS account, creating an IAM user in your AWS account, and assigning the IAM user access permissions to AWS OpsWorks Stacks\. 
 
-If you have already completed the [Getting Started: Sample](http://alpha-docs-aws.amazon.com/opsworks/latest/userguide/gettingstarted-intro.html) walkthrough, then you have met the prerequisites for this walkthrough, and you can skip ahead to [Step 2: Create a Stack](gettingstarted-linux-create-stack.md)\.
+If you have already completed the [Getting Started: Sample](http://docs.aws.amazon.com/opsworks/latest/userguide/gettingstarted-intro.html) walkthrough, then you have met the prerequisites for this walkthrough, and you can skip ahead to [Step 2: Create a Stack](gettingstarted-linux-create-stack.md)\.
 
 
 + [Step 1\.1: Sign up for an AWS Account](#gettingstarted-linux-prerequisites-aws-account)

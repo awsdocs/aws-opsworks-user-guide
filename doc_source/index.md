@@ -198,6 +198,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Monitoring Stacks using Amazon CloudWatch](monitoring-cloudwatch.md)
       + [Logging AWS OpsWorks Stacks API Calls By Using AWS CloudTrail](monitoring-cloudtrail.md)
       + [Using Amazon CloudWatch Logs with AWS OpsWorks Stacks](monitoring-cloudwatch-logs.md)
+      + [Monitoring Stacks using Amazon CloudWatch Events](monitoring-cloudwatch-events.md)
    + [Security and Permissions](workingsecurity.md)
       + [Managing AWS OpsWorks Stacks User Permissions](opsworks-security-users.md)
          + [Managing AWS OpsWorks Stacks Users](opsworks-security-users-manage.md)
