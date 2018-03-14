@@ -6,11 +6,12 @@ The following table describes the important changes to the documentation in this
 
 + **AWS OpsWorks Stacks API version: **2016\-03\-08
 
-+ **Latest documentation update: **February 20, 2018
++ **Latest documentation update: **March 5, 2018
 
 
 | Change | Description | Date Changed | 
 | --- | --- | --- | 
+| New Feature and New Documentation | Chef Automate version updated to 1\.8; Chef Compliance setup simplified with the addition of the opsworks\-audit cookbook\.\. | March 5, 2018 | 
 | New Feature and New Documentation | Added support for AWS OpsWorks Stacks events in Amazon CloudWatch Events\. | February 20, 2018 | 
 | New Feature and New Documentation | Added support for new EBS volume types in AWS OpsWorks Stacks, and a new API, DescribeOperatingSystems\. | January 25, 2018 | 
 | New Feature and New Documentation | AWS OpsWorks for Puppet Enterprise and AWS OpsWorks for Chef Automate now support selecting multiple security groups when you are creating a server\. | January 18, 2018 | 

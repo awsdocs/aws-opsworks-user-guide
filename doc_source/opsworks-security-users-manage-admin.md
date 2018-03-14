@@ -13,7 +13,7 @@ You can create an AWS OpsWorks Stacks administrative user by attaching an IAM po
 1. On the **Set permissions** page, choose **Attach existing policies directly**\.
 
 1. Enter **OpsWorks** in the **Policy type** filter box to display the AWS OpsWorks policies, select **AWSOpsWorksFullAccess**, and then choose **Next: review**\. This policy grants your user rights to perform all tasks in AWS OpsWorks\.  
-![\[\]](http://docs.aws.amazon.com/opsworks/latest/userguide/)![\[\]](http://docs.aws.amazon.com/opsworks/latest/userguide/)![\[\]](http://docs.aws.amazon.com/opsworks/latest/userguide/)
+![\[\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/iam_user_opsfullaccess.png)
 
 1. On the **Review** page, choose **Create user**\.
 

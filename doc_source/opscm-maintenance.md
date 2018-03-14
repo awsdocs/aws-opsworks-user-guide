@@ -17,11 +17,31 @@ System maintenance deletes any files or custom configuration that you have added
 
 ## Ensuring nodes trust the AWS OpsWorks Certification Authority<a name="w3ab2b9c23c13"></a>
 
-Nodes that you are managing with an AWS OpsWorks for Chef Automate server must authenticate with the server by using certificates\. During system maintenance, AWS OpsWorks replaces the server instance, and regenerates new certificates through the AWS OpsWorks certificate authority \(CA\)\. To restore communication automatically with your managed nodes after maintenance is finished, nodes should trust the AWS OpsWorks CA that ships with the starter kit, and is hosted in the three regions that are supported by AWS OpsWorks for Chef Automate: US West \(Oregon\) Region, US East \(N\. Virginia\) Region, and EU \(Ireland\) Region\. When you use the AWS OpsWorks CA to establish the trust between nodes and server, nodes reconnect to the new server instance after maintenance\. If you are adding EC2 nodes by using the EC2 `userdata` script described in , nodes are already configured to trust the AWS OpsWorks CA\.
+Nodes that you are managing with an AWS OpsWorks for Chef Automate server must authenticate with the server by using certificates\. During system maintenance, AWS OpsWorks replaces the server instance, and regenerates new certificates through the AWS OpsWorks certificate authority \(CA\)\. To restore communication automatically with your managed nodes after maintenance is finished, nodes should trust the AWS OpsWorks CA that ships with the starter kit, and is hosted in the regions that are supported by AWS OpsWorks for Chef Automate\. When you use the AWS OpsWorks CA to establish the trust between nodes and server, nodes reconnect to the new server instance after maintenance\. If you are adding EC2 nodes by using the EC2 `userdata` script described in , nodes are already configured to trust the AWS OpsWorks CA\.
 
-+ For Linux\-based nodes, the S3 bucket location of the CA is `https://opsworks-cm-${REGION}-prod-default-assets.s3.amazonaws.com/misc/opsworks-cm-ca-2016-root.pem`, where *$\{REGION\}* can be `us-west-2`, `us-east-1`, or `eu-west-1`\. The AWS OpsWorks trusted CA must be stored in the path `/etc/chef/opsworks-cm-ca-2016-root.pem`\.
++ For Linux\-based nodes, the S3 bucket location of the CA is `https://opsworks-cm-${REGION}-prod-default-assets.s3.amazonaws.com/misc/opsworks-cm-ca-2016-root.pem`\. The AWS OpsWorks trusted CA must be stored in the path `/etc/chef/opsworks-cm-ca-2016-root.pem`\.
 
-+ For Windows\-based nodes, the S3 bucket location of the CA is `https://opsworks-cm-$env:AWS_REGION-prod-default-assets.s3.amazonaws.com/misc/opsworks-cm-ca-2016-root.pem`, where *$env:AWS\_REGION* can be `us-west-2`, `us-east-1`, or `eu-west-1`\. The AWS OpsWorks CA must be stored in the root Chef folder; for example, `C:\chef\opsworks-cm-ca-2016-root.pem`
++ For Windows\-based nodes, the S3 bucket location of the CA is `https://opsworks-cm-$env:AWS_REGION-prod-default-assets.s3.amazonaws.com/misc/opsworks-cm-ca-2016-root.pem`\. The AWS OpsWorks CA must be stored in the root Chef folder; for example, `C:\chef\opsworks-cm-ca-2016-root.pem`
+
+In both paths, the region variable resolves to one of the following\.
+
++ `us-east-2`
+
++ `us-east-1`
+
++ `us-west-1`
+
++ `us-west-2`
+
++ `ap-northeast-1`
+
++ `ap-southeast-1`
+
++ `ap-southeast-2`
+
++ `eu-central-1`
+
++ `eu-west-1`
 
 ## Configuring system maintenance<a name="w3ab2b9c23c15"></a>
 

@@ -1,12 +1,12 @@
 # AWS OpsWorks for Chef Automate<a name="welcome_opscm"></a>
 
-AWS OpsWorks for Chef Automate lets you run a [Chef Automate](https://www.chef.io/automate/) server in AWS\. You can provision a Chef server within minutes, and let AWS OpsWorks Stacks handle its operations, backups, restorations, and software upgrades\. AWS OpsWorks for Chef Automate frees you to focus on core configuration management tasks, instead of managing a Chef server\.
+AWS OpsWorks for Chef Automate lets you run a [Chef Automate](https://www.chef.io/automate/) server in AWS\. You can provision a Chef server within minutes, and let AWS OpsWorks for Chef Automate handle its operations, backups, restorations, and software upgrades\. AWS OpsWorks for Chef Automate frees you to focus on core configuration management tasks, instead of managing a Chef server\.
 
 A Chef Automate server manages the configuration of nodes in your environment by instructing [https://docs.chef.io/chef_client.html](https://docs.chef.io/chef_client.html) which Chef recipes to run on the nodes, stores information about nodes, and serves as a central repository for your Chef cookbooks\. AWS OpsWorks for Chef Automate provides Chef servers and premium features of Chef Automate: visibility, workflow, and compliance\.
 
-An AWS OpsWorks for Chef Automate server runs on an Amazon Elastic Compute Cloud instance\. AWS OpsWorks for Chef Automate servers are configured to run the newest version of Amazon Linux \(2017\.09\), Chef Server 12\.x, and the most current version of Chef Automate Server, version 1\.6\.x\.
+An AWS OpsWorks for Chef Automate server runs on an Amazon Elastic Compute Cloud instance\. AWS OpsWorks for Chef Automate servers are configured to run the newest version of Amazon Linux \(2017\.09\), Chef Server 12\.x, and the most current version of Chef Automate Server, version 1\.8\. For information about what has changed in this version of Chef Automate, see the [Chef Automate Release Notes](https://docs.chef.io/release_notes_chef_automate.html)\.
 
-The minimum supported version of `chef-client` on nodes associated with an AWS OpsWorks for Chef Automate server is 12\.16\.42\. We recommend running `chef-client` 13\.6\.4\.
+The minimum supported version of `chef-client` on nodes associated with an AWS OpsWorks for Chef Automate server is 13\.*x*\. We recommend running the [most current, stable `chef-client` version](https://downloads.chef.io/chef/stable)\.
 
 When new minor versions of Chef software become available, system maintenance is designed to update the minor version of Chef Automate and Chef Server on the server automatically, as soon as it passes AWS testing\. AWS performs extensive testing to verify that Chef upgrades are production\-ready and do not disrupt existing customer environments, so there can be lags between Chef software releases and their availability for application to existing OpsWorks for Chef Automate servers\. System maintenance also upgrades your server to the newest version of Amazon Linux\.
 
