@@ -20,7 +20,7 @@ We recommend that you disassociate nodes from a Chef server before you delete th
 
 1. Wait until a response message indicates that the disassociation is finished\.
 
-When a node is successfully disassociated from the AWS OpsWorks for Chef Automate server, it may still be visible in the Chef Automate dashboard\. By default a retention period for node state information is enforced, and the node will automatically be purged after a few days\. For more information, please refer to Chef's [Data Retention Management Documentation](https://docs.chef.io/data_retention_chef_automate.html)\.
+After you successfully disassociate a node from a AWS OpsWorks for Chef Automate server, it might still be visible in the Chef Automate dashboard\. By default, Chef enforces a retention period for node state information, and purges the node automatically after a few days\. For more information about data retention management and the Chef Reaper tool, see [Data Retention Management](https://docs.chef.io/data_retention_chef_automate.html) in the Chef documentation\.
 
 For more information about how to delete an AWS OpsWorks for Chef Automate server, see \.
 
