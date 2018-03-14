@@ -84,7 +84,7 @@ search("search_index", "key:value").first
 For example, the following recipe code uses the `aws_opsworks_app` search index to find the data bag item that contains the app short name of `mylinuxdemoapp`\. It then uses the data bag item's contents to write a message to the Chef log with the corresponding app's short name and source URL:
 
 ```
-app = search("aws_opsworks_app": "shortname:mylinuxdemoapp").first
+app = search("aws_opsworks_app", "shortname:mylinuxdemoapp").first
 Chef::Log.info("********** For the app with the short name '#{app['shortname']}', the app's URL is '#{app['app_source']['url']}' **********")
 ```
 
