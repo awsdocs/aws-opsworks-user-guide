@@ -18,19 +18,29 @@ The [Amazon Elastic Container Service service](http://docs.aws.amazon.com/Amazon
 
 The ECS Cluster layer has the following restrictions and requirements:
 
-+ ECS Cluster layers are not supported in the following regions, because the Amazon Elastic Container Service \(Amazon ECS\) feature is not available in those regions\.
-
-  + Asia Pacific \(Seoul\) Region \(ap\-northeast\-2\)
-
-  + Asia Pacific \(Mumbai\) Region \(ap\-south\-1\)
-
-  + South America \(São Paulo\) Region \(sa\-east\-1\)
-
 + The layer is available only for Chef 11\.10 or Chef 12 Linux stacks running in a VPC, including a [default VPC](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)\.
 
-+ The layer's instances must be running one of the following operating systems: Amazon Linux 2016\.09, Amazon Linux 2016\.03, Amazon Linux 2015\.09, Amazon Linux 2015\.03, Ubuntu 14\.04 LTS, or Custom\.
++ The layer's instances must be running one of the following operating systems\.
 
-+ The instances' AWS OpsWorks Stacks agent version must be `3425-20150727112318` or later\.
+  + Amazon Linux 2017\.09
+
+  + Amazon Linux 2017\.03
+
+  + Amazon Linux 2016\.09
+
+  + Amazon Linux 2016\.03
+
+  + Amazon Linux 2015\.09
+
+  + Amazon Linux 2015\.03
+
+  + Ubuntu 16\.04 LTS
+
+  + Ubuntu 14\.04 LTS
+
+  + Custom
+
++ The AWS OpsWorks Stacks agent version on the layer's instances must be `3425-20150727112318` or later\.
 
 
 + [Adding an ECS Cluster Layer to a Stack](#workinglayers-ecscluster-add)

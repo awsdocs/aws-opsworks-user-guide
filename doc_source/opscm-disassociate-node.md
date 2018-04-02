@@ -6,21 +6,23 @@ We recommend that you disassociate nodes from a Chef server before you delete th
 
 **To disassociate nodes**
 
-1. In the AWS CLI, run the following command to disassociate nodes\. *Node\_name* is the name of the node that you want to disassociate; for Amazon EC2 instances, this is the instance ID\.*Server\_name* is the name of the Chef server from which you want to disassociate the node\. Both parameters are required\. The `--region` parameter is not required unless you want to disassociate a node from a Chef server that is not in your default region\.
+1. In the AWS CLI, run the following command to disassociate nodes\. *Node\_name* is the name of the node that you want to disassociate; for Amazon EC2 instances, this is the instance ID\. *Server\_name* is the name of the Chef server from which you want to disassociate the node\. `--engine-attributes` specifies your default `CHEF_ORGANIZATION` name\. All three of these parameters are required\.
+
+   The `--region` parameter is not required unless you want to disassociate a node from a Chef server that is not in your default region\.
 
    ```
-   aws opsworks-cm --region Region_name disassociate-node --node-name Node_name --server-name Server_name
+   aws opsworks-cm --region Region_name disassociate-node --node-name Node_name --server-name Server_name --engine-attributes "Name=CHEF_ORGANIZATION,Value='default'"
    ```
 
    The following command is an example\.
 
    ```
-   aws opsworks-cm --region us-west-2 disassociate-node --node-name i-0010zzz00d66zzz90 --server-name opsworkstest
+   aws opsworks-cm --region us-west-2 disassociate-node --node-name i-0010zzz00d66zzz90 --server-name opsworkstest --engine-attributes "Name=CHEF_ORGANIZATION,Value='default'"
    ```
 
 1. Wait until a response message indicates that the disassociation is finished\.
 
-After you successfully disassociate a node from an AWS OpsWorks for Chef Automate server, it might still be visible in the Chef Automate dashboard\. By default, Chef enforces a retention period for node state information, and purges the node automatically after a few days\. For more information about data retention management and the Chef Reaper tool, see [Data Retention Management](https://docs.chef.io/data_retention_chef_automate.html) in the Chef documentation\.
+   After you successfully disassociate a node from an AWS OpsWorks for Chef Automate server, it might still be visible in the Chef Automate dashboard\. By default, Chef enforces a retention period for node state information, and purges the node automatically after a few days\. For more information about data retention management and the Chef Reaper tool, see [Data Retention Management](https://docs.chef.io/data_retention_chef_automate.html) in the Chef documentation\.
 
 For more information about how to delete an AWS OpsWorks for Chef Automate server, see \.
 
