@@ -34,6 +34,14 @@ aws opsworks-cm associate-node --server-name "test-puppet-server" --node-name "n
 
 For more information about how to add nodes automatically by using `associateNode()`, see \.
 
+## Associating On-Premise Infrastructure
+
+After `puppet-agent` has been installed on your on-premise servers or virtual machines, there are two approaches available for associating them with your Puppet Enterprise server\.
+
+If the node in question supports installation of the [AWS SDK](https://aws.amazon.com/tools/), [AWS Command Line Interface](https://aws.amazon.com/cli/), or [AWS Tools for Windows Powershell](https://aws.amazon.com/powershell/), the `associateNode()` API call can be used. This provides a seamless experience for managing nodes both on-premise and in the cloud. As shown in the starter kit provided when you first create an OpsWorks for Puppet Enterprise server, it is possible to assign roles to nodes using tagging. This same strategy can be applied to on-premise infrastructure by providing trusted facts in the CSR. For example, the demo control repository is configured to use the tag `pp_role` to assign roles to Amazon EC2 instances.
+
+If the node in question does not support one of the above tools, you can still register it with your OpsWorks for Puppet Enterprise server the same way as any unmanaged Puppet Enterprise master. As mentioned above, installation of `puppet-agent` generates a CSR to the OpsWorks for Puppet Enterprise server. This can then be manually signed by an authorized Puppet user, or automatically signed by updating the needed configuration in `autosign.conf` on the OpsWorks for Puppet Enterprise server. For more information on configuring autosigning, see [SSL configuration: autosigning certificate requests](https://puppet.com/docs/puppet/5.3/ssl_autosign.html).
+
 ## More Information<a name="w3ab2b7c15c13c17"></a>
 
 Visit the [Learn Puppet tutorial site](https://learn.puppet.com/) to learn more about using AWS OpsWorks for Puppet Enterprise servers and Puppet Enterprise console features\.
