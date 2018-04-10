@@ -52,7 +52,7 @@ If your local computer is not already running the AWS CLI, download and install 
 1. Create a service role and an instance profile\. AWS OpsWorks provides an AWS CloudFormation template that you can use to create both\. Run the following AWS CLI command to create an AWS CloudFormation stack that creates the service role and instance profile for you\.
 
    ```
-   aws cloudformation create-stack --stack-name OpsWorksCMRoles --template-url https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml
+   aws cloudformation create-stack --stack-name OpsWorksCMRoles --template-url https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml --capabilities CAPABILITY_IAM
    ```
 
    After AWS CloudFormation finishes creating the stack, find and copy the ARNs of service roles in your account\.
