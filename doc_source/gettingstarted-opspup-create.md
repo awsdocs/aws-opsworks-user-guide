@@ -43,7 +43,7 @@ You can create a Puppet master by using the AWS OpsWorks for Puppet Enterprise c
 
 ## Create a Puppet Enterprise Master by using the AWS CLI<a name="w3ab2b7c15b9b9"></a>
 
-Creating an AWS OpsWorks for Puppet Enterprise master server by running AWS CLI commands differs from creating a server in the console\. In the console, AWS OpsWorks creates a service role and security group for you, if you do not specify existing ones that you want to use\. In the AWS CLI, AWS OpsWorks can create a security group for you if you do not specify one, but it does not automatically create a service role; you must provide a service role ARN as part of your `create-server` command\. In the console, while AWS OpsWorks is creating your Puppet master, you download the starter kit and the sign\-in credentials for the Puppet Enterprise console\. Because you cannot do this when you create an AWS OpsWorks for Puppet Enterprise master by using the AWS CLI, you must generate a new set of sign\-in credentials and a new starter kit in the console after your new AWS OpsWorks for Puppet Enterprise master is online\.
+Creating an AWS OpsWorks for Puppet Enterprise master server by running AWS CLI commands differs from creating a server in the console\. In the console, AWS OpsWorks creates a service role and security group for you, if you do not specify existing ones that you want to use\. In the AWS CLI, AWS OpsWorks can create a security group for you if you do not specify one, but it does not automatically create a service role; you must provide a service role ARN as part of your `create-server` command\. In the console, while AWS OpsWorks is creating your Puppet master, you download the starter kit and the sign\-in credentials for the Puppet Enterprise console\. Because you cannot do this when you create an AWS OpsWorks for Puppet Enterprise master by using the AWS CLI, you use a JSON processing utility to get the sign\-in credentials and the starter kit from the results of the `create-server` command after your new AWS OpsWorks for Puppet Enterprise master is online\.
 
 If your local computer is not already running the AWS CLI, download and install the AWS CLI by following [installation instructions](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\. This section does not describe all parameters that you can use with the `create-server` command\. For more information about `create-server` parameters, see [https://docs.aws.amazon.com/cli/latest/reference/opsworks-cm/create-server.html](https://docs.aws.amazon.com/cli/latest/reference/opsworks-cm/create-server.html) in the *AWS CLI Reference*\.
 
@@ -58,7 +58,7 @@ If your local computer is not already running the AWS CLI, download and install 
    After AWS CloudFormation finishes creating the stack, find and copy the ARNs of service roles in your account\.
 
    ```
-   aws iam list-roles
+   aws iam list-roles --path-prefix "/service-role/" --no-paginate
    ```
 
    In the results of the `list-roles` command, look for service role and instance profile entries that resemble the following\. Make a note of the ARNs of the service role and instance profile; you need these values to create your Puppet master\.
