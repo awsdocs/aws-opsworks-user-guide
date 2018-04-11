@@ -27,9 +27,7 @@ Create an AWS Identity and Access Management \(IAM\) role to use as your EC2 ins
         {
             "Action": [
                 "opsworks-cm:AssociateNode",
-                "opsworks-cm:DescribeNodeAssociationStatus",
-                "opsworks-cm:DescribeServers",
-                "ec2:DescribeTags"
+                "opsworks-cm:DescribeNodeAssociationStatus"
             ],
             "Resource": "*",
             "Effect": "Allow"
@@ -41,7 +39,7 @@ Create an AWS Identity and Access Management \(IAM\) role to use as your EC2 ins
 AWS OpsWorks provides an AWS CloudFormation template that you can use to create the IAM role with the preceding policy statement\. The following AWS CLI command creates the instance profile role for you by using this template\. You can omit the `--region` parameter if you want to create the new AWS CloudFormation stack in your default region\.
 
 ```
-aws cloudformation --region region ID create-stack --stack-name myChefAutomateinstanceprofile --template-url https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/owpe/opsworks-cm-nodes-roles.yaml --capabilities CAPABILITY_IAM
+aws cloudformation --region region ID create-stack --stack-name myChefAutomateinstanceprofile --template-url https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-nodes-roles.yaml --capabilities CAPABILITY_IAM
 ```
 
 ## Step 2: Install the Chef Client Cookbook<a name="w3ab2b9c27c17"></a>
