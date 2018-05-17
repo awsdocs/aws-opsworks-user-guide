@@ -243,11 +243,5 @@ Program:opsworks-stacks,PID:10090
 }
 ```
 
-```
-
-
-```
-
-
 + [Linux Operating Systems](workinginstances-os-linux.md)
 + [Microsoft Windows Server](workinginstances-os-windows.md)
