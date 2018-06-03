@@ -40,14 +40,6 @@ Do not push to a `master` branch\. The `master` branch is reserved for the Puppe
 
 For more information about how you can apply the sample Nginx configuration to managed nodes that you create in Amazon EC2, see \.
 
-## Install the Puppet Master Certificate<a name="opspup-post-launch"></a>
-
-To work with your Puppet master and add nodes to manage, you'll need to install its certificate\. Install it by running the following AWS CLI command\. You cannot perform this task in the AWS Management Console\.
-
-```
-aws --region region opsworks-cm describe-servers --server-name server_name --query "Servers[0].EngineAttributes[?Name=='PUPPET_API_CA_CERT'].Value" --output text > .config/ssl/certs/ca.pem
-```
-
 ## Set Up Authentication for Code Manager<a name="w3ab2b7c15c11c15"></a>
 
 To securely deploy your environments, Code Manager requires an authentication token\. To generate a token for Code Manager, assign a user to the deployment role, and then request an authentication token\. You can complete this procedure by following steps in the section [Set up authentication for Code Manager](https://puppet.com/docs/pe/2017.3/code_management/code_mgr_config.html#set-up-authentication-for-code-manager) in the Puppet Enterprise documentation\.
