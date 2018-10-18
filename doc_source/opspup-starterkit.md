@@ -45,7 +45,7 @@ For more information about how you can apply the sample Nginx configuration to m
 To work with your Puppet master and add nodes to manage, you'll need to install its certificate\. Install it by running the following AWS CLI command\. You cannot perform this task in the AWS Management Console\.
 
 ```
-aws --region region opsworks-cm describe-servers --server-name server_name --query "Servers[0].EngineAttributes[?Name=='PUPPET_API_CA_CERT'].Value" --output text > .config/ssl/certs/ca.pem
+aws --region region opsworks-cm describe-servers --server-name server_name --query "Servers[0].EngineAttributes[?Name=='PUPPET_API_CA_CERT'].Value" --output text > .config/ssl/cert/ca.pem
 ```
 
 ## Set Up Authentication for Code Manager<a name="w3ab2b7c15c11c15"></a>
