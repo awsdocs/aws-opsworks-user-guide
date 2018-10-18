@@ -8,7 +8,7 @@ AWS OpsWorks Stacks also supports a set of *deployment commands*, which you use 
 You can run the following stack commands on any stack\.
 
 **Update Custom Cookbooks**  
-Updates the instances' custom cookbooks with the current version from the repository\. This command does not run any recipes\. To run the updated recipes, you can use an `Execute Recipes`, `Setup`, or `Configure` stack command, or redeploy your application to run the Deploy recipes\. For more information on custom cookbooks, see [Cookbooks and Recipes](workingcookbook.md)\.
+Updates the instances' custom cookbooks with the current version from the repository\. This command does not run any recipes\. To run the updated recipes, you can use an `Execute Recipes`, `Setup`, or `Configure` stack command, or [redeploy your application](workingapps-deploying.md) to run the Deploy recipes\. For more information on custom cookbooks, see [Cookbooks and Recipes](workingcookbook.md)\.
 
 **Execute Recipes**  
 Executes a specified set of recipes on the instances\. For more information, see [Manually Running Recipes](workingcookbook-manual.md)\.
@@ -47,7 +47,7 @@ Stack commands have the following options, some of which appear only for certain
 \(Optional\) This setting appears only if you select the **Upgrade Operating System** command\. The default value is **Yes**, which directs AWS OpsWorks Stacks to reboot the instances after installing the upgrade\.
 
 **Custom Chef JSON**  
-\(Optional\) Choose **Advanced** to display this option, which allows you to specify custom JSON attributes to be incorporated into the stack configuration and deployment attributes\. 
+\(Optional\) Choose **Advanced** to display this option, which allows you to specify custom JSON attributes to be incorporated into the [stack configuration and deployment attributes](workingcookbook-json.md)\. 
 
 **Instances**  
 \(Optional\) Specify the instances on which to execute the command\. All online instances are selected by default\. To run the command on a subset of instances, select the appropriate layers or instances\. 

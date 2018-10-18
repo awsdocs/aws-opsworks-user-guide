@@ -6,7 +6,7 @@ Chef is a third\-party framework for configuring and maintaining servers, such a
 
 AWS OpsWorks Stacks supports four Linux distributions: Amazon Linux, Ubuntu Server, CentOS, and Red Hat Enterprise Linux\. For this walkthrough, we use Ubuntu Server\. AWS OpsWorks Stacks also works with Windows Server\. Although we have an equivalent walkthrough for Windows Server stacks, we recommend that you complete this walkthrough first to learn basic concepts about AWS OpsWorks Stacks and Chef that are not repeated there\. After you complete this walkthrough, see the [Getting Started: Windows](gettingstarted-windows.md) walkthrough\.
 
-
+**Topics**
 + [Step 1: Complete the Prerequisites](gettingstarted-linux-prerequisites.md)
 + [Step 2: Create a Stack](gettingstarted-linux-create-stack.md)
 + [Step 3: Add a Layer to the Stack](gettingstarted-linux-add-layer.md)

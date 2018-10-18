@@ -2,7 +2,7 @@
 
 When you no longer need an attached resource, you can detach it\. This resource remains registered with the stack and can be attached elsewhere\. 
 
-
+**Topics**
 + [Unassigning Amazon EBS Volumes](#resources-detach-ebs)
 + [Disassociating Elastic IP Addresses](#resources-detach-eip)
 + [Detaching Amazon RDS Instances](#resources-detach-rds)
@@ -31,7 +31,7 @@ Use the following procedure to disassociate an Elastic IP address from its insta
 1. On the address's details page, click **Disassociate**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/resources-eip8.png)
 
-After you disassociate an address, AWS OpsWorks Stacks triggers a Configure lifecycle event to notify the stack's instances of the change\.
+After you disassociate an address, AWS OpsWorks Stacks triggers a [Configure lifecycle event](workingcookbook-events.md) to notify the stack's instances of the change\.
 
 ## Detaching Amazon RDS Instances<a name="resources-detach-rds"></a>
 

@@ -27,16 +27,14 @@ default['createdir']['group'] = 'root'
 ```
 
 Note the following:
-
 + Each definition starts with an *attribute type*\.
 
   If an attribute is defined more than once—perhaps in different attribute files—the attribute type specifies the attribute's precedence, which determines which definition is incorporated into the node object\. For more information, see [Attribute Precedence](workingcookbook-attributes-precedence.md)\. All the definitions in this example have the `default` attribute type, which is the usual type for this purpose\.
-
 + The attributes have nested names\.
 
   The node object is basically a hash table that can be nested arbitrarily deeply, so attribute names can be and commonly are nested\. This attribute file follows a standard practice of using a nested name with the cookbook name, `createdir`, as the first element\.
 
-The reason for using createdir as the attribute's first element is that when you do a Chef run, Chef incorporates the attributes from every cookbook into the node object\. With AWS OpsWorks Stacks, the node object includes a large number of attributes from the [built\-in cookbooks](https://github.com/aws/opsworks-cookbooks) in addition to any attributes that you define\. Including the cookbook name in the attribute name reduces the risk of a name collision with attributes from another cookbook, especially if your attribute has a name like `port` or `user`\. Don't name an attribute something like `[:apache2][:user]`, for example, unless you want to override that attribute's value\. For more information, see [Using Custom Cookbook Attributes](workingcookbook-cookbook-attributes.md)\.
+The reason for using createdir as the attribute's first element is that when you do a Chef run, Chef incorporates the attributes from every cookbook into the node object\. With AWS OpsWorks Stacks, the node object includes a large number of attributes from the [built\-in cookbooks](https://github.com/aws/opsworks-cookbooks) in addition to any attributes that you define\. Including the cookbook name in the attribute name reduces the risk of a name collision with attributes from another cookbook, especially if your attribute has a name like `port` or `user`\. Don't name an attribute something like [`[:apache2][:user]`](attributes-recipes-apache.md#attributes-recipes-apache-user), for example, unless you want to override that attribute's value\. For more information, see [Using Custom Cookbook Attributes](workingcookbook-cookbook-attributes.md)\.
 
 The following example shows the original recipe using attributes instead of hard\-coded values\.
 
@@ -68,7 +66,7 @@ If you want to incorporate an attribute value into a string, wrap it with `#{}`\
 1. Run `kitchen converge` and then log in to the instance and verify that `/srv/www/shared` and `/srv/www/config` are there\.
 
 **Note**  
-With AWS OpsWorks Stacks, defining values as attributes provides an additional benefit; you can use custom JSON to override those values on a per\-stack or even per\-deployment basis\. This can be useful for a variety of purposes, including the following:  
+With AWS OpsWorks Stacks, defining values as attributes provides an additional benefit; you can use [custom JSON](workingstacks-json.md) to override those values on a per\-stack or even per\-deployment basis\. This can be useful for a variety of purposes, including the following:  
 You can customize the behavior of your recipes, such as configuration settings or user names, without having to modify the cookbook\.  
 You can, for example, use the same cookbook for different stacks and use custom JSON to specify key configuration settings for a particular stack\. This saves you the time and effort required to modify the cookbook or use a different cookbook for each stack\.
 You don't have to put potentially sensitive information such as database passwords in your cookbook repository\.  

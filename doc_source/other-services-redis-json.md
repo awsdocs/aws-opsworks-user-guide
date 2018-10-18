@@ -7,9 +7,7 @@ The `generate.rb` recipe depends on a pair of stack configuration and deployment
 1. On the AWS OpsWorks Stacks **Stack** page, click** Stack Settings** and then **Edit**\.
 
 1. In the **Configuration Management** section, add access information to the **Custom Chef JSON** box\. It should look something like the following example, with these modifications:
-
    + Replace `elasticache_redis_example` with your app's short name\. 
-
    + Replace the `host` and `port` values with the values for the ElastiCache Redis server instance that you created in [Step 1: Create an ElastiCache Redis Cluster](other-services-redis-cluster.md)\.
 
    ```

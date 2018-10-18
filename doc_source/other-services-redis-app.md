@@ -7,4 +7,4 @@ REDIS_CONFIG = YAML::load_file(Rails.root.join('config', 'redis.yml'))
 $redis = Redis.new(:host => REDIS_CONFIG['host'], :port => REDIS_CONFIG['port'])
 ```
 
-Then create an app to represent your application and deploy it to the Rails App Server layer's instances, which updates the application code and runs `generate.rb` to generate the configuration file\. When you run the application, it will use the ElastiCache Redis instance as its in\-memory key\-value store\.
+Then [create an app](workingapps-creating.md) to represent your application and [deploy it](workingapps-deploying.md) to the Rails App Server layer's instances, which updates the application code and runs `generate.rb` to generate the configuration file\. When you run the application, it will use the ElastiCache Redis instance as its in\-memory key\-value store\.

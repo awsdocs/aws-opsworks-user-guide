@@ -31,17 +31,15 @@ If a layer has auto healing enabled—the default setting—AWS OpsWorks Stacks 
 
 1. Starts the EC2 instance\.
 
-After the auto\-healed instance is back online, AWS OpsWorks Stacks triggers a Configure lifecycle event on all of the stack's instances\. The associated stack configuration and deployment attributes include the instance's public and private IP addresses\. Custom Configure recipes can obtain the new IP addresses from the node object\.
+After the auto\-healed instance is back online, AWS OpsWorks Stacks triggers a Configure [lifecycle event](workingcookbook-events.md) on all of the stack's instances\. The associated [stack configuration and deployment attributes](workingcookbook-json.md) include the instance's public and private IP addresses\. Custom Configure recipes can obtain the new IP addresses from the node object\.
 
-If you specify an Amazon EBS volume for a layer's instances, AWS OpsWorks Stacks creates a new volume and attaches it to each instance when the instance is started\. If you later want to detach the volume from an instance, use the Resources page\. 
+If you [specify an Amazon EBS volume](workinglayers-basics-edit.md#workinglayers-basics-edit-ebs) for a layer's instances, AWS OpsWorks Stacks creates a new volume and attaches it to each instance when the instance is started\. If you later want to detach the volume from an instance, use the [Resources](resources.md) page\. 
 
 When AWS OpsWorks Stacks auto heals one of a layer's instances, it handles volumes in the following way:
-
 + If the volume was attached to the instance when the instance failed, the volume and its data are saved, and AWS OpsWorks Stacks attaches it to the new instance\.
-
 + If the volume was not attached to the instance when the instance failed, AWS OpsWorks Stacks creates a new, empty volume with the configuration specified by the layer, and attaches that volume to the new instance\.
 
-Auto healing is enabled by default for all layers, but you can edit the layer's General Settings to disable it\.
+Auto healing is enabled by default for all layers, but you can [edit the layer's General Settings](workinglayers-basics-edit.md) to disable it\.
 
 **Important**  
 If you have auto healing enabled, be sure to do the following:   

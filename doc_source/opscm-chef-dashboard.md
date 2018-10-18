@@ -5,13 +5,10 @@ After you have downloaded the sign\-in credentials from the Chef server's Proper
 When you attempt to connect to the dashboard webpage, certificate warnings appear in your browser until you install an AWS OpsWorks\-specific, CA\-signed SSL certificate on the client computer that you are using to manage your Chef server\. If you prefer not to see the warnings before you continue to the dashboard webpage, install the SSL certificate before you sign in\.
 
 **To install the AWS OpsWorks SSL certificate**
-
 + Choose the certificate that matches your system\.
-
   + For Linux or MacOS\-based systems, download the file with the **PEM** filename extension from the following Amazon S3 location: [https://s3\.amazonaws\.com/opsworks\-cm\-us\-east\-1\-prod\-default\-assets/misc/opsworks\-cm\-ca\-2016\-root\.pem](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2016-root.pem)\.
 
     For more information about how to install an SSL certificate on MacOS, see [If your certificate isn’t being accepted](https://support.apple.com/kb/PH18677?locale=en_US) on the Apple Support website\.
-
   + For Windows\-based systems, download the file with the **P7B** filename extension from the following Amazon S3 location: [https://s3\.amazonaws\.com/opsworks\-cm\-us\-east\-1\-prod\-default\-assets/misc/opsworks\-cm\-ca\-2016\-root\.p7b](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2016-root.p7b)\.
 
     For more information about how to install an SSL certificate on Windows, see [Manage Trusted Root Certificates](https://technet.microsoft.com/en-us/library/cc754841.aspx) on Microsoft TechNet\.
@@ -36,4 +33,4 @@ Users of Google Chrome on Ubuntu and Linux Mint operating systems can have diffi
 ![\[Chef Automate dashboard\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opscm_chefdashhome.png)
 
 **Note**  
-For information about how to change the password that you use to sign in to the Chef Automate dashboard, see \.
+For information about how to change the password that you use to sign in to the Chef Automate dashboard, see [Reset Chef Automate Dashboard Credentials](opscm-resetchefcreds.md)\.

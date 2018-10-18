@@ -22,41 +22,26 @@ To use Memcached in a stack, create a Memcached layer and add one or more instan
 To configure a Memcached layer, you must specify the cache size, in MB\.
 
 **Setup recipes:**
-
 + opsworks\_initial\_setup
-
 + ssh\_host\_keys
-
 + ssh\_users
-
 + mysql::client
-
 + dependencies
-
 + ebs
-
 + opsworks\_ganglia::client
-
 + memcached 
 
 **Configure recipes:**
-
 + opsworks\_ganglia::configure\-client
-
 + ssh\_users
-
 + agent\_version 
 
 **Deploy recipes:**
-
 + deploy::default
 
 **Shutdown recipes:**
-
 + opsworks\_shutdown::default
-
 + memcached::stop
 
 **Installation:**
-
 + AWS OpsWorks Stacks uses the instance's package installer to install Memcached and its log files in their default locations\.

@@ -14,11 +14,11 @@ This recipe does two things based on data bag content: displays a message in the
    
    if os == "Red Hat Enterprise Linux 7"
      Chef::Log.info("********** Operating system is Red Hat Enterprise Linux. **********")
-   elsif os == "Ubuntu 12.04 LTS" || os == "Ubuntu 14.04 LTS" || os == "Ubuntu 16.04 LTS"
+   elsif os == "Ubuntu 12.04 LTS" || os == "Ubuntu 14.04 LTS" || os == "Ubuntu 16.04 LTS" || os == "Ubuntu 18.04 LTS"
      Chef::Log.info("********** Operating system is Ubuntu. **********") 
    elsif os == "Microsoft Windows Server 2012 R2 Base"
      Chef::Log.info("********** Operating system is Windows. **********")
-   elsif os == "Amazon Linux 2015.03" || os == "Amazon Linux 2015.09" || os == "Amazon Linux 2016.03" || os == "Amazon Linux 2016.09" || os == "Amazon Linux 2017.03" || os == "Amazon Linux 2017.09"
+   elsif os == "Amazon Linux 2015.03" || os == "Amazon Linux 2015.09" || os == "Amazon Linux 2016.03" || os == "Amazon Linux 2016.09" || os == "Amazon Linux 2017.03" || os == "Amazon Linux 2017.09" || os == "Amazon Linux 2018.03"
      Chef::Log.info("********** Operating system is Amazon Linux. **********")
    elsif os == "CentOS Linux 7"
      Chef::Log.info("********** Operating system is CentOS 7. **********")
@@ -27,11 +27,11 @@ This recipe does two things based on data bag content: displays a message in the
    end
    
    case os
-   when "Ubuntu 12.04 LTS", "Ubuntu 14.04 LTS"
+   when "Ubuntu 12.04 LTS", "Ubuntu 14.04 LTS", "Ubuntu 16.04 LTS"
      apt_package "Install a package with apt-get" do
        package_name "tree"
      end
-   when "Amazon Linux 2015.03", "Amazon Linux 2015.09", "Amazon Linux 2016.03", "Amazon Linux 2016.09", "Amazon Linux 2017.03", "Amazon Linux 2017.09", "Red Hat Enterprise Linux 7", "CentOS Linux 7"
+   when "Amazon Linux 2015.03", "Amazon Linux 2015.09", "Amazon Linux 2016.03", "Amazon Linux 2016.09", "Amazon Linux 2017.03", "Amazon Linux 2017.09", "Amazon Linux 2018.03", "Red Hat Enterprise Linux 7", "CentOS Linux 7"
      yum_package "Install a package with yum" do
        package_name "tree"
      end
@@ -60,4 +60,4 @@ This recipe does two things based on data bag content: displays a message in the
 
 1. If the operating system is Linux, the recipe installs the tree package\. To see a visualization of a directory's contents, type **tree** at the command prompt from the desired directory or with the desired directory's path \(for example, `tree /var/chef/runs`\)\.
 
-In the next step, you will update the cookbook to use functionality from an external cookbook provided by the Chef community\.
+In the [next step](gettingstarted-cookbooks-community-cookbooks.md), you will update the cookbook to use functionality from an external cookbook provided by the Chef community\.

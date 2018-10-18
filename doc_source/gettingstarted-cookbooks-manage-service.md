@@ -59,4 +59,4 @@ Update your cookbook by adding a recipe that manages a service on the instance\.
    crond (pid  3917) is running...
    ```
 
-In the next step, you will update the cookbook to reference information stored as custom JSON on the instance\.
+In the [next step](gettingstarted-cookbooks-custom-json.md), you will update the cookbook to reference information stored as custom JSON on the instance\.

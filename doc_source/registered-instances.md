@@ -4,30 +4,21 @@
 This feature is supported only for Linux stacks\.
 
 [Instances](workinginstances.md) describes how to use AWS OpsWorks Stacks to create and manage groups of Amazon Elastic Compute Cloud \(Amazon EC2\) instances\. You can also incorporate Linux computing resources into a stack that was created outside of AWS OpsWorks Stacks:
-
 + Amazon EC2 instances that you created directly by using the Amazon EC2 console, CLI, or API\.
-
 + *On\-premises* instances running on your own hardware, including instances running in virtual machines\.
 
 These computing resources become AWS OpsWorks Stacks\-managed instances, and you can manage them much like regular AWS OpsWorks Stacks instances:
-
-+ **Manage user permissions** – You can use AWS OpsWorks Stacks user management to specify which users are allowed to access your stacks, which actions they are allowed to perform on the stack's instances, and whether they have SSH access and sudo privileges\. 
-
++ **Manage user permissions** – You can use [AWS OpsWorks Stacks user management](opsworks-security-users.md) to specify which users are allowed to access your stacks, which actions they are allowed to perform on the stack's instances, and whether they have SSH access and sudo privileges\. 
 + **Automate tasks** – You can have AWS OpsWorks Stacks run custom Chef recipes to perform tasks such as executing scripts on any or all of a stack's instances with a single command\.
 
-  If you assign the instance to a layer, AWS OpsWorks Stacks automatically runs a specified set of Chef recipes on the instance at key points in its lifecycle, including your custom recipes\. Note that you can assign registered Amazon EC2 instances to custom layers only\.
-
+  If you assign the instance to a [layer](workinglayers.md), AWS OpsWorks Stacks automatically runs a specified set of Chef recipes on the instance at key points in its [lifecycle](workingcookbook-events.md), including your custom recipes\. Note that you can assign registered Amazon EC2 instances to [custom layers](workinglayers-custom.md) only\.
 + **Manage resources** – A stack lets you group and manage resources in an AWS region, and the OpsWorks dashboard shows the status of your stacks across all regions\.
-
 + **Install packages** – You can use Chef recipes to install packages on any instance in a stack\.
-
 + **Update the operating system** – AWS OpsWorks Stacks provides a simple way to install operating system security patches and updates on a stack's instances\.
-
 + **Deploy applications** – AWS OpsWorks Stacks deploys applications consistently to all of the stack's application server instances\.
-
 + **Monitoring** – AWS OpsWorks Stacks creates custom [CloudWatch](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html) metrics to monitor all of your stack's instances\.
 
-For pricing information, see [AWS OpsWorks Pricing](http://aws.amazon.com/opsworks/pricing/)\.
+For pricing information, see [AWS OpsWorks Pricing](https://aws.amazon.com/opsworks/stacks/pricing/)\.
 
 Following is the basic procedure for working with a registered instance\.
 
@@ -45,7 +36,7 @@ Following is the basic procedure for working with a registered instance\.
 
 The following sections describe this process in detail\.
 
-
+**Topics**
 + [Registering an Instance with an AWS OpsWorks Stacks Stack](registered-instances-register.md)
 + [Managing Registered Instances](registered-instances-manage.md)
 + [Assigning a Registered Instance to a Layer](registered-instances-assign.md)

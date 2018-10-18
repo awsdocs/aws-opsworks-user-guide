@@ -3,30 +3,23 @@
 One way to handle AWS OpsWorks Stacks permissions is to attach an IAM AWSOpsWorksFullAccess policy to every IAM user\. However, this policy allows a user to perform every AWS OpsWorks Stacks action on every stack\. It is often desirable instead to restrict AWS OpsWorks Stacks users to a specified set of actions or set of stack resources\. You can control AWS OpsWorks Stacks user permissions in two ways: By using the AWS OpsWorks Stacks **Permissions** page and by attaching an appropriate IAM policy\.
 
 The OpsWorks **Permissions** page—or the equivalent CLI or API actions—allows you to control user permissions in a multiuser environment on a per\-stack basis by assigning each user one of several *permission levels*\. Each level grants permissions for a standard set of actions for a particular stack resource\. Using the **Permissions** page, you can control the following:
-
 + Who can access each stack\.
-
 + Which actions each user is allowed to perform on each stack\.
 
   For example, you can allow some users to only view the stack while others can deploy applications, add instances, and so on\.
-
 + Who can manage each stack\.
 
   You can delegate management of each stack to one or more specified users\.
-
 + Who has user\-level SSH access and sudo privileges \(Linux\) or RDP access and administrator privileges \(Windows\) on each stack's Amazon EC2 instances\.
 
-  You can grant or remove these permissions separately for each user at any time\. 
+  You can grant or remove these permissions separately for each user at any time\.
 
 **Important**  
 Denying SSH/RDP access does not necessarily prevent a user from logging into instances\. If you specify an Amazon EC2 key pair for an instance, any user with the corresponding private key can log in or use the key to retrieve the Windows administrator password\. For more information, see [Managing SSH Access](security-ssh-access.md)\.
 
 You can use the [IAM console](https://console.aws.amazon.com/iam), CLI, or API to attach policies to your users that grant explicit permissions for the various AWS OpsWorks Stacks resources and actions\.
-
 + Using an IAM policy to specify permissions is more flexible than using the permissions levels\.
-
 + You can set up [IAM groups](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html), which grant permissions to groups of users, or define [roles that can be associated with federated users](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html)\.
-
 + An IAM policy is the only way to grant permissions for certain key AWS OpsWorks Stacks actions\.
 
   For example, you must use IAM to grant permissions for `opsworks:CreateStack` and `opsworks:CloneStack`, which are used to create and clone stacks, respectively\.
@@ -49,12 +42,12 @@ The following is a typical model for managing user permissions\. In each case, t
 
 1. As needed, customize users' permission levels by attaching an appropriately configured IAM policy\.
 
-For more recommendations on managing users, see [Root Device Storage](best-practices-storage.md)\.
+For more recommendations on managing users, see [Best Practices: Managing Permissions](best-practices-permissions.md)\.
 
 **Important**  
-As a best practice, don't use root \(account owner\) credentials to perform everyday work in AWS\. Instead, create an IAM administrators group with appropriate permissions\. Then create IAM users for the people in your organization who need to perform administrative tasks \(including for yourself\), and add those users to the administrative group\. For more information, see [IAM Best Practices](http://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html) in the *Using IAM* guide\.
+As a best practice, don't use root \(account owner\) credentials to perform everyday work in AWS\. Instead, create an IAM administrators group with appropriate permissions\. Then create IAM users for the people in your organization who need to perform administrative tasks \(including for yourself\), and add those users to the administrative group\. For more information, see [IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html) in the *Using IAM* guide\.
 
-
+**Topics**
 + [Managing AWS OpsWorks Stacks Users](opsworks-security-users-manage.md)
 + [Granting AWS OpsWorks Stacks Users Per\-Stack Permissions](opsworks-security-users-console.md)
 + [Managing AWS OpsWorks Stacks Permissions by Attaching an IAM Policy](opsworks-security-users-policy.md)

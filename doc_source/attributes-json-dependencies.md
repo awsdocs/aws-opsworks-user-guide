@@ -1,6 +1,6 @@
 # dependencies Attributes<a name="attributes-json-dependencies"></a>
 
-Contains several attributes that are related to the `update_dependencies` stack command\.
+Contains several attributes that are related to the `update_dependencies` [stack command](workingstacks-commands.md)\.
 
 **gem\_binary**  
 The location of the Gems binary \(string\)\.

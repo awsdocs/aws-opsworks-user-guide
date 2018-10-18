@@ -5,10 +5,8 @@ Now that you have an instance and an app, start the instance and deploy the app 
 **To start the instance and deploy the app**
 
 1. Do one of the following:
-
    + In the service navigation pane, choose **Instances**:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-example-nav-pane-console.png)
-
    + On the **My Sample Stack \(Linux\)** page, choose **Instances**:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-example-instances-console.png)
 
@@ -24,4 +22,4 @@ Now that you have an instance and an app, start the instance and deploy the app 
 
 You now have an instance with an app that has been deployed to the instance\.
 
-In the next step, you test the app on the instance\.
+In the [next step](gettingstarted-intro-test-app.md), you test the app on the instance\.

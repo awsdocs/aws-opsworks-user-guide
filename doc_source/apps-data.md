@@ -1,6 +1,6 @@
 # Passing Data to Applications<a name="apps-data"></a>
 
-It is often useful to pass data such as key\-value pairs to an application on the server\. To do so, use custom JSON to add the data to the stack\. AWS OpsWorks Stacks adds the data to each instance's node object for each lifecycle event\. 
+It is often useful to pass data such as key\-value pairs to an application on the server\. To do so, use [custom JSON](workingstacks-json.md) to add the data to the stack\. AWS OpsWorks Stacks adds the data to each instance's node object for each lifecycle event\. 
 
 Note, however, that although recipes can get the custom JSON data from the node object by using Chef attributes, applications cannot\. One approach to getting custom JSON data to one or more applications is to implement a custom recipe that extracts the data from the `node` object and writes it to a file that the application can read\. The example in this topic shows how to write the data to a YAML file, but you can use the same basic approach for other formats, such as JSON or XML\.
 

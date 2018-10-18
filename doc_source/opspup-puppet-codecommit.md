@@ -14,7 +14,7 @@ You can create a new repository by using AWS CodeCommit, and use it as your r10k
 
    In the **Steps to clone your repository** area, your `git clone` URL should resemble the following: `https://git-codecommit.region.amazonaws.com/v1/repos/control-repo`\. Copy this URL to a convenient place for use in Puppet server setup\.
 
-1. Close the **Connect to your repository** page, and return to the AWS OpsWorks for Puppet Enterprise server setup\.
+1. Close the **Connect to your repository** page, and return to the OpsWorks for Puppet Enterprise server setup\.
 
 1. Paste the URL that you copied in Step 4 in the **r10k remote** string box in the **Configure credentials** page of the Puppet master setup wizard\. Leave the **r10k private key** box empty\. Finish creating and launching your Puppet master\.
 
@@ -22,7 +22,7 @@ You can create a new repository by using AWS CodeCommit, and use it as your r10k
 
 1. Follow the steps in [Setup for HTTPS Users Using Git Credentials](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) in the *AWS CodeCommit User Guide* to push your existing `control-repo` content to the new AWS CodeCommit repository\.
 
-1. Now, you can continue by following the instructions in [[ERROR] BAD/MISSING LINK TEXT](opspup-starterkit.md), and use the Starter Kit to deploy code to your Puppet master\. The following command is an example\.
+1. Now, you can continue by following the instructions in [Configure the Puppet Master Using the Starter Kit](opspup-starterkit.md), and use the Starter Kit to deploy code to your Puppet master\. The following command is an example\.
 
    ```
    puppet-code deploy --all --wait --config-file .config/puppet-code.conf

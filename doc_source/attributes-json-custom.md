@@ -2,14 +2,14 @@
 
 Contains attributes that specify the stack's custom cookbooks\.
 
-**enabled**  
+**enabled**  <a name="attributes-json-custom-enabled"></a>
 Whether custom cookbooks are enabled \(Boolean\)\.  
 
 ```
 node["opsworks_custom_cookbooks"]["enabled"]
 ```
 
-**recipes**  
+**recipes**  <a name="attributes-json-custom-recipes"></a>
 A list of the recipes that are to be executed for this command, including custom recipes, using the `cookbookname::recipename` format \(list of string\)\.  
 
 ```

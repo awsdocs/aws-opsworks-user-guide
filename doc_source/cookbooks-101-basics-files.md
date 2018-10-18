@@ -2,7 +2,7 @@
 
 After you have created directories, you often need to populate them with configuration files, data files, and so on\. This topic shows two ways to install files on an instance\.
 
-
+**Topics**
 + [Installing a File from a Cookbook](#cookbooks-101-basics-files-cookbook_file)
 + [Creating a File from a Template](#cookbooks-101-basics-files-template)
 
@@ -132,11 +132,9 @@ A template is a `.erb` file that is basically a copy of the final file, with som
 ```
 
 The `<%=...%>` values are the placeholders\.
-
 + `<%=node[...]%>` represents a node attribute value\.
 
   For this example, the "your\_name" value is a placeholder that represents one of the attribute values from the cookbook's attribute file\.
-
 + `<%=@...%>` represents the value of a variable that is defined in the template resource, as discussed shortly\.
 
 **To create the template file**
@@ -170,17 +168,12 @@ end
 ```
 
 The `template` resource creates `example_data.json` from a template and installs it in `/srv/www/shared`\.
-
 + The template name, `/srv/www/shared/example_data.json`, specifies the installed file's path and name\.
-
 + The `source` attribute specifies the template used to create the file\.
-
 + The `mode` attribute specifies the installed file's mode\.
-
 + The resource defines two variables, `a_boolean_var` and `a_string_var`\. 
 
   When the resource creates `example_data.json`, it overwrites the variable placeholders in the template with the corresponding values from the resource\. 
-
 + The `only_if` *guard* attribute directs the resource to create the file only if `['createfile']['install_file']` is set to `true`\.
 
 **To run the recipe**

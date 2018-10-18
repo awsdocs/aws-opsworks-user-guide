@@ -2,7 +2,7 @@
 
 Chef resources can handle a wide variety of tasks on an instance, but it is sometimes preferable to use a shell command or a script\. For example, you might already have scripts that you use to accomplish certain tasks, and it will be easier to continue using them rather than implement new code\. This section shows how to run commands or scripts on an instance\. 
 
-
+**Topics**
 + [Running Commands](#cookbooks-101-basics-commands-script)
 + [Running Scripts](#cookbooks-101-basics-commands-execute)
 
@@ -41,17 +41,13 @@ end
 ```
 
 The `bash` resource is configured as follows\.
-
 + It uses the default action, `run`, which runs the commands in the `code` block\.
 
   This example has one command, `touch somefile`, but a `code` block can contain multiple commands\.
-
 + The `user` attribute specifies the user that executes the command\.
-
 + The `cwd` attribute specifies the working directory\.
 
   For this example, `touch` creates a file in the `/tmp` directory\.
-
 + The `not_if` guard attribute directs the resource to take no action if the file already exists\.
 
 **To run the recipe**
@@ -93,11 +89,8 @@ end
 ```
 
 The `cookbook_file` resource copies the script file to `/tmp` and sets the mode to make the file executable\. The `execute` resource then executes the file as follows:
-
 + The `user` attribute specifies the command's user \(`root` in this example\)\.
-
 + The `cwd` attribute specifies the working directory \(`/tmp` in this example\)\.
-
 + The `command` attribute specifies the script to be executed \(`touchfile` in this example\), which is located in the working directory\.
 
 **To run the recipe**

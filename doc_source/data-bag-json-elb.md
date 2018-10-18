@@ -22,11 +22,11 @@ end
 | --- |--- |--- |
 | [elastic\_load\_balancer\_name](#data-bag-json-elb-elastic-load-balancer-name) | [dns\_name](#data-bag-json-elb-dns-name) | [layer\_id](#data-bag-json-elb-layer-id) | 
 
-**elastic\_load\_balancer\_name**  
+**elastic\_load\_balancer\_name**  <a name="data-bag-json-elb-elastic-load-balancer-name"></a>
 The load balancer's name \(string\)\.
 
-**dns\_name**  
+**dns\_name**  <a name="data-bag-json-elb-dns-name"></a>
 The load balancer's DNS name \(string\)\.
 
-**layer\_id**  
+**layer\_id**  <a name="data-bag-json-elb-layer-id"></a>
 The AWS OpsWorks Stacks ID of the layer that the load balancer is assigned to \(string\)\.

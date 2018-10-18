@@ -11,4 +11,4 @@ Examine reports that AWS OpsWorks Stacks generates about the layer's compute per
 
 For information about these and other reports, see [Using Amazon CloudWatch](monitoring-cloudwatch.md) and [Monitoring](monitoring.md)\.
 
-In the next step, you can explore additional stack settings\.
+In the [next step](gettingstarted-intro-explore-more.md), you can explore additional stack settings\.

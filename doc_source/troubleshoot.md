@@ -22,6 +22,6 @@ Chef::Log.level = :debug
 ```
 For more information about viewing and interpreting Chef logs, see [Chef Logs](troubleshoot-debug-log.md)\.
 
-
+**Topics**
 + [Debugging Recipes](troubleshoot-debug.md)
 + [Common Debugging and Troubleshooting Issues](common-issues.md)

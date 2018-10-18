@@ -1,14 +1,12 @@
 # Adding an Instance to a Layer<a name="workinginstances-add"></a>
 
-After you create a layer, you usually add at least one instance\. You can add more instances later, if the current set can't handle the load\. You can also use load\-based or time\-based instances to automatically scale the number of instances\.
+After you create a layer, you usually add at least one instance\. You can add more instances later, if the current set can't handle the load\. You can also use [load\-based or time\-based instances](workinginstances-autoscaling.md) to automatically scale the number of instances\.
 
 You can add either new or existing instances to a layer:
-
 + **New**–OpsWorks creates a new instance, configured to your specifications, and makes it a member of the layer\.
-
 + **Existing**–You can add an existing instance from any compatible layer, but it must be in the offline \(stopped\) state\.
 
-If an instance belongs to multiple layers, AWS OpsWorks Stacks runs the recipes for each of the instance's layers when a lifecycle event occurs, or when you run a stack or deployment command\.
+If an instance belongs to multiple layers, AWS OpsWorks Stacks runs the recipes for each of the instance's layers when a lifecycle event occurs, or when you run a [stack](workingstacks-commands.md) or [deployment](workingapps-deploying.md) command\.
 
 You can also make an instance a member of multiple layers by editing its configuration\. For more information, see [Editing the Instance Configuration](workinginstances-properties.md)\.
 
@@ -24,15 +22,13 @@ You can also make an instance a member of multiple layers by editing its configu
 **Hostname**  
 Identifies the instance on the network\. By default, AWS OpsWorks Stacks generates each instance's host name by using the **Hostname theme** you specified when you created the stack\. You can override this value and specify your preferred host name\.  
 **Size**  
-An Amazon EC2 instance type, which specifies the instance's resources, such as the amount of memory or number of virtual cores\. AWS OpsWorks Stacks specifies a default size for each instance, which you can override with your preferred instance type\. AWS OpsWorks Stacks supports all instance types except Cluster Compute, Cluster GPU, and High Memory Cluster\. Be aware that micro instances such as t1\.micro might not have sufficient resources to support some layers\. For more information, see [Instance Families and Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)\.   
-If you are using load\-balanced instances, note that Configure lifecycle events can produce a significant CPU load spike that might last a minute or longer\. With smaller instances this load spike can be enough to trigger upscaling, especially for large load\-balanced stacks with frequent Configure events\. The following are some ways to reduce the likelihood of a Configure event causing needless upscaling\.  
-
+An Amazon EC2 instance type, which specifies the instance's resources, such as the amount of memory or number of virtual cores\. AWS OpsWorks Stacks specifies a default size for each instance, which you can override with your preferred instance type\.   
+The instance types supported by AWS OpsWorks Stacks depend on whether or not the stack is in a VPC\. Instance types are also limited if your account is using the AWS Free Tier\. The drop\-down **Size** list shows the supported instance types for the Chef version that your stack supports\. Be aware that micro instances such as t1\.micro might not have sufficient resources to support some layers\. For more information, see [Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)\.   
+If you are using [load\-balanced instances](workinginstances-autoscaling-loadbased.md), note that [Configure lifecycle events](workingcookbook-events.md) can produce a significant CPU load spike that might last a minute or longer\. With smaller instances this load spike can be enough to trigger upscaling, especially for large load\-balanced stacks with frequent Configure events\. The following are some ways to reduce the likelihood of a Configure event causing needless upscaling\.  
    + Use larger instances, so that the additional load from a Configure event is not enough to trigger upscaling\.
-
    + Don't use instance types such as T2 that share CPU resources\. 
 
      This ensures that when a Configure event occurs, all of the instance's CPU resources are immediately available\.
-
    + Make the `exceeded threshold` time significantly longer than the time required to process a Configure event, perhaps 5 minutes\.
 
      For more information, see [Using Automatic Load\-based Scaling](workinginstances-autoscaling-loadbased.md)\.  
@@ -42,23 +38,16 @@ If the stack is running in a VPC, this setting is labeled **Subnet** and lists t
 By default, AWS OpsWorks Stacks lists the subnet's CIDR ranges\. To make the list more readable, use the VPC console or API to add a tag to each subnet with **Key** set to **Name** and **Value** set to the subnet's name\. AWS OpsWorks Stacks appends that name to the CIDR range\. In the preceding example, the subnet's Name tag is set to **Private**\.  
 **Scaling Type**  
 Determines how the instance is started and stopped\.   
-
    + The default value is a **24/7** instance, which you start and stop manually\.
-
    + AWS OpsWorks Stacks starts and stops **time\-based** instances based on a specified schedule\.
-
    + \(Linux only\) AWS OpsWorks Stacks starts and stops **load\-based** instances based on specified load metrics\.
 You do not start or stop load\-based or time\-based instances yourself\. Instead, you configure the instances, and AWS OpsWorks Stacks starts and stops them based on the configuration\. For more information, see [Managing Load with Time\-based and Load\-based Instances](workinginstances-autoscaling.md)\.  
 **SSH key**  
 An Amazon EC2 key pair\. AWS OpsWorks Stacks installs the public key on the instance\.  
-
-   + For Linux instances, you can use the corresponding private key with an SSH client to log in to the instance\. 
-
-   + For Windows instances, you can use the corresponding private key to retrieve the instance's Administrator password\. You can then use that password with RDP to log into the instance as Administrator\.
+   + For Linux instances, you can use the corresponding private key with an SSH client to [log in to the instance](workinginstances-ssh.md)\. 
+   + For Windows instances, you can use the corresponding private key to [retrieve the instance's Administrator password](workinginstances-rdp.md#workinginstances-rdp-admin)\. You can then use that password with RDP to log into the instance as Administrator\.
 Initially, this setting is the **Default SSH key** value that you specified when you created the stack\.  
-
    + If the default value is set to **Do not use a default SSH key**, you can specify one of your account's Amazon EC2 keys\.
-
    + If the default value is set to an Amazon EC2 key, you can specify a different key or no key\.  
 **Operating system**  
 **Operating system** specifies which operating system the instance is running\. AWS OpsWorks Stacks supports only 64\-bit operating systems\.  
@@ -72,17 +61,12 @@ For more information, see [Using Custom AMIs](workinginstances-custom-ami.md)\.
 Not all agent versions work with all operating system releases\. If your instance is running an agent–or you install an agent on an instance–that is not fully supported on the instance operating system, the AWS OpsWorks Stacks console displays error messages that instruct you to install a compatible agent\.  
 **Tenancy**  
 Choose the tenancy option for your instance\. You can choose to run your instances on physical servers fully dedicated for your use\.  
-
    + **Default \- Rely on VPC settings**\. No tenancy, or inherits tenancy settings from your VPC\.
-
    + **Dedicated \- Run a dedicated instance**\. Pay by the hour for instances that run on single\-tenant hardware\. For more information, see [Dedicated Instances](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html) in the Amazon VPC User Guide, and [Amazon EC2 Dedicated Instances](https://aws.amazon.com/ec2/purchasing-options/dedicated-instances/)\.
-
    + **Dedicated host \- Run this instance on a dedicated host**\. Pay for a physical host that is fully dedicated to running your instances, and bring your existing per\-socket, per\-core, or per\-VM software licenses to reduce costs\. For more information, see [Dedicated Hosts Overview](https://aws.amazon.com/ec2/dedicated-hosts/) in the Amazon EC2 documentation, and [Amazon EC2 Dedicated Hosts](https://aws.amazon.com/ec2/dedicated-hosts/)\.  
 **Root device type**  
 Specifies the instance's root device storage\.  
-
    + Linux instances can be either Amazon EBS\-backed or instance store\-backed\.
-
    + Windows instances must be Amazon EBS\-backed\.
 For more information, see [Storage](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html)\.  
 After the initial boot, Amazon EBS\-backed instances boot faster than instance store\-backed instances because AWS OpsWorks Stacks does not have to reinstall the instance's software from scratch\. For more information, see [Root Device Storage](best-practices-storage.md)\.  
@@ -90,17 +74,14 @@ After the initial boot, Amazon EBS\-backed instances boot faster than instance s
 Specifies the root device volume type: **Magnetic**, **Provisioned IOPS \(SSD\)**, or **General Purpose \(SSD\)**\. For more information, see [Amazon EBS Volume Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)\.  
 **Volume size**  
 Specifies the root device volume size for the specified volume type\. For more information, see [Amazon EBS Volume Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)\.  
-
    + **General Purpose \(SSD\)**\. Minimum allowed size is: 8 GiB; maximum size is 16384 GiB\.
-
    + **Provisioned IOPS \(SSD\)**\. Minimum allowed size is: 8 GiB; maximum size is 16384 GiB\. You can set a minimum of 100 input/output operations per second \(IOPS\), and a maximum of 240 IOPS\.
-
    + **Magnetic**\. Minimum allowed size is 8 GiB; maximum size is 1024 GiB\.
 
 1. Choose **Add Instance** to create the new instance\.
 
 **Note**  
-You cannot override the stack's default agent version setting when you create an instance\. To specify a custom agent version setting, you must create the instance and then edit its configuration\.
+You cannot override the [stack's default agent version](workingstacks-creating.md#workingstacks-creating-advanced-agent) setting when you create an instance\. To specify a custom agent version setting, you must create the instance and then [edit its configuration](workinginstances-properties.md)\.
 
 **To add an existing instance to a layer**
 
@@ -115,12 +96,10 @@ If you change your mind about using an existing instance, choose **New** to crea
 An instance represents an Amazon EC2 instance, but is basically just an AWS OpsWorks Stacks data structure\. An instance must be started to create a running Amazon EC2 instance, as described in the following sections\.
 
 **Important**  
-If you launch instances into a default VPC, you must be careful about modifying the VPC configuration\. The instances must always be able to communicate with the AWS OpsWorks Stacks service, Amazon S3, and package repositories\. If, for example, you remove a default gateway, the instances will lose their connection to the AWS OpsWorks Stacks service, which will then treat the instances as failed and auto heal them\. However, AWS OpsWorks Stacks will not be able to install the instance agent on the healed instances\. Without an agent, the instances cannot communicate with the service, and the startup process will not progress beyond the `booting` status\. For more information on default VPC, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)\.
+If you launch instances into a default VPC, you must be careful about modifying the VPC configuration\. The instances must always be able to communicate with the AWS OpsWorks Stacks service, Amazon S3, and package repositories\. If, for example, you remove a default gateway, the instances will lose their connection to the AWS OpsWorks Stacks service, which will then treat the instances as failed and [auto heal](workinginstances-autohealing.md) them\. However, AWS OpsWorks Stacks will not be able to install the instance agent on the healed instances\. Without an agent, the instances cannot communicate with the service, and the startup process will not progress beyond the `booting` status\. For more information on default VPC, see [Supported Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)\.
 
 You can also incorporate Linux computing resources into a stack that were created outside of AWS OpsWorks Stacks:
-
 + Amazon EC2 instances that you created directly by using the Amazon EC2 console, CLI, or API\.
-
 + *On\-premises* instances running on your own hardware, including instances running in virtual machines\.
 
 For more information, see [Using Computing Resources Created Outside of AWS OpsWorks Stacks](registered-instances.md)\.

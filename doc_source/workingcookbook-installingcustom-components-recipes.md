@@ -1,6 +1,6 @@
 # Recipes<a name="workingcookbook-installingcustom-components-recipes"></a>
 
-Recipes are Ruby applications that define a system's configuration\. They install packages, create configuration files from templates, execute shell commands, create files and directories, and so on\. You typically have AWS OpsWorks Stacks execute recipes automatically when a lifecycle event occurs on the instance but you can also run them explicitly at any time by using the Execute Recipes stack command\. For more information, see [About Recipes](http://docs.chef.io/recipes.html)\.
+Recipes are Ruby applications that define a system's configuration\. They install packages, create configuration files from templates, execute shell commands, create files and directories, and so on\. You typically have AWS OpsWorks Stacks execute recipes automatically when a [lifecycle event](workingcookbook-events.md) occurs on the instance but you can also run them explicitly at any time by using the [Execute Recipes stack command](workingcookbook-executing.md)\. For more information, see [About Recipes](http://docs.chef.io/recipes.html)\.
 
 A recipe typically consists largely of a series of *resources*, each of which represents the desired state of an aspect of the system\. Each resource includes a set of attributes that define the desired state and specify what action is to be taken\. Chef associates each resource with an appropriate *provider* that performs the action\. For more information, see [Resources and Providers Reference](https://docs.chef.io/resource.html)\.
 

@@ -1,8 +1,9 @@
-# Step 2\.4: Create and Deploy an App<a name="gettingstarted-simple-app"></a>
+# Step 2\.4: Create and Deploy an App \- Chef 11<a name="gettingstarted-simple-app"></a>
 
 To make MyStack more useful, you need to deploy an app to the PHP App Server instance\. You store an app's code and any related files in a repository, such as Git\. You need to take a couple of steps to get those files to your application servers:
 
-The procedure in this section applies to Chef 11 stacks\. For information about how to add apps to layers in Chef 12 stacks, see \.
+**Note**  
+The procedure in this section applies to Chef 11 stacks\. For information about how to add apps to layers in Chef 12 stacks, see [Adding Apps](workingapps-creating.md)\.
 
 1. Create an app\.
 

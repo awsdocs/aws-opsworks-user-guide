@@ -25,13 +25,9 @@ If your account does not have an appropriate profile, you can select **New profi
 1. Click **Policies** in the navigation pane and click **Create Policy** to create a new customer\-managed policy\.
 
 1. Click **Select** next to **Policy Generator** and then specify the following policy generator settings:
-
    + **Effect** – **Allow**\.
-
    + **AWS Service** – **Amazon Simple Workflow Service**\.
-
    + **Actions** – **All Actions \(\*\)**\. 
-
    + **Amazon Resource Name \(ARN\)** – An ARN that specifies which Amazon SWF domains the workers can access\. Type **\*** to provide access to all domains\.
 
    When you are finished, click **Add Statement**, **Next Step**, and then **Create Policy**\.

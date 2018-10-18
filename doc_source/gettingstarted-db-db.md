@@ -1,12 +1,10 @@
 # Step 3\.1: Add a Back\-end Database<a name="gettingstarted-db-db"></a>
 
 The new version of SimplePHPApp stores its data in a back\-end database\. AWS OpsWorks Stacks supports two types of database servers:
-
-+ The MySQL AWS OpsWorks Stacks layer is a blueprint for creating Amazon EC2 instances that host a MySQL database master\.
-
++ The [MySQL AWS OpsWorks Stacks layer](workinglayers-db-mysql.md) is a blueprint for creating Amazon EC2 instances that host a MySQL database master\.
 + The Amazon RDS service layer provides a way to incorporate an [Amazon RDS instance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html) into a stack\.
 
-You can also use other databases, such as Amazon DynamoDB, or create a custom layer to support databases such as [MongoDB](http://www.mongodb.org/)\. For more information, see [[ERROR] BAD/MISSING LINK TEXT](customizing-rds.md)\.
+You can also use other databases, such as Amazon DynamoDB, or create a custom layer to support databases such as [MongoDB](http://www.mongodb.org/)\. For more information, see [Using a Back\-end Data Store](customizing-rds.md)\.
 
 This example uses a MySQL layer\.
 

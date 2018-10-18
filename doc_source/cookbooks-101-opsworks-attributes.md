@@ -4,11 +4,9 @@
 This topic applies only to Linux stacks\. You cannot override built\-in attributes on Windows stacks\.
 
 AWS OpsWorks Stacks installs a set of built\-in cookbooks on each instance\. Many of the built\-in cookbooks support the built\-in layers, and their attribute files define a variety of default system and application settings, such as the Apache server configuration settings\. By putting these settings in attribute files, you can customize many configuration settings by overriding the corresponding built\-in attribute in either of the following ways:
-
 + Define the attribute in custom JSON\.
 
   This approach has the advantage of being simple and flexible\. However, you must enter custom JSON manually, so there is no robust way to manage the attribute definitions\.
-
 + Implement a custom cookbook and define the attribute in a `customize.rb` attribute file\.
 
   This approach is less flexible than using custom JSON, but is more robust because you can put custom cookbooks under source control\.
@@ -85,6 +83,8 @@ To override a built\-in attribute, a custom attribute must be a `normal` type or
 
 1. Create a `.zip` archive of `opsworks_cookbooks` named `opsworks_cookbooks.zip` and upload the archive to an Amazon Simple Storage Service \(Amazon S3\) bucket\. For simplicity, [make the file public](http://docs.aws.amazon.com/AmazonS3/latest/UG/EditingPermissionsonanObject.html)\. Record the URL for later use\. You can also store your cookbooks in a private Amazon S3 archive or in other repository types\. For more information, see [Cookbook Repositories](workingcookbook-installingcustom-repo.md)\.
 
+   Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
+
 To use the custom attribute, create a stack and install the cookbook\.
 
 **To use the custom attribute**
@@ -92,34 +92,29 @@ To use the custom attribute, create a stack and install the cookbook\.
 1. Open the [AWS OpsWorks Stacks console](https://console.aws.amazon.com/opsworks/), and then choose **Add Stack**\.
 
 1. Specify the following standard settings\.
-
    + **Name** – ApacheConfig
-
    + **Region** – US West \(Oregon\)
 
      You can put your stack in any region, but we recommend US West \(Oregon\) for tutorials\.
-
    + **Default SSH key** – An EC2 key pair
 
      If you need to create an EC2 key pair, see [Amazon EC2 Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)\. Note that the key pair must belong to the same AWS region as the stack\.
 
    Choose **Advanced>>**, set **Use custom Chef cookbooks** to **Yes**, and then specify the following settings\.
-
    + **Repository type** – **Http Archive**
-
    + **Repository URL** – The cookbook archive's URL that you recorded earlier
 
    Accept the defaults for the other settings, and then choose **Add Stack** to create the stack\.
 **Note**  
 This example uses the default operating system, Amazon Linux\. You can use Ubuntu, if you prefer\. The only difference is that on Ubuntu systems, the built\-in Setup recipe produces a configuration file with the same settings named `apache2.conf` and puts it in the `/etc/apache2` directory\. 
 
-1. Choose **Add a layer**, and then add a Java App Server layer with default settings to the stack\.
+1. Choose **Add a layer**, and then [add a Java App Server layer](layers-java.md) with default settings to the stack\.
 
-1. Add a 24/7 instance with default settings to the layer, and then start the instance\.
+1. [Add a 24/7 instance](workinginstances-add.md) with default settings to the layer, and then start the instance\.
 
    A t2\.micro instance is sufficient for this example\.
 
-1. After the instance is online, connect to it with SSH\. The `httpd.conf` file is in the `/etc/httpd/conf` directory\. If you examine the file, you should see your custom `KeepAliveTimeout` setting\. The remainder of the settings will have the default values from the built\-in `apache.rb` file\. The relevant part of `httpd.conf` should look similar to the following:
+1. After the instance is online, [connect to it with SSH](workinginstances-ssh.md)\. The `httpd.conf` file is in the `/etc/httpd/conf` directory\. If you examine the file, you should see your custom `KeepAliveTimeout` setting\. The remainder of the settings will have the default values from the built\-in `apache.rb` file\. The relevant part of `httpd.conf` should look similar to the following:
 
    ```
    ...

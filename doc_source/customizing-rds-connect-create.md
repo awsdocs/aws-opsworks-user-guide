@@ -11,27 +11,18 @@ Now you're ready to create an RDS database for the example using the Amazon RDS 
 1. For **Do you plan to use this database for production purposes?** select **No, this instance\.\.\.**, which is sufficient for the example\. For production use, you might want to select **Yes, use Multi\-AZ Deployment\.\.\.**\. Click **Next Step**\.
 
 1. On the **Specify DB Details** page, specify the following settings:
-
    + **DB Instance Class**: **db\.t2\.micro**
-
    + **Multi\-AZ Deployment**: **No**
-
    + **Allocated Storage**: **5** GB
-
    + **DB Instance Identifier**: **rdsexample**
-
    + **Master Username**: **opsworksuser**
-
    + **Master Password**: Specify a suitable password and record it for later use\.
 
    Accept the default settings for the other options and click **Next Step**\.
 
 1. On the **Configure Advanced Settings** page, specify the following settings:
-
    + In the **Network & Security** section, for **VPC Security Group\(s\)**, select **phpsecgroup \(VPC\)**
-
    + In the **Database Options** section, for **Database Name**, type **rdsexampledb**
-
    + In the **Backup** section, set **Backup Retention Period** to **0** for the purposes of this walkthrough\.
 
    Accept the default settings for the other options and click **Launch DB Instance**\.

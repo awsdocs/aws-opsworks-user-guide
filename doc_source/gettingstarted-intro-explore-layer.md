@@ -11,4 +11,4 @@ Examine how AWS OpsWorks Stacks set up the layer\.
 
 To learn more about many of the settings, choose **Edit**, and then hover over each of the settings\. \(Not all settings have on\-screen descriptions\.\) For more information about these settings, see [Editing an OpsWorks Layer's Configuration](workinglayers-basics-edit.md)\.
 
-In the next step, you can explore the instance's settings and logs\.
+In the [next step](gettingstarted-intro-explore-instance.md), you can explore the instance's settings and logs\.

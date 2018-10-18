@@ -20,4 +20,4 @@ When you configure a domain for an app, it is listed as a server alias in the se
 **Note**  
 If the load balancer instance terminates at some point, you are assigned a new Elastic IP address\. You need to update your DNS registrar settings to map to the new Elastic IP address\.
 
-AWS OpsWorks Stacks simply adds the domain settings to the app's `deploy` attributes\. You must implement a custom recipe to retrieve the information from the node object and configure the server appropriately\. For more information, see [Cookbooks and Recipes](workingcookbook.md)\.
+AWS OpsWorks Stacks simply adds the domain settings to the app's [`deploy` attributes](workingcookbook-json.md#workingcookbook-json-deploy)\. You must implement a custom recipe to retrieve the information from the node object and configure the server appropriately\. For more information, see [Cookbooks and Recipes](workingcookbook.md)\.

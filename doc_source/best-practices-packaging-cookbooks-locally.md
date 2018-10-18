@@ -1,6 +1,6 @@
 # Packaging Cookbook Dependencies Locally<a name="best-practices-packaging-cookbooks-locally"></a>
 
-You can use Berkshelf to package your cookbook dependencies locally, upload the package to Amazon S3, and modify your stack to use the package on Amazon S3 as a cookbook source\.
+You can use Berkshelf to package your cookbook dependencies locally, upload the package to Amazon S3, and modify your stack to use the package on Amazon S3 as a cookbook source\. Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
 The following walkthroughs describe how to pre\-package your cookbooks and their dependencies into a \.zip file, and then use the \.zip file as your cookbook source for Linux instances in AWS OpsWorks Stacks\. The first walkthrough describes how to package one cookbook\. The second walkthrough describes how to package multiple cookbooks\.
 
@@ -62,7 +62,7 @@ In Chef 12 Linux, Berkshelf is no longer installed by default on stack instances
    upload: ./cookbooks.tar.gz to s3://bucket-name/cookbooks.tar.gz
    ```
 
-1. In AWS OpsWorks Stacks, [modify your stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-installingcustom-enable.html) to use the package that you uploaded as the cookbook source\.
+1. In AWS OpsWorks Stacks, [modify your stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-installingcustom-enable.html) to use the package that you uploaded as the cookbook source\.
 
    1. Set the **Use custom Chef cookbooks** setting to **Yes**\.
 
@@ -108,7 +108,7 @@ In Chef 12 Linux, Berkshelf is no longer installed by default on stack instances
    upload: ./cookbooks.tar.gz to s3://bucket-name/cookbooks.tar.gz
    ```
 
-1.  In AWS OpsWorks Stacks, [modify your stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-installingcustom-enable.html) to use the package that you uploaded as the cookbook source\. 
+1.  In AWS OpsWorks Stacks, [modify your stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-installingcustom-enable.html) to use the package that you uploaded as the cookbook source\. 
 
 ## Packaging Dependencies Locally for Multiple Cookbooks<a name="best-practices-packaging-cookbooks-locally-multiple"></a>
 
@@ -154,16 +154,11 @@ This example creates two cookbooks and packages the dependencies for them\.
 
 1.  Finally, create a zip package, upload it to Amazon S3, and modify your AWS OpsWorks Stacks stack to use the new cookbook source\. To do this, follow steps 2 through 4 in [Packaging Dependencies Locally for One Cookbook](#best-practices-packaging-cookbooks-locally-one)\. 
 
-## Additional resources<a name="w3ab2c11c41c15c15"></a>
+## Additional resources<a name="w4ab1c11c41c15c15"></a>
 
 For more information about packaging cookbook dependencies, see the following\.
-
 + [How to Package Cookbook Dependencies Locally with Berkshelf](https://aws.amazon.com/blogs/devops/how-to-package-cookbook-dependencies-locally-with-berkshelf/) on the AWS DevOps Blog
-
 + [Linux Chef 12 with Berkshelf](https://forums.aws.amazon.com/thread.jspa?threadID=221131) on the AWS OpsWorks forums
-
 + [Berkshelf in Chef 12](https://forums.aws.amazon.com/message.jspa?messageID=694464) on the AWS OpsWorks forums
-
-+ Installing Custom Cookbooks in this guide
-
-+ Cookbook Repositories in this guide
++ [Installing Custom Cookbooks](workingcookbook-installingcustom-enable.md) in this guide
++ [Cookbook Repositories](workingcookbook-installingcustom-repo.md) in this guide

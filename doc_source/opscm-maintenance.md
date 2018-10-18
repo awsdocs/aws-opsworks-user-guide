@@ -9,41 +9,30 @@ System maintenance launches a new instance from a backup that is performed as pa
 **Important**  
 System maintenance deletes any files or custom configuration that you have added to the AWS OpsWorks for Chef Automate server\. For more information about how to repair configuration or file loss, see [Restoring custom configurations and files after maintenance](#opscm-maintenance-restore) in this topic\.
 
-
-+ [Ensuring nodes trust the AWS OpsWorks Certification Authority](#w3ab2b9c23c13)
-+ [Configuring system maintenance](#w3ab2b9c23c15)
+**Topics**
++ [Ensuring nodes trust the AWS OpsWorks Certification Authority](#w4ab1b9c25c13)
++ [Configuring system maintenance](#w4ab1b9c25c15)
 + [Starting system maintenance on demand](#opscm-maintenance-startdemand)
 + [Restoring custom configurations and files after maintenance](#opscm-maintenance-restore)
 
-## Ensuring nodes trust the AWS OpsWorks Certification Authority<a name="w3ab2b9c23c13"></a>
+## Ensuring nodes trust the AWS OpsWorks Certification Authority<a name="w4ab1b9c25c13"></a>
 
-Nodes that you are managing with an AWS OpsWorks for Chef Automate server must authenticate with the server by using certificates\. During system maintenance, AWS OpsWorks replaces the server instance, and regenerates new certificates through the AWS OpsWorks certificate authority \(CA\)\. To restore communication automatically with your managed nodes after maintenance is finished, nodes should trust the AWS OpsWorks CA that ships with the starter kit, and is hosted in the regions that are supported by AWS OpsWorks for Chef Automate\. When you use the AWS OpsWorks CA to establish the trust between nodes and server, nodes reconnect to the new server instance after maintenance\. If you are adding EC2 nodes by using the EC2 `userdata` script described in , nodes are already configured to trust the AWS OpsWorks CA\.
-
+Nodes that you are managing with an AWS OpsWorks for Chef Automate server must authenticate with the server by using certificates\. During system maintenance, AWS OpsWorks replaces the server instance, and regenerates new certificates through the AWS OpsWorks certificate authority \(CA\)\. To restore communication automatically with your managed nodes after maintenance is finished, nodes should trust the AWS OpsWorks CA that ships with the starter kit, and is hosted in the regions that are supported by AWS OpsWorks for Chef Automate\. When you use the AWS OpsWorks CA to establish the trust between nodes and server, nodes reconnect to the new server instance after maintenance\. If you are adding EC2 nodes by using the EC2 `userdata` script described in [Adding Nodes Automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md), nodes are already configured to trust the AWS OpsWorks CA\.
 + For Linux\-based nodes, the S3 bucket location of the CA is `https://opsworks-cm-${REGION}-prod-default-assets.s3.amazonaws.com/misc/opsworks-cm-ca-2016-root.pem`\. The AWS OpsWorks trusted CA must be stored in the path `/etc/chef/opsworks-cm-ca-2016-root.pem`\.
-
 + For Windows\-based nodes, the S3 bucket location of the CA is `https://opsworks-cm-$env:AWS_REGION-prod-default-assets.s3.amazonaws.com/misc/opsworks-cm-ca-2016-root.pem`\. The AWS OpsWorks CA must be stored in the root Chef folder; for example, `C:\chef\opsworks-cm-ca-2016-root.pem`
 
 In both paths, the region variable resolves to one of the following\.
-
 + `us-east-2`
-
 + `us-east-1`
-
 + `us-west-1`
-
 + `us-west-2`
-
 + `ap-northeast-1`
-
 + `ap-southeast-1`
-
 + `ap-southeast-2`
-
 + `eu-central-1`
-
 + `eu-west-1`
 
-## Configuring system maintenance<a name="w3ab2b9c23c15"></a>
+## Configuring system maintenance<a name="w4ab1b9c25c15"></a>
 
 When you create a new AWS OpsWorks for Chef Automate server, you can configure a weekday and time, in [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) \(UTC\), for system maintenance to start\. Maintenance starts during the hour that you specify\. Because you should expect the server to be offline during system maintenance, choose a time of low server demand within regular office hours\. The server status is `UNDER_MAINTENANCE` while maintenance is in progress\.
 
@@ -53,7 +42,7 @@ You can also change the system maintenance settings on an existing AWS OpsWorks 
 
 In the **System maintenance** section, set the day and hour that you want system maintenance to begin\.
 
-### Configuring system maintenance by using the AWS CLI<a name="w3ab2b9c23c15c10"></a>
+### Configuring system maintenance by using the AWS CLI<a name="w4ab1b9c25c15c10"></a>
 
 You can also configure the system maintenance automatic start time by using the AWS CLI\. The AWS CLI lets you configure daily automatic maintenance, if desired, by omitting the three\-character weekday prefix\.
 

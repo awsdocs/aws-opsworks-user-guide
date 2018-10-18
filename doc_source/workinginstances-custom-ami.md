@@ -3,24 +3,18 @@
 AWS OpsWorks Stacks supports two ways to customize instances: custom [Amazon Machine Images \(AMIs\)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) and Chef recipes\. Both approaches give you control over which packages and package versions are installed, how they are configured, and so on\. However, each approach has different advantages, so the best one depends on your requirements\.
 
 The following are the primary reasons to consider using a custom AMI:
-
 + You want to prebundle specific packages instead of installing them after the instance boots\.
-
 + You want to control the timing of package updates to provide a consistent base image for your layer\.
-
-+ You want instances—load\-based instances in particular—to boot as quickly as possible\. 
++ You want instances—[load\-based](workinginstances-autoscaling.md) instances in particular—to boot as quickly as possible\. 
 
 The following are the primary reasons to consider using Chef recipes:
-
 + They are more flexible than custom AMIs\.
-
 + They are easier to update\.
-
 + They can perform updates on running instances\. 
 
  In practice, the optimal solution might be a combination of both approaches\. For more information about recipes, see [Cookbooks and Recipes](workingcookbook.md)\.
 
-
+**Topics**
 + [How Custom AMIs work with AWS OpsWorks Stacks](#workinginstances-custom-ami-work)
 + [Creating a Custom AMI for AWS OpsWorks Stacks](#workinginstances-custom-ami-create)
 
@@ -33,7 +27,7 @@ You cannot specify a particular custom AMI as a stack's default operating system
 
 This topic discusses some general issues that you should consider before creating or using a custom AMI\.
 
-
+**Topics**
 + [Startup Behavior](#workinginstances-custom-ami-work-startup)
 + [Choosing a Layer](#workinginstances-custom-ami-work-layer)
 + [Handling Applications](#workinginstances-custom-ami-work-apps)
@@ -55,14 +49,12 @@ For Linux AMIs, one way to reduce the possibility of conflicts is to use AWS Ops
 
 In addition to packages, you might also want to include an application in the AMI\. If you have a large complex application, including it in the AMI can shorten the instance's startup time\. You can include small applications in your AMI, but there is usually little or no time advantage relative to having AWS OpsWorks Stacks deploy the application\. 
 
-One option is to include the application in your AMI and also create an app that deploys the application to the instances from a repository\. This approach shortens your boot time but also provides a convenient way to update the application after the instance is running\. Note that Chef recipes are idempotent, so the deployment recipes won't modify the application as long as the version in the repository is the same as the one on the instance\.
+One option is to include the application in your AMI and also [create an app](workingapps-creating.md) that deploys the application to the instances from a repository\. This approach shortens your boot time but also provides a convenient way to update the application after the instance is running\. Note that Chef recipes are idempotent, so the deployment recipes won't modify the application as long as the version in the repository is the same as the one on the instance\.
 
 ## Creating a Custom AMI for AWS OpsWorks Stacks<a name="workinginstances-custom-ami-create"></a>
 
 To use a custom AMI with AWS OpsWorks Stacks, you must first create an AMI from a customized instance\. You can choose from two basic approaches:
-
-+ Use the Amazon EC2 console or API to create and customize an instance, based on a 64\-bit version of one of the AWS OpsWorks Stacks\-supported AMIs\.
-
++ Use the Amazon EC2 console or API to create and customize an instance, based on a 64\-bit version of one of the [AWS OpsWorks Stacks\-supported AMIs](workinginstances-os.md)\.
 + For Linux AMIs, use OpsWorks to create an Amazon EC2 instance, based on the configuration of its associated layers\.
 
 **Note**  
@@ -73,10 +65,10 @@ You then use the Amazon EC2 console or API to create a custom AMI from the custo
 **Note**  
 By default, AWS OpsWorks Stacks installs all Amazon Linux updates on boot, which provides you with the latest release\. In addition, Amazon Linux releases a new version approximately every six months, which can involve significant changes\. By default, custom AMIs based on Amazon Linux are automatically updated to the new version when it is released\. The recommended practice is to lock your custom AMI to a specific Amazon Linux version, which allows you to defer the update until you have tested the new version\. For more information, see [How do I lock my AMI to a specific version?](http://aws.amazon.com/amazon-linux-ami/faqs/#lock)\.
 
-
+**Topics**
 + [Create a Custom AMI using Amazon EC2](#workinginstances-custom-ami-create-ec2)
 + [Create a Custom Linux AMI from an AWS OpsWorks Stacks Instance](#workinginstances-custom-ami-create-opsworks)
-+ [Create a Custom Windows AMI](#w3ab2c11c47c13c11c19c18)
++ [Create a Custom Windows AMI](#w4ab1c11c47c13c11c19c18)
 
 ### Create a Custom AMI using Amazon EC2<a name="workinginstances-custom-ami-create-ec2"></a>
 
@@ -84,7 +76,7 @@ The simplest way to create a custom AMI—and the only option for Windows AMIs�
 
 **To create a custom AMI using Amazon EC2 console or API**
 
-1. Create an instance by using a 64\-bit version of one of the AWS OpsWorks Stacks\-supported AMIs\.
+1. Create an instance by using a 64\-bit version of one of the [AWS OpsWorks Stacks\-supported AMIs](workinginstances-os.md)\.
 
 1. Customize the instance from Step 1 by configuring it, installing packages, and so on\. Remember that everything you install will be reproduced on every instance based on the AMI, so don’t include items that should be specific to a particular instance\.
 
@@ -96,15 +88,15 @@ If you want to use a customized AWS OpsWorks Stacks Linux instance to create an 
 
 **To create a custom AMI from an AWS OpsWorks Stacks instance**
 
-1. Create a Linux stack and add one or more layers to define the configuration of the customized instance\. You can use built\-in layers, customized as appropriate, as well as fully custom layers\. For more information, see [Customizing AWS OpsWorks Stacks](customizing.md)\.
+1. [Create a Linux stack](workingstacks-creating.md) and [add one or more layers](workinglayers-basics-create.md) to define the configuration of the customized instance\. You can use built\-in layers, customized as appropriate, as well as fully custom layers\. For more information, see [Customizing AWS OpsWorks Stacks](customizing.md)\.
 
-1. Edit the layers and disable AutoHealing\.
+1. [Edit the layers](workinglayers-basics-edit.md) and disable AutoHealing\.
 
-1. Add an instance with your preferred Linux distribution to the layer or layers and start it\. We recommend using an Amazon EBS\-backed instance\. Open the instance's details page and record its Amazon EC2 ID for later\.
+1. [Add an instance with your preferred Linux distribution](workinginstances-add.md) to the layer or layers and [start it](workinginstances-starting.md)\. We recommend using an Amazon EBS\-backed instance\. Open the instance's details page and record its Amazon EC2 ID for later\.
 
-1. When the instance is online, log in with SSH, and run the following commands, in order, depending upon your instance operating system\.
+1. When the instance is online, [log in with SSH](workinginstances-ssh.md), and perform one of the next four steps, depending upon your instance operating system\.
 
-**For an Amazon Linux instance in either a Chef 11 or Chef 12 stack, or a Red Hat Enterprise Linux 7 instance in a Chef 11 stack**
+1. For an Amazon Linux instance in either a Chef 11 or Chef 12 stack, or a Red Hat Enterprise Linux 7 instance in a Chef 11 stack, do the following\.
 
    1. `sudo /etc/init.d/monit stop`
 
@@ -120,7 +112,7 @@ For instances in a Chef 12 stack, add the following two folders to this command:
 
    1. `sudo rpm -e chef`
 
-**For an Ubuntu 16\.04 LTS instance in a Chef 12 stack**
+1. For an Ubuntu 16\.04 LTS instance in a Chef 12 stack, do the following\.
 
    1. `sudo systemctl stop opsworks-agent`
 
@@ -130,7 +122,7 @@ For instances in a Chef 12 stack, add the following two folders to this command:
 
    1. `sudo dpkg -r opsworks-agent-ruby`
 
-**For other supported Ubuntu versions in a Chef 12 stack**
+1. For other supported Ubuntu versions in a Chef 12 stack, do the following\.
 
    1. `sudo /etc/init.d/monit stop`
 
@@ -142,7 +134,7 @@ For instances in a Chef 12 stack, add the following two folders to this command:
 
    1. `sudo dpkg -r opsworks-agent-ruby`
 
-**For a Red Hat Enterprise Linux 7 instance in a Chef 12 stack**
+1. For a Red Hat Enterprise Linux 7 instance in a Chef 12 stack, do the following\.
 
    1. `sudo systemctl stop opsworks-agent`
 
@@ -153,28 +145,26 @@ For instances in a Chef 12 stack, add the following two folders to this command:
    1. `sudo rpm -e chef`
 
 1. This step depends on the instance type:
-
-   + For an Amazon EBS\-backed instance, use the AWS OpsWorks Stacks console to stop the instance  and create the AMI as described in [Creating an Amazon EBS\-Backed Linux AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)\.\.
-
+   + For an Amazon EBS\-backed instance, use the AWS OpsWorks Stacks console to [stop the instance ](workinginstances-starting.md) and create the AMI as described in [Creating an Amazon EBS\-Backed Linux AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)\.\.
    + For an instance store\-backed instance, create the AMI as described in [Creating an Instance Store\-Backed Linux AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html) and then use the AWS OpsWorks Stacks console to stop the instance\.
 
      When you create the AMI, be sure to include the certificate files\. For example, you can call the [http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/CLTRG-ami-bundle-vol.html](http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/CLTRG-ami-bundle-vol.html) command with the `-i` argument set to `-i $(find /etc /usr /opt -name '*.pem' -o -name '*.crt' -o -name '*.gpg' | tr '\n' ',')`\. Do not remove the apt public keys when bundling\. The default `ec2-bundle-vol` command handles this task\.
 
-1. Clean up your stack by returning to the AWS OpsWorks Stacks console and deleting the instance from the stack\.
+1. Clean up your stack by returning to the AWS OpsWorks Stacks console and [deleting the instance](workinginstances-delete.md) from the stack\.
 
-### Create a Custom Windows AMI<a name="w3ab2c11c47c13c11c19c18"></a>
+### Create a Custom Windows AMI<a name="w4ab1c11c47c13c11c19c18"></a>
 
 The following procedures create custom AMIs for Windows Server 2012 R2\. You can choose other Windows Server operating systems in the Amazon EC2 management console; the oldest available release of Windows Server is Windows Server 2003 R2\.
 
 **Important**  
 Currently, the AWS OpsWorks Stacks agent cannot be installed on—and AWS OpsWorks Stacks cannot manage—Windows\-based instances that use a system UI language other than **English \- United States** \(en\-US\)\.
 
+**Topics**
++ [Creating a Custom Windows AMI with `Sysprep`](#w4ab1c11c47c13c11c19c18c12)
++ [Creating a Custom Windows AMI Without `Sysprep`](#w4ab1c11c47c13c11c19c18c14)
++ [Adding a New Instance by Using a Custom Windows AMI](#w4ab1c11c47c13c11c19c18c16)
 
-+ [Creating a Custom Windows AMI with `Sysprep`](#w3ab2c11c47c13c11c19c18c12)
-+ [Creating a Custom Windows AMI Without `Sysprep`](#w3ab2c11c47c13c11c19c18c14)
-+ [Adding a New Instance by Using a Custom Windows AMI](#w3ab2c11c47c13c11c19c18c16)
-
-#### Creating a Custom Windows AMI with `Sysprep`<a name="w3ab2c11c47c13c11c19c18c12"></a>
+#### Creating a Custom Windows AMI with `Sysprep`<a name="w4ab1c11c47c13c11c19c18c12"></a>
 
 Creating custom Windows AMIs by using Sysprep typically results in a slower instance launch, but a cleaner process\. The first\-time startup of an instance created from an image created with `Sysprep` takes more time because of `Sysprep` activities, restarts, AWS OpsWorks Stacks provisioning, and the first AWS OpsWorks Stacks run, including setup and configuration\. Complete the steps for creating a custom Windows AMI in the Amazon EC2 console\.
 
@@ -202,7 +192,7 @@ Creating custom Windows AMIs by using Sysprep typically results in a slower inst
 
 1. Open the **Images** page, and wait for your image to change from the **pending** stage to **available**\. Your new AMI is ready to use\.
 
-#### Creating a Custom Windows AMI Without `Sysprep`<a name="w3ab2c11c47c13c11c19c18c14"></a>
+#### Creating a Custom Windows AMI Without `Sysprep`<a name="w4ab1c11c47c13c11c19c18c14"></a>
 
 Complete the steps for creating a custom Windows AMI in the Amazon EC2 console\.
 
@@ -217,9 +207,7 @@ Complete the steps for creating a custom Windows AMI in the Amazon EC2 console\.
 1. After the instance boot process finishes, get your password, and then connect to the instance in a Windows **Remote Desktop Connection** window\.
 
 1. On the instance, open `C:\Program Files\Amazon\Ec2ConfigService\Settings\config.xml`, change the following two settings, and then save and close the file:
-
    + `Ec2SetPassword` to `Enabled`
-
    + `Ec2HandleUserData` to `Enabled`
 
 1. Disconnect from the **Remote Desktop** session, and return to the Amazon EC2 console\.
@@ -232,7 +220,7 @@ Complete the steps for creating a custom Windows AMI in the Amazon EC2 console\.
 
 1. Open the **Images** page, and wait for your image to change from the **pending** stage to **available**\. Your new AMI is ready to use\.
 
-#### Adding a New Instance by Using a Custom Windows AMI<a name="w3ab2c11c47c13c11c19c18c16"></a>
+#### Adding a New Instance by Using a Custom Windows AMI<a name="w4ab1c11c47c13c11c19c18c16"></a>
 
 After your image changes to the **available** state, you can create new instances that are based on your custom Windows AMI\. When you choose **Use custom Windows AMI** from the **Operating system** list, AWS OpsWorks Stacks displays a list of custom AMIs\.
 

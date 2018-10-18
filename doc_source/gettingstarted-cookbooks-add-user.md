@@ -38,4 +38,4 @@ You can also manage users without using cookbooks\. For more information, see [M
    jdoe:x:501:502::/home/jdoe:/bin/bash
    ```
 
-In the next step, you will update the cookbook to create a directory on the instance\.
+In the [next step](gettingstarted-cookbooks-create-directory.md), you will update the cookbook to create a directory on the instance\.

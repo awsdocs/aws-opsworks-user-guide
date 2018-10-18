@@ -14,4 +14,4 @@ AWS OpsWorks Stacks does not support SSH key passphrases\.
 
 1. Enter the private key in the **Repository SSH Key** box when you add an app or specify cookbook repository\. For more information, see [Adding Apps](workingapps-creating.md)\.
 
-AWS OpsWorks Stacks passes the repository SSH key to each instance, and the built\-in recipes then use the key to connect to the repository and download the code\. The key is stored in the `deploy` attributes as `node[:deploy]['appshortname'][:scm][:ssh_key]`, and is accessible only to the root user\. 
+AWS OpsWorks Stacks passes the repository SSH key to each instance, and the built\-in recipes then use the key to connect to the repository and download the code\. The key is stored in the [`deploy` attributes](workingcookbook-json.md) as [`node[:deploy]['appshortname'][:scm][:ssh_key]`](attributes-json-deploy.md#attributes-json-deploy-app-scm-key), and is accessible only to the root user\. 

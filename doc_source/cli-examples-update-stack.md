@@ -1,6 +1,6 @@
 # Update the Stack Configuration \(update\-stack\)<a name="cli-examples-update-stack"></a>
 
-Use the [update\-stack](http://docs.aws.amazon.com/cli/latest/reference/opsworks/update-stack.html) command to update the configuration of a specified stack\. The following example updates a stack to add custom JSON to the stack configuration attributes\.
+Use the [update\-stack](http://docs.aws.amazon.com/cli/latest/reference/opsworks/update-stack.html) command to update the configuration of a specified stack\. The following example updates a stack to add custom JSON to the [stack configuration attributes](workingstacks-json.md)\.
 
 ```
 aws opsworks --region us-west-1 update-stack --stack-id 935450cc-61e0-4b03-a3e0-160ac817d2bb

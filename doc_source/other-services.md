@@ -6,7 +6,7 @@ You can have application servers running in an AWS OpsWorks Stacks stack use a v
 
 1. Create one or more custom recipes to configure the application so that it can access the service\.
 
-   The recipe obtains the configuration data from stack configuration and deployment JSON attributes that you define with custom JSON prior to running the recipes\.
+   The recipe obtains the configuration data from [stack configuration and deployment JSON](workingcookbook-json.md) attributes that you define with custom JSON prior to running the recipes\.
 
 1. Assign the custom recipe to the Deploy lifecycle event on the application server layer\.
 
@@ -18,7 +18,7 @@ You can have application servers running in an AWS OpsWorks Stacks stack use a v
 
 This section describes how to have AWS OpsWorks Stacks application servers access a variety of AWS services\. It assumes that you are already familiar with Chef cookbooks and how recipes can use stack and configuration JSON attributes to configure applications, typically by creating configuration files\. If not, you should first read [Cookbooks and Recipes](workingcookbook.md) and [Customizing AWS OpsWorks Stacks](customizing.md)\.
 
-
+**Topics**
 + [Using a Back\-end Data Store](customizing-rds.md)
 + [Using ElastiCache Redis as an In\-Memory Key\-Value Store](other-services-redis.md)
 + [Using an Amazon S3 Bucket](gettingstarted.walkthrough.photoapp.md)

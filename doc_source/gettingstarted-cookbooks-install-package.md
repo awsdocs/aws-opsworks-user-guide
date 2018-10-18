@@ -24,7 +24,7 @@ You can give a recipe any file name you want\. Just be sure to specify the corre
 
 This new recipe runs when you update the cookbook on the instance and then run the new recipe from within the updated cookbook\. The next step describes how to do this\. 
 
-After you complete the next step, you will be able to log in to the instance and then type emacs from the command prompt to launch GNU Emacs\. \(For more information, see [Connect to Your Linux Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html)\.\) To exit GNU Emacs, press **Ctrl\+X**, then **Ctrl\+C**\.
+After you complete the [next step](gettingstarted-cookbooks-copy-cookbook.md), you will be able to log in to the instance and then type emacs from the command prompt to launch GNU Emacs\. \(For more information, see [Connect to Your Linux Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html)\.\) To exit GNU Emacs, press **Ctrl\+X**, then **Ctrl\+C**\.
 
 **Important**  
 To be able to log in to the instance, you must first provide AWS OpsWorks Stacks with information about your public SSH key \(which you can create with tools such as ssh\-keygen or PuTTYgen\), and then you must set permissions on the `MyCookbooksDemoStack` stack to enable your IAM user to log in to the instance\. For instructions, see [Registering an IAM User's Public SSH Key](security-settingsshkey.md) and [Logging In with SSH](workinginstances-ssh.md)\.

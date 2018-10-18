@@ -52,4 +52,4 @@ For this walkthrough, you will use custom JSON to provide some fictitious inform
 
    These entries display information from the custom JSON that was typed in the **Advanced**, **Custom Chef JSON** box\.
 
-In the next step, you will update the cookbook to get information from data bags, which are collections of stack settings that AWS OpsWorks Stacks stores on each instance\.
+In the [next step](gettingstarted-cookbooks-data-bags.md), you will update the cookbook to get information from data bags, which are collections of stack settings that AWS OpsWorks Stacks stores on each instance\.

@@ -4,9 +4,9 @@ A production\-level AWS OpsWorks Stacks stack typically requires some customizat
 
 This walkthrough mostly describes how to create your own cookbooks\. However, you can also use community\-provided cookbooks through locations such as the [Chef Supermarket](https://supermarket.chef.io)\. To help you get started with community cookbooks, we include instructions for using a community cookbook from the Chef Supermarket later in the walkthrough\.
 
-Before you start this walkthrough, you need to complete a few setup steps\. If you have already completed any of the other walkthroughs in this chapter, such as [Getting Started: Sample](gettingstarted-intro.md), then you have met the prerequisites for this walkthrough and can skip to start this walkthrough\. Otherwise, be sure to complete the prerequisites, and then return to this walkthrough\.
+Before you start this walkthrough, you need to complete a few setup steps\. If you have already completed any of the other walkthroughs in this chapter, such as [Getting Started: Sample](gettingstarted-intro.md), then you have met the prerequisites for this walkthrough and can skip to [start this walkthrough](gettingstarted-cookbooks-create-cookbook.md)\. Otherwise, be sure to complete the [prerequisites](gettingstarted-intro-prerequisites.md), and then return to this walkthrough\.
 
-
+**Topics**
 + [Step 1: Create the Cookbook](gettingstarted-cookbooks-create-cookbook.md)
 + [Step 2: Create the Stack and its Components](gettingstarted-cookbooks-create-stack.md)
 + [Step 3: Run and Test the Recipe](gettingstarted-cookbooks-test-recipe.md)

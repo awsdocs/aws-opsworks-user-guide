@@ -1,4 +1,4 @@
-# Step 2\.1: Create a Stack<a name="gettingstarted-simple-stack"></a>
+# Step 2\.1: Create a Stack \- Chef 11<a name="gettingstarted-simple-stack"></a>
 
 You start an AWS OpsWorks Stacks project by creating a stack, which acts as a container for your instances and other resources\. The stack configuration specifies some basic settings, such as the AWS region and the default operating system, that are shared by all the stack's instances\.
 

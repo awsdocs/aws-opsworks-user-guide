@@ -2,14 +2,14 @@
 
 Contains elements that specify [Bundler](http://gembundler.com/) support\.
 
-**manage\_package**  
+**manage\_package**  <a name="attributes-json-bundler-manage"></a>
 Whether to install and manage Bundler \(Boolean\)\.  
 
 ```
 node["opsworks_bundler"]["manage_package"]
 ```
 
-**version**  
+**version**  <a name="attributes-json-bundler-version"></a>
 The bundler version \(string\)\.  
 
 ```

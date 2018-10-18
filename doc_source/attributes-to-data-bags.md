@@ -1,17 +1,11 @@
 # Moving Stack Settings from Attributes to Data Bags<a name="attributes-to-data-bags"></a>
 
 AWS OpsWorks Stacks exposes a wide variety of stack settings to your Chef recipes\. These stack settings include values such as:
-
 + Stack cookbook source URLs
-
 + Layer volume configurations
-
 + Instance host names
-
 + Elastic Load Balancing DNS names
-
 + App source URLs
-
 + User names
 
 Referencing stack settings from recipes makes recipe code more robust and less error prone than hard\-coding stack settings directly in recipes\. This topic describes how to access these stack settings as well as how to move from attributes in Chef 11\.10 and earlier versions for Linux to data bags in Chef 12 Linux\.
@@ -37,11 +31,8 @@ Chef::Log.info("********** The app's URL is '#{app['app_source']['url']}' ******
 ```
 
 To migrate your recipe code that accesses stack settings from Chef 11\.10 and earlier versions for Linux to Chef 12 Linux, you must revise your code to:
-
 + Access Chef data bags instead of Chef attributes\.
-
 + Use Chef search instead of the Chef `node` object\.
-
 + Use AWS OpsWorks Stacks data bag names such as `aws_opsworks_app`, instead of using AWS OpsWorks Stacks attribute names such as `opsworks` and `deploy`\.
 
 For more information, see the [AWS OpsWorks Stacks Data Bag Reference](data-bags.md)\.

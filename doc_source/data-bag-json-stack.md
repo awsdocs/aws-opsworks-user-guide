@@ -19,18 +19,15 @@ Chef::Log.info("********** The stack's cookbook URL is '#{stack['custom_cookbook
 | [region](#data-bag-json-stack-region) | [stack\_id](#data-bag-json-stack-id) | [use\_custom\_cookbooks](#data-bag-json-stack-use-cookbooks) | 
 | [vpc\_id](#data-bag-json-stack-vpc-id) |  |  | 
 
-**arn**  
+**arn**  <a name="data-bag-json-stack-arn"></a>
 The stack's Amazon Resource Name \(ARN\) \(string\)\.
 
-**custom\_cookbooks\_source**  
+**custom\_cookbooks\_source**  <a name="data-bag-json-stack-cookbook-source"></a>
 A set of content that specify the custom cookbook's source repository\.    
 **type**  
 The repository type \(string\)\. Valid values include:  
-
 + `"archive"`
-
 + `"git"`
-
 + `"s3"`  
 **url**  
 The repository URL, such as `"git://github.com/amazonwebservices/opsworks-demo-php-simple-app.git"` \(string\)\.  
@@ -39,21 +36,21 @@ The user name for private repositories, and `null` for public repositories \(str
 **password**  
 The password for private repositories, and `null` for public repositories \(string\)\. For private S3 buckets, this content is set to the secret key\.  
 **ssh\_key**  
-A deploy SSH key for accessing private Git repositories, and `null` for public repositories \(string\)\.  
+A [deploy SSH key](workingapps-deploykeys.md) for accessing private Git repositories, and `null` for public repositories \(string\)\.  
 **revision**  
 If the repository has multiple branches, the content specifies the app's branch or version, such as `"version1"` \(string\)\. Otherwise, it is set to `null`\.
 
-**name**  
+**name**  <a name="data-bag-json-stack-name"></a>
 The stack's name \(string\)\.
 
-**region**  
+**region**  <a name="data-bag-json-stack-region"></a>
 The stack's AWS region \(string\)\.
 
-**stack\_id**  
+**stack\_id**  <a name="data-bag-json-stack-id"></a>
 A GUID that identifies the stack \(string\)\.
 
-**use\_custom\_cookbooks**  
+**use\_custom\_cookbooks**  <a name="data-bag-json-stack-use-cookbooks"></a>
 Whether custom cookbooks are enabled \(Boolean\)\.
 
-**vpc\_id**  
+**vpc\_id**  <a name="data-bag-json-stack-vpc-id"></a>
 If the stack is running in a VPC, the VPC ID, if the stack is running in a VPC \(string\)\.

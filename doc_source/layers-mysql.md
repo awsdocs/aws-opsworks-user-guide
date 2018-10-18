@@ -18,55 +18,34 @@ The MySQL layer supports MySQL, a widely used relational database management sys
 **Default security group:** AWS\-OpsWorks\-DB\-Master\-Server 
 
 **Configuration:** To configure a MySQL layer, you must specify the following:
-
 + Root user password
-
 + MySQL engine
 
 **Setup recipes:**
-
 +  opsworks\_initial\_setup
-
 + ssh\_host\_keys
-
 + ssh\_users
-
 + mysql::client
-
 + dependencies
-
 + ebs
-
 + opsworks\_ganglia::client
-
 + mysql::server
-
 + dependencies
-
 + deploy::mysql 
 
 **Configure recipes:**
-
 + opsworks\_ganglia::configure\-client
-
 + ssh\_users
-
 + agent\_version
-
 + deploy::mysql 
 
 **Deploy recipes:**
-
 + deploy::default
-
 + deploy::mysql 
 
 **Shutdown recipes:**
-
 + opsworks\_shutdown::default
-
 + mysql::stop
 
 **Installation:**
-
 + AWS OpsWorks Stacks uses the instance's package installer to install MySQL and its log files to their default locations\. For more information, see [MySQL Documentation](http://dev.mysql.com/doc/index.html)\.

@@ -1,9 +1,7 @@
 # Managing AWS OpsWorks Stacks Permissions by Attaching an IAM Policy<a name="opsworks-security-users-policy"></a>
 
 You can specify a user's AWS OpsWorks Stacks permissions by attaching an IAM policy\. An attached policy is required for some permissions:
-
 + Administrative user permissions, such as importing users\.
-
 + Permissions for some actions, such as creating or cloning a stack\.
 
 For a complete list of actions that require an attached policy, see [Permissions Levels](opsworks-security-users-standard.md)\. 

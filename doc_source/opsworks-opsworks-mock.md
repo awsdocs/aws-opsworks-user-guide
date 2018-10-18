@@ -3,7 +3,7 @@
 **Note**  
 This topic applies only to Linux instances\. Test Kitchen does not yet support Windows, so you will run all Windows examples on AWS OpsWorks Stacks instances\.
 
-AWS OpsWorks Stacks adds stack configuration and deployment attributes to the node object for each instance in your stack for every lifecycle event\. These attributes provide a snapshot of the stack configuration, including the configuration of each layer and its online instances, the configuration of each deployed app, and so on\. Because these attributes are in the node object, they can be accessed by any recipe; most recipes for AWS OpsWorks Stacks instances use one or more of these attributes\. 
+AWS OpsWorks Stacks adds [stack configuration and deployment attributes](workingcookbook-json.md) to the node object for each instance in your stack for every lifecycle event\. These attributes provide a snapshot of the stack configuration, including the configuration of each layer and its online instances, the configuration of each deployed app, and so on\. Because these attributes are in the node object, they can be accessed by any recipe; most recipes for AWS OpsWorks Stacks instances use one or more of these attributes\. 
 
 An instance running in a Vagrant box is not managed by AWS OpsWorks Stacks, so its node object does not include any stack configuration and deployment attributes by default\. However, you can add a suitable set of attributes to the Test Kitchen environment\. Test Kitchen then adds the attributes to the instance's node object, and your recipes can access the attributes much like they would on an AWS OpsWorks Stacks instance\.
 
@@ -21,11 +21,9 @@ If you are using Test Kitchen to run tests on your recipes, [fauxhai](https://gi
 1. Add two subdirectories to `printjson`: `recipes` and `environments`\.
 
 You could mock stack configuration and deployment attributes by adding an attribute file to your cookbook with the appropriate definitions, but a better approach is to use the Test Kitchen environment\. There are two basic approaches:
-
 + Add attribute definitions to `.kitchen.yml`\.
 
   This approach is most useful if you have just a few attributes\. For more information, see [kitchen\.yml](https://docs.chef.io/config_yml_kitchen.html)\.
-
 + Define the attributes in an environment file and reference the file in `.kitchen.yml`\.
 
   This approach is usually preferable for stack configuration and deployment attributes because the environment file is already in JSON format\. You can get a copy of the attributes in JSON format from a suitable AWS OpsWorks Stacks instance and just paste it in\. All of the examples use an environment file\.
@@ -36,9 +34,9 @@ The simplest way to create a stack configuration and deployment attributes for y
 
 1. Create MyStack as described in [Getting Started with Chef 11 Linux Stacks](gettingstarted.md), including deploying SimplePHPApp\. If you prefer, you can omit the second PHP App Server instance called for in [Step 4: Scale Out MyStack](gettingstarted-scale.md); the examples don't use those attributes\.
 
-1. If you haven't already done so, start the `php-app1` instance, and then log in with SSH\.
+1. If you haven't already done so, start the `php-app1` instance, and then [log in with SSH](workinginstances-ssh.md)\.
 
-1. In the terminal window, run the following agent cli command:
+1. In the terminal window, run the following [agent cli](agent.md) command:
 
    ```
    sudo opsworks-agent-cli get_json
@@ -85,13 +83,10 @@ To get this JSON into the instance's node object, you need to add it to a Test K
    ```
 
    The environment file has the following elements:
-
    + `default_attributes` – The default attributes in JSON format\.
 
      These attributes are added to the node object with the `default` attribute type, which is the type used by all of the stack configuration and deployment JSON attributes\. This example uses the edited version of the stack configuration and deployment JSON shown earlier\.
-
    + `chef_type` – Set this element to `environment`\.
-
    + `json_class` – Set this element to `Chef::Environment`\.
 
 1. Edit `.kitchen.yml` to define the Test Kitchen environment, as follows\.
@@ -121,11 +116,9 @@ To get this JSON into the instance's node object, you need to add it to a Test K
    You define the environment by adding the following elements to the default `.kitchen.yml` created by `kitchen init`\.  
 **provisioner**  
 Add the following elements\.  
-
    + `name` – Set this element to `chef_solo`\.
 
      To replicate the AWS OpsWorks Stacks environment more closely, you could use [Chef client local mode](https://docs.chef.io/ctl_chef_client.html) instead of Chef solo\. Local mode is a Chef client option that uses a lightweight version of Chef server \(Chef Zero\) that runs locally on the instance instead of a remote server\. It enables your recipes to use Chef server features such as search or data bags without connecting to a remote server\.
-
    + `environments_path` – The cookbook subdirectory that contains the environment file, `./environments` for this example\.  
 **suites:provisioner**  
 Add a `solo_rb` element with an `environment` element set to the environment file's name, minus the \.json extension\. This example sets `environment` to `test`\.

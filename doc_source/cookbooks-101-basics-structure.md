@@ -1,6 +1,6 @@
 # Recipe Structure<a name="cookbooks-101-basics-structure"></a>
 
-A cookbook is primarily a set of *recipes*, which can perform a wide variety of tasks on an instance\. To clarify how to implement recipes, it's useful to look at a simple example\. The following is the setup recipe for the built\-in HAProxy layer\. Just focus on the overall structure at this point and don't worry too much about the details; they will be covered in the subsequent examples\.
+A cookbook is primarily a set of *recipes*, which can perform a wide variety of tasks on an instance\. To clarify how to implement recipes, it's useful to look at a simple example\. The following is the setup recipe for the built\-in [HAProxy layer](layers-haproxy.md)\. Just focus on the overall structure at this point and don't worry too much about the details; they will be covered in the subsequent examples\.
 
 ```
 package 'haproxy' do
@@ -36,7 +36,7 @@ For this and other examples of working recipes and related files, see the [AWS O
 
 The example highlights the key recipe elements, which are described in the following sections\.
 
-
+**Topics**
 + [Resources](#cookbooks-101-basics-structure-resources)
 + [Flow Control](#cookbooks-101-basics-structure-ruby)
 + [Included Recipes](#cookbooks-101-basics-structure-include)
@@ -44,11 +44,8 @@ The example highlights the key recipe elements, which are described in the follo
 ## Resources<a name="cookbooks-101-basics-structure-resources"></a>
 
 Recipes consist largely of a set of Chef *resources*\. Each one specifies a particular aspect of the instance's final state, such as a package to be installed or a service to be started\. The example has four resources:
-
 + A `package` resource, which represents an installed package, an [HAProxy server](http://haproxy.1wt.eu/) for this example\.
-
 + A `service` resource, which represents a service, the HAProxy service for this example\.
-
 + Two `template` resources, which represent files that are to be created from a specified template, two HAProxy configuration files for this example\.
 
 Resources provide a declarative way to specify the instance state\. Behind the scenes, each resource has an associated *provider* that performs the required tasks, such as installing packages, creating and configuring directories, starting services, and so on\. If the details of the task depend on the particular operating system, the resource has multiple providers and uses the appropriate one for the system\. For example, on a Red Hat Linux system the `package` provider uses `yum` to install packages\. On a Ubuntu Linux system, the `package` provider uses `apt-get`\.
@@ -75,9 +72,7 @@ The elements are:
 
 **Attributes**  
 \(Optional\) Attributes specify the resource configuration and vary depending on the resource type and how you want to configure the resource\.  
-
 + The example's `template` resources explicitly define a set of attributes that specify the created file's source, owner, group, and mode\. 
-
 + The example's `package` and `service` resources do not explicitly define any attributes\.
 
   The resource name is typically the default value for a required attribute and is sometimes all that is needed\. For example, the resource name is the default value for the `package` resource's `package_name` attribute, which is the only required attribute\.
@@ -85,21 +80,17 @@ There are also some specialized attributes called guard attributes, which specif
 
 **Actions and Notifications**  
 \(Optional\) Actions and notifications specify what tasks the provider is to perform\.  
-
 + `action` directs the provider to take a specified action, such as install or create\.
 
   Each resource has a set of actions that depend on the particular resource, one of which is the default action\. In the example, the `package` resource's action is `install`, which directs the provider to install the package\. The first `template` resource has no `action` element, so the provider takes the default `create` action\.
-
 + `notifies` directs another resource's provider to perform an action, but only if the resource's state has changed\.
 
   `notifies` is typically used with resources such as `template` and `file` to perform tasks such as restarting a service after modifying a configuration file\. Resources do not have default notifications\. If you want a notification, the resource must have an explicit `notifies` element\. In the HAProxy recipe, the second `template` resource notifies the haproxy `service` resource to restart the HAProxy service if the associated configuration file has changed\. 
 
 Resources sometimes depend on operating system\.
-
 + Some resources can be used only on Linux or Windows systems\.
 
   For example, [package](https://docs.chef.io/chef/resources.html#package) installs packages on Linux systems and [windows\_package](https://docs.chef.io/chef/resources.html#windows-package) installs packages on Windows systems\.
-
 + Some resources can be used with any operating system, but have attributes that are specific to a particular system\.
 
   For example, the [file](https://docs.chef.io/chef/resources.html#file) resource can be used on either Linux or Windows systems, but has separate sets of attributes for configuring permissions\.

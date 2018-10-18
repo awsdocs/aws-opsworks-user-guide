@@ -33,10 +33,10 @@ This step demonstrates how to create a cookbook manually\. You can create a cook
 **Note**  
 When you create the `tar` file on Windows, the top directory must be the parent directory of the cookbook\. This walkthrough has been tested on Linux with the tar command provided by the `tar` package and on Windows with the tar command provided by [Git Bash](https://git-for-windows.github.io/)\. Using other commands or programs to create a compressed TAR \(\.tar\.gz\) file may not work as expected\.
 
-1. Create an S3 bucket, or use an existing bucket\. For more information, see [Create a Bucket](http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)\.
+1. Create an S3 bucket, or use an existing bucket\. For more information, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)\.
 
-1. Upload the `opsworks_cookbook_demo.tar.gz` file to the S3 bucket\. For more information, see [Add an Object to a Bucket](http://docs.aws.amazon.com/AmazonS3/latest/gsg/PuttingAnObjectInABucket.html)\.
+1. Upload the `opsworks_cookbook_demo.tar.gz` file to the S3 bucket\. For more information, see [Add an Object to a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/PuttingAnObjectInABucket.html)\.
 
 You now have a cookbook that you will use throughout this walkthrough\.
 
-In the next step, you will create an AWS OpsWorks Stacks stack and its components—including an instance—that you will use later to upload your cookbook and to run the cookbook's recipes\.
+In the [next step](gettingstarted-cookbooks-create-stack.md), you will create an AWS OpsWorks Stacks stack and its components—including an instance—that you will use later to upload your cookbook and to run the cookbook's recipes\.

@@ -3,22 +3,17 @@
 Although a stack is basically a container for instances, you don't add instances directly to a stack\. You add one or more layers, each of which represents a group of related instances, and then add instances to the layers\.
 
 A layer is basically a blueprint that AWS OpsWorks Stacks uses to create a set of Amazon EC2 instances with the same configuration\. An instance starts with a base version of the operating system, and the instance's layer performs a variety of tasks on the instance to implement that blueprint, which can include:
-
 + Creating directories and files
-
 + Managing users
-
 + Installing and configuring software
-
 + Starting or stopping servers
-
 + Deploying application code and related files\.
 
-A layer performs tasks on instances by running [Chef recipes](https://docs.chef.io/recipes.html)—recipes for short\. A recipe is a Ruby application that uses Chef's domain\-specific language \(DSL\) to describe the final state of the instance\. With AWS OpsWorks Stacks, each recipe is usually assigned to one of the layer's lifecycle events: Setup, Configuration, Deploy, Undeploy, and Shutdown\. When a lifecycle event occurs on an instance, AWS OpsWorks Stacks runs the event's recipes to perform the appropriate tasks\. For example, the Setup event occurs after an instance finishes booting\. AWS OpsWorks Stacks then runs the Setup recipes, which typically perform tasks such as installing and configuring server software and starting related services\.
+A layer performs tasks on instances by running [Chef recipes](https://docs.chef.io/recipes.html)—recipes for short\. A recipe is a Ruby application that uses Chef's domain\-specific language \(DSL\) to describe the final state of the instance\. With AWS OpsWorks Stacks, each recipe is usually assigned to one of the layer's [lifecycle events](workingcookbook-events.md): Setup, Configuration, Deploy, Undeploy, and Shutdown\. When a lifecycle event occurs on an instance, AWS OpsWorks Stacks runs the event's recipes to perform the appropriate tasks\. For example, the Setup event occurs after an instance finishes booting\. AWS OpsWorks Stacks then runs the Setup recipes, which typically perform tasks such as installing and configuring server software and starting related services\.
 
-AWS OpsWorks Stacks provides each layer with a set of built\-in recipes that perform standard tasks\. You can extend a layer's functionality by implementing custom recipes to perform additional tasks and assigning them to the layer's lifecycle events\. Windows stacks support custom layers, which have a minimal set of recipes that perform only a few basic tasks\. To add functionality to your Windows instances, you must implement custom recipes to install software, deploy applications, and so on\. This topic describes how to create a simple custom layer to support IIS instances\.
+AWS OpsWorks Stacks provides each layer with a set of built\-in recipes that perform standard tasks\. You can extend a layer's functionality by implementing custom recipes to perform additional tasks and assigning them to the layer's lifecycle events\. Windows stacks support [custom layers](workinglayers-custom.md), which have a minimal set of recipes that perform only a few basic tasks\. To add functionality to your Windows instances, you must implement custom recipes to install software, deploy applications, and so on\. This topic describes how to create a simple custom layer to support IIS instances\.
 
-
+**Topics**
 + [A Quick Introduction to Cookbooks and Recipes](#gettingstarted-windows-layer-recipes)
 + [Implement a Recipe to Install and Start IIS](#gettingstarted-windows-layer-recipe-iis)
 + [Enable the Custom Cookbook](#gettingstarted-windows-layer-enable-cookbook)
@@ -42,11 +37,9 @@ end
 When Chef runs a recipe, it executes each resource by passing the data to an associated *provider*, a Ruby object that handles the details of modifying the instance state\. In this case, the provider creates a new directory with the specified configuration\.
 
 The custom cookbook for the custom IIS layer must perform the following tasks:
-
 + Install the IIS feature and start the service\.
 
   You typically perform this task during setup, right after the instance finished booting\.
-
 + Deploy an app to the instance, a simple HTML page for this example\.
 
   You typically perform this task during setup\. However, apps usually need to be updated regularly, so you also need to deploy updates while the instance is online\.
@@ -75,9 +68,7 @@ In general, cookbooks can contain a variety of other directories\. For example, 
 ## Implement a Recipe to Install and Start IIS<a name="gettingstarted-windows-layer-recipe-iis"></a>
 
  IIS is a Windows *feature*, one of a set of optional system components that you can install on Windows Server\. You can have a recipe install IIS in either of the following ways:
-
 + By using a [https://docs.chef.io/chef/resources.html#powershell-script](https://docs.chef.io/chef/resources.html#powershell-script) resource to run the [https://msdn.microsoft.com/en-us/library/ee662309.aspx](https://msdn.microsoft.com/en-us/library/ee662309.aspx) cmdlet\. 
-
 + By using the Chef [windows cookbook's](https://github.com/opscode-cookbooks/windows) `windows_feature` resource\.
 
   The `windows` cookbook contains a set of resources whose underlying providers use [Deployment Image Servicing and Management](https://technet.microsoft.com/en-us/library/dd744256%28v=ws.10%29.aspx) to perform a variety of tasks on Windows instances, including feature installation\.
@@ -104,11 +95,9 @@ The recipe contains two resources\.
 
 **powershell\_script**  
 `powershell_script` runs the specified Windows PowerShell script\. The example has the following attribute settings:  
-
 + `code` – The Windows PowerShell cmdlets to be run\.
 
   This example runs a single `Add-WindowsFeature` cmdlet, which installs IIS\. In general, the `code` attribute can have any number of lines, so you can run as many cmdlets as you need\.
-
 + `not-if` – A [https://docs.chef.io/chef/resources.html#guards](https://docs.chef.io/chef/resources.html#guards) that ensures that the recipe installs IIS only if it has not yet been installed\.
 
   You generally want recipes to be *idempotent*, so they do not waste time performing the same task more than once\.
@@ -123,11 +112,9 @@ If you want to install software that uses a package installer, such as MSI, you 
 ## Enable the Custom Cookbook<a name="gettingstarted-windows-layer-enable-cookbook"></a>
 
 AWS OpsWorks Stacks runs recipes from a local cache on each instance\. To run your custom recipes, you must do the following:
-
 + Put the cookbook in a remote repository\.
 
   AWS OpsWorks Stacks downloads the cookbooks from this repository to each instance's local cache\.
-
 + Edit the stack to enable custom cookbooks\.
 
   Custom cookbooks are disabled by default, so you must enable custom cookbooks for the stack and provide the repository URL and related information\.
@@ -176,9 +163,7 @@ Up to this point, the walkthrough has cost you only a little time; the AWS OpsWo
 1. On the upper right of the **Settings** page, choose **Edit**\.
 
 1. On the **Settings** page, set **Use custom Chef cookbooks** to **Yes** and enter the following information:
-
    + Repository type – **S3 Archive**\.
-
    + Repository URL – The S3 URL of the cookbook archive file that you recorded earlier\.
 
 1. Choose **Save** to update the stack configuration\.

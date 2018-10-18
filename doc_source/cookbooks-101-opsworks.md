@@ -7,7 +7,7 @@ This topic describes the basics of implementing recipes for AWS OpsWorks Stacks 
 **Note**  
 If you are not familiar with how to implement cookbooks, you should start with [Cookbook Basics](cookbooks-101-basics.md)\.
 
-
+**Topics**
 + [Running a Recipe on an AWS OpsWorks Stacks Linux Instance](cookbooks-101-opsworks-opsworks-instance.md)
 + [Running a Recipe on a Windows Instance](cookbooks-101-opsworks-opsworks-windows.md)
 + [Running a Windows PowerShell Script](cookbooks-101-opsworks-opsworks-powershell.md)

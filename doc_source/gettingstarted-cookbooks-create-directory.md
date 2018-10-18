@@ -38,4 +38,4 @@ Update your cookbook by adding a recipe that adds a directory to the instance\. 
    drwxrwxrwt 6 root     root 4096 Nov 24 18:17 ..
    ```
 
-In the next step, you will update the cookbook to create a file on the instance\.
+In the [next step](gettingstarted-cookbooks-create-file.md), you will update the cookbook to create a file on the instance\.

@@ -4,7 +4,7 @@ Test Kitchen and Vagrant provide a simple and efficient way to implement cookboo
 
 For a description of how to run recipes on Windows instances, see [Running a Recipe on a Windows Instance](cookbooks-101-opsworks-opsworks-windows.md)\.
 
-
+**Topics**
 + [Creating and Running the Recipe](#opsworks-opsworks-instance-create)
 + [Executing the Recipe Automatically](#cookbooks-101-opsworks-opsworks-instance-events)
 + [Troubleshooting and Fixing Recipes](#cookbooks-101-opsworks-opsworks-instance-bugs)
@@ -18,22 +18,18 @@ First, you need to create a stack\. The following briefly summarizes how to crea
 1. Open the [AWS OpsWorks Stacks console](https://console.aws.amazon.com/opsworks/) and click **Add Stack**\.
 
 1. Specify the following settings, accept the defaults for the other settings, and click **Add Stack**\.
-
    + **Name** – OpsTest
-
    + **Default SSH key** – An Amazon EC2 key pair
 
    If you need to create an Amazon EC2 key pair, see [Amazon EC2 Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)\. Note that the key pair must belong to the same AWS region as the instance\. The example uses the default US West \(Oregon\) region\.
 
-1. Click **Add a layer** and add a custom layer to the stack with the following settings\.
-
+1. Click **Add a layer** and [add a custom layer](workinglayers-custom.md) to the stack with the following settings\.
    + **Name** – OpsTest
-
    + **Short name** – opstest
 
    Any layer type will actually work for Linux stacks, but the example doesn't require any of the packages that are installed by the other layer types, so a custom layer is the simplest approach\.
 
-1. Add a 24/7 instance with default settings to the layer and start it\.
+1. [Add a 24/7 instance](workinginstances-add.md) with default settings to the layer and [start it](workinginstances-starting.md)\.
 
 While the instance is starting up—it usually takes several minutes—you can create the cookbook\. This example will use a slightly modified version of the recipe from [Conditional Logic](cookbooks-101-basics-ruby.md#cookbooks-101-basics-ruby-conditional), which creates a data directory whose name depends on the platform\.
 
@@ -76,7 +72,8 @@ Chef logs usually contain a lot of routine and relatively uninteresting informat
 
 1. Create a `.zip` archive of `opsworks_cookbooks`\. To install your cookbook on an AWS OpsWorks Stacks instance, you must store it in a repository and provide AWS OpsWorks Stacks with the information required to download the cookbook to the instance\. You can store your cookbooks in any of several supported repository types\. This example stores an archive file containing the cookbooks in an Amazon S3 bucket\. For more information on cookbook repositories, see [Cookbook Repositories](workingcookbook-installingcustom-repo.md)\.
 **Note**  
-For simplicity, this example just archives the entire `opsworks_cookbooks` directory\. However, it means that AWS OpsWorks Stacks will download all the cookbooks in `opsworks_cookbooks` to the instance, even though you will use only one of them\. To install only the example cookbook, create another parent directory and move `opstest` to that directory\. Then create a `.zip` archive of the parent directory and use it instead of `opsworks_cookbooks.zip`\.
+For simplicity, this example just archives the entire `opsworks_cookbooks` directory\. However, it means that AWS OpsWorks Stacks will download all the cookbooks in `opsworks_cookbooks` to the instance, even though you will use only one of them\. To install only the example cookbook, create another parent directory and move `opstest` to that directory\. Then create a `.zip` archive of the parent directory and use it instead of `opsworks_cookbooks.zip`\.   
+Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
 1. [Upload the archive to an Amazon S3 bucket](http://docs.aws.amazon.com/AmazonS3/latest/UG/UploadingObjectsintoAmazonS3.html), [make the archive public](http://docs.aws.amazon.com/AmazonS3/latest/UG/EditingPermissionsonanObject.html), and record the archive's URL\. It should look something like `https://s3.amazonaws.com/cookbook_bucket/opsworks_cookbooks.zip`\.
 
@@ -84,15 +81,13 @@ You can now install the cookbook and run the recipe\.
 
 **To run the recipe**
 
-1. Edit the stack to enable custom cookbooks, and specify the following settings\.
-
+1. [Edit the stack to enable custom cookbooks](workingcookbook-installingcustom-enable.md), and specify the following settings\.
    + **Repository type** – **S3 Archive**
-
    + **Repository URL** – The cookbook archive URL that you recorded earlier
 
    Use the default values for the other settings and click **Save** to update the stack configuration\.
 
-1. Run the Update Custom Cookbooks stack command, which installs the current version of your custom cookbooks on the stack's instances\. If an earlier version of your cookbooks is present, this command overwrites it\.
+1. [Run the Update Custom Cookbooks stack command](workingstacks-commands.md), which installs the current version of your custom cookbooks on the stack's instances\. If an earlier version of your cookbooks is present, this command overwrites it\.
 
 1. Execute the recipe by running the **Execute Recipes** stack command with **Recipes to execute** set to **opstest::default**\. This command initiates a Chef run, with a run list that consists of `opstest::default`\.
 
@@ -100,7 +95,7 @@ After the recipe runs successfully, you can verify it\.
 
 **To verify opstest**
 
-1. The first step is to examine the Chef log\. Click **show** in the opstest1 instance's **Log** column to display the log\. Scroll down and you will see your log message near the bottom\.
+1. The first step is to examine the [Chef log](troubleshoot-debug-log.md)\. Click **show** in the opstest1 instance's **Log** column to display the log\. Scroll down and you will see your log message near the bottom\.
 
    ```
    ...
@@ -111,13 +106,13 @@ After the recipe runs successfully, you can verify it\.
    ...
    ```
 
-1. Use SSH to log in to the instance and list the contents of `/srv/www/`\.
+1. [Use SSH to log in to the instance](workinginstances-ssh.md) and list the contents of `/srv/www/`\.
 
 If you followed all the steps, you will see `/srv/www/config` rather than the `/srv/www/shared` directory you were expecting\. The following section provides some guidelines for quickly fixing such bugs\.
 
 ## Executing the Recipe Automatically<a name="cookbooks-101-opsworks-opsworks-instance-events"></a>
 
-The **Execute Recipes** command is a convenient way to test custom recipes, which is why it is used in most of these examples\. However, in practice you typically run recipes at standard points in an instance's lifecycle, such as after the instance finishes booting or when you deploy an app\. AWS OpsWorks Stacks simplifies running recipes on your instance by supporting a set of lifecycle events for each layer: Setup, Configure, Deploy, Undeploy, and Shutdown\. You can have AWS OpsWorks Stacks run a recipe automatically on a layer's instances by assigning the recipe to the appropriate lifecycle event\.
+The **Execute Recipes** command is a convenient way to test custom recipes, which is why it is used in most of these examples\. However, in practice you typically run recipes at standard points in an instance's lifecycle, such as after the instance finishes booting or when you deploy an app\. AWS OpsWorks Stacks simplifies running recipes on your instance by supporting a set of [lifecycle events](workingcookbook-events.md) for each layer: Setup, Configure, Deploy, Undeploy, and Shutdown\. You can have AWS OpsWorks Stacks run a recipe automatically on a layer's instances by assigning the recipe to the appropriate lifecycle event\.
 
 You would typically create directories as soon as an instance finishes booting, which corresponds to the Setup event\. The following shows how to run the example recipe at setup, using the same stack that you created earlier in the example\. You can use the same procedure for the other events\.
 
@@ -134,7 +129,7 @@ You would typically create directories as soon as an instance finishes booting, 
 1. After the `opstest2` instance is online, verify that `/srv/www/shared` is present\.
 
 **Note**  
-If you have assigned recipes to the Setup, Configure, or Deploy events, you also run them manually by using a stack command \(Setup and Configure\) or a deploy command \(Deploy\) to trigger the event\. Note that if you have multiple recipes assigned to an event, these commands run all of them\.
+If you have assigned recipes to the Setup, Configure, or Deploy events, you also run them manually by using a [stack command](workingstacks-commands.md) \(Setup and Configure\) or a [deploy command](workingapps-deploying.md) \(Deploy\) to trigger the event\. Note that if you have multiple recipes assigned to an event, these commands run all of them\.
 
 ## Troubleshooting and Fixing Recipes<a name="cookbooks-101-opsworks-opsworks-instance-bugs"></a>
 
@@ -182,5 +177,5 @@ To verify the fix, execute the recipe by running the **Execute Recipe** stack co
 
 **Note**  
 If you have assigned your recipe to a lifecycle event so AWS OpsWorks Stacks runs it automatically, you can always use **Execute Recipe** to rerun the recipe\. You can also rerun the recipe as many times as you want without restarting the instance by using the AWS OpsWorks Stacks console to manually trigger the appropriate event\. However, this approach runs all of the event's recipes\. Here's a reminder:  
-Use a stack command to trigger Setup or Configure events\.
-Use a deploy command to trigger Deploy or Undeploy events\.
+Use a [stack command](workingstacks-commands.md) to trigger Setup or Configure events\.
+Use a [deploy command](workingapps-deploying.md) to trigger Deploy or Undeploy events\.

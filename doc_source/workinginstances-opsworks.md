@@ -2,7 +2,7 @@
 
 You can use AWS OpsWorks Stacks to create instances and add them to the stack\.
 
-
+**Topics**
 + [AWS OpsWorks Stacks Operating Systems](workinginstances-os.md)
 + [Adding an Instance to a Layer](workinginstances-add.md)
 + [Using Custom AMIs](workinginstances-custom-ami.md)

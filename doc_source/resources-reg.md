@@ -1,12 +1,10 @@
 # Registering Resources with a Stack<a name="resources-reg"></a>
 
 Amazon EBS volumes or Elastic IP addresses must be registered with a stack before you can attach them to instances\. When AWS OpsWorks Stacks creates resources for a stack, they are automatically registered with that stack\. If you want to use externally\-created resources, you must explicitly register them\. Note the following:
-
 + You can register a resource with only one stack at a time\.
-
 + When you delete a stack, AWS OpsWorks Stacks deregisters all resources\.
 
-
+**Topics**
 + [Registering Amazon EBS Volumes with a Stack](#resources-reg-ebs)
 + [Registering Elastic IP Addresses with a Stack](#resources-reg-eip)
 + [Registering Amazon RDS Instances with a Stack](#resources-reg-rds)
@@ -17,11 +15,8 @@ Amazon EBS volumes or Elastic IP addresses must be registered with a stack befor
 This resource can be used only with Linux stacks\. Although you can register an Amazon EBS volume with a Windows stack, you cannot attach it to an instance\.
 
 You can use the **Resources** page to register an Amazon EBS volume with a stack, subject to the following constraints:
-
-+ Attached, non\-root Amazon EBS volumes must be standard, Throughput Optimized HDD, Cold HDD, PIOPS, or General Purpose \(SSD\), but not a RAID array\. For information about maximum and minimum volume sizes, see  in this guide\.
-
++ Attached, non\-root Amazon EBS volumes must be standard, Throughput Optimized HDD, Cold HDD, PIOPS, or General Purpose \(SSD\), but not a RAID array\. For information about maximum and minimum volume sizes, see [EBS Volumes](workinglayers-basics-edit.md#workinglayers-basics-edit-ebs) in this guide\.
 + Volumes must be XFS formatted\.
-
 + AWS OpsWorks Stacks does not support other file formats, such as fourth extended file system \(ext4\), for non\-root Amazon EBS volumes\. For more information about preparing Amazon EBS volumes, see [Making an Amazon EBS Volume Available for Use](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html)\. Note that the example in that topic describes how to create an ext4\-based volume, but you can follow the same steps for XFS based volumes\.
 
 **To register an Amazon EBS volume**

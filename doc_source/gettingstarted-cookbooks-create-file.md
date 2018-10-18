@@ -58,4 +58,4 @@ Before you start this step, complete [Step 7: Update the Cookbook to Create a Di
    Hello, World!
    ```
 
-In the next step, you will update the cookbook to run a command on the instance\.
+In the [next step](gettingstarted-cookbooks-run-command.md), you will update the cookbook to run a command on the instance\.

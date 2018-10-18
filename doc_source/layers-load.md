@@ -20,61 +20,37 @@ HAProxy monitors traffic and displays the statistics and the health of the assoc
 **Default security group:** AWS\-OpsWorks\-LB\-Server
 
 **Configuration:** To configure a HAProxy layer, you must specify the following:
-
 + Health check URI \(default: http://*DNSName*/\)\.
-
 + Statistics URI \(default: http://*DNSName*/haproxy?stats\)\.
-
 + Statistics password \(optional\)\.
-
 + Health check method \(optional\)\. By default, HAProxy uses the HTTP OPTIONS method\. You can also specify GET or HEAD\.
-
 + Enable statistics \(optional\)
-
 + Ports\. By default, AWS OpsWorks Stacks configures HAProxy to handle both HTTP and HTTPS traffic\. You can configure HAProxy to handle only one or the other by overriding the Chef configuration [template](https://github.com/aws/opsworks-cookbooks/tree/master-chef-11.4/haproxy/templates/default), `haproxy.cfg.erb`\.
 
 **Setup recipes:**
-
 +  opsworks\_initial\_setup
-
 + ssh\_host\_keys
-
 + ssh\_users
-
 + mysql::client
-
 + dependencies
-
 + ebs
-
 + opsworks\_ganglia::client
-
 + haproxy
 
 **Configure recipes:**
-
 + opsworks\_ganglia::configure\-client
-
 + ssh\_users
-
 + agent\_version
-
 + haproxy::configure
 
 **Deploy recipes:**
-
 + deploy::default
-
 + haproxy::configure 
 
 **Shutdown recipes:**
-
 + opsworks\_shutdown::default
-
 + haproxy::stop
 
 **Installation:**
-
 + AWS OpsWorks Stacks uses the instance's package installer to install HAProxy to its default locations\.
-
 + You must set up syslog to direct the log files to a specified location\. For more information, see [HAProxy](http://haproxy.1wt.eu/)\.

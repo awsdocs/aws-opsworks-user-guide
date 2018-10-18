@@ -7,15 +7,11 @@ You must first create an Amazon ElastiCache Redis cluster by using the ElastiCac
 1. Go to the [ElastiCache console](https://console.aws.amazon.com/elasticache/) and click **Launch Cache Cluster** to start the Cache Cluster wizard\.
 
 1. On the Cache Cluster Details page, do the following:
-
    + Set **Name** to your cache server name\.
 
      This example uses OpsWorks\-Redis\.
-
    + Set **Engine** to **redis**\.
-
    + Set **Topic for SNS Notification** to **Disable Notifications**\.
-
    + Accept the defaults for the other settings and click **Continue**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/elasticache-wizard-1.png)
 

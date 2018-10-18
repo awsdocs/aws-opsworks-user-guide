@@ -53,4 +53,4 @@ Writing the preceding recipe code is shorter, more flexible, and less error\-pro
 
    This recipe displays messages in the log for a data bag item that contains multiple contents\. The data bag item is in the `aws_opsworks_stack` data bag\. The data bag item has content named `custom_cookbooks_source`\. Inside of this content are six contents named `type`, `url`, `username`, `password`, `ssh_key`, and `revision`; their values are also displayed\.
 
-In the next step, you will update the cookbook to run recipe code only if certain conditions are met\.
+In the [next step](gettingstarted-cookbooks-conditional-logic.md), you will update the cookbook to run recipe code only if certain conditions are met\.

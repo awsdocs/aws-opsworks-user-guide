@@ -27,4 +27,4 @@ This setting associates a database server with the app\. The example uses the My
 
 1. Start the MySQL instance\.
 
-After you update an app, AWS OpsWorks Stacks automatically deploys the new app version to any new app server instances when you start them\. However, AWS OpsWorks Stacks does not automatically deploy the new app version to existing server instances; you must do that manually, as described in [Step 2\.4: Create and Deploy an App](gettingstarted-simple-app.md)\. You could deploy the updated SimplePHPApp now, but for this example, it's better to wait a bit\.
+After you update an app, AWS OpsWorks Stacks automatically deploys the new app version to any new app server instances when you start them\. However, AWS OpsWorks Stacks does not automatically deploy the new app version to existing server instances; you must do that manually, as described in [Step 2\.4: Create and Deploy an App \- Chef 11](gettingstarted-simple-app.md)\. You could deploy the updated SimplePHPApp now, but for this example, it's better to wait a bit\.

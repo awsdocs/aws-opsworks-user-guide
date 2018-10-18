@@ -1,8 +1,8 @@
-# Restore an AWS OpsWorks for Puppet Enterprise Server from a Backup<a name="opspup-restore"></a>
+# Restore an OpsWorks for Puppet Enterprise Server from a Backup<a name="opspup-restore"></a>
 
-After browsing through your available backups, you can easily choose a point in time from which to restore your AWS OpsWorks for Puppet Enterprise server\. Server backups contain configuration\-management software persistent data such as modules, classes, node associations, database information \(including reports, facts, etc\.\)\. Performing an in\-place restoration of a server \(that is, restoring to the same EC2 instance\) reregisters nodes that were registered at the time of the backup that you use to restore the server\. Restoring a server does not update the version of Puppet software; it applies the same Puppet versions and configuration\-management data that are available in the backup that you choose\.
+After browsing through your available backups, you can easily choose a point in time from which to restore your OpsWorks for Puppet Enterprise server\. Server backups contain configuration\-management software persistent data such as modules, classes, node associations, database information \(including reports, facts, etc\.\)\. Performing an in\-place restoration of a server \(that is, restoring to the same EC2 instance\) reregisters nodes that were registered at the time of the backup that you use to restore the server\. Restoring a server does not update the version of Puppet software; it applies the same Puppet versions and configuration\-management data that are available in the backup that you choose\.
 
-In this release, you can use the AWS CLI to restore a Puppet master in AWS OpsWorks for Puppet Enterprise\.
+In this release, you can use the AWS CLI to restore a Puppet master in OpsWorks for Puppet Enterprise\.
 
 **Note**  
 You can also run the [restore\-server](http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_RestoreServer.html) command to change the current instance type, or to restore or set your SSH key if it is lost or compromised\.

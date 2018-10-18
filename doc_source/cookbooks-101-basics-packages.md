@@ -75,15 +75,10 @@ You can now add the recipe to the cookbook and use Test Kitchen to run it on an 
 1. When you are finished, run `kitchen destroy` to shut down the instance\. The next example uses a different cookbook\.
 
 This example was a good way to get started, but it is especially simple\. Other packages can be more complicated to install; you might need to do any or all of the following:
-
 + Create and configure a user\.
-
 + Create one or more directories for data, logs, and so on\.
-
 + Install one or more configuration files\.
-
 + Specify a different package name or attribute values for different operating systems\.
-
 + Start a service and then restart it as needed\.
 
 The following examples describe how to address these issues, along with some other useful operations\.

@@ -19,6 +19,6 @@ You can use the [AWS OpsWorks Stacks console](https://console.aws.amazon.com/ops
 
 The following sections describe the procedure in detail\.
 
-
+**Topics**
 + [Walkthrough: Register an Instance from Your Workstation](registered-instances-register-walkthrough.md)
 + [Registering Amazon EC2 and On\-premises Instances](registered-instances-register-registering.md)

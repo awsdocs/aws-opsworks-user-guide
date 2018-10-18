@@ -13,4 +13,4 @@ To learn more about many of the settings, choose **Edit**, and then hover over e
 
 To explore the Chef cookbook used in this walkthrough, open the [opsworks\-linux\-demo\-cookbooks\-nodejs](https://github.com/awslabs/opsworks-linux-demo-cookbook-nodejs) repository on GitHub\.
 
-In the next step, you can explore the layer's settings\.
+In the [next step](gettingstarted-intro-explore-layer.md), you can explore the layer's settings\.

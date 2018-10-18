@@ -1,21 +1,15 @@
 # Using Automatic Load\-based Scaling<a name="workinginstances-autoscaling-loadbased"></a>
 
 Load\-based instances let you rapidly start or stop instances in response to changes in incoming traffic\. AWS OpsWorks Stacks uses [Amazon CloudWatch](http://aws.amazon.com/cloudwatch/) data to compute the following metrics for each layer, which represent average values across all of the layer's instances:
-
 + CPU: The average CPU consumption, such as 80%
-
 + Memory: The average memory consumption, such as 60%
-
 + Load: The average computational work a system performs in one minute\. 
 
 You define *upscaling* and *downscaling* thresholds for any or all of these metrics\. You can also use custom CloudWatch alarms as thresholds\.
 
 Crossing a threshold triggers a *scaling event*\. You determine how AWS OpsWorks Stacks responds to scaling events by specifying the following:
-
 + How many instances to start or stop\.
-
 + How long AWS OpsWorks Stacks should wait after exceeding a threshold before starting or deleting instances\. For example, CPU utilization must exceed the threshold for at least 15 minutes\. This value allows you to ignore brief traffic fluctuations\.
-
 + How long AWS OpsWorks Stacks should wait after starting or stopping instances before monitoring metrics again\. You usually want to allow enough time for started instances to come online or stopped instances to shut down before assessing whether the layer is still exceeding a threshold\. 
 
 When a scaling event occurs, AWS OpsWorks Stacks starts or stops only load\-based instances\. It does not start or stop 24/7 instances or time\-based instances\. 
@@ -43,11 +37,8 @@ After you have added load\-based instances to a layer, you must enable load\-bas
 ![\[Thresholds for load-based scaling\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/load_based_config.png)  
 **Layer\-average thresholds**  
 You can set scaling thresholds based on the following values, which are averaged over all of the layer's instances\.  
-
    + **Average CPU** – The layer's average CPU utilization, as a percent of the total\.
-
    + **Average memory** – The layer's average memory utilization, as a percent of the total\.
-
    + **Average load** – The layer's average load\.
 
      For more information about how load is computed, see [Load \(computing\)](http://en.wikipedia.org/wiki/Load_(computing))\.
@@ -57,11 +48,8 @@ You can use up to five custom CloudWatch alarms as upscaling or downscaling thre
 To use custom alarms, you must update your service role to allow `cloudwatch:DescribeAlarms`\. You can either have AWS OpsWorks Stacks update the role for you when you first use this feature or you can edit the role manually\. For more information, see [Allowing AWS OpsWorks Stacks to Act on Your Behalf](opsworks-security-servicerole.md)\.  
 **Scaling parameters**  
 These parameters control how AWS OpsWorks Stacks manages scaling events\.  
-
    + **Start servers in batches of** – The number of instances to add or remove when the scaling event occurs\.
-
    + **If thresholds are exceeded** – The amount of time \(in minutes\), that the load must remain over an upscaling threshold or under a downscaling threshold before AWS OpsWorks Stacks triggers a scaling event\.
-
    + **After scaling, ignore metrics ** – The amount of time \(in minutes\) after a scaling event occurs that AWS OpsWorks Stacks should ignore metrics and suppress additional scaling events\.
 
      For example, AWS OpsWorks Stacks adds new instances following an upscaling event but the instances won't start reducing the load until they have been booted and configured\. There is no point in raising additional scaling events until the new instances are online and handling requests, which typically takes several minutes\. This setting allows you to direct AWS OpsWorks Stacks to suppress scaling events long enough to get the new instances online\.

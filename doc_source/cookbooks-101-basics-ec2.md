@@ -3,9 +3,7 @@
 To this point, you've been running instances locally in VirtualBox\. While this is quick and easy, you will eventually want to test your recipes on an Amazon EC2 instance\. In particular, if you want to run recipes on Amazon Linux, it is available only on Amazon EC2\. You can use a similar system such as CentOS for preliminary implementation and testing, but the only way to fully test your recipes on Amazon Linux is with an Amazon EC2 instance\. 
 
 This topic shows how to run recipes on an Amazon EC2 instance\. You will use Test Kitchen and Vagrant in much the same way as the preceding sections, with two differences: 
-
 + The driver is [https://rubygems.org/gems/kitchen-ec2](https://rubygems.org/gems/kitchen-ec2) instead of Vagrant\.
-
 + The cookbook's `.kitchen.yml` file must be configured with the information required to launch the Amazon EC2 instance\.
 
 **Note**  
@@ -24,9 +22,7 @@ This might be unavailable in your browser if you previously signed into the AWS 
    Part of the sign\-up procedure involves receiving a phone call and entering a PIN using the phone keypad\.
 
 You should then [create an IAM user](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_SettingUpUser.html) with permissions to access Amazon EC2 and save the user's access and secret keys to a secure location on your workstation\. Test Kitchen will use those credentials to create the instance\. The preferred way to provide credentials to Test Kitchen is to assign the keys to the following environment variables on your workstation\.
-
 + AWS\_ACCESS\_KEY – your user's access key, which will look something like AKIAIOSFODNN7EXAMPLE\.
-
 + AWS\_SECRET\_KEY – your user's secret key, which will look something like wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\.
 
 This approach reduces the chances of accidentally compromising your account by, for example, uploading a project containing your credentials to a public repository\. For more information, see [Best Practices for Managing AWS Access Keys](http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html)\.
@@ -64,7 +60,7 @@ This approach reduces the chances of accidentally compromising your account by, 
 
 1. Add a `recipes` subdirectory to `createdir-ec2`\.
 
-## Configuring \.kitchen\.yml for Amazon EC2<a name="w3ab2c11c63b7c13c15c29c23"></a>
+## Configuring \.kitchen\.yml for Amazon EC2<a name="w4ab1c11c63b7c13c15c29c23"></a>
 
 You configure `.kitchen.yml` with the information that the `kitchen-ec2` driver needs to launch an appropriately configured Amazon EC2 instance\. The following is an example of a `.kitchen.yml` file for an Amazon Linux instance in the US West \(N\. California\) region\.
 
@@ -145,25 +141,15 @@ Rather than use your account credentials for the access and secret keys, you sho
 Be careful not to put `.kitchen.yml` in a publicly accessible location, such as uploading it to a public GitHub or Bitbucket repository\. Doing so exposes your credentials and could compromise your account's security\.
 
 The `kitchen-ec2` driver provides default support for the following platforms:
-
 + ubuntu\-10\.04
-
 + ubuntu\-12\.04
-
 + ubuntu\-12\.10
-
 + ubuntu\-13\.04
-
 + ubuntu\-13\.10
-
 + ubuntu\-14\.04
-
 + centos\-6\.4
-
 + debian\-7\.1\.0
-
 + windows\-2012r2
-
 + windows\-2008r2
 
 If you want to use one or more of these platforms, add the appropriate platform names to `platforms`\. The `kitchen-ec2` driver automatically selects an appropriate AMI and generates an SSH user name\. You can use other platforms—this example uses Amazon Linux—but you must explicitly specify the following `platforms` attributes\.
@@ -173,16 +159,14 @@ The platform name\. This example uses Amazon Linux, so `name` is set to `amazon`
 
 **driver**  
 The `driver` attributes, which include the following:  
-
 + `image_id` – The platform's AMI, which must belong to the specified region\. The example uses `ami-ed8e9284`, an Amazon Linux AMI from the US West \(N\. California\) region\.
-
 + `transport.username` – The SSH user name that Test Kitchen will use to communicate with the instance\.
 
   Use `ec2-user` for Amazon Linux\. Other AMIs might have different user names\.
 
 Replace the code in `.kitchen.yml` with the example, and assign appropriate values to account\-specific attributes such as `aws_access_key_id`\.
 
-## Running the Recipe<a name="w3ab2c11c63b7c13c15c29c25"></a>
+## Running the Recipe<a name="w4ab1c11c63b7c13c15c29c25"></a>
 
 This example uses the recipe from [Iteration](cookbooks-101-basics-ruby.md#cookbooks-101-basics-ruby-iteration)\.
 

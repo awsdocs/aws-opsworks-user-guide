@@ -7,11 +7,8 @@ You store custom cookbooks in a repository, much like apps\. Each stack can have
 1. Click **Stack Settings**, and then click **Edit**\. 
 
 1. Modify the stack configuration as follows:
-
    + **Use custom Chef Cookbooks** – **Yes**
-
    + **Repository type** – **Git**
-
    + **Repository URL** – **git://github\.com/amazonwebservices/opsworks\-example\-cookbooks\.git**
 
 1. Click **Save** to update the stack configuration\.  

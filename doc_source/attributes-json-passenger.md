@@ -2,28 +2,28 @@
 
 Contains a set of attributes that specify the Phusion Passenger configuration\.
 
-**gem\_bin**  
+**gem\_bin**  <a name="attributes-json-passenger-gem"></a>
 The location of the RubyGems binaries, such as `"/usr/local/bin/gem"` \(string\)\.  
 
 ```
 node["passenger"]["gem_bin"]
 ```
 
-**max\_pool\_size**  
+**max\_pool\_size**  <a name="attributes-json-passenger-max-pool"></a>
 The maximum pool size \(number\)\.  
 
 ```
 node["passenger"]["max_pool_size"]
 ```
 
-**ruby\_bin**  
+**ruby\_bin**  <a name="attributes-json-passenger-ruby"></a>
 The location of the Ruby binaries, such as `"/usr/local/bin/ruby"`\.  
 
 ```
 node["passenger"]["ruby_bin"]
 ```
 
-**version**  
+**version**  <a name="attributes-json-passenger-version"></a>
 The Passenger version \(string\)\.  
 
 ```

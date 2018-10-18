@@ -51,7 +51,7 @@ node[:deploy].each do |app_name, deploy_config|
 end
 ```
 
-The recipe depends on data from the AWS OpsWorks Stacks stack configuration and deployment JSON object, which is installed on each instance and contains detailed information about the stack and any deployed apps\. The object's `deploy` node has the following structure:
+The recipe depends on data from the AWS OpsWorks Stacks [stack configuration and deployment JSON](workingcookbook-json.md) object, which is installed on each instance and contains detailed information about the stack and any deployed apps\. The object's `deploy` node has the following structure:
 
 ```
 {
@@ -81,21 +81,15 @@ port: <%= @redis[:port] || 6379 %>
 ```
 
 The <%\.\.\. %> elements are placeholders that represent an attribute value\.
-
 + `<%= @redis[:host] %>` represents the value of `redis[:host]`, which is the cache cluster's host name\.
-
 + `<%= @redis[:port] || 6379 %>` represents the value of the `redis[:port]` or, if that attribute is not defined, the default port value, 6379\.
 
 The `template` resource works as follows:
-
 + `source` and `cookbook` specify the template and cookbook names, respectively\.
-
 + `mode`, `group`, and `owner` give the configuration file the same access rights as the application\.
-
 + The `variables` section sets the `@redis` variable used in the template, to the application's `[:redis]` attribute value\.
 
   The `[:redis]` attribute's values are set by using custom JSON, as described later; it is not one of the standard app attributes\.
-
 + The `not_if` directive ensures that the recipe does not generate a configuration file if one already exists\.
 
 After you author the cookbook, you must deploy it to each instance's cookbook cache\. This operation does not run the recipe; it simply installs the new cookbook on the stack's instances\. You typically run a recipe by assigning it to a layer's lifecycle event, as described later\.

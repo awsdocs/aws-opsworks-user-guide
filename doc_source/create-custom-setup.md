@@ -1,8 +1,8 @@
 # Setup Recipes<a name="create-custom-setup"></a>
 
-Setup recipes are assigned to the layer's Setup lifecycle event and run after an instance boots\. They perform tasks such as installing packages, creating configuration files, and starting services\. After the Setup recipes finish running, AWS OpsWorks Stacks runs the Deploy recipes to deploy any apps to the new instance\.
+Setup recipes are assigned to the layer's Setup [lifecycle](workingcookbook-events.md) event and run after an instance boots\. They perform tasks such as installing packages, creating configuration files, and starting services\. After the Setup recipes finish running, AWS OpsWorks Stacks runs the [Deploy recipes](create-custom-deploy.md) to deploy any apps to the new instance\.
 
-
+**Topics**
 + [tomcat::setup](#create-custom-setup-setup)
 + [tomcat::install](#create-custom-setup-install)
 + [tomcat::service](#create-custom-setup-service)
@@ -36,25 +36,18 @@ include_recipe 'tomcat::apache_tomcat_bind'
 ```
 
 `tomcat::setup` recipe is largely a metarecipe\. It includes a set of dependent recipes that handle most of the details of installing and configuring Tomcat and related packages\. The first part of `tomcat::setup` runs the following recipes, which are discussed later: 
-
 + The [tomcat::install](#create-custom-setup-install) recipe installs the Tomcat server package\.
-
 + The [tomcat::service](#create-custom-setup-service) recipe sets up the Tomcat service\.
 
 The middle part of `tomcat::setup` enables and starts the Tomcat service:
-
 + The Chef [service resource](https://docs.chef.io/chef/resources.html#service) enables the Tomcat service at boot\.
-
 + The Chef [bash resource](https://docs.chef.io/chef/resources.html#bash) runs a Bash script to start the autofs daemon, which is necessary for Amazon EBS\-backed instances\. The resource then notifies the `service` resource to restart the Tomcat service\.
 
   For more information, see: [autofs](https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Storage_Administration_Guide/s2-nfs-config-autofs.html) \(for Amazon Linux\) or [Autofs](https://help.ubuntu.com/community/Autofs) \(for Ubuntu\)\.
 
 The final part of `tomcat::setup` creates configuration files and installs and configures the front\-end Apache server:
-
 + The [tomcat::container\_config](#create-custom-setup-config) recipe creates configuration files\.
-
 + The `apache2` recipe \(which is shorthand for `apache2::default`\) is an AWS OpsWorks Stacks built\-in recipe that installs and configures an Apache server\.
-
 + The [tomcat::apache\_tomcat\_bind](#create-custom-setup-bind) recipe configures the Apache server to function as a front\-end for the Tomcat server\.
 
 **Note**  
@@ -118,7 +111,7 @@ end
 The `only_if` statement ensures that the recipe removes the file only if it exists\.
 
 **Note**  
-The Tomcat version is specified by the `['tomcat']['base_version']` attribute, which is set to 6 in the attributes file\. To install Tomcat 7, you can use custom JSON attributes to override the attribute\. Just edit your stack settings and enter the following JSON in the **Custom Chef JSON** box, or add it to any existing custom JSON:  
+The Tomcat version is specified by the `['tomcat']['base_version']` attribute, which is set to 6 in the attributes file\. To install Tomcat 7, you can use custom JSON attributes to override the attribute\. Just [edit your stack settings](workingstacks-edit.md) and enter the following JSON in the **Custom Chef JSON** box, or add it to any existing custom JSON:  
 
 ```
 {
@@ -149,12 +142,10 @@ end
 ```
 
 The recipe uses the Chef [service resource](https://docs.chef.io/chef/resources.html#service) to specify the Tomcat service name \(tomcat6, by default\) and sets the `supports` attribute to define how Chef manages the service's restart, reload, and status commands on the different operating systems\.
-
 + `true` indicates that Chef can use the init script or other service provider to run the command
-
 + `false` indicates that Chef must attempt to run the command by other means\.
 
-Notice that the `action` is set to `:nothing`\. For each lifecycle event, AWS OpsWorks Stacks initiates a [Chef run](http://docs.chef.io/chef_client.html#the-chef-client-title-run) to execute the appropriate set of recipes\. The Tomcat cookbook follows a common pattern of having a recipe create the service definition, but not restart the service\. Other recipes in the Chef run handle the restart, typically by including a `notifies` command in the `template` resources that are used to create configuration files\. Notifications are a convenient way to restart a service because they do so only if the configuration has changed\. In addition, if a Chef run has multiple restart notifications for a service, Chef restarts the service at most once\. This practice avoids problems that can occur when attempting to restart a service that is not fully operational, which is a common source of Tomcat errors\.
+Notice that the `action` is set to `:nothing`\. For each lifecycle event, AWS OpsWorks Stacks initiates a [Chef run](https://docs.chef.io/chef_client_overview.html#the-chef-client-run) to execute the appropriate set of recipes\. The Tomcat cookbook follows a common pattern of having a recipe create the service definition, but not restart the service\. Other recipes in the Chef run handle the restart, typically by including a `notifies` command in the `template` resources that are used to create configuration files\. Notifications are a convenient way to restart a service because they do so only if the configuration has changed\. In addition, if a Chef run has multiple restart notifications for a service, Chef restarts the service at most once\. This practice avoids problems that can occur when attempting to restart a service that is not fully operational, which is a common source of Tomcat errors\.
 
  The Tomcat service must be defined for any Chef run that uses restart notifications\. `tomcat::service` is therefore included in several recipes, to ensure that the service is defined for every Chef run\. There is no penalty if a Chef run includes multiple instances of `tomcat::service` because Chef ensures that a recipe executes only once per run, regardless of how many times it is included\.
 
@@ -236,21 +227,15 @@ unset LC_ALL
 ```
 
 Using default attribute values, the template sets the Ubuntu environment variables as follows:
-
 + `TOMCAT6_USER` and `TOMCAT6_GROUP`, which represent the Tomcat user and group, are both set to `tomcat6`\.
 
   If you set \['tomcat'\]\['base\_version'\] to `tomcat7`, the variable names resolve to `TOMCAT7_USER` and `TOMCAT7_GROUP`, and both are set to `tomcat7`\.
-
 + `JAVA_OPTS` is set to `-Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC`:
-
   + Setting `-Djava.awt.headless` to `true` informs the graphics engine that the instance is headless and does not have a console, which addresses faulty behavior of certain graphical applications\.
-
   + `-Xmx128m` ensures that the JVM has adequate memory resources, 128MB for this example\.
-
   + `-XX:+UseConcMarkSweepGC` specifies concurrent mark sweep garbage collection, which helps limit garbage\-collection induced pauses\.
 
     For more information, see: [Concurrent Mark Sweep Collector Enhancements](http://docs.oracle.com/javase/6/docs/technotes/guides/vm/cms-6.html)\.
-
 + If the Tomcat version is less than 7, the template unsets `LC_ALL`, which addresses a Ubuntu bug\.
 
 **Note**  
@@ -328,17 +313,13 @@ end
 ```
 
 To enable `mod_proxy`, you must enable the `proxy` module and a protocol\-based module\. You have two options for the protocol module: 
-
 + HTTP: `proxy_http`
-
 + [Apache JServ Protocol](http://tomcat.apache.org/connectors-doc/ajp/ajpv13a.html) \(AJP\): `proxy_ajp`
 
   AJP is an internal Tomcat protocol\.
 
 Both the recipe's [execute resources](https://docs.chef.io/chef/resources.html#execute) run the `a2enmod` command, which enables the specified module by creating the required symlinks:
-
 + The first `execute` resource enables the `proxy` module\.
-
 + The second `execute` resource enables the protocol module, which is set to `proxy_http` by default\.
 
   If you would rather use AJP, you can define custom JSON to override the `apache_tomcat_bind_mod` attribute and set it to `proxy_ajp`\. 

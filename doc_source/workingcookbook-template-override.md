@@ -27,7 +27,7 @@ Do not copy any files from the built\-in cookbook except for the template files 
 **Note**  
 For a complete walkthrough of this procedure, see [Overriding Built\-In Templates](cookbooks-101-opsworks-templates.md)\.
 
-You don't have to implement any recipes or add recipes to the layer configuration to override a template\. AWS OpsWorks Stacks always runs the built\-in recipes\. When it runs the recipe that creates the configuration file, it will automatically use your custom template instead of the built\-in template\.
+You don't have to implement any recipes or [add recipes to the layer configuration](workingcookbook-assigningcustom.md) to override a template\. AWS OpsWorks Stacks always runs the built\-in recipes\. When it runs the recipe that creates the configuration file, it will automatically use your custom template instead of the built\-in template\.
 
 **Note**  
 If AWS OpsWorks Stacks makes any changes to the built\-in template, your custom template might become out of sync and no longer work correctly\. For example, suppose your template refers to a dependent file, and the file name changes\. AWS OpsWorks Stacks doesn't make such changes often, and when a template does change, it lists the changes and gives you the option of upgrading to a new version\. You should monitor the AWS OpsWorks Stacks repository for changes, and manually update your template as needed\.

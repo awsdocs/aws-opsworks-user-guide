@@ -4,7 +4,7 @@ You now have app and database servers, but they aren't quite ready to use\. You 
 
 The phpapp cookbook, which contains the required recipes, is already implemented and ready for use; you can just skip to [Step 3\.3: Add the Custom Cookbooks to MyStack](gettingstarted-db-cookbooks.md) if you prefer\. If you'd like to know more, this section provides some background on cookbooks and recipes and describes how the recipes work\. To see the cookbook itself, go to the [phpapp cookbook](https://github.com/amazonwebservices/opsworks-example-cookbooks/tree/master/phpapp)\.
 
-
+**Topics**
 + [Recipes and Attributes](#gettingstarted-db-recipes-attributes)
 + [Set Up the Database](#gettingstarted-db-recipes-dbsetup)
 + [Connect the Application to the Database](#gettingstarted-db-recipes-appsetup)
@@ -16,13 +16,10 @@ A Chef recipe is basically a specialized Ruby application that performs tasks on
 AWS OpsWorks Stacks has a set of cookbooks that support the built\-in layers\. You can also create custom cookbooks with your own recipes to perform custom tasks on your instances\. This topic provides a brief introduction to recipes and shows how to use them to set up the database and configure the app's connection settings\. For more information on cookbooks and recipes, see [Cookbooks and Recipes](workingcookbook.md) or [Customizing AWS OpsWorks Stacks](customizing.md)\.
 
 Recipes usually depend on Chef *attributes* for input data: 
-
 + Some of these attributes are defined by Chef and provide basic information about the instance such as the operating system\. 
-
 + AWS OpsWorks Stacks defines a set of attributes that contain information about the stack—such as the layer configurations—and about deployed apps—such as the app repository\.
 
-  You can add custom attributes to this set by assigning custom JSON to the stack or deployment\.
-
+  You can add custom attributes to this set by assigning [custom JSON](workingstacks-json.md) to the stack or deployment\.
 + Your cookbooks can also define attributes, which are specific to the cookbook\. 
 
   The phpapp cookbook attributes are defined in `attributes/default.rb`\.
@@ -122,11 +119,8 @@ The recipe inserts attribute values into the command string, using the node synt
 ```
 
 Let's unpack this somewhat cryptic code:
-
 + For each iteration, `deploy` is set to the current app node, so it resolves to `[:deploy][:app_name]`\. For this example, it resolves to `[:deploy][:simplephpapp]`\.
-
 + Using the deployment attribute values shown earlier, the entire node resolves to `root`\.
-
 + You wrap the node in \#\{ \} to insert it into a string\.
 
 Most of the other nodes resolve in a similar way\. The exception is `#{node[:phpapp][:dbtable]}`, which is defined by the custom cookbook's attributes file and resolves to the table name, `urler`\. The actual command that runs on the MySQL instance is therefore:
@@ -197,9 +191,7 @@ Like `dbsetup.rb`, `appsetup.rb` iterates over apps in the `deploy` node—just 
 The `script` resource installs [Composer](http://www.getcomposer.org)—a dependency manager for PHP applications\. It then runs Composer's `install` command to install the dependencies for the sample application to the app's root directory\.
 
 The `template` resource generates `db-connect.php` and puts it in `/srv/www/simplephpapp/current`\. Note the following:
-
 + The recipe uses a conditional statement to specify the file owner, which depends on the instance's operating system\.
-
 + The `only_if` directive tells Chef to generate the template only if the specified directory exists\.
 
 A `template` resource operates on a template that has essentially the same content and structure as the associated file but includes placeholders for various data values\. The `source` parameter specifies the template, `db-connect.php.erb`, which is in the phpapp cookbook's `templates/default` directory, and contains the following:

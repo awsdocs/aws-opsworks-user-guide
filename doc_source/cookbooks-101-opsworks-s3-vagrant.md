@@ -1,11 +1,12 @@
 # Using the SDK for Ruby on a Vagrant Instance<a name="cookbooks-101-opsworks-s3-vagrant"></a>
 
-This topic describes how a recipe running on a Vagrant instance can use the [AWS SDK for Ruby](http://docs.aws.amazon.com/sdk-for-ruby/v3/api/) to download a file from Amazon S3\. Before starting, you must first have a set of AWS credentials—an access key and a secret access key—that allow the recipe to access Amazon S3\.
+This topic describes how a recipe running on a Vagrant instance can use the [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/) to download a file from Amazon S3\. Before starting, you must first have a set of AWS credentials—an access key and a secret access key—that allow the recipe to access Amazon S3\.
 
 **Important**  
 We strongly recommend that you do not use root account credentials for this purpose\. Instead, create an IAM user with an appropriate policy and provide those credentials to the recipe\. For more information, see [Best Practices for Managing AWS Access Keys](http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html)\.  
 Be careful not to put credentials—even IAM user credentials—in a publicly accessible location, such as by uploading a file containing the credentials to a public GitHub or Bitbucket repository\. Doing so exposes your credentials and could compromise your account's security\.  
- Recipes running on an EC2Amazon EC2 instance can use an even better approach, an IAM role, as described in [Using the SDK for Ruby on an AWS OpsWorks Stacks Linux Instance](cookbooks-101-opsworks-s3-opsworks.md)\.
+ Recipes running on an EC2Amazon EC2 instance can use an even better approach, an IAM role, as described in [Using the SDK for Ruby on an AWS OpsWorks Stacks Linux Instance](cookbooks-101-opsworks-s3-opsworks.md)\.  
+Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
 If you don't already have an appropriate IAM user, you can create one as follows\. For more information, see [What Is IAM](http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_Introduction.html)\.
 

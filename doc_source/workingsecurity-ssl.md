@@ -15,7 +15,7 @@ In this walkthrough, you'll do the following:
 1. Edit the application with your certificate information\. 
 
 **Important**  
-If your application uses SSL, we recommend that you disable SSLv3, if possible, in your application server layers to address the vulnerabilities described in [CVE\-2014\-3566](http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566)\. If your stack includes a Ganglia layer, you should disable SSL v3 for that layer too\. The details depend on the particular layer; for more information, see the following\.  
+If your application uses SSL, we recommend that you disable SSLv3, if possible, in your application server layers to address the vulnerabilities described in [CVE\-2014\-3566](https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2014-3566)\. If your stack includes a Ganglia layer, you should disable SSL v3 for that layer too\. The details depend on the particular layer; for more information, see the following\.  
 [Java App Server AWS OpsWorks Stacks Layer](layers-java.md)
 [Node\.js App Server AWS OpsWorks Stacks Layer](workinglayers-node.md)
 [PHP App Server AWS OpsWorks Stacks Layer](workinglayers-php.md)
@@ -23,14 +23,14 @@ If your application uses SSL, we recommend that you disable SSLv3, if possible, 
 [Static Web Server AWS OpsWorks Stacks Layer](workinglayers-static.md)
 [Ganglia Layer](workinglayers-ganglia.md)
 
+**Topics**
++ [Step 1: Install and Configure OpenSSL](#w4ab1c11c49c27c13)
++ [Step 2: Create a Private Key](#w4ab1c11c49c27c15)
++ [Step 3: Create a Certificate Signing Request](#w4ab1c11c49c27c17)
++ [Step 4: Submit the CSR to Certificate Authority](#w4ab1c11c49c27c19)
++ [Step 5: Edit the App](#w4ab1c11c49c27c21)
 
-+ [Step 1: Install and Configure OpenSSL](#w3ab2c11c49c27c13)
-+ [Step 2: Create a Private Key](#w3ab2c11c49c27c15)
-+ [Step 3: Create a Certificate Signing Request](#w3ab2c11c49c27c17)
-+ [Step 4: Submit the CSR to Certificate Authority](#w3ab2c11c49c27c19)
-+ [Step 5: Edit the App](#w3ab2c11c49c27c21)
-
-## Step 1: Install and Configure OpenSSL<a name="w3ab2c11c49c27c13"></a>
+## Step 1: Install and Configure OpenSSL<a name="w4ab1c11c49c27c13"></a>
 
 Creating and uploading server certificates requires a tool that supports the SSL and TLS protocols\. OpenSSL is an open\-source tool that provides the basic cryptographic functions necessary to create an RSA token and sign it with your private key\.
 
@@ -55,13 +55,11 @@ Creating and uploading server certificates requires a tool that supports the SSL
 1. Run the installer and follow the instructions in the **OpenSSL Setup Wizard** to install the binaries\. 
 
 Create an environment variable that points to the OpenSSL install point by opening a terminal or command window and using the following command lines\. 
-
 + On Linux and Unix
 
   ```
   export OpenSSL_HOME=path_to_your_OpenSSL_installation
   ```
-
 + On Windows
 
   ```
@@ -69,13 +67,11 @@ Create an environment variable that points to the OpenSSL install point by openi
   ```
 
 Add the OpenSSL binaries' path to your computer's path variable by opening a terminal or command window and using the following command lines\.
-
 + On Linux and Unix
 
   ```
   export PATH=$PATH:$OpenSSL_HOME/bin 
   ```
-
 + On Windows
 
   ```
@@ -85,7 +81,7 @@ Add the OpenSSL binaries' path to your computer's path variable by opening a ter
 **Note**  
 Any changes you make to the environment variables by using these command lines are valid only for the current command\-line session\.
 
-## Step 2: Create a Private Key<a name="w3ab2c11c49c27c15"></a>
+## Step 2: Create a Private Key<a name="w4ab1c11c49c27c15"></a>
 
 You need a unique private key to create your Certificate Signing Request \(CSR\)\. Create the key by using the following command line:
 
@@ -93,7 +89,7 @@ You need a unique private key to create your Certificate Signing Request \(CSR\)
 openssl genrsa 2048 > privatekey.pem
 ```
 
-## Step 3: Create a Certificate Signing Request<a name="w3ab2c11c49c27c17"></a>
+## Step 3: Create a Certificate Signing Request<a name="w4ab1c11c49c27c17"></a>
 
 A Certificate Signing Request \(CSR\) is a file sent to a Certificate Authority \(CA\) to apply for a digital server certificate\. Create the CSR by using the following command line\.
 
@@ -130,9 +126,9 @@ The following table can help you create your certificate request\.
 **Note**  
 The Common Name field is often misunderstood and is completed incorrectly\. The common name is typically your host plus domain name\. It will look like "www\.example\.com" or "example\.com"\. You need to create a CSR using your correct common name\. 
 
-## Step 4: Submit the CSR to Certificate Authority<a name="w3ab2c11c49c27c19"></a>
+## Step 4: Submit the CSR to Certificate Authority<a name="w4ab1c11c49c27c19"></a>
 
-For production use, you would obtain a server certificate by submitting your CSR to a Certificate Authority \(CA\), which might require other credentials or proofs of identity\. If your application is successful, the CA returns digitally signed identity certificate and possibly a certificate chain file\. AWS does not recommend a specific CA\. For a partial listing of available CAs, see [Third\-Party Certificate Authorities](http://www.dmoz.org/Computers/Security/Public_Key_Infrastructure/PKIX/Tools_and_Services/Third_Party_Certificate_Authorities/)\.
+For production use, you would obtain a server certificate by submitting your CSR to a Certificate Authority \(CA\), which might require other credentials or proofs of identity\. If your application is successful, the CA returns digitally signed identity certificate and possibly a certificate chain file\. AWS does not recommend a specific CA\. For a partial listing of available CAs, see [Certificate Authority \- Providers](https://en.wikipedia.org/wiki/Certificate_authority#Providers) on Wikipedia\.
 
 You can also generate a self\-signed certificate, which can be used for testing purposes only\. For this example, use the following command line to generate a self\-signed certificate\. 
 
@@ -149,7 +145,7 @@ subject=/C=us/ST=washington/L=seattle/O=corporationx/OU=marketing/CN=example.com
 Getting Private key
 ```
 
-## Step 5: Edit the App<a name="w3ab2c11c49c27c21"></a>
+## Step 5: Edit the App<a name="w4ab1c11c49c27c21"></a>
 
 After you generate your certificate and sign it, update your app to enable SSL and provide your certificate information\. On the **Apps** page, choose an app to open the details page, and then click **Edit App**\. To enable SSL support, set **Enable SSL** to **Yes**, which displays the following configuration options\.
 
@@ -167,11 +163,8 @@ cGhhbmllYXBpZXJjZS5jb20xIjAgBgkqhkiG9w0BCQEWE3NhcGllcmNlQGFtYXpv
 ```
 If you are using Nginx and you have a certificate chain file, you should append the contents to the public key certificate file\.
 If you are updating an existing certificate, do the following:  
-
 + Choose **Update SSL certificate** to update the certificate\.
-
 + If the new certificate does not match the existing private key, choose **Update SSL certificate key**\.
-
 + If the new certificate does not match the existing certificate chain, choose **Update SSL certificates**\.
 
 **SSL Certificate Key**  
@@ -193,9 +186,9 @@ If you are using Nginx, you should leave this box empty\. If you have a certific
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/app_ssl_settings.png)
 
-After you click **Save**, redeploy the application to update your online instances\.
+After you click **Save**, [redeploy the application](workingapps-deploying.md) to update your online instances\.
 
-For the built\-in application server layers, AWS OpsWorks Stacks automatically updates the server configuration\. After deployment is finished, you can verify that your OpenSSL installation worked, as follows\.
+For the [built\-in application server layers](workingcookbook-json.md#workingcookbook-json-deploy), AWS OpsWorks Stacks automatically updates the server configuration\. After deployment is finished, you can verify that your OpenSSL installation worked, as follows\.
 
 **To verify an OpenSSL installation**
 
@@ -205,6 +198,6 @@ For the built\-in application server layers, AWS OpsWorks Stacks automatically u
 
 1. Change the IP address prefix from **http://** to **https://** and refresh the browser to verify the page loads correctly with SSL\.
 
-If your app does not run as expected, or the webpage does not work as expected, see the "USER Questions on using the OpenSSL applications" section of the [OpenSSL FAQ](https://www.openssl.org/docs/faq.html) for troubleshooting information\.
+If your app does not run as expected, or the webpage does not work as expected, see the "Using the OpenSSL application" section of the [OpenSSL FAQ](https://www.openssl.org/docs/faq.html#USER) for troubleshooting information\.
 
-For all other layers, including custom layers, AWS OpsWorks Stacks simply adds the SSL settings to the app's `deploy` attributes\. You must implement a custom recipe to retrieve the information from the node object and configure the server appropriately\.
+For all other layers, including custom layers, AWS OpsWorks Stacks simply adds the SSL settings to the app's [`deploy` attributes](workingcookbook-json.md#workingcookbook-json-deploy)\. You must implement a custom recipe to retrieve the information from the node object and configure the server appropriately\.

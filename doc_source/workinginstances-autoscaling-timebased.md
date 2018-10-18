@@ -1,15 +1,13 @@
 # Using Automatic Time\-based Scaling<a name="workinginstances-autoscaling-timebased"></a>
 
 Time\-based scaling lets you control how many instances a layer should have online at certain times of day or days of the week by starting or stopping instances on a specified schedule\. AWS OpsWorks Stacks checks every couple of minutes and starts or stops instances as required\. You specify the schedule separately for each instance, as follows:
-
 + Time of day\. You can have more instances running during the day than at night, for example\. 
-
 + Day of the week\. You can have more instances running on weekdays than weekends, for example\. 
 
 **Note**  
 You cannot specify particular dates\.
 
-
+**Topics**
 + [Adding a Time\-Based Instance to a Layer](#workinginstances-autoscaling-timebased-add)
 + [Configuring a Time\-Based Instance](#workinginstances-autoscaling-timebased-configure)
 
@@ -44,9 +42,7 @@ After you add a time\-based instance to a layer, you configure its schedule as f
 1. In the navigation pane, click **Time\-based** under **Instances**\.
 
 1. Specify the online periods for each time\-based instance by clicking the appropriate boxes below the desired hour\.
-
    + To use the same schedule every day, click the **Every day** tab and then specify the online time periods\.
-
    + To use different schedules on different days, click each day and select the appropriate time periods\.   
 ![\[Schedule for time-based scaling\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/time_based.png)
 

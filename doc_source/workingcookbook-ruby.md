@@ -13,7 +13,7 @@ The following table summarizes AWS OpsWorks Stacks Ruby versions\. The available
 | 11\.4 \(c\) | 1\.8\.7 | 1\.8\.7\(a\), 1\.9\.3\(e\), 2\.0\.0, 2\.1, 2\.2\.0, 2\.3 | 
 | 11\.10 | 2\.0\.0\-p481 | 1\.9\.3\(c, e\), 2\.0\.0, 2\.1, 2\.2\.0, 2\.3 | 
 | 12 \(b\) | 2\.1\.6, 2\.2\.3 | None | 
-| 12\.2 \(d\) | 2\.0\.0 | None | 
+| 12\.22 \(d\) | 2\.3\.6 | None | 
 
 **\(a\)** Not available with Amazon Linux 2014\.09 and later, Red Hat Enterprise Linux \(RHEL\), or Ubuntu 14\.04 LTS\.
 
@@ -21,14 +21,11 @@ The following table summarizes AWS OpsWorks Stacks Ruby versions\. The available
 
 **\(c\)** Not available with RHEL\.
 
-**\(d\)** Available only on Windows stacks\.
+**\(d\)** Available only on Windows stacks\. Major version is 12\.2\. Current minor version is 12\.22\.
 
 **\(e\)** Deprecated; nearing end of support\.
 
 The install locations depend on the Chef version:
-
 + Applications use the `/usr/local/bin/ruby` executable for all Chef Versions\.
-
 + For Chef 0\.9 and 11\.4, the instance agent and Chef recipes use the `/usr/bin/ruby` executable\.
-
 + For Chef 11\.10, the instance agent and Chef recipes use the `/opt/aws/opsworks/local/bin/ruby` executable\. 

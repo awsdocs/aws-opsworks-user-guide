@@ -15,11 +15,8 @@ Run and test the `default` recipe from within the cookbook that AWS OpsWorks Sta
    **opsworks\_cookbook\_demo** is the name of the cookbook as defined in the `metadata.rb` file\. **default** is the name of the recipe to run, that is, the name of the `default.rb` file in the cookbook's `recipes` subdirectory, without the file extension\.
 
 1. Leave the following default settings:
-
    + **Comment** \(blank\)
-
    + **Advanced**, **Custom Chef JSON** \(blank\)
-
    + **Instances** \(**Select all** checked, **MyCookbooksDemoLayer** checked, **cookbooks\-demo1** checked\)
 
 1. Choose **Execute Recipes**\. The **Running command execute\_recipes** page is displayed\. Do not proceed until **Status** changes to **successful**\. This process might take a few minutes, so be patient\.
@@ -34,4 +31,4 @@ Run and test the `default` recipe from within the cookbook that AWS OpsWorks Sta
    [2015-11-13T19:14:39+00:00] INFO: ********** Hello, World! **********
    ```
 
-You have successfully run your first recipe\! In the next step, you will update your cookbook by adding a recipe that installs a package on the instance\.
+You have successfully run your first recipe\! In the [next step](gettingstarted-cookbooks-install-package.md), you will update your cookbook by adding a recipe that installs a package on the instance\.

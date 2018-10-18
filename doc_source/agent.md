@@ -3,18 +3,12 @@
 **Note**  
 This feature is available only on Linux instances\.
 
-The agent that AWS OpsWorks Stacks installs on every instance exposes a command line interface \(CLI\)\. If you use SSH to log in to the instance, you can use the CLI to the following: 
-
+The agent that AWS OpsWorks Stacks installs on every instance exposes a command line interface \(CLI\)\. If you [use SSH to log in](workinginstances-ssh.md) to the instance, you can use the CLI to the following: 
 + Access log files for Chef runs\. 
-
 + Access AWS OpsWorks Stacks commands\.
-
 + Manually run Chef recipes\.
-
 + View instance reports\.
-
 + View agent reports\.
-
 + View a limited set of stack configuration and deployment attributes\. 
 
 **Important**  
@@ -33,19 +27,12 @@ The four arguments are as follows:
 
 **command**  
 \(Optional\) The agent CLI command, which must be set to one of the following:  
-
 + [agent\_report ](agent-report.md)
-
 + [ get\_json](agent-json.md)
-
 + [instance\_report](agent-instance.md)
-
 + [ list\_commands](agent-list.md)
-
 + [ run\_command](agent-run.md)
-
 + [ show\_log ](agent-show.md)
-
 + [stack\_state ](agent-stack.md)
 
 **activity**  
@@ -59,7 +46,7 @@ If the agent has executed the same AWS OpsWorks Stacks activity multiple times, 
 
 The following sections describe the commands and their associated arguments\. For brevity, the syntax sections omit the optional `--help` option, which can be used with any command\.
 
-
+**Topics**
 + [agent\_report](agent-report.md)
 + [get\_json](agent-json.md)
 + [instance\_report](agent-instance.md)

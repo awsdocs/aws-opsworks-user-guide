@@ -1,14 +1,12 @@
 # Example 4: Adding Flow Control<a name="cookbooks-101-basics-ruby"></a>
 
 Some recipes are just a series of Chef resources\. In that case, when you run the recipe, it simply executes each of the resource providers in sequence\. However, it's often useful to have a more sophisticated execution path\. The following are two common scenarios:
-
 + You want a recipe to execute the same resource multiple times with different attribute settings\.
-
 + You want to use different attribute settings on different operating systems\.
 
 You can address scenarios such as these by incorporating Ruby control structures into the recipe\. This section shows how to modify the recipe from [Example 3: Creating Directories](cookbooks-101-basics-directories.md) to address both scenarios\.
 
-
+**Topics**
 + [Iteration](#cookbooks-101-basics-ruby-iteration)
 + [Conditional Logic](#cookbooks-101-basics-ruby-conditional)
 
@@ -63,7 +61,7 @@ end
 1. Log in to the instance; you will see the newly created directories under `/srv` with the specified modes\.
 
 **Note**  
-AWS OpsWorks Stacks recipes commonly use this approach to extract values from the stack configuration and deployment JSON—which is basically a large hash table—and insert them in a resource\. For an example, see [Deploy Recipes](create-custom-deploy.md)\.
+AWS OpsWorks Stacks recipes commonly use this approach to extract values from the [stack configuration and deployment JSON](workingcookbook-json.md)—which is basically a large hash table—and insert them in a resource\. For an example, see [Deploy Recipes](create-custom-deploy.md)\.
 
 ## Conditional Logic<a name="cookbooks-101-basics-ruby-conditional"></a>
 

@@ -3,7 +3,7 @@
 **Note**  
 The recommendations in this topic apply to Chef 11\.10 and earlier versions of Chef\. To get environment variables in Chef 12 and newer releases, you must use the App Data Bag\. For more information, see [AWS OpsWorks Data Bag Reference](http://docs.aws.amazon.com/opsworks/latest/userguide/data-bags.html) and [App Data Bag \(aws\_opsworks\_app\)](http://docs.aws.amazon.com/opsworks/latest/userguide/data-bag-json-app.html)\.
 
-When you specify environment variables for an app, AWS OpsWorks Stacks adds the variable definitions to the app's `deploy` attributes\.
+When you [specify environment variables for an app](workingapps-creating.md#workingapps-creating-environment), AWS OpsWorks Stacks adds the variable definitions to the app's [`deploy` attributes](workingcookbook-json.md#workingcookbook-json-deploy)\.
 
 Custom layers can use a recipe to retrieve a variable's value by using standard node syntax, and store it in a form that is accessible to the layer's apps\.
 

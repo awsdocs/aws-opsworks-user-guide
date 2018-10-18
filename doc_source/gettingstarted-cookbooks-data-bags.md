@@ -42,4 +42,4 @@ Update your cookbook by adding a recipe that references stack settings that AWS 
 
    This recipe displays messages about specific stack settings that are stored on the instance\.
 
-In the next step, you will update the cookbook to run recipe code multiple times\.
+In the [next step](gettingstarted-cookbooks-iteration.md), you will update the cookbook to run recipe code multiple times\.

@@ -8,11 +8,7 @@ For additional troubleshooting information, see [Debugging and Troubleshooting G
 AWS OpsWorks Stacks stores each instance's Chef logs in its `/var/lib/aws/opsworks/chef` directory\. You need sudo privileges to access this directory\. The log for each run is in a file named `YYYY-MM-DD-HH-MM-SS-NN.log`\. 
 
 For more information, see the following:
-
 + [Viewing a Chef Log with the Console](troubleshoot-debug-log.md#troubleshoot-debug-log-console)
-
 + [Viewing a Chef Log with the CLI or API](troubleshoot-debug-log.md#troubleshoot-debug-log-cli)
-
 + [Interpreting a Chef Log](troubleshoot-debug-log.md#troubleshoot-debug-log-interpret)
-
 + [Common Chef Log Errors](troubleshoot-debug-log.md#troubleshoot-debug-log-errors)

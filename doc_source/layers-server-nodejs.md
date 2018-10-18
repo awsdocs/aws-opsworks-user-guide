@@ -18,65 +18,41 @@ A Node\.js App Server layer supports a [Node\.js](http://nodejs.org/) applicatio
 **Default security group:** AWS\-OpsWorks\-nodejs\-App\-Server
 
 **Setup recipes:**
-
 +  opsworks\_initial\_setup
-
 + ssh\_host\_keys
-
 + ssh\_users
-
 + mysql::client
-
 + dependencies
-
 + ebs
-
 + opsworks\_ganglia::client
-
 + opsworks\_nodejs
-
 + opsworks\_nodejs::npm 
 
 **Configure recipes:**
-
 +  opsworks\_ganglia::configure\-client
-
 + ssh\_users
-
 + agent\_version
-
 + opsworks\_nodejs::configure 
 
 **Deploy recipes:**
-
 + deploy::default
-
 + opsworks\_nodejs
-
 + opsworks\_nodejs::npm
-
 + deploy::nodejs 
 
 **Undeploy recipes:**
-
 + deploy::nodejs\-undeploy
 
 **Shutdown recipes:**
-
 + opsworks\_shutdown::default
-
 + deploy::nodejs\-stop
 
 **Installation:**
-
 + Node\.js installs to `/usr/local/bin/node`\.
-
-+ For more information about how to produce log files, see [How to log in node\.js](http://docs.nodejitsu.com/articles/intermediate/how-to-log)\.
++ For more information about how to produce log files, see [How to log in node\.js](https://docs.nodejitsu.com/articles/intermediate/how-to-log/) on the Nodejitsu website\.
 
 **Node\.js application configuration:**
-
 + The main file run by Node\.js must be named `server.js` and reside in the root directory of the deployed application\.
-
 + The Node\.js application must be set to listen on port 80 \(or port 443, if applicable\)\.
 
 **Note**  

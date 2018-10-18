@@ -1,11 +1,9 @@
 # Attributes<a name="workingcookbook-installingcustom-components-attributes"></a>
 
 Recipes and templates depend on a variety of values, such as configuration settings\. Rather than hardcode such values directly in recipes or templates, you can create an attribute file with an attribute that represents each value\. You then use the attributes in your recipes or templates instead of explicit values\. The advantage of using attributes is that you can override their values without touching the cookbook\. For this reason, you should always use attributes to define the following types of values:
-
 + Values that might vary from stack to stack or with time, such as user names\.
 
   If you hardcode such values, you must change the recipe or template each time you need to change a value\. By using attributes to define these values, you can use the same cookbooks for every stack and just override the appropriate attributes\.
-
 + Sensitive values, such as passwords or secret keys\.
 
   Putting explicit sensitive values in your cookbook can increase the risk of exposure\. Instead, define attributes with dummy values and override them to set the actual values\. The best way to override such attributes is with custom JSON\. For more information, see [Using Custom JSON](workingcookbook-json-override.md)\.
@@ -52,9 +50,7 @@ The `node.` prefix is optional and usually omitted, as shown in the example\.
 ## `type`<a name="type"></a>
 
 The type governs whether the attribute can be overridden\. AWS OpsWorks Stacks attributes typically use one of the following types:
-
 + `default` is the most commonly used type, because it allows the attribute to be overridden\.
-
 + `normal` defines an attribute that overrides one of the standard AWS OpsWorks Stacks attribute values\.
 
 **Note**  
@@ -69,13 +65,9 @@ To avoid name collisions, the convention is to create qualified attribute names 
 ## `value`<a name="value"></a>
 
 An attribute can be set to the following types of values:
-
 + A string, such as `default[:apache][:keepalive] = 'Off'`\.
-
 + A number \(without quotes\) such as `default[:apache][:timeout] = 120`\.
-
 + A Boolean value, which can be either `true` or `false` \(no quotes\)\.
-
 + A list of values, such as `default[:apache][:listen_ports] = [ '80','443' ]`
 
 The attribute file is a Ruby application, so you can also use node syntax and logical operators to assign values based on other attributes\. For more information about how to define attributes, see [About Attributes s](https://docs.chef.io/chef_overview_attributes.html)\. For examples of working attribute files, see the AWS OpsWorks Stacks built\-in cookbooks at [https://github\.com/aws/opsworks\-cookbooks](https://github.com/aws/opsworks-cookbooks)\.

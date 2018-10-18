@@ -14,49 +14,49 @@ The [`memached` attributes](https://github.com/aws/opsworks-cookbooks/blob/relea
 | [port ](#attributes-recipes-mem-port) | [start\_command ](#attributes-recipes-mem-start) | [stop\_command ](#attributes-recipes-mem-stop) | 
 | [user ](#attributes-recipes-mem-user) |  |  | 
 
-**memory **  
+**memory **  <a name="attributes-recipes-mem-memory"></a>
 The maximum memory to use, in MB \(number\)\. The default value is `512`\.  
 
 ```
 node[:memcached][:memory]
 ```
 
-**max\_connections **  
+**max\_connections **  <a name="attributes-recipes-mem-max"></a>
 The maximum number of connections \(string\)\. The default value is `'4096'`\.  
 
 ```
 node[:memcached][:max_connections]
 ```
 
-**pid\_file **  
+**pid\_file **  <a name="attributes-recipes-mem-pid"></a>
 The file that contains the daemon's process ID \(string\)\. The default value is `'var/run/memcached.pid'`\.  
 
 ```
 node[:memcached][:pid_file]
 ```
 
-**port **  
+**port **  <a name="attributes-recipes-mem-port"></a>
 The port to listen on \(number\)\. The default value is `11211`\.  
 
 ```
 node[:memcached][:port]
 ```
 
-**start\_command **  
+**start\_command **  <a name="attributes-recipes-mem-start"></a>
 The start command \(string\)\. The default value is `'/etc/init.d/memcached start'`\.  
 
 ```
 node[:memcached][:start_command]
 ```
 
-**stop\_command **  
+**stop\_command **  <a name="attributes-recipes-mem-stop"></a>
 The stop command \(string\)\. The default value is `'/etc/init.d/memcached stop'`\.  
 
 ```
 node[:memcached][:stop_command]
 ```
 
-**user **  
+**user **  <a name="attributes-recipes-mem-user"></a>
 The user \(string\)\. The default value is `'nobody'`\.  
 
 ```

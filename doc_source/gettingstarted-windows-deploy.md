@@ -8,15 +8,15 @@ The preferred solution is to implement a separate deployment recipe that retriev
 
 This topic shows how to implement a simple deployment recipe that deploys `default.htm` to your IIS server\. You can readily extend this example to more complex applications\.
 
+**Topics**
++ [Create the Application and Store It in a Repository](#w4ab1c11c39c15c21c23c13)
++ [Implement a Recipe to Deploy the Application](#w4ab1c11c39c15c21c23c15)
++ [Update the Instance's Cookbooks](#w4ab1c11c39c15c21c23c17)
++ [Add the Recipe to the Custom IIS Layer](#w4ab1c11c39c15c21c23c19)
++ [Add an App](#w4ab1c11c39c15c21c23c21)
++ [Deploy the App and Open the Application](#w4ab1c11c39c15c21c23c23)
 
-+ [Create the Application and Store It in a Repository](#w3ab2c11c39c15c21c23c13)
-+ [Implement a Recipe to Deploy the Application](#w3ab2c11c39c15c21c23c15)
-+ [Update the Instance's Cookbooks](#w3ab2c11c39c15c21c23c17)
-+ [Add the Recipe to the Custom IIS Layer](#w3ab2c11c39c15c21c23c19)
-+ [Add an App](#w3ab2c11c39c15c21c23c21)
-+ [Deploy the App and Open the Application](#w3ab2c11c39c15c21c23c23)
-
-## Create the Application and Store It in a Repository<a name="w3ab2c11c39c15c21c23c13"></a>
+## Create the Application and Store It in a Repository<a name="w4ab1c11c39c15c21c23c13"></a>
 
 You can use any repository you prefer for your applications\. For simplicity, this example stores `default.htm` in a public S3 bucket\.
 
@@ -47,7 +47,7 @@ For a production application, you will probably want to keep your files private\
 You can store your application in any suitable repository\.  
 You typically download the application by using a repository's public API\. This example uses the Amazon S3 API\. If, for example, you store your application on GitHub, you can use the [GitHub API](https://developer.github.com/guides/getting-started/)\.
 
-## Implement a Recipe to Deploy the Application<a name="w3ab2c11c39c15c21c23c15"></a>
+## Implement a Recipe to Deploy the Application<a name="w4ab1c11c39c15c21c23c15"></a>
 
 Add a recipe named `deploy.rb` to the `iis-cookbook` `recipes` directory, with the following contents\.
 
@@ -61,22 +61,23 @@ ruby_block "download-object" do
   block do
     require 'aws-sdk'
 
-    #1
-    Aws.config[:ssl_ca_bundle] = 'C:\ProgramData\Git\bin\curl-ca-bundle.crt'
+    #1  
+    # Aws.config[:ssl_ca_bundle] = 'C:\ProgramData\Git\bin\curl-ca-bundle.crt'
+    Aws.use_bundled_cert!
 
-    #2
+    #2  
     query = Chef::Search::Query.new
     app = query.search(:aws_opsworks_app, "type:other").first
     s3region = app[0][:environment][:S3REGION]
     s3bucket = app[0][:environment][:BUCKET]
     s3filename = app[0][:environment][:FILENAME]
 
-    #3
+    #3  
     s3_client = Aws::S3::Client.new(region: s3region)
     s3_client.get_object(bucket: s3bucket,
                          key: s3filename,
                          response_target: 'C:\inetpub\wwwroot\default.htm')
-  end
+  end 
   action :run
 end
 ```
@@ -139,7 +140,7 @@ The third part of the recipe creates an [S3 client object](http://docs.aws.amazo
 **Note**  
 A recipe is a Ruby application, so Ruby code doesn't necessarily have to be in a `ruby_block`\. However, the code in the body of the recipe runs first, followed by the resources, in order\. For this example, if you put the download code in the recipe body, it would fail because the `chef_gem` resource wouldn't have installed the SDK for Ruby yet\. The code in the `ruby_block` resource executes when the resource executes, after the `chef_gem` resource has installed the SDK for Ruby\.
 
-## Update the Instance's Cookbooks<a name="w3ab2c11c39c15c21c23c17"></a>
+## Update the Instance's Cookbooks<a name="w4ab1c11c39c15c21c23c17"></a>
 
 AWS OpsWorks Stacks automatically installs custom cookbooks on new instances\. However, you are working with an existing instance, so you must update your cookbook manually\.
 
@@ -153,17 +154,15 @@ AWS OpsWorks Stacks automatically installs custom cookbooks on new instances\. H
 
 1. After the instance is online, choose **Stack** in the navigation pane, and then choose **Run Command**\.
 
-1. For **Command**, choose Update Custom Cookbooks\. This command will install the updated cookbook on the instance\.
+1. For **Command**, choose [Update Custom Cookbooks](workingstacks-commands.md)\. This command will install the updated cookbook on the instance\.
 
 1. Choose **Update Custom Cookbooks**\. The command may take a few minutes to complete\.
 
-## Add the Recipe to the Custom IIS Layer<a name="w3ab2c11c39c15c21c23c19"></a>
+## Add the Recipe to the Custom IIS Layer<a name="w4ab1c11c39c15c21c23c19"></a>
 
 As with `install.rb`, the preferred way to handle deployment is to assign `deploy.rb` to the appropriate lifecycle event\. You usually assign deployment recipes to the Deploy event, and they are referred to collectively as Deploy recipes\. Assigning a recipe to the Deploy event does not trigger the event\. Instead:
-
 + For new instances, AWS OpsWorks Stacks automatically runs the Deploy recipes after the Setup recipes have finished, so new instances automatically have the current application version\.
-
-+ For online instances, you use a deploy command to manually install new or updated applications\.
++ For online instances, you use a [deploy command](workingapps-deploying.md) to manually install new or updated applications\.
 
   This command triggers a Deploy event on the stack's instances, which runs the Deploy recipes\.
 
@@ -175,7 +174,7 @@ As with `install.rb`, the preferred way to handle deployment is to assign `deplo
 
 1. Choose **Save** to save the new configuration\. The custom Deploy recipes should now include `iis-cookbook::deploy`\.
 
-## Add an App<a name="w3ab2c11c39c15c21c23c21"></a>
+## Add an App<a name="w4ab1c11c39c15c21c23c21"></a>
 
 The final piece of the puzzle is to add an app to the stack to represent your application in the AWS OpsWorks Stacks environment\. An app includes metadata such as the application's display name, and the data that is required to download the app from its repository\.
 
@@ -184,17 +183,11 @@ The final piece of the puzzle is to add an app to the stack to represent your ap
 1. Choose **Apps** in the navigation pane, and then choose **Add an app**\.
 
 1. Configure the app as follows:
-
    + **Name** – I**IIS\-Example\-App**
-
    + **Repository Type** – **Other**
-
    + **Environment Variables** – Add the following three environment variables:
-
      + **S3REGION** – The bucket's region \(in this case, `us-west-1`\)\.
-
      + **BUCKET** – The bucket name, such as `windows-example-app`\.
-
      + **FILENAME** – The file name: **default\.htm**\.
 
 1. Accept the default values for the remaining settings, and then choose **Add App** to add the app to the stack\.
@@ -202,7 +195,7 @@ The final piece of the puzzle is to add an app to the stack to represent your ap
 **Note**  
 This example uses environment variables to provide the download data\. An alternative approach is to use an S3 Archive repository type and provide the file's URL\. AWS OpsWorks Stacks will add the information, along with optional data, such as your AWS credentials, to the app's `app_source` attribute\. Your deploy recipe would then need to retrieve the URL from the app attributes and parse it to extract the region, bucket name, and file name\.
 
-## Deploy the App and Open the Application<a name="w3ab2c11c39c15c21c23c23"></a>
+## Deploy the App and Open the Application<a name="w4ab1c11c39c15c21c23c23"></a>
 
 AWS OpsWorks Stacks automatically deploys apps to new instances, but not to online instances\. Because your instance is already running, you will have to deploy the app manually\.
 
@@ -216,7 +209,7 @@ AWS OpsWorks Stacks automatically deploys apps to new instances, but not to onli
 
 **Note**  
 Windows apps are always the Other app type, so deploying the app does the following:  
-Adds the app's data to the stack configuration and deployment attributes, as described earlier\.
+Adds the app's data to the [stack configuration and deployment attributes](workingcookbook-json.md), as described earlier\.
 Triggers a Deploy event on the stack's instances, which runs your custom Deploy recipes\.
 
 **Note**  

@@ -4,7 +4,7 @@ Sometimes, you need to customize a built\-in layer beyond what can be handled by
 
 If you are new to Chef, you should first read [Cookbooks 101](cookbooks-101.md), which is a tutorial that introduces the basics of how to implement cookbooks to perform a variety of common tasks\. For a detailed example of how to implement a custom layer, see [Creating a Custom Tomcat Server Layer](create-custom.md)\. 
 
-
+**Topics**
 + [Using Recipes to Run Scripts](workingcookbook-extend-scripts.md)
 + [Using Chef Deployment Hooks](workingcookbook-extend-hooks.md)
 + [Running Cron Jobs on Linux Instances](workingcookbook-extend-cron.md)

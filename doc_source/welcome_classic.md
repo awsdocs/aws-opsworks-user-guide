@@ -14,7 +14,7 @@ Here's how a basic application server stack might look with AWS OpsWorks Stacks\
 
 Although relatively simple, this stack shows all the key AWS OpsWorks Stacks features\. Here's how it's put together\.
 
-
+**Topics**
 + [Stacks](#welcome-classic-stacks)
 + [Layers](#welcome-classic-layers)
 + [Recipes and LifeCycle Events](#welcome-classic-lifecycle)
@@ -56,11 +56,8 @@ You define the stack's constituents by adding one or more *layers*\. A layer rep
 You can customize or extend layers by modifying packages' default configurations, adding Chef recipes to perform tasks such as installing additional packages, and more\. 
 
 For all stacks, AWS OpsWorks Stacks includes *service layers*, which represent the following AWS services\.
-
 + Amazon Relational Database Service 
-
 + Elastic Load Balancing
-
 + Amazon Elastic Container Service
 
 Layers give you complete control over which packages are installed, how they are configured, how applications are deployed, and more\.
@@ -90,13 +87,10 @@ An *instance* represents a single computing resource, such as an Amazon EC2 inst
 You can use AWS OpsWorks Stacks to create instances and add them to a layer\. When you start the instance, AWS OpsWorks Stacks launches an Amazon EC2 instance using the configuration settings specified by the instance and its layer\. After the Amazon EC2 instance has finished booting, AWS OpsWorks Stacks installs an agent that handles communication between the instance and the service and runs the appropriate recipes in response to lifecycle events\. 
 
 AWS OpsWorks Stacks supports the following instance types, which are characterized by how they are started and stopped\.
-
 + **24/7 instances **are started manually and run until you stop them\.
-
 + **Time\-based instances** are run by AWS OpsWorks Stacks on a specified daily and weekly schedule\.
 
   They allow your stack to automatically adjust the number of instances to accommodate predictable usage patterns\.
-
 + **Load\-based instances** are automatically started and stopped by AWS OpsWorks Stacks, based on specified load metrics, such as CPU utilization\.
 
   They allow your stack to automatically adjust the number of instances to accommodate variations in incoming traffic\. Load\-based instances are available only for Linux\-based stacks\.
@@ -104,9 +98,7 @@ AWS OpsWorks Stacks supports the following instance types, which are characteriz
 AWS OpsWorks Stacks supports instance autohealing\. If an agent stops communicating with the service, AWS OpsWorks Stacks automatically stops and restarts the instance\.
 
 You can also incorporate Linux\-based computing resources into a stack that was created outside of AWS OpsWorks Stacks\.
-
 + Amazon EC2 instances that you created directly by using the Amazon EC2 console, CLI, or API\.
-
 + *On\-premises* instances running on your own hardware, including instances running in virtual machines\.
 
 After you have registered one of these instances, it becomes an AWS OpsWorks Stacks instance and you can manage it in much the same way as instances that you create with AWS OpsWorks Stacks\.
@@ -116,9 +108,7 @@ After you have registered one of these instances, it becomes an AWS OpsWorks Sta
 You store applications and related files in a repository, such as an Amazon S3 bucket\. Each application is represented by an *app*, which specifies the application type and contains the information that is needed to deploy the application from the repository to your instances, such as the repository URL and password\. When you deploy an app, AWS OpsWorks Stacks triggers a Deploy event, which runs the Deploy recipes on the stack's instances\. 
 
 You can deploy apps in the following ways:
-
 + Automatically—When you start instances, AWS OpsWorks Stacks automatically runs the instance's Deploy recipes\.
-
 + Manually—If you have a new app or want to update an existing one, you can manually run the online instances' Deploy recipes\.
 
 You typically have AWS OpsWorks Stacks run the Deploy recipes on the entire stack, which allows the other layers' instances to modify their configuration appropriately\. However, you can limit deployment to a subset of instances if, for example, you want to test a new app before deploying it to every app server instance\.
@@ -126,23 +116,16 @@ You typically have AWS OpsWorks Stacks run the Deploy recipes on the entire stac
 ## Customizing your Stack<a name="welcome-classic-customizing"></a>
 
 AWS OpsWorks Stacks provides a variety of ways to customize layers to meet your specific requirements:
-
 + You can modify how AWS OpsWorks Stacks configures packages by overriding attributes that represent the various configuration settings, or by even overriding the templates used to create configuration files\.
-
 + You can extend an existing layer by providing your own recipes to perform tasks such as running scripts or installing and configuring nonstandard packages\.
 
 All stacks can include one or more layers, which start with only a minimal set of recipes\. You add functionality to the layer by implementing recipes to handle tasks such as installing packages, deploying apps, and so on\. You package your custom recipes and related files in one or more *cookbooks* and store the cookbooks in a repository such Amazon S3 or Git\.
 
 You can run recipes manually, but AWS OpsWorks Stacks also lets you automate the process by supporting a set of five *lifecycle events*:
-
 + **Setup** occurs on a new instance after it successfully boots\.
-
 + **Configure** occurs on all of the stack's instances when an instance enters or leaves the online state\.
-
 + **Deploy** occurs when you deploy an app\.
-
 + **Undeploy** occurs when you delete an app\.
-
 + **Shutdown** occurs when you stop an instance\. 
 
 Each layer can have any number of recipes assigned to each event\. When a lifecycle event occurs on a layer's instance, AWS OpsWorks Stacks runs the associated recipes\. For example, when a Deploy event occurs on an app server instance, AWS OpsWorks Stacks runs the layer's Deploy recipes to download the app or perform related tasks\.
@@ -154,27 +137,19 @@ You can incorporate other AWS resources, such as [Elastic IP addresses](http://d
 ## Security and Permissions<a name="welcome-classic-security"></a>
 
 AWS OpsWorks Stacks integrates with AWS Identity and Access Management \(IAM\) to provide robust ways of controlling how users access AWS OpsWorks Stacks, including the following:
-
 + How individual users can interact with each stack, such as whether they can create stack resources such as layers and instances, or whether they can use SSH or RDP to connect to a stack's Amazon EC2 instances\.
-
 + How AWS OpsWorks Stacks can act on your behalf to interact with AWS resources such as Amazon EC2 instances\.
-
 + How apps that run on AWS OpsWorks Stacks instances can access AWS resources such as Amazon S3 buckets\.
-
 + How to manage users' public SSH keys and RDP passwords and connect to an instance\.
 
 ## Monitoring and Logging<a name="welcome-classic-monitoring"></a>
 
 AWS OpsWorks Stacks provides several features to help you monitor your stack and troubleshoot issues with your stack and any recipes\. For all stacks:
-
 + AWS OpsWorks Stacks provides a set of custom CloudWatch metrics for Linux stacks, which are summarized for your convenience on the **Monitoring** page\.
 
   AWS OpsWorks Stacks supports the standard CloudWatch metrics for Windows stacks\. You can monitor them with the CloudWatch console\. 
-
 + CloudTrail logs, which record API calls made by or on behalf of AWS OpsWorks Stacks in your AWS account\.
-
 + An event log, which lists all events in your stack\.
-
 + Chef logs that detail what transpired for each lifecycle event on each instance, such as which recipes were run and which errors occurred\.
 
 Linux\-based stacks can also include a Ganglia master layer, which you can use to collect and display detailed monitoring data for the instances in your stack\.
@@ -182,13 +157,10 @@ Linux\-based stacks can also include a Ganglia master layer, which you can use t
 ## CLI, SDK, and AWS CloudFormation Templates<a name="welcome-classic-sdk"></a>
 
 In addition to the console, AWS OpsWorks Stacks also supports a command\-line interface \(CLI\) and SDKs for multiple languages that can be used to perform any operation\. Consider these features:
-
 + The AWS OpsWorks Stacks CLI is part of the [AWS CLI](http://aws.amazon.com/documentation/cli/), and can be used to perform any operation from the command\-line\.
 
   The AWS CLI supports multiple AWS services and can be installed on Windows, Linux, or OS X systems\. 
-
 + AWS OpsWorks Stacks is included in [AWS Tools for Windows PowerShell](http://aws.amazon.com/documentation/powershell/) and can be used to perform any operation from a Windows PowerShell command line\.
-
 + The AWS OpsWorks Stacks SDK is included in the AWS SDKs, which can be used by applications implemented in: [Java](http://aws.amazon.com/documentation/sdkforjava/), [JavaScript](http://aws.amazon.com/documentation/sdkforjavascript/) \(browser\-based and Node\.js\), [\.NET](http://aws.amazon.com/documentation/sdkfornet/), [PHP](http://aws.amazon.com/documentation/sdkforphp/), [Python \(boto\)](http://boto.readthedocs.org/en/latest/), or [Ruby](http://aws.amazon.com/documentation/sdkforruby/)\.
 
 You can also use AWS CloudFormation templates to provision stacks\. For some examples, see [AWS OpsWorks Snippets](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-opsworks.html)\.

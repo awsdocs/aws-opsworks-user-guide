@@ -1,23 +1,20 @@
 # Specifying Permissions for Apps Running on EC2 instances<a name="opsworks-security-appsrole"></a>
 
-If the applications running on your stack's Amazon EC2 instances need to access other AWS resources, such as Amazon S3 buckets, they must have appropriate permissions\. To confer those permissions, you use an instance profile\. You can specify an instance profile for each instance when you create an AWS OpsWorks Stacks stack\. 
+If the applications running on your stack's Amazon EC2 instances need to access other AWS resources, such as Amazon S3 buckets, they must have appropriate permissions\. To confer those permissions, you use an instance profile\. You can specify an instance profile for each instance when you [create an AWS OpsWorks Stacks stack](workingstacks-creating.md)\. 
 
 ![\[Advanced option in Add Stack page.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/add-stack-defaultiaminstanceproflie.png)
 
-You can also specify a profile for a layer's instances by editing the layer configuration\.
+You can also specify a profile for a layer's instances by [editing the layer configuration](workinglayers-basics-edit.md)\.
 
 The instance profile specifies an IAM role\. Applications running on the instance can assume that role to access AWS resources, subject to the permissions that are granted by the role's policy\. For more information about how an application assumes a role, see [Assuming the Role Using an API Call](http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-assume-role.html)\.
 
 You can create an instance profile in any of the following ways:
-
 + Have AWS OpsWorks Stacks create a new profile when you create a stack\.
 
   The profile will be named something like `aws-opsworks-ec2-role` and will have a trust relationship but no policy\. 
-
 + Use the IAM console or API to create a profile\.
 
   For more information, see [Roles \(Delegation and Federation\)](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html)\.
-
 + Use an AWS CloudFormation template to create a profile\.
 
   For some examples of how to include IAM resources in a template, see [Identity and Access Management \(IAM\) Template Snippets](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-iam.html)\.
@@ -41,9 +38,7 @@ An instance profile must have a trust relationship and an attached policy that g
 ```
 
 The instance profile must have this trust relationship for AWS OpsWorks Stacks to act on your behalf\. If you use the default service role, do not modify the trust relationship\. If you are creating a custom service role, specify the trust relation ship as follows: 
-
 + If you are using the **Create Role** wizard in the [IAM console](https://console.aws.amazon.com/iam/home#roles), specify the **Amazon EC2** role type under **AWS Service Roles** on the wizard's second page\. 
-
 + If you are using a AWS CloudFormation template, you can add something like the following to your template's **Resources** section\.
 
   ```
@@ -117,4 +112,4 @@ to perform: iam:PassRole on resource:
 arn:aws:sts::123456789012:role/OpsWorksStackIamRole
 ```
 
-For more information about using roles on an EC2 instance for permissions, see [Granting Applications that Run on Amazon EC2 Instances Access to AWS Resources](http://docs.aws.amazon.com/IAM/latest/UserGuide/role-usecase-ec2app.html) in the *AWS Identity and Access Management User Guide*\.
+For more information about using roles on an EC2 instance for permissions, see [Granting Applications that Run on Amazon EC2 Instances Access to AWS Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/role-usecase-ec2app.html) in the *AWS Identity and Access Management User Guide*\.

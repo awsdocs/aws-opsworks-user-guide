@@ -1,9 +1,7 @@
 # Monitoring Stacks using Amazon CloudWatch<a name="monitoring-cloudwatch"></a>
 
 AWS OpsWorks Stacks uses Amazon CloudWatch \(CloudWatch\) to provide monitoring for stacks\.
-
 + For Linux stacks, AWS OpsWorks Stacks supports thirteen custom metrics to provide detailed monitoring for each instance in the stack and summarizes the data for your convenience on the **Monitoring** page\.
-
 + For Windows stacks, you can monitor standard Amazon EC2 metrics for your instances with the [CloudWatch console](https://console.aws.amazon.com/cloudwatch/)\.
 
   The **Monitoring** page does not display Windows metrics\.
@@ -27,7 +25,7 @@ AWS OpsWorks Stacks collects metrics by running a process  on each instance \(th
 
 You can also use CloudWatch console to set alarms\. For more information about how to create alarms, see [Creating Amazon CloudWatch Alarms](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)\. For a list of CloudWatch custom metrics, see [AWS OpsWorks Metrics and Dimensions](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/ops-metricscollected.html)\. For more information, see [Amazon CloudWatch](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)\. 
 
-
+**Topics**
 + [AWS OpsWorks Stacks Metrics](#opsworks-metrics-dimensions)
 + [Dimensions for AWS OpsWorks Stacks Metrics](#opsworks-metricdimensions)
 + [Stack Metrics](#monitoring-cloudwatch-stack)
@@ -96,11 +94,8 @@ To view a summary of metrics for an entire stack, select a stack in the AWS OpsW
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/monitor_stack.png)
 
 The stack view displays graphs of the four types of metrics for each layer over a specified time period: 1 hour, 8 hours, 24 hours, 1 week, or 2 weeks\. Note the following:
-
 + AWS OpsWorks Stacks periodically updates the graphs; the countdown timer at the upper right indicates the time remaining until the next update,
-
 + If a layer has more than one instance, the graphs display average values for the layer\.
-
 + You can specify the time period by clicking the list at the upper right and selecting your preferred value\. 
 
 For each metric type, you can use the list at the top of the graph to select the particular metric that you want to view\.

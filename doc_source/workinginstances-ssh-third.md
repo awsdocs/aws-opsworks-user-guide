@@ -9,9 +9,7 @@ You can also use a third\-party SSH client, such as PuTTY, to connect to Linux i
 1. Obtain the instance's public DNS name or public IP address from its details page\.
 
 1. Provide the client with the instance's host name, which depends on the operating system, as follows:
-
    + Amazon Linux and Red Hat Enterprise Linux \(RHEL\)– `ec2-user@DNSName/Address.`
-
    + Ubuntu – `ubuntu@DNSName/Address`\.
 
    Replace *DNSName/Address* with the public DNS name or IP address from the previous step\.

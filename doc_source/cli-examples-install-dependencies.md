@@ -1,6 +1,6 @@
 # Install Dependencies \(create\-deployment\)<a name="cli-examples-install-dependencies"></a>
 
-Use the [create\-deployment](http://docs.aws.amazon.com/cli/latest/reference/opsworks/create-deployment.html) command to execute stack commands and deployment commands\. The following example runs the `update_dependencies` stack command to update the dependencies on a stack's instances\.
+Use the [create\-deployment](http://docs.aws.amazon.com/cli/latest/reference/opsworks/create-deployment.html) command to execute [stack commands](workingstacks-commands.md) and [deployment commands](workingapps-deploying.md)\. The following example runs the `update_dependencies` stack command to update the dependencies on a stack's instances\.
 
 ```
 aws opsworks --region us-west-1 create-deployment --stack-id 935450cc-61e0-4b03-a3e0-160ac817d2bb 

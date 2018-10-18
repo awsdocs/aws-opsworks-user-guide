@@ -1,14 +1,12 @@
 # Deregistering Resources<a name="resources-dereg"></a>
 
 If you no longer need to have a resource registered with a stack, you can deregister it\. Deregistration does not delete the resource from your account; it remains there and can be registered with another stack or used outside AWS OpsWorks Stacks\. If you want to delete the resource entirely, you have two options:
-
 + If an Elastic IP or Amazon EBS resource is attached to an instance, you can delete the resource when you delete the instance\.
 
   Go to the **Instances** page, click **delete** in the instance's **Actions** column, and then select **Delete instance's EBS volumes** or **Delete the instance's Elastic IP**\. 
-
 + Deregister the resource and then use the Amazon EC2 or Amazon RDS console, API, or CLI to delete it\.
 
-
+**Topics**
 + [Deregistering Amazon EBS Volumes](#resources-dereg-ebs)
 + [Deregistering Elastic IP Addresses](#resources-dereg-eip)
 + [Deregistering Amazon RDS Instances](#resources-dereg-rds)

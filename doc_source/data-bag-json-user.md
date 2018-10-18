@@ -25,20 +25,20 @@ end
 | [administrator\_privileges](#data-bag-json-user-admin) | [iam\_user\_arn](#data-bag-json-user-arn) | [remote\_access](#data-bag-json-user-rdp) | 
 | [ssh\_public\_key](#data-bag-json-user-ssh-public-key) | [unix\_user\_id](#data-bag-json-user-unix-id) | [username](#data-bag-json-user-username) | 
 
-**administrator\_privileges**  
+**administrator\_privileges**  <a name="data-bag-json-user-admin"></a>
 Whether the user has administrator privileges \(Boolean\)\.
 
-**iam\_user\_arn**  
+**iam\_user\_arn**  <a name="data-bag-json-user-arn"></a>
 The user's Amazon Resource Name \(ARN\) \(string\)\. 
 
-**remote\_access**  
+**remote\_access**  <a name="data-bag-json-user-rdp"></a>
 Whether the user can use RDP to log in to the instance \(Boolean\)\.
 
-**ssh\_public\_key**  
+**ssh\_public\_key**  <a name="data-bag-json-user-ssh-public-key"></a>
 The user's public key, as provided through the AWS OpsWorks Stacks console or API \(string\)\.
 
-**unix\_user\_id**  
+**unix\_user\_id**  <a name="data-bag-json-user-unix-id"></a>
 The user's Unix ID \(number\)\.
 
-**username**  
+**username**  <a name="data-bag-json-user-username"></a>
 The user name \(string\)\.

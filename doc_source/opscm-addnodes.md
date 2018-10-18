@@ -4,13 +4,13 @@ The [https://docs.chef.io/chef_client.html](https://docs.chef.io/chef_client.htm
 
 The minimum supported version of `chef-client` on nodes associated with an AWS OpsWorks for Chef Automate server is 12\.16\.42\. We recommend running `chef-client` 13\.6\.4\.
 
-This walkthrough demonstrates how to run a `knife` command that adds, or *bootstraps*, an EC2 instance so that the Chef server can manage it\. For more information about how to add nodes automatically by using a script to perform unattended association of nodes with the Chef server, see \.
+This walkthrough demonstrates how to run a `knife` command that adds, or *bootstraps*, an EC2 instance so that the Chef server can manage it\. For more information about how to add nodes automatically by using a script to perform unattended association of nodes with the Chef server, see [Adding Nodes Automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md)\.
 
-## Supported Operating Systems<a name="w3ab2b9c19c13b9"></a>
+## Supported Operating Systems<a name="w4ab1b9c21c13b9"></a>
 
 For the current list of supported operating systems for nodes, see the [Chef website](https://docs.chef.io/platforms.html)\.
 
-## Add Nodes with Knife<a name="w3ab2b9c19c13c11"></a>
+## Add Nodes with Knife<a name="w4ab1b9c21c13c11"></a>
 
 The [https://github.com/chef/knife-ec2](https://github.com/chef/knife-ec2) plug\-in is included with the Chef DK\. If you are more familiar with `knife-ec2`, you can use it instead of `knife bootstrap` to provision and bootstrap new EC2instances\. Otherwise, launch a new EC2 instance, and then follow the steps in this section\.
 
@@ -33,6 +33,6 @@ The [https://github.com/chef/knife-ec2](https://github.com/chef/knife-ec2) plug\
    knife node show INSTANCE_NAME
    ```
 
-## More Info<a name="w3ab2b9c19c13c13"></a>
+## More Info<a name="w4ab1b9c21c13c13"></a>
 
 Visit the [Learn Chef tutorial site](https://learn.chef.io/tutorials/manage-a-node/opsworks) to learn more about using AWS OpsWorks for Chef Automate servers and Chef Automate premium features\.

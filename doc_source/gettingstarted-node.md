@@ -1,14 +1,11 @@
 # Creating Your First Node\.js Stack<a name="gettingstarted-node"></a>
 
 This example describes how to create a Linux stack that supports a Node\.js application server and how to deploy a simple application\. The stack consists of the following components:
++ A [Node\.js App Server layer](workinglayers-node.md) with two instances
++ An [Elastic Load Balancing load balancer](layers-elb.md) to distribute traffic to the application server instances
++ An [Amazon Relational Database Service \(Amazon RDS\) service layer](#gettingstarted-node-next) that provides a backend database
 
-+ A Node\.js App Server layer with two instances
-
-+ An Elastic Load Balancing load balancer to distribute traffic to the application server instances
-
-+ An Amazon Relational Database Service \(Amazon RDS\) service layer that provides a backend database
-
-
+**Topics**
 + [Prerequisites](#gettingstarted-node-start)
 + [Implementing the Application](#gettingstarted-node-app)
 + [Creating the Database Server and Load Balancer](#gettingstarted-node-create-db)
@@ -19,23 +16,18 @@ This example describes how to create a Linux stack that supports a Node\.js appl
 ## Prerequisites<a name="gettingstarted-node-start"></a>
 
 This walkthrough assumes the following:
-
 + You have an AWS account and a basic understanding of how to use AWS OpsWorks Stacks\.
 
   If you are new to AWS OpsWorks Stacks or to AWS, learn the basics by completing the introductory tutorial in [Getting Started with Chef 11 Linux Stacks](gettingstarted.md)\.
-
 + You have a basic understanding of how to implement a Node\.js application\.
 
   If you are new to Node\.js, learn the basics by completing an introductory tutorial, such as [Node: Up and Running](http://chimera.labs.oreilly.com/books/1234000001808/index.html)\.
-
 + You have already created at least one stack in the AWS region that you plan to use for this example\.
 
   When you create the first stack in a region, AWS OpsWorks Stacks creates an Amazon Elastic Compute Cloud \(Amazon EC2\) security group for each layer type\. You need these security groups to create the Amazon RDS database \(DB\) instance\. If you are new to AWS OpsWorks Stacks, we recommend that you use the same region for this example that you did when you followed the tutorial in [Getting Started with Chef 11 Linux Stacks](gettingstarted.md)\. If you want to use a new region, create a new stack in the region; the stack does not need to have layers or instances\. As soon as you create the stack, AWS OpsWorks Stacks automatically adds a set of security groups to the region\. 
-
 + You will create your stack in a [default VPC](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)\.
 
   You can use EC2\-Classic for this walkthrough, but some of the details will differ slightly\. For example, with EC2\-Classic, you specify an instance's Availability Zone \(AZ\) instead of its subnet\.
-
 + Your AWS Identity and Access Management \(IAM\) user has full\-access permissions for AWS OpsWorks Stacks\.
 
   For security reasons, we strongly recommend that you do not use your account's root credentials for this walkthrough\. Instead, create an IAM user with AWS OpsWorks Stacks full\-access permissions and use those credentials with AWS OpsWorks Stacks\. For more information, see [Creating an Administrative User](opsworks-security-users-manage-admin.md)\.
@@ -46,12 +38,12 @@ This walkthrough uses a simple [Express](http://expressjs.com/) application that
 
 To implement the application, create a directory named `nodedb` in a convenient location on your workstation and add the following three files to it\. 
 
+**Topics**
++ [The Package Descriptor](#w4ab1c11c63b7b9c11b8)
++ [The Layout File](#w4ab1c11c63b7b9c11c10)
++ [The Code File](#w4ab1c11c63b7b9c11c12)
 
-+ [The Package Descriptor](#w3ab2c11c63b7b9c11b8)
-+ [The Layout File](#w3ab2c11c63b7b9c11c10)
-+ [The Code File](#w3ab2c11c63b7b9c11c12)
-
-### The Package Descriptor<a name="w3ab2c11c63b7b9c11b8"></a>
+### The Package Descriptor<a name="w4ab1c11c63b7b9c11b8"></a>
 
 To create the application's package descriptor, add a file named `package.json` with the following contents to the `nodedb` directory\. `package.json` is required for Express applications and must be located in the application's root directory\. 
 
@@ -69,16 +61,13 @@ To create the application's package descriptor, add a file named `package.json` 
 ```
 
 This `package.json` example is fairly minimal\. It defines the required `name` and `version` attributes and lists the dependent packages:
-
 + `express` references the [Express](http://expressjs.com/) package\.
-
 + `ejs` references the [EJS](http://www.embeddedjs.com/) package, which the application uses to insert text into an HTML layout file\.
-
 + `mysql` references the [node\-mysql](https://github.com/felixge/node-mysql) package, which the application uses to connect to the RDS instance\.
 
 For more information on package descriptor files, see [package\.json](https://npmjs.org/doc/files/package.json.html)\. 
 
-### The Layout File<a name="w3ab2c11c63b7b9c11c10"></a>
+### The Layout File<a name="w4ab1c11c63b7b9c11c10"></a>
 
 To create the application's layout file, add a `views` directory to the `nodedb` directory, and then add a file to `views` named `index.html` with the following contents:
 
@@ -104,7 +93,7 @@ To create the application's layout file, add a `views` directory to the `nodedb`
 
 For this example, the layout file is a simple HTML document that displays some data from Amazon RDS\. Each `<%= ... =>` element represents the value of a variable that is defined in the application's code file, which we create next\.
 
-### The Code File<a name="w3ab2c11c63b7b9c11c12"></a>
+### The Code File<a name="w4ab1c11c63b7b9c11c12"></a>
 
 To create the application's code file, add a `server.js` file to the `nodedb` directory with the following contents\.
 
@@ -202,10 +191,10 @@ For this example, there are five databases, the `nodeexampledb` database that yo
 
 **\[5\] Listen for incoming requests**  
 The final statement listens for incoming requests on a specified port\. You don't have to specify an explicit port value\. When you add the app to your stack, you specify whether the application supports HTTP or HTTPS requests\. AWS OpsWorks Stacks then sets the `PORT` environment variable to 80 \(HTTP\) or 443 \(HTTPS\), and you can use that variable in your application\.  
-It is possible to listen on other ports, but the Node\.js App Server layer's built\-in security group, **AWS\-OpsWorks\-nodejs\-App\-Server**, allows inbound user traffic only to ports 80, 443, and 22 \(SSH\)\. To allow inbound user traffic to other ports, [create a security group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) with appropriate inbound rules and assign it to the Node\.js App Server layer\. Do not modify inbound rules by editing the built\-in security group\. Each time you create a stack, AWS OpsWorks Stacks overwrites the built\-in security groups with the standard settings, so any changes that you make will be lost\.
+It is possible to listen on other ports, but the Node\.js App Server layer's built\-in security group, **AWS\-OpsWorks\-nodejs\-App\-Server**, allows inbound user traffic only to ports 80, 443, and 22 \(SSH\)\. To allow inbound user traffic to other ports, [create a security group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) with appropriate inbound rules and [assign it to the Node\.js App Server layer](workinglayers-basics-edit.md#workinglayers-basics-edit-security)\. Do not modify inbound rules by editing the built\-in security group\. Each time you create a stack, AWS OpsWorks Stacks overwrites the built\-in security groups with the standard settings, so any changes that you make will be lost\.
 
 **Note**  
-You can associate custom environment variables with your application when you create or update the associated app\. You can also pass data to your application by using custom JSON and a custom recipe\. For more information, see [Passing Data to Applications](apps-data.md)\.
+You can associate custom environment variables with your application when you [create](workingapps-creating.md#workingapps-creating-environment) or [update](workingapps-editing.md) the associated app\. You can also pass data to your application by using custom JSON and a custom recipe\. For more information, see [Passing Data to Applications](apps-data.md)\.
 
 ## Creating the Database Server and Load Balancer<a name="gettingstarted-node-create-db"></a>
 
@@ -238,17 +227,11 @@ The following describes how to create a minimally configured RDS DB instance tha
 **Configure the basic settings\.**
 
    On the **DB Instance Details** page, specify the following settings:
-
    + **DB Instance Class**: **db\.t2\.micro**
-
    + **Multi\-AZ Deployment**: **No**
-
    + **Allocated Storage**: **5** GB
-
    + **DB Instance Identifier**: **nodeexample**
-
    + **Master Username**: **opsworksuser**
-
    + **Master Password**: A password of your choice
 
    Record the instance identifier, user name, and password for later use, accept the default settings for the other options, and then choose **Next**\.
@@ -258,9 +241,7 @@ The following describes how to create a minimally configured RDS DB instance tha
 **Configure the advanced settings\.**
 
    On the **Configure Advanced Settings** page, specify the following settings:
-
    + **Database Name**: **nodeexampledb**
-
    + **DB Security Group\(s\)**: **AWS\-OpsWorks\-DB\-Master\-Server**
 **Note**  
 The **AWS\-OpsWorks\-DB\-Master\-Server** security group allows only your stack's instances to access the database\. If you want to access the database directly, attach an additional security group to the RDS DB instance with appropriate inbound rules\. For more information, see [Amazon RDS Security Groups](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.RDSSecurityGroups.html)\. You also can control access by putting the instance in a VPC\. For more information, see [Running a Stack in a VPC](workingstacks-vpc.md)\.
@@ -282,9 +263,7 @@ The following procedure describes how to create an Elastic Load Balancing load b
 **Define the load balancer\.**
 
    On the **Define Load Balancer** page, specify the following settings\.
-
    + **Name** – **Node\-LB**
-
    + **Create LB Inside** – **My Default VPC**
 
    Accept the default settings for the other options, and choose then **Next**\.
@@ -294,9 +273,7 @@ The following procedure describes how to create an Elastic Load Balancing load b
 **Assign security groups\.**
 
    On the **Assign Security Groups** page, specify the following groups: 
-
    + **default VPC security group**
-
    + **AWS\-OpsWorks\-nodejs\-App\-Server**
 
    Choose **Next**\. On the **Configure Security Settings** page, choose **Next**\. You don't need a secure listener for this example\.
@@ -330,9 +307,7 @@ You now have all the components needed to create the stack\.
 **Create the stack\.**
 
    To create a new stack, choose **Chef 11 stack**, and then specify the following settings\.
-
    +  – **NodeStack**
-
    + **Region** – **US West \(Oregon\)**
 
      You can create a stack in any AWS region, but we recommend US West \(Oregon\) for tutorials\.
@@ -344,9 +319,7 @@ You now have all the components needed to create the stack\.
 **Add a Node\.js App Server layer with an attached load balancer\.**
 
    On the **NodeStack** page, choose **Add a layer**, and then specify the following settings:
-
    + **Layer type** – **Node\.js App Server**
-
    + **Elastic Load Balancer** – **Node\-LB**
 
    Accept the default values for the other settings, and then choose **Add Layer**\. 
@@ -382,16 +355,14 @@ For a production stack, we recommend that you distribute your application server
    1. Choose the **RDS** tab, and then choose **Show Unregistered RDS DB** instances\.
 
    1. Choose the **nodeexampledb** instance, and then specify the following settings:
-
       + **User** – The master user name that you specified when you created the instance; for this example\. **opsworksuser**\.
-
       + **Password** – The master password that you specified when you created the instance\.
 
-   1. Choose **Register with Stack** to add the RDS DB instance to the stack as an Amazon RDS service layer\.
+   1. Choose **Register with Stack** to add the RDS DB instance to the stack as an [Amazon RDS service layer](workinglayers-db-rds.md)\.
 **Warning**  
 AWS OpsWorks Stacks does not validate the **User** or **Password** values, it simply passes them to the application\. If you enter them incorrectly, your application cannot connect to the database\.
 
-   To add the RDS DB instance to the stack as an Amazon RDS service layer, choose **Register with Stack**\. 
+   To add the RDS DB instance to the stack as an [Amazon RDS service layer](workinglayers-db-rds.md), choose **Register with Stack**\. 
 
 ## Deploying the Application<a name="gettingstarted-node-deploy"></a>
 
@@ -418,23 +389,16 @@ AWS OpsWorks Stacks can also deploy private files from an Amazon S3 bucket, but 
 **Create an AWS OpsWorks Stacks app\.**
 
    Return to the AWS OpsWorks Stacks console, in the navigation pane, choose **Apps**, and then choose **Add an app**\. Specify the following settings:
-
    + **Name** – `NodeDB`\.
 
      This string is the app's display name\. For most purposes, you need the app's short name, which AWS OpsWorks Stacks generates from the display name by transforming all characters to lower case and removing punctuation\. For this example, the short name is `nodedb`\. To verify an app's short name, after creating the app, choose the app on the **Apps** page to display its details page\.
-
    + **Type** – `Node.js`\.
-
    + **Data source type** – `RDS`\.
-
    + **Database instance** – Choose the Amazon RDS DB instance that you registered earlier\. 
-
    + **Database name** – Specify the database name that you created earlier, `nodeexampledb` for this example\.
-
    + **Repository type** – `Http Archive`\.
 
      You must use this repository type for public Amazon S3 files\. The `S3 Archive` type is used only for private archives\.
-
    + **Repository URL** – The archive file's Amazon S3 URL\. It should look something like `https://s3.amazonaws.com/node_example/nodedb.zip`\.
 
    Use the default values for the remaining settings, and then click **Add App** to create the app\.

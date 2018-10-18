@@ -7,7 +7,7 @@ If you want to run these recipes on a Windows instance, the simplest approach is
 
 Before continuing, make sure that you have installed Vagrant and Test Kitchen, and gone through their Getting Started walkthroughs\. For more information, see [Vagrant and Test Kitchen](cookbooks-101.md#cookbooks-101-tools)\.
 
-
+**Topics**
 + [Recipe Structure](cookbooks-101-basics-structure.md)
 + [Example 1: Installing Packages](cookbooks-101-basics-packages.md)
 + [Example 2: Managing Users](cookbooks-101-basics-users.md)

@@ -22,8 +22,8 @@ end
 | --- |--- |
 | [ecs\_cluster\_arn](#data-bag-json-ecs-cluster-ecs-cluster-arn) | [ecs\_cluster\_name](#data-bag-json-ecs-cluster-ecs-cluster-name) | 
 
-**ecs\_cluster\_arn**  
+**ecs\_cluster\_arn**  <a name="data-bag-json-ecs-cluster-ecs-cluster-arn"></a>
 The cluster's Amazon Resource Name \(ARN\) \(string\)\.
 
-**ecs\_cluster\_name**  
+**ecs\_cluster\_name**  <a name="data-bag-json-ecs-cluster-ecs-cluster-name"></a>
 The cluster's name \(string\)\.

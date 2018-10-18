@@ -3,11 +3,9 @@
 Several AWS OpsWorks Stacks actions allow you to specify custom JSON, which AWS OpsWorks Stacks installs on instances and can be used by recipes\.
 
 You can specify custom JSON in the following situations:
-
 + When you create, update, or clone a stack\.
 
-  AWS OpsWorks Stacks installs the custom JSON on all instances for all subsequent lifecycle events\.
-
+  AWS OpsWorks Stacks installs the custom JSON on all instances for all subsequent [lifecycle events](workingcookbook-events.md)\.
 + When you run a deployment or stack command\.
 
   AWS OpsWorks Stacks passes the custom JSON to instances only for that event\.
@@ -25,15 +23,11 @@ Custom JSON must be represented by, and formatted as, a valid JSON object\. For 
 AWS OpsWorks Stacks stores custom JSON in the following locations:
 
 On Linux instances:
-
 + `/var/chef/runs/run-ID/attribs.json`
-
 + `/var/chef/runs/run-ID/nodes/hostname.json`
 
 On Windows instances:
-
 + `drive:\chef\runs\run-ID\attribs.json`
-
 + `drive:\chef\runs\run-ID\nodes\hostname.json`
 
 **Note**  
@@ -79,4 +73,4 @@ Chef::Log.info("********** The app's initial background color is '#{node['colors
 This approach can be useful for passing data to recipes\. AWS OpsWorks Stacks adds that data to the instance, and recipes can retrieve the data by using standard Chef `node` syntax\. 
 
 **Note**  
-Custom JSON is limited to 80 KB\. If you need more capacity, we recommend storing some of the data on Amazon Simple Storage Service \(Amazon S3\)\. Your custom recipes can then use the [AWS CLI](http://aws.amazon.com/documentation/cli/) or the [AWS SDK for Ruby](http://docs.aws.amazon.com/sdk-for-ruby/v3/api/) to download the data from the Amazon S3 bucket to your instance\.
+Custom JSON is limited to 120 KB\. If you need more capacity, we recommend storing some of the data on Amazon Simple Storage Service \(Amazon S3\)\. Your custom recipes can then use the [AWS CLI](http://aws.amazon.com/documentation/cli/) or the [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/) to download the data from the Amazon S3 bucket to your instance\.

@@ -64,61 +64,49 @@ If your software comes in an installer package, such as an MSI, you must downloa
    1. Uses an [env](https://docs.chef.io/chef/resources.html#env) resource to add `c:\python34` to the system path\.
 
       You use the env resource to define environment variables\. In this case, the recipe allows you to easily run Python scripts from the command line by adding `c:\python34` to the path\.
-
       + The resource name specifies the environment variable's name, `PATH` for this example\.
-
       + The `value` attribute specifies the variable's value, `c:\\python34` for this example \(you need to escape the `\` character\)\.
-
       + The `:modify` action prepends the specified value to the variable's current value\.
-
       + The `delim` attribute specifies a delimiter that separates the new value from the existing value, which is `;` for this example\.
 
 1. Create a `.zip` archive of `installpython`, upload the archive to an S3 bucket, and make it public\. Record the archive's URL for later use\. For more information, see [Cookbook Repositories](workingcookbook-installingcustom-repo.md)\.
+
+   Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
 Create a stack for this example as follows\. You also can use an existing Windows stack\. Just update the cookbooks, as described later\.
 
 **Create a stack**
 
 1. Open the [AWS OpsWorks Stacks console](https://console.aws.amazon.com/opsworks/) and choose **Add Stack**\. Specify the following settings, accept the defaults for the other settings, and choose **Add Stack**\.
-
    + **Name** – InstallPython
-
    + **Region** – US West \(Oregon\)
 
      This example will work in any region, but we recommend using US West \(Oregon\) for tutorials\.
-
    + **Default operating system** – Microsoft Windows Server 2012 R2
 
-1. Choose **Add a layer** and add a custom layer to the stack with the following settings\.
-
+1. Choose **Add a layer** and [add a custom layer](workinglayers-custom.md) to the stack with the following settings\.
    + **Name** – Python
-
    + **Short name** – python
 
-1. Add a 24/7 instance with default settings to the Python layer and start it\.
+1. [Add a 24/7 instance](workinginstances-add.md) with default settings to the Python layer and [start it](workinginstances-starting.md)\.
 
 After the instance is online, you can install the cookbook and run the recipe
 
 **To install the cookbook and run the recipe**
 
-1. Edit the stack to enable custom cookbooks, and specify the following settings\.
-
+1. [Edit the stack to enable custom cookbooks](workingcookbook-installingcustom-enable.md), and specify the following settings\.
    + **Repository type** – **S3 Archive**\.
-
    + **Repository URL** – The cookbook's archive URL that you recorded earlier\.
 
    Accept the default values for the other settings and choose **Save** to update the stack configuration\.
 
-1. Run the **Update Custom Cookbooks** stack command, which installs the latest version of your custom cookbooks on the stack's online instances\. If an earlier version of your cookbook is present, this command overwrites it\.
+1. [Run the **Update Custom Cookbooks** stack command](workingstacks-commands.md), which installs the latest version of your custom cookbooks on the stack's online instances\. If an earlier version of your cookbook is present, this command overwrites it\.
 
 1. Execute the recipe by running the **Execute Recipes** stack command with **Recipes to execute** set to **installpython::default**\. This command initiates a Chef run, with a run list that consists of `installpython::default`\.
 **Note**  
-This example uses **Execute Recipes** for convenience, but you typically have AWS OpsWorks Stacks run your recipes automatically  by assigning them to the appropriate lifecycle event\. You can run such recipes by manually triggering the event\. You can use a stack command to trigger Setup and Configure events, and a deploy command to trigger Deploy and Undeploy events\.
+This example uses **Execute Recipes** for convenience, but you typically have AWS OpsWorks Stacks [run your recipes automatically ](workingcookbook-assigningcustom.md) by assigning them to the appropriate lifecycle event\. You can run such recipes by manually triggering the event\. You can use a stack command to trigger Setup and Configure events, and a [deploy command](workingapps-deploying.md) to trigger Deploy and Undeploy events\.
 
-1. To verify the installation, use RDP to connect to the instance and open Windows Explorer\. 
-
+1. To verify the installation, [use RDP to connect to the instance](workinginstances-rdp.md) and open Windows Explorer\. 
    + The file system should now have a `C:\Python34` directory\.
-
    + If you run `path` from the command line, it should look something like: `PATH=c:\python34;C:\Windows\system32;...`
-
    + If you run `python --version` from the command line, it should return `Python 3.4.3`\.

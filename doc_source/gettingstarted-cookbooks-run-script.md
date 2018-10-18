@@ -39,4 +39,4 @@ Update your cookbook by adding a recipe that runs a script on the instance\. Thi
    Hello, World!
    ```
 
-In the next step, you will update the cookbook to manage a service on the instance\.
+In the [next step](gettingstarted-cookbooks-manage-service.md), you will update the cookbook to manage a service on the instance\.

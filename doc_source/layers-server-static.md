@@ -18,49 +18,31 @@ The Static Web Server layer serves static HTML pages, which can include client\-
 **Default security group:** AWS\-OpsWorks\-Web\-Server
 
 **Setup recipes:**
-
 + opsworks\_initial\_setup
-
 + ssh\_host\_keys
-
 + ssh\_users
-
 + mysql::client
-
 + dependencies
-
 + ebs
-
 + opsworks\_ganglia::client
-
 + nginx 
 
 **Configure recipes:**
-
 + opsworks\_ganglia::configure\-client
-
 + ssh\_users
-
 + agent\_version 
 
 **Deploy recipes:**
-
 + deploy::default
-
 + deploy::web 
 
 **Undeploy recipes:**
-
 + deploy::web\-undeploy
 
 **Shutdown recipes:**
-
 + opsworks\_shutdown::default
-
 + nginx::stop
 
 **Installation:**
-
 + Nginx installs to `/usr/sbin/nginx`\.
-
 + Nginx log files are in `/var/log/nginx`\.

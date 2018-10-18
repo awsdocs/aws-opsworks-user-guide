@@ -1,9 +1,7 @@
 # Example Policies<a name="opsworks-security-users-examples"></a>
 
 This section shows some examples of IAM policies that can be attached to AWS OpsWorks Stacks users\. 
-
 + [ Administrative Permissions](#opsworks-security-users-examples-admin) shows two policies that can be used to grant permissions to administrative users\.
-
 + [ Manage Permissions](#opsworks-security-users-examples-manage) and [ Deploy Permissions](#opsworks-security-users-examples-deploy) show examples of policies that can be attached to a user to augment or restrict the Manage and Deploy permissions levels\.
 
   AWS OpsWorks Stacks determines the user's permissions by evaluating the permissions granted by attached IAM policies as well as the permissions granted by the **Permissions** page\. For more information, see [Overview of AWS IAM Permissions](http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsOverview.html)\. For more information on the **Permissions** page permissions, see [Permissions Levels](opsworks-security-users-standard.md)\.
@@ -122,7 +120,7 @@ The Manage permissions level doesn't allow users to create or clone stacks\. You
 ```
 
 Deny a Manage user the ability to register or deregister resources  
-The **Manage** permissions level allows the user to register and deregister Amazon EBS and Elastic IP address resources with the stack\. You can restrict the **Manage** permissions to allow the user to perform all **Manage** actions except registering resources by attaching the following policy\.  
+The **Manage** permissions level allows the user to [register and deregister Amazon EBS and Elastic IP address resources](resources-reg.md) with the stack\. You can restrict the **Manage** permissions to allow the user to perform all **Manage** actions except registering resources by attaching the following policy\.  
 
 ```
 {

@@ -42,4 +42,4 @@ Update your cookbook by adding a recipe that runs a command that creates an SSH 
    ssh-rsa AAAAB3N...KaNogZkT root@cookbooks-demo1
    ```
 
-In the next step, you will update the cookbook to run a script on the instance\.
+In the [next step](gettingstarted-cookbooks-run-script.md), you will update the cookbook to run a script on the instance\.

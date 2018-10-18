@@ -1,6 +1,6 @@
 # Installing and Configuring the AWS CLI<a name="registered-instances-register-registering-cli"></a>
 
-Before you register your first instance, you must install and configure a current version of the AWS CLI on the computer that you will run `register` from\. For more information about installing and configuring the AWS CLI, see [Installing the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) and [Configuring the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)\.
+Before you register your first instance, you must install and configure a current version of the AWS CLI on the computer from which you run `register`\. For more information about installing and configuring the AWS CLI, see [Installing the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) and [Configuring the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)\.
 
 **Note**  
 Although [AWS Tools for Windows PowerShell](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-welcome.html) includes the [http://docs.aws.amazon.com/powershell/latest/reference/items/Register-OPSInstance.html](http://docs.aws.amazon.com/powershell/latest/reference/items/Register-OPSInstance.html) cmdlet, which calls the `register` API action, we recommend that you use the AWS CLI to run the `register` command instead\.
@@ -14,13 +14,24 @@ You specify permissions by attaching an IAM policy to the IAM user or role\. For
 
 To examine the AWSOpsWorksRegisterCLI policy, see [The AWSOpsWorksRegisterCLI Policy](registered-instances-register-registering-template.md)\. For more information about creating and managing AWS credentials, see [AWS Security Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)\. 
 
-
-+ [Using Installed Credentials](#registered-instances-register-registering-cli-creds)
+**Topics**
 + [Using an IAM Role](#registered-instances-register-registering-cli-role)
++ [Using Installed Credentials](#registered-instances-register-registering-cli-creds)
+
+## Using an IAM Role<a name="registered-instances-register-registering-cli-role"></a>
+
+If you are running the command from the Amazon EC2 instance that you intend to register, the preferred strategy for providing credentials to `register` is to use an IAM role\. This approach allows you to avoid installing your credentials on the instance\. For more information about how to attach an IAM role to an existing instance, see [Attach an AWS IAM Role to an Existing Amazon EC2 Instance by Using the AWS CLI](https://aws.amazon.com/blogs/security/new-attach-an-aws-iam-role-to-an-existing-amazon-ec2-instance-by-using-the-aws-cli/) \(blog post\)\. For instances that were launched with an instance profile \(recommended\), add the `--use-instance-profile` switch to your `register` command to provide credentials; do not use the `--profile` parameter\.
+
+If the instance is running and has a role, you can grant the required permissions by attaching the `AWSOpsWorksRegisterCLI` policy to the role\. The role provides a set of default credentials for the instance\. As long as you have not installed any credentials on the instance, `register` automatically assumes the role and runs with its permissions\.
+
+**Important**  
+We recommend that you do not install credentials on the instance\. In addition to creating a security risk, the instance's role is at the end of the default providers chain that the AWS CLI uses to locate the default credentials\. Installed credentials might take precedence over the role, and `register` could therefore not have the required permissions\. For more information, see [Configuration Settings and Precedence](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#config-settings-and-precedence)\.
+
+If a running instance does not have a role, you must install credentials with the required permissions on the instance, as described in [Using Installed Credentials](#registered-instances-register-registering-cli-creds)\. It is recommended, easier, and less error\-prone to use instances that are launched with an instance profile\.
 
 ## Using Installed Credentials<a name="registered-instances-register-registering-cli-creds"></a>
 
-There are several ways to install IAM user credentials on a system and provide them to an AWS CLI command\. The following describes the preferred approach and assumes that you will create a new IAM user\. You can also use an existing IAM user's credentials as long as the attached policies grant the required permissions\. For more information, including a description of other ways to install credentials, see [Configuration and Credential Files](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files)\.
+There are several ways to install IAM user credentials on a system and provide them to an AWS CLI command\. The following describes an approach that is no longer recommended, but can be used if you are registering EC2 instances that were launched without an instance profile\. You can also use an existing IAM user's credentials as long as the attached policies grant the required permissions\. For more information, including a description of other ways to install credentials, see [Configuration and Credential Files](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files)\.
 
 **To use installed credentials**
 
@@ -38,17 +49,6 @@ There are several ways to install IAM user credentials on a system and provide t
 
    Substitute the IAM credentials that you saved earlier for the *access\_key\_id* and *secret\_access\_key* values\. You can specify any name you prefer for a profile name, with two limitations: the name must be unique and the default profile must be named `default`\. You can also use an existing profile, as long as it has the required permissions\. 
 
-1. Use the `register` command's `--profile` argument to specify the profile name\. `register` will then run with the permissions that are granted to the associated credentials\.
+1. Use the `register` command's `--profile` parameter to specify the profile name\. The `register` command runs with the permissions that are granted to the associated credentials\.
 
-   You can also omit `--profile`\. In that case, `register` runs with default credentials\. Be aware that these are not necessarily the default profile's credentials , so you must ensure that the default credentials have the required permissions\. For more information on how the AWS CLI determines default credentials, see [Configuring the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)\.
-
-## Using an IAM Role<a name="registered-instances-register-registering-cli-role"></a>
-
-If you are running the command from the Amazon EC2 instance that you intend to register, the preferred strategy for providing credentials to `register` is to use an IAM role\. This approach allows you to avoid installing your credentials on the instance\. For more information about how to attach an IAM role to an existing instance, see [Attach an AWS IAM Role to an Existing Amazon EC2 Instance by Using the AWS CLI](https://aws.amazon.com/blogs/security/new-attach-an-aws-iam-role-to-an-existing-amazon-ec2-instance-by-using-the-aws-cli/) \(blog post\)\.
-
-If the instance is running and has a role, you can grant the required permissions by attaching the AWSOpsWorksRegisterCLI policy to the role\. The role provides a set of default credentials for the instance\. As long as you have not installed any credentials on the instance, `register` automatically assumes the role and runs with its permissions\.
-
-**Important**  
-We recommend that you do not install credentials on the instance\. In addition to creating a security risk, the instance's role is at the end of the default providers chain that the AWS CLI uses to locate the default credentials\. Installed credentials might take precedence over the role, and `register` could therefore not have the required permissions\. For more information, see [Configuration Settings and Precedence](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#config-settings-and-precedence)\.
-
-If a running instance does not have a role, you must install credentials with the required permissions on the instance, as described in [Using Installed Credentials](#registered-instances-register-registering-cli-creds)\. 
+   You can also omit `--profile`\. In that case, `register` runs with default credentials\. Be aware that these are not necessarily the default profile's credentials , so you must ensure that the default credentials have the required permissions\. For more information about how the AWS CLI determines default credentials, see [Configuring the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)\.

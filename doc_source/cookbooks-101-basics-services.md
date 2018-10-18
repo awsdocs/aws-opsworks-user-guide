@@ -5,7 +5,7 @@ Packages such as application servers typically have an associated service that m
 **Note**  
 The example does a very minimal Tomcat installation, just enough to demonstrate the basics of how to use a `service` resource\. For an example of how to implement recipes for a more functional Tomcat server, see [Creating a Custom Tomcat Server Layer](create-custom.md)\.
 
-
+**Topics**
 + [Defining and Starting a Service](#cookbooks-101-basics-services-service)
 + [Using notifies to Start or Restart a Service](#cookbooks-101-basics-services-notifies)
 
@@ -47,15 +47,11 @@ end
 ```
 
 The recipe does the following:
-
 + The `execute` resource runs `apt-get update` to install the current system updates\.
 
   For the Ubuntu 12\.04 LTS instance used in this example, you must install the updates before installing Tomcat\. Other systems might have different requirements\.
-
 + The `package` resource installs Tomcat 7\.
-
 + The included`tomcat::service` recipe defines the service and is discussed later\.
-
 + The `service` resource starts the Tomcat service\.
 
   You can also use this resource to issue other commands, such as stopping and restarting the service\.
@@ -71,19 +67,14 @@ end
 ```
 
 This recipe creates the Tomcat service definition as follows: 
-
 + The resource name, `tomcat`, is used by other recipes to reference the service\.
 
   For example, `default.rb` references `tomcat` to start the service\.
-
 + The `service_name` resource specifies the service name\. 
 
   When you list the services on the instance, the Tomcat service will be named tomcat7\.
-
 + `supports` specifies how Chef manages the service's `restart`, `reload`, and `status` commands\.
-
   + `true` indicates that Chef can use the init script or other service provider to run the command\.
-
   + `false` indicates that Chef must attempt to run the command by other means\.
 
 Notice that `action` is set to `:nothing`, which directs the resource to take no action\. The service resource does support actions such as `start` and `restart`\. However, this cookbook follows a standard practice of using a service definition that takes no action and starting or restarting the service elsewhere\. Each recipe that starts or restarts a service must first define it, so the simplest approach is to put the service definition in a separate recipe and include it in other recipes as needed\.
@@ -109,9 +100,7 @@ If you were running `service.rb` separately from `default.rb`, you would have to
 ## Using notifies to Start or Restart a Service<a name="cookbooks-101-basics-services-notifies"></a>
 
 Production implementations typically do not use `service` to start or restart a service\. Instead, they add `notifies` to any of several resources\. For example, if you want to restart the service after modifying a configuration file, you include `notifies` in the associated `template` resource\. Using `notifies` has the following advantages over using a `service` resource to explicitly restart the service\. 
-
 + The `notifies` element restarts the service only if the associated configuration file has changed, so there's no risk of causing an unnecessary service restart\. 
-
 + Chef restarts the service at most once at the end of each run, regardless of how many `notifies` the run contains\.
 
   For example, Chef run might include multiple template resources, each of which modifies a different configuration file and requires a service restart if the file has changed\. However, you typically want to restart the service only once, at the end of the Chef run\. Otherwise, you might attempt to restart a service that is not yet fully operational from an earlier restart, which can lead to errors\.
@@ -166,11 +155,9 @@ end
 ```
 
 The example merges the recipe from [Creating a File from a Template](cookbooks-101-basics-files.md#cookbooks-101-basics-files-template) into the recipe from the preceding section, with two significant changes:
-
 + The `service` resource is still there, but it now serves a somewhat different purpose\.
 
   The `:enable` action enables the Tomcat service at boot\.
-
 + The template resource now includes `notifies`, which restarts the Tomcat service if `example_data.json` has changed\.
 
   This ensures that the service is started when Tomcat is first installed and restarted after every configuration change\.

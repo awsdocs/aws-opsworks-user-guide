@@ -8,38 +8,24 @@ A *data bag* is a Chef concept\. A data bag is a global variable that is stored 
 AWS OpsWorks Stacks does not support encrypted data bags\. To store sensitive data in encrypted form, such as passwords or certificates, we recommend storing it in a private S3 bucket\. You can then create a custom recipe that uses the [Amazon SDK for Ruby](http://aws.amazon.com/documentation/sdk-for-ruby/) to retrieve the data\. For an example, see [Using the SDK for Ruby](cookbooks-101-opsworks-s3.md)\.
 
 Data bag content can include any of the following:
-
 + **String** content that follows standard Ruby syntax and can use single or double quotes, although strings containing certain special characters must have double quotes\. For more information, go to the [Ruby](http://www.ruby-lang.org/en/documentation/) documentation site\.
-
 + **Boolean** content, which is either `true` or `false` \(no quotes\)\.
-
 + **Number** content, which is either integer or decimal numbers, such as `4` or `2.5` \(no quotes\)\.
-
 + **List** content, which takes the form of comma\-separated values enclosed in square brackets \(no quotes\), such as `[ '80', '443' ]`
-
 + **JSON objects**, which contain additional data bag content, such as `"my-app": {"elastic_ip": null,...}`\.
 
 Chef recipes can access data bags, data bag items, and data bag content through Chef search or directly\. The following describes how to use both access approaches \(although Chef search is preferred\)\.
 
 To access a data bag through Chef search, use the [search](https://docs.chef.io/dsl_recipe.html#search) method, specifying the desired search index\. AWS OpsWorks Stacks provides the following search indexes:
-
-+ aws\_opsworks\_app, which represents a set of deployed apps for a stack\.
-
-+ aws\_opsworks\_command, which represents a set of commands that were run on a stack\. 
-
-+ aws\_opsworks\_ecs\_cluster, which represents a set of Amazon Elastic Container Service \(Amazon ECS\) cluster instances for a stack\. 
-
-+ aws\_opsworks\_elastic\_load\_balancer, which represents a set of Elastic Load Balancing load balancers for a stack\.
-
-+ aws\_opsworks\_instance, which represents a set of instances for a stack\.
-
-+ aws\_opsworks\_layer, which represents a set of layers for a stack\.
-
-+ aws\_opsworks\_rds\_db\_instance, which represents a set of Amazon Relational Database Service \(Amazon RDS\) instances for a stack\.
-
-+ aws\_opsworks\_stack, which represents a stack\.
-
-+ aws\_opsworks\_user, which represents a set of users for a stack\.
++ [aws\_opsworks\_app](data-bag-json-app.md), which represents a set of deployed apps for a stack\.
++ [aws\_opsworks\_command](data-bag-json-command.md), which represents a set of commands that were run on a stack\. 
++ [aws\_opsworks\_ecs\_cluster](data-bag-json-ecs-cluster.md), which represents a set of Amazon Elastic Container Service \(Amazon ECS\) cluster instances for a stack\. 
++ [aws\_opsworks\_elastic\_load\_balancer](data-bag-json-elb.md), which represents a set of Elastic Load Balancing load balancers for a stack\.
++ [aws\_opsworks\_instance](data-bag-json-instance.md), which represents a set of instances for a stack\.
++ [aws\_opsworks\_layer](data-bag-json-layer.md), which represents a set of layers for a stack\.
++ [aws\_opsworks\_rds\_db\_instance](data-bag-json-rds.md), which represents a set of Amazon Relational Database Service \(Amazon RDS\) instances for a stack\.
++ [aws\_opsworks\_stack](data-bag-json-stack.md), which represents a stack\.
++ [aws\_opsworks\_user](data-bag-json-user.md), which represents a set of users for a stack\.
 
 Once you know the search index name, you can access the content of the data bag for that search index\. For example, the following recipe code uses the `aws_opsworks_app` search index to get the content of the first data bag item \(the first JSON file\) in the`aws_opsworks_app` data bag \(the `aws_opsworks_app` directory\)\. The code then writes two messages to the Chef log, one with the app's shortname data bag content \(a string in the JSON file\), and another with the app's source URL data bag content \(another string in the JSON file\):
 
@@ -112,7 +98,7 @@ end
 
 Of these two approaches, we recommend that you use Chef search\. All related examples in this guide demonstrate this approach\.
 
-
+**Topics**
 + [App Data Bag \(aws\_opsworks\_app\)](data-bag-json-app.md)
 + [Command Data Bag \(aws\_opsworks\_command\)](data-bag-json-command.md)
 + [Amazon ECS Cluster Data Bag \(aws\_opsworks\_ecs\_cluster\)](data-bag-json-ecs-cluster.md)

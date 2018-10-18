@@ -3,9 +3,7 @@
 The following topics describe how to deploy apps to a Java App Server layer's instances\. The examples are for JSP apps, but you can use essentially the same procedure for installing other types of Java app\.
 
 You can deploy JSP pages from any of the supported repositories\. If you want to deploy WAR files, note that AWS OpsWorks Stacks automatically extracts WAR files that are deployed from an Amazon S3 or HTTP archive, but not from a Git or Subversion repository\. If you want to use Git or Subversion for WAR files, you can do one of the following:
-
 + Store the extracted archive in the repository\.
-
 + Store the WAR file in the repository and use a Chef deployment hook to extract the archive, as described in the following example\.
 
 You can use Chef deployment hooks to run user\-supplied Ruby applications on an instance at any of four deployment stages\. The application name determines the stage\. The following is an example of a Ruby application named `before_migrate.rb`, which extracts a WAR file that has been deployed from a Git or Subversion repository\. The name associates the application with the Checkout deployment hook so it runs at the beginning of the deployment operation, after the code is checked but before migration\. For more information on how to use this example, see [Using Chef Deployment Hooks](workingcookbook-extend-hooks.md)\.
@@ -29,7 +27,7 @@ When you deploy an update to a JSP app, Tomcat might not recognize the update an
 </context-param>
 ```
 
-
+**Topics**
 + [Deploying a JSP App](#layers-java-deploy-jsp)
 + [Deploying a JSP App with a Back\-End Database](#layers-java-deploy-jsp-db)
 
@@ -62,32 +60,26 @@ The following procedure assumes that you are already familiar with the basics of
 
 **To deploy a JSP page from an Amazon S3 archive**
 
-1. Create a stack with a Java App Server layer, add a 24/7 instance to the layer, and start it\. 
+1. [Create a stack](workingstacks-creating.md) with a Java App Server layer, [add a 24/7 instance](workinginstances-add.md) to the layer, and [start it](workinginstances-starting.md)\. 
 
 1. Copy the code to a file named `simplejsp.jsp`, put the file in a folder named `simplejsp`, and create a `.zip` archive of the folder\. The names are arbitrary; you can use any file or folder names that you want\. You can also use other types of archive, including gzip, bzip2, tarball, or Java WAR file\. Note that AWS OpsWorks Stacks does not support uncompressed tarballs\. To deploy multiple JSP pages, include them in the same archive\.
 
 1. Upload the archive to an Amazon S3 bucket and make the file public\. Copy the file's URL for later use \. For more information on how to create buckets and upload files, go to [Get Started With Amazon Simple Storage Service](http://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html)\.
 
-1. Add an app to the stack and specify following settings:
-
+1. [Add an app](workingapps-creating.md#workingapps-creating-general) to the stack and specify following settings:
    + **Name** – `SimpleJSP`
-
    + **App type** – `Java`
-
    + **Repository type** – `Http Archive`
-
    + **Repository URL** – the Amazon S3 URL of your archive file\. It should look something like `https://s3.amazonaws.com/jsp_example/simplejsp.zip`\.
 
    Use the default values for the remaining settings and then click **Add App** to create the app\.
 
-1. Deploy the app to the Java App Server instance\.
+1. [Deploy the app](workingapps-deploying.md) to the Java App Server instance\.
 
 You can now go to the app's URL and view the app\. If you have not specified a domain, you can construct a URL by using either the instance's public IP address or its public DNS name\. To get an instance's public IP address or public DNS name, go the AWS OpsWorks Stacks console and click the instance's name on the **Instances** page to open its details page\. 
 
 The rest of URL depends on the app's short name, which is a lowercase name that AWS OpsWorks Stacks generates from the app name that you specified when you created the app\. For example the short name of SimpleJSP is simplejsp\. You can get an app's short name from its details page\. 
-
 + If the short name is `root`, you can use either `http://public_DNS/appname.jsp` or `http://public_IP/appname.jsp`\.
-
 + Otherwise, you can use either `http://public_DNS/app_shortname/appname.jsp` or `http://public_IP/app_shortname/appname.jsp`\. 
 
 If you have specified a domain for the app, the URL is `http://domain/appname.jsp`\.
@@ -160,27 +152,21 @@ AWS OpsWorks Stacks creates and initializes the `DataSource` object, binds it to
 
 **To deploy a JSP page that connects to a MySQL database**
 
-1. Create a stack with a Java App Server layer, add 24/7 instances to each layer, and start it\. 
+1. [Create a stack](workingstacks-creating.md) with a Java App Server layer, [add 24/7 instances](workinginstances-add.md) to each layer, and [start it](workinginstances-starting.md)\. 
 
 1. Add a database layer to the stack\. The details depend on which database you use\.
 
-   To use a MySQL instance for the example, add a MySQL layer to the stack, add a 24/7 instance to the layer, and start it\.
+   To use a MySQL instance for the example, [add a MySQL layer](workinglayers-db-mysql.md) to the stack, [add a 24/7 instance](workinginstances-add.md) to the layer, and [start it](workinginstances-starting.md#workinginstances-starting-start)\.
 
    To use an Amazon RDS \(MySQL\) instance for the example:
-
    + Specify a MySQL database engine for the instance\.
-
    + Assign the **AWS\-OpsWorks\-DB\-Master\-Server \(*security\_group\_id*\)** and **AWS\-OpsWorks\-Java\-App\-Server \(*security\_group\_id*\)** security groups to the instance\. AWS OpsWorks Stacks creates these security groups for you when you create your first stack in the region\.
-
    + Create a database named `simplejspdb`\.
-
    + Ensure that the master user name and password do not contain `&` or other characters that could cause a Tomcat error\.
 
      In particular during startup Tomcat must parse the web app context file, which is an XML file that includes the master password and user name\. If the either string includes a `&` character, the XML parser treats it as a malformed XML entity and throws a parsing exception, which prevents Tomcat from starting\. For more information about the web app context file, see [tomcat::context](create-custom-configure.md#create-custom-configure-context)\.
-
-   + Add a MySQL driver to the Java App Server layer\.
-
-   + Register the RDS instance with your stack\. 
+   + [Add a MySQL driver](workingapps-connectdb.md) to the Java App Server layer\.
+   + [Register the RDS instance](workinglayers-db-rds.md#workinglayers-db-rds-register) with your stack\. 
 
    For more information about how to use Amazon RDS instances with AWS OpsWorks Stacks, see [Amazon RDS Service Layer](workinglayers-db-rds.md)\.
 
@@ -188,20 +174,13 @@ AWS OpsWorks Stacks creates and initializes the `DataSource` object, binds it to
 
 1. Upload the archive to an Amazon S3 bucket and make the file public\. Copy the file's URL for later use \. For more information on how to create buckets and upload files, go to [Get Started With Amazon Simple Storage Service](http://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html)\.
 
-1. Add an app to the stack and specify following settings:
-
+1. [Add an app](workingapps-creating.md#workingapps-creating-general) to the stack and specify following settings:
    + **Name** – `SimpleJSPDB`
-
    + **App type** – `Java`
-
    + **Data source type** – **OpsWorks** \(for a MySQL instance\) or **RDS** \(for an Amazon RDS instance\)\.
-
    + **Database instance** – The MySQL instance you created earlier, which is typically named **db\-master1\(mysql\)**, or the Amazon RDS instance, which will be named ***DB\_instance\_name* \(mysql\)**\.
-
    + **Database name** – `simplejspdb`\.
-
    + **Repository type** – `Http Archive`
-
    + **Repository URL** – the Amazon S3 URL of your archive file\. It should look something like `https://s3.amazonaws.com/jsp_example/simplejspdb.zip`\.
 
    Use the default values for the remaining settings and then click **Add App** to create the app\.
@@ -222,7 +201,7 @@ AWS OpsWorks Stacks creates and initializes the `DataSource` object, binds it to
 
    For more information on how to add custom JSON attributes to the stack configuration attributes, see [Using Custom JSON](workingstacks-json.md)\.
 
-1. Deploy the app to the Java App Server instance\.
+1. [Deploy the app](workingapps-deploying.md) to the Java App Server instance\.
 
 You can now use the app's URL to view the app\. For a description of how to construct the URL, see [Deploying a JSP App](#layers-java-deploy-jsp)\. 
 

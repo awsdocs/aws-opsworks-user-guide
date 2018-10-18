@@ -15,41 +15,27 @@ If the standard layers don't suit your requirements, you can create a custom lay
 **Compatibility:** Custom layers are compatible with the following layers: custom, db\-master, lb, memcached, monitoring\-master, nodejs\-app, php\-app, rails\-app, and web
 
 **Configuration:** To configure a custom layer, you must specify the following:
-
 + The layer's name
-
 + The layer's short name, which identifies the layer in Chef recipes and must use only a\-z and numbers
 
 For Linux stacks, the custom layer uses the following recipes\.
 
 **Setup recipes:**
-
 +  opsworks\_initial\_setup
-
 + ssh\_host\_keys
-
 + ssh\_users
-
 + mysql::client
-
 + dependencies
-
 + ebs
-
 + opsworks\_ganglia::client
 
 **Configure recipes:**
-
 + opsworks\_ganglia::configure\-client
-
 + ssh\_users
-
 + agent\_version 
 
 **Deploy recipes:**
-
 + deploy::default
 
 **Shutdown recipes:**
-
 + opsworks\_shutdown::default

@@ -11,7 +11,7 @@ The **Add Layer** page provides the following configuration options, all of whic
 
 **Ruby Version**  
 The Ruby version that will be used by your applications\. The default value is 2\.0\.0\.   
-You can also specify your preferred Ruby version by overriding the `[:opsworks][:ruby_version]` attribute\.  
+You can also specify your preferred Ruby version by [overriding the `[:opsworks][:ruby_version]`](workingcookbook-attributes.md) attribute\.  
 AWS OpsWorks Stacks installs a separate Ruby package to be used by recipes and the instance agent\. For more information, see [Ruby Versions](workingcookbook-ruby.md)\.
 
 **Rails Stack**  
@@ -50,7 +50,7 @@ You can modify some configuration settings by using custom JSON or a custom attr
 **Important**  
 If your Ruby on Rails application uses SSL, we recommend that you disable SSLv3 if possible to address the vulnerabilities described in [CVE\-2014\-3566](http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566)\. For more information, see [Disabling SSLv3 for Rails Servers](#workinglayers-rails-sslv3)\.
 
-
+**Topics**
 + [Disabling SSLv3 for Rails Servers](#workinglayers-rails-sslv3)
 + [Connecting to a Database](#workinglayers-rails-db)
 + [Deploying Ruby on Rails Apps](#workinglayers-rails-deploy)
@@ -58,9 +58,7 @@ If your Ruby on Rails application uses SSL, we recommend that you disable SSLv3 
 ## Disabling SSLv3 for Rails Servers<a name="workinglayers-rails-sslv3"></a>
 
 To disable SSLv3 for Rails servers, update the layer's **Ruby Version** setting to 2\.1, which installs Ruby 2\.1\.4 as the version that applications use\.
-
 + Update the layer's **Ruby Version** setting to 2\.1, which installs Ruby 2\.1\.4 as the version that applications use\.
-
 + Update the configuration file for your Rails stack, as follows\.
 
 **Apache with Phusion Passenger**  
@@ -76,26 +74,18 @@ For more information on how to configure `nginx.conf`, see [Configuring HTTPS se
 
 ## Connecting to a Database<a name="workinglayers-rails-db"></a>
 
-When you deploy an app, AWS OpsWorks Stacks creates a new `database.yml` file using information from the app's `deploy` attributes\. If you attach a MySQL or Amazon RDS instance to the app, AWS OpsWorks Stacks adds the connection information to the `deploy` attributes, so that `database.yml` automatically contains the correct connection data\. 
+When you deploy an app, AWS OpsWorks Stacks creates a new `database.yml` file using information from the app's [`deploy` attributes](workingcookbook-json.md#workingcookbook-json-deploy)\. If you [attach a MySQL or Amazon RDS instance](workingapps-creating.md#workingapps-creating-data) to the app, AWS OpsWorks Stacks adds the connection information to the `deploy` attributes, so that `database.yml` automatically contains the correct connection data\. 
 
 If an app does not have an attached database, by default, AWS OpsWorks Stacks does not add any connection information to the `deploy` attributes and does not create `database.yml`\. If you want to use a different database, you can use custom JSON to add database attributes to the app's `deploy` attributes with the connection information\. The attributes are all under`["deploy"]["appshortname"]["database"]`, where *appshortname* is the app's short name, which AWS OpsWorks Stacks generates from the app name\. The values you specify in custom JSON override any default settings\. For more information, see [Adding Apps](workingapps-creating.md)\.
 
-AWS OpsWorks Stacks incorporates the following `[:...][:database]` attribute values into `database.yml`\. The required attributes depend on the particular database, but you must have a `host` attribute or AWS OpsWorks Stacks will not create `database.yml`\.
-
+AWS OpsWorks Stacks incorporates the following [`[:...][:database]`](attributes-json-deploy.md#attributes-json-deploy-app-db) attribute values into `database.yml`\. The required attributes depend on the particular database, but you must have a `host` attribute or AWS OpsWorks Stacks will not create `database.yml`\.
 + `[:adapter] (String)` – The database adapter, such as `mysql`\.
-
 + `[:database]` \(String\) – The database name\.
-
 + `[:encoding]` \(String\) – The encoding, which is typically set to `utf8`\.
-
 + `[:host]` \(String\) – The host URL, such as `railsexample.cdlqlk5uwd0k.us-west-2.rds.amazonaws.com`\.
-
 + `[:reconnect]` \(Boolean\) – Whether the application should reconnect if the connection no longer exists\.
-
 + `[:password]` \(String\) – The database password\.
-
 + `[:port]` \(Number\)\. – The database's port number\. Use this attribute to override the default port number, which is set by is set by the adapter\.
-
 + `[:username]` \(String\) – The database user name\.
 
 The following example shows custom JSON for an app whose short name is *myapp*\.
@@ -126,29 +116,24 @@ You can deploy Ruby on Rails apps from any of the supported repositories\. The f
 
 **To deploy a Ruby on Rails app from a GitHub repository**
 
-1. Create a stack with a Rails App Server layer with Apache/Passenger as the Rails stack, add a 24/7 instance to the layer, and start it\. 
+1. [Create a stack](workingstacks-creating.md) with a Rails App Server layer with Apache/Passenger as the Rails stack, [add a 24/7 instance](workinginstances-add.md) to the layer, and [start it](workinginstances-starting.md)\. 
 
-1. After the instance is online, add an app to the stack and specify following settings:
-
+1. After the instance is online, [add an app](workingapps-creating.md#workingapps-creating-general) to the stack and specify following settings:
    + **Name** – Any name you prefer; the example uses `PhotoPoll`\.
 
-     AWS OpsWorks Stacks uses this name for display purposes, and generates a short name for internal use and to identify the app in the stack configuration and deployment attributes\. For example, the PhotoPoll short name is photopoll\.
-
+     AWS OpsWorks Stacks uses this name for display purposes, and generates a short name for internal use and to identify the app in the [stack configuration and deployment attributes](workingcookbook-json.md)\. For example, the PhotoPoll short name is photopoll\.
    + **App type** – **Ruby on Rails**\.
-
    + ** Rails environment** – The available environments are determined by the application\.
 
      The example app has three: **development**, **test**, and **production**\. For this example, set the environment to **development**\. See the example code for descriptions of each environment\.
-
    + **Repository type** – Any of the supported repository types\. Specify `Git` for this example
-
    + **Repository URL** – The repository that the code should be deployed from\.
 
      For this example, set the URL to **git://github\.com/awslabs/opsworks\-demo\-rails\-photo\-share\-app**\.
 
    Use the default values for the remaining settings and then click **Add App** to create the app\.
 
-1. Deploy the app to the Rails App Server instance\.
+1. [Deploy the app](workingapps-deploying.md) to the Rails App Server instance\.
 
 1. When deployment is finished, go to the **Instances** page and click the Rails App Server instance's public IP address\. You should see the following:
 

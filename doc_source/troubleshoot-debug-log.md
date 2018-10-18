@@ -7,7 +7,7 @@ AWS OpsWorks Stacks gives you several ways to view Chef logs\. Once you have the
 **Note**  
 You can also view a specified log's tail by using SSH to connect to the instance and running the agent CLI `show_log` command\. For more information, see [Displaying Chef Logs](troubleshoot-debug-cli.md#troubleshoot-debug-cli-log)\.
 
-
+**Topics**
 + [Viewing a Chef Log with the Console](#troubleshoot-debug-log-console)
 + [Viewing a Chef Log with the CLI or API](#troubleshoot-debug-log-cli)
 + [Viewing a Chef Log on an Instance](#troubleshoot-debug-log-instance)
@@ -16,7 +16,7 @@ You can also view a specified log's tail by using SSH to connect to the instance
 
 ## Viewing a Chef Log with the Console<a name="troubleshoot-debug-log-console"></a>
 
-The simplest way to view a Chef log is to go to the instance's details page\. The **Logs** section includes an entry for each event and Execute Recipes command\. The following shows an instance's **Logs** section, with **configure** and **setup** commands, which correspond to Configure and Setup lifecycle events\. 
+The simplest way to view a Chef log is to go to the instance's details page\. The **Logs** section includes an entry for each event and [Execute Recipes](workingstacks-commands.md) command\. The following shows an instance's **Logs** section, with **configure** and **setup** commands, which correspond to Configure and Setup lifecycle events\. 
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs11.png)
 
@@ -82,7 +82,7 @@ Topics in this section apply to Chef 12\. For information about the location of 
 
 ### Linux instances<a name="troubleshoot-debug-log-instance-linux"></a>
 
-AWS OpsWorks Stacks stores each instance's Chef logs in its `/var/chef/runs` directory\. \(For Linux instances, this directory also includes the associated data bags, stored as JSON\-formatted files\.\) You need sudo privileges to access this directory\. The log for each run is in a file named `chef.log` inside of the individual run's subdirectory\.
+AWS OpsWorks Stacks stores each instance's Chef logs in its `/var/chef/runs` directory\. \(For Linux instances, this directory also includes the associated [data bags](data-bags.md), stored as JSON\-formatted files\.\) You need [sudo privileges](opsworks-security-users.md) to access this directory\. The log for each run is in a file named `chef.log` inside of the individual run's subdirectory\.
 
 AWS OpsWorks Stacks stores its internal logs in the instance's `/var/log/aws/opsworks` folder\. The information is usually not very helpful for troubleshooting purposes\. However, these logs are useful to AWS OpsWorks Stacks support, and you might be asked to provide them if you encounter an issue with the service\. The Linux logs can also sometimes provide useful troubleshooting data\.
 
@@ -268,7 +268,7 @@ AWS OpsWorks Stacks runs recipes from the instance's cookbook cache\. It downloa
 
 1. Make sure that you have committed your changes to the repository\.
 
-1. Run the Update Cookbooks stack command to update the cookbook cache with the most recent version from the repository\.
+1. Run the [Update Cookbooks stack command](workingstacks-commands.md) to update the cookbook cache with the most recent version from the repository\.
 
 Local command failure  
 If a Chef `execute` resource fails to execute the specified command, you will see something like the following:  

@@ -1,9 +1,10 @@
 # Using the SDK for Ruby on an AWS OpsWorks Stacks Windows Instance<a name="cookbooks-101-opsworks-s3-windows"></a>
 
 **Note**  
-This example assumes that you have already done the [Running a Recipe on a Windows Instance](cookbooks-101-opsworks-opsworks-windows.md) example\. If not, you should do that example first\. In particular, it describes how to enable RDP access to your instances\.
+This example assumes that you have already done the [Running a Recipe on a Windows Instance](cookbooks-101-opsworks-opsworks-windows.md) example\. If not, you should do that example first\. In particular, it describes how to enable RDP access to your instances\.  
+Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
-This topic describes how to use the [AWS SDK for Ruby](http://docs.aws.amazon.com/sdk-for-ruby/v3/api/) on an AWS OpsWorks Stacks Windows instance to download a file from an S3 bucket\.
+This topic describes how to use the [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/) on an AWS OpsWorks Stacks Windows instance to download a file from an S3 bucket\.
 
 If a Ruby application needs to access an AWS resource, you must provide it with a set of AWS credentials with the appropriate permissions\. For recipes, your best option for providing AWS credentials is to use an AWS Identity and Access Management \([IAM\) role](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html)\. An IAM role works much like an IAM user; it has an attached policy that grants permissions to use the various AWS services\. However, you assign a role to an Amazon Elastic Compute Cloud \(Amazon EC2\) instance instead of to an individual\. Applications running on that instance can then acquire the permissions granted by the attached policy\. With a role, credentials never appear in your code, even indirectly\. 
 
@@ -48,7 +49,7 @@ The procedure for setting up the cookbook is similar to the one used by [Running
      block do
        require 'aws-sdk'
        
-       Aws.config[:ssl_ca_bundle] = 'C:\ProgramData\Git\bin\curl-ca-bundle.crt'
+       Aws.use_bundled_cert!
    
        s3_client = Aws::S3::Client.new(region:'us-west-2')
    
@@ -69,10 +70,7 @@ The recipe performs the following tasks\.
 1: Install the SDK for Ruby v2\.  
 The example uses the SDK for Ruby to download the object\. However, AWS OpsWorks Stacks does not install this SDK on Windows instances, so the first part of the recipe uses a [https://docs.chef.io/chef/resources.html#chef-gem](https://docs.chef.io/chef/resources.html#chef-gem) resource to handle that task\. You use this resource to install gems for use by Chef, which includes recipes\.
 
-2: Specify a Certificate Bundle\.  
-Amazon S3 uses SSL, so you need an appropriate certificate to download objects from an S3 bucket\. The SDK for Ruby v2 does not include a certificate bundle, so you must provide one and configure the SDK for Ruby to use it\. AWS OpsWorks Stacks does not install a certificate bundle directly, but it does install Git, which includes a certificate bundle \(`curl-ca-bundle.crt`\)\. For simplicity, this example configures the SDK for Ruby to use the Git certificate bundle, but you can also install your own and configure the SDK accordingly\.
-
-3: Download the file\.  
+2: Download the file\.  
 The third part of the recipe uses a [https://docs.chef.io/chef/resources.html#ruby-block](https://docs.chef.io/chef/resources.html#ruby-block) resource to run SDK for Ruby v2 code to download `myfile.txt` from an S3 bucket named `windows-cookbooks` to the instance's `/chef` directory\. Change `windows-cookbooks` to the name of the bucket that contains `myfile.txt`\. 
 
 **Note**  
@@ -83,40 +81,33 @@ Create a stack for this example as follows\. You can also use an existing Window
 **Create a stack**
 
 1. Open the [AWS OpsWorks Stacks console](https://console.aws.amazon.com/opsworks/) and choose **Add Stack**\. Specify the following settings, accept the defaults for the other settings, and choose **Add Stack**\.
-
    + **Name** – S3Download
-
    + **Region** – US West \(Oregon\)
 
      This example will work in any region, but we recommend using US West \(Oregon\) for tutorials\.
-
    + **Default operating system** – Microsoft Windows Server 2012 R2
 
-1. Choose **Add a layer** and add a custom layer to the stack with the following settings\.
-
+1. Choose **Add a layer** and [add a custom layer](workinglayers-custom.md) to the stack with the following settings\.
    + **Name** – S3Download
-
    + **Short name** – s3download
 
-1. Add a 24/7 instance with default settings to the S3Download layer and start it\.
+1. [Add a 24/7 instance](workinginstances-add.md) with default settings to the S3Download layer and [start it](workinginstances-starting.md)\.
 
 You can now install and run the recipe
 
 **To run the recipe**
 
-1. Edit the stack to enable custom cookbooks, and specify the following settings\.
-
+1. [Edit the stack to enable custom cookbooks](workingcookbook-installingcustom-enable.md), and specify the following settings\.
    + **Repository type** – **S3 Archive**\.
-
    + **Repository URL** – The cookbook's archive URL that you recorded earlier\.
 
    Accept the default values for the other settings and choose **Save** to update the stack configuration\.
 
-1. Run the Update Custom Cookbooks stack command, which installs the latest version of your custom cookbook on the stack's online instances\. If an earlier version of your cookbooks is present, this command overwrites it\.
+1. [Run the Update Custom Cookbooks stack command](workingstacks-commands.md), which installs the latest version of your custom cookbook on the stack's online instances\. If an earlier version of your cookbooks is present, this command overwrites it\.
 
 1. Execute the recipe by running the **Execute Recipes** stack command with **Recipes to execute** set to **s3download::default**\. This command initiates a Chef run, with a run list that consists of `s3download::default`\.
 **Note**  
-You typically have AWS OpsWorks Stacks run your recipes automatically  by assigning them to the appropriate lifecycle event\. You also can run such recipes by manually triggering the event\. You can use a stack command to trigger Setup and Configure events, and a deploy command to trigger Deploy and Undeploy events\.
+You typically have AWS OpsWorks Stacks [run your recipes automatically ](workingcookbook-assigningcustom.md) by assigning them to the appropriate lifecycle event\. You also can run such recipes by manually triggering the event\. You can use a stack command to trigger Setup and Configure events, and a [deploy command](workingapps-deploying.md) to trigger Deploy and Undeploy events\.
 
 After the recipe runs successfully, you can verify it\.
 
@@ -134,4 +125,4 @@ After the recipe runs successfully, you can verify it\.
    ...
    ```
 
-1. Use RDP to log in to the instance and examine the contents of `c:\chef`\.
+1. [Use RDP to log in to the instance](workinginstances-rdp.md) and examine the contents of `c:\chef`\.

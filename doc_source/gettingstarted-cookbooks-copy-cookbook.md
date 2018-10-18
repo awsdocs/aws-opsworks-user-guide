@@ -11,11 +11,8 @@ Update the cookbook on the instance and then run the recipe from within the upda
 1. For **Command**, choose **Update Custom Cookbooks**\.
 
 1. Leave the following default settings:
-
    + **Comment** \(blank\)
-
    + **Advanced**, **Custom Chef JSON** \(blank\)
-
    + **Advanced**, **Instances** \(**Select all** checked, **MyCookbooksDemoLayer** checked, **cookbooks\-demo1** checked\)
 
 1. Choose **Update Custom Cookbooks**\. The **Running command update\_custom\_cookbooks** page is displayed\. Do not proceed until **Status** changes to **successful**\. This process might take several minutes, so be patient\.
@@ -33,11 +30,8 @@ Update the cookbook on the instance and then run the recipe from within the upda
 As you repeat this procedure later, type the name of the cookbook \(**opsworks\_cookbook\_demo**\), followed by two colons \(**::**\), followed by the name of the recipe \(the recipe's file name, without the `.rb` file extension\)\.
 
 1. Leave the following default settings:
-
    + **Comment** \(blank\)
-
    + **Advanced**, **Custom Chef JSON** \(blank\)
-
    + **Instances** **Select all** checked, **MyCookbooksDemoLayer** checked, **cookbooks\-demo1** checked\)
 
 1. Choose **Execute Recipes**\. The **Running command execute\_recipes** page is displayed\. Do not proceed until **Status** changes to **successful**\. This process might take a few minutes, so be patient\.
@@ -45,4 +39,4 @@ As you repeat this procedure later, type the name of the cookbook \(**opsworks\_
 **Note**  
 You don't have to manually run recipes\. You can assign recipes to a layer's lifecycle events, such as the Setup and Configure events, and AWS OpsWorks Stacks will run those recipes automatically when the event occurs\. For more information, see [AWS OpsWorks Stacks Lifecycle Events](workingcookbook-events.md)\.
 
-In the next step, you will update the cookbook to add a user to the instance\.
+In the [next step](gettingstarted-cookbooks-add-user.md), you will update the cookbook to add a user to the instance\.

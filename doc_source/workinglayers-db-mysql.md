@@ -19,4 +19,4 @@ If you set this value to **No**, AWS OpsWorks Stacks passes the root password on
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/add_layer_mysql.png)
 
-You can add one or more instances to the layer, each of which represents a separate MySQL database master\. You can then attach an instance to an app, which installs the necessary connection information on the app's application servers\. The application can then use the connection information to connect to the instance's database server\.
+You can add one or more instances to the layer, each of which represents a separate MySQL database master\. You can then [attach an instance to an app](workingapps-creating.md), which installs the necessary connection information on the app's application servers\. The application can then use the connection information to [connect to the instance's database server](workingapps-connectdb.md)\.

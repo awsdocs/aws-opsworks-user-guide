@@ -24,12 +24,10 @@ We recommend that you disassociate nodes from a Chef server before you delete th
 
    After you successfully disassociate a node from an AWS OpsWorks for Chef Automate server, it might still be visible in the Chef Automate dashboard\. By default, Chef enforces a retention period for node state information, and purges the node automatically after a few days\. For more information about data retention management and the Chef Reaper tool, see [Data Retention Management](https://docs.chef.io/data_retention_chef_automate.html) in the Chef documentation\.
 
-For more information about how to delete an AWS OpsWorks for Chef Automate server, see \.
+For more information about how to delete an AWS OpsWorks for Chef Automate server, see [Delete an AWS OpsWorks for Chef Automate Server](opscm-delete-server.md)\.
 
 ## Related Topics<a name="opscm-disassoc-related"></a>
 
 The following AWS blog posts offer more information about automatically associating nodes with your Chef Automate server, by using Auto Scaling groups, or within multiple accounts\.
-
 + [Using AWS OpsWorks for Chef Automate to Manage EC2 Instances with Auto Scaling](https://aws.amazon.com/blogs/mt/using-aws-opsworks-for-chef-automate-to-manage-ec2-instances-with-auto-scaling/)
-
 + [OpsWorks for Chef Automate – Automatically Bootstrapping Nodes in Different Accounts](https://aws.amazon.com/blogs/mt/opsworks-for-chef-automate-automatically-bootstrapping-nodes-in-different-accounts/)

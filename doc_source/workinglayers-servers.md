@@ -7,15 +7,15 @@ AWS OpsWorks Stacks supports several different application servers, where "appli
 
 The following is the basic procedure for using an application server layers:
 
-1. Create one of the available **App Server** layer types\.
+1. [Create](workinglayers-basics-create.md) one of the available **App Server** layer types\.
 
-1. Add one or more instances to the layer\.
+1. [Add one or more instances](workinginstances-add.md) to the layer\.
 
 1. Create apps and deploy them to the instances\. For more information, see [Apps](workingapps.md)\.
 
 1. \(Optional\) If the layer has multiple instances, you can add a load balancer, which distributes incoming traffic across the instances\. For more information, see [HAProxy AWS OpsWorks Stacks Layer](layers-haproxy.md)\.
 
-
+**Topics**
 + [AWS Flow \(Ruby\) Layer](workinglayers-awsflow.md)
 + [Java App Server AWS OpsWorks Stacks Layer](layers-java.md)
 + [Node\.js App Server AWS OpsWorks Stacks Layer](workinglayers-node.md)

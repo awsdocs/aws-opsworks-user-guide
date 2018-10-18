@@ -1,6 +1,6 @@
-# Disassociate a Node from an AWS OpsWorks for Puppet Enterprise Server<a name="opspup-disassociate-node"></a>
+# Disassociate a Node from an OpsWorks for Puppet Enterprise Server<a name="opspup-disassociate-node"></a>
 
-This section describes how to disassociate, or remove, a managed node from management by an AWS OpsWorks for Puppet Enterprise server\. This operation is performed on the command line or in the Puppet Enterprise console; you cannot disassociate nodes in the AWS OpsWorks for Puppet Enterprise management console\. Currently, the AWS OpsWorks for Puppet Enterprise API does not allow for batch removal of multiple nodes\. The command in this section disassociates one node at a time\.
+This section describes how to disassociate, or remove, a managed node from management by an OpsWorks for Puppet Enterprise server\. This operation is performed on the command line or in the Puppet Enterprise console; you cannot disassociate nodes in the OpsWorks for Puppet Enterprise management console\. Currently, the OpsWorks for Puppet Enterprise API does not allow for batch removal of multiple nodes\. The command in this section disassociates one node at a time\.
 
 We recommend that you disassociate nodes from a Puppet master before you delete the server, so that the nodes continue to operate without trying to reconnect with the server\. To do this, run the [http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_DisassociateNode.html](http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_DisassociateNode.html) AWS CLI command\. To completely remove a node from PE, you must disassociate the node and revoke its certificate, so that the node does not continuously attempt to check in with the Puppet master\. You should also [uninstall `puppet-agent` from nodes](https://puppet.com/docs/pe/2017.3/installing/uninstalling.html#uninstall-agents) when you no longer want to manage them by using the Puppet master\.
 
@@ -20,8 +20,7 @@ We recommend that you disassociate nodes from a Puppet master before you delete 
 
 1. Wait until a response message indicates that the disassociation is finished\.
 
-For more information about how to delete an AWS OpsWorks for Puppet Enterprise server, see \.
+For more information about how to delete an OpsWorks for Puppet Enterprise server, see [Delete an OpsWorks for Puppet Enterprise Server](opspup-delete-server.md)\.
 
-## See Also<a name="w3ab2b7c23c11"></a>
-
+## See Also<a name="w4ab1b7c27c11"></a>
 + [Remove nodes](https://puppet.com/docs/pe/2017.3/managing_nodes/adding_and_removing_nodes.html#remove-nodes) in the Puppet Enterprise documentation

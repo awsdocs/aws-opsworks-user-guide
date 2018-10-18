@@ -12,16 +12,14 @@ If you have not run a custom recipe on an AWS OpsWorks Stacks instance before, y
 1. Open the [AWS OpsWorks Stacks console](https://console.aws.amazon.com/opsworks/) and click **Add Stack**\.
 
 1. Specify the following settings, accept the defaults for the other settings, and click **Add Stack**\.
-
    + **Name** – SearchJSON
-
    + **Default SSH key** – An Amazon EC2 key pair
 
    If you need to create an Amazon EC2 key pair, see [Amazon EC2 Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)\. Note that the key pair must belong to the same AWS region as the instance\. The example uses the US West \(Oregon\) region\.
 
-1. Click **Add a layer** and add a PHP App Server layer to the stack with default settings\.
+1. Click **Add a layer** and [add a PHP App Server layer](workinglayers-custom.md) to the stack with default settings\.
 
-1. Add a 24/7 instance with default settings to the layer and start it\.
+1. [Add a 24/7 instance](workinginstances-add.md) with default settings to the layer and [start it](workinginstances-starting.md)\.
 
 **To set up the cookbook**
 
@@ -55,21 +53,21 @@ If you have not run a custom recipe on an AWS OpsWorks Stacks instance before, y
 
 1. Create a `.zip` archive of `opsworks_cookbooks`, [Upload the archive to an Amazon S3 bucket](http://docs.aws.amazon.com/AmazonS3/latest/UG/UploadingObjectsintoAmazonS3.html), [make the archive public](http://docs.aws.amazon.com/AmazonS3/latest/UG/EditingPermissionsonanObject.html), and record the archive's URL\. It should look something like `https://s3.amazonaws.com/cookbook_bucket/opsworks_cookbooks.zip`\. For more information on cookbook repositories, see [Cookbook Repositories](workingcookbook-installingcustom-repo.md)\.
 
+   Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
+
 You can now install the cookbook and run the recipe\.
 
 **To run the recipe**
 
-1. Edit the stack to enable custom cookbooks, and specify the following settings\.
-
+1. [Edit the stack to enable custom cookbooks](workingcookbook-installingcustom-enable.md), and specify the following settings\.
    + **Repository type** – **Http Archive**
-
    + **Repository URL** – The cookbook archive URL that you recorded earlier
 
    Use the default values for the other settings and click **Save** to update the stack configuration\.
 
-1. Edit the custom layer configuration and assign `searchjson::default` to the layer's Setup event\. AWS OpsWorks Stacks will run the recipe after the instance boots or if you explicitly trigger the Setup event\.
+1. Edit the custom layer configuration and [assign `searchjson::default`](workingcookbook-assigningcustom.md) to the layer's Setup event\. AWS OpsWorks Stacks will run the recipe after the instance boots or if you explicitly trigger the Setup event\.
 
-1. Run the Update Custom Cookbooks stack command, which installs the current version of your custom cookbook repository on the stack's instances\. If an earlier version of the repository is present, this command overwrites it\.
+1. [Run the Update Custom Cookbooks stack command](workingstacks-commands.md), which installs the current version of your custom cookbook repository on the stack's instances\. If an earlier version of the repository is present, this command overwrites it\.
 
 1. Execute the recipe by running the **Setup** stack command, which triggers a Setup event on the instance and runs `searchjson::default`\. Leave the **Running command setup page** open\.
 
@@ -77,7 +75,7 @@ After the recipe has run successfully, you can verify it\.
 
 **To verify searchjson**
 
-1. The first step is to examine the Chef log for the most recent Setup event\. On the **Running command setup page**, click **show** in the php\-app1 instance's **Log** column to display the log\. Scroll down to find your log message near the middle, which will look something like the following\.
+1. The first step is to examine the [Chef log](troubleshoot-debug-log.md) for the most recent Setup event\. On the **Running command setup page**, click **show** in the php\-app1 instance's **Log** column to display the log\. Scroll down to find your log message near the middle, which will look something like the following\.
 
    ```
    ...
@@ -88,4 +86,4 @@ After the recipe has run successfully, you can verify it\.
    ...
    ```
 
-1. Use SSH to log in to the instance and list the contents of `/tmp`, which should include a file named `ip_addresses` that contains the IP address\.
+1. [Use SSH to log in to the instance](workinginstances-ssh.md) and list the contents of `/tmp`, which should include a file named `ip_addresses` that contains the IP address\.

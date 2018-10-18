@@ -2,7 +2,7 @@
 
 You can create a Chef server by using the AWS OpsWorks for Chef Automate console, or the AWS CLI\. 
 
-
+**Topics**
 + [Create a Chef Automate server in the AWS Management Console](#gettingstarted-opscm-create-console)
 + [Create a Chef Automate server by using the AWS CLI](#gettingstarted-opscm-create-cli)
 
@@ -113,27 +113,17 @@ If your local computer is not already running the AWS CLI, download and install 
    ```
 
 1. Create the AWS OpsWorks for Chef Automate server by running the `create-server` command\.
-
    + The `--engine` value is `Chef`, `--engine-model` is `Single`, and `--engine-version` is `12`\.
-
    + The server name must be unique within your AWS account, within each region\. Server names must start with a letter; then letters, numbers, or hyphens \(\-\) are allowed, up to a maximum of 40 characters\.
-
    + Use the instance profile ARN and service role ARN that you copied in Step 3\.
-
    + Valid instance types are `m4.large`, `r4.xlarge`, or `r4.2xlarge`\. For more information about the specifications of these instance types, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon EC2 User Guide*\.
-
    + The `--engine-attributes` parameter is optional; if you don't specify one or both values, the server creation process generates the values for you\. If you add `--engine-attributes`, specify either the `CHEF_PIVOTAL_KEY` value that you generated in Step 2, a `CHEF_DELIVERY_ADMIN_PASSWORD`, or both\.
 
      If you do not set a value for `CHEF_DELIVERY_ADMIN_PASSWORD`, a password is generated and returned as part of the `create-server` response\. You can also download the starter kit again in the console, which regenerates this password\. The password length is a minimum of eight characters, and a maximum of 32\. The password can contain letters, numbers, and special characters \(`!/@#$%^+=_`\)\. The password must contain at least one lower case letter, one upper case letter, one number, and one special character\. 
-
    + An SSH key pair is optional, but can help you connect to your Chef Automate server if you need to reset the Chef Automate dashboard administrator password\. For more information about creating an SSH key pair, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide*\.
-
    + Weekly system maintenance is required\. Valid values must be specified in the following format: `DDD:HH:MM`\. The specified time is in coordinated universal time \(UTC\)\. If you do not specify a value for `--preferred-maintenance-window`, the default value is a random, one\-hour period on Tuesday, Wednesday, or Friday\.
-
    + Valid values for `--preferred-backup-window` must be specified in one of the following formats: `HH:MM` for daily backups, or `DDD:HH:MM` for weekly backups\. The specified time is in UTC\. The default value is a random, daily start time\. To opt out of automatic backups, add the parameter `--disable-automated-backup` instead\.
-
    + For `--security-group-ids`, enter one or more security group IDs, separated by a space\.
-
    + For `--subnet-ids`, enter a subnet ID\.
 
    ```
@@ -163,4 +153,4 @@ If your local computer is not already running the AWS CLI, download and install 
 
 1. Optionally, if you did not extract the starter kit from `create-server` command results, you can download a new starter kit from the server's Properties page in the AWS OpsWorks for Chef Automate console\. Downloading a new starter kit resets the Chef Automate dashboard administrator password\.
 
-1. When the server creation process is finished, go on to [[ERROR] BAD/MISSING LINK TEXT](opscm-starterkit.md)\.
+1. When the server creation process is finished, go on to [Configure the Chef Server Using the Starter Kit](opscm-starterkit.md)\.

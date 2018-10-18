@@ -3,36 +3,33 @@
 **Note**  
 The agent CLI is available only on Linux instances\.
 
-On every online instance, AWS OpsWorks Stacks installs an agent, which communicates with the service\. The AWS OpsWorks Stacks service in turn sends commands to the agent to performs tasks such as initiating Chef runs on the instance when a lifecycle event occurs\. On Linux instances, the agent exposes a command line interface \(CLI\) that is very useful for troubleshooting\. To run agent CLI commands, use SSH to connect to an instance\. You can then run agent CLI commands to perform a variety of tasks, including the following: 
-
+On every online instance, AWS OpsWorks Stacks installs an agent, which communicates with the service\. The AWS OpsWorks Stacks service in turn sends commands to the agent to performs tasks such as initiating Chef runs on the instance when a lifecycle event occurs\. On Linux instances, the agent exposes a command line interface \(CLI\) that is very useful for troubleshooting\. To run agent CLI commands, use [SSH to connect to an instance](workinginstances-ssh.md)\. You can then run agent CLI commands to perform a variety of tasks, including the following: 
 + Execute recipes\.
-
 + Display Chef logs\.
++ Display [stack configuration and deployment JSON](workingcookbook-json.md)\.
 
-+ Display stack configuration and deployment JSON\.
-
-For more information on how to set up an SSH connection to an instance, see [Logging In with SSH](workinginstances-ssh.md)\. You must also have SSH and sudo permissions for the stack\.
+For more information on how to set up an SSH connection to an instance, see [Logging In with SSH](workinginstances-ssh.md)\. You must also have [SSH and sudo permissions](opsworks-security-users.md) for the stack\.
 
 This section describes how to use the agent CLI for troubleshooting\. For more information and a complete command reference, see [AWS OpsWorks Stacks Agent CLI](agent.md)\.
 
-
+**Topics**
 + [Executing Recipes](#troubleshoot-debug-cli-recipes)
 + [Displaying Chef Logs](#troubleshoot-debug-cli-log)
 + [Displaying the Stack Configuration and Deployment JSON](#troubleshoot-debug-cli-json)
 
 ## Executing Recipes<a name="troubleshoot-debug-cli-recipes"></a>
 
-The agent CLI `run_command` command directs the agent to rerun a command that it performed earlier\. The most useful commands for troubleshooting—`setup`, `configure`, `deploy`, and `undeploy`—each correspond to a lifecycle event\. They direct the agent to initiate a Chef run to execute the associated recipes\.
+The agent CLI [`run_command`](agent-run.md) command directs the agent to rerun a command that it performed earlier\. The most useful commands for troubleshooting—`setup`, `configure`, `deploy`, and `undeploy`—each correspond to a lifecycle event\. They direct the agent to initiate a Chef run to execute the associated recipes\.
 
 **Note**  
-The `run_command` command is limited to executing the group of recipes that is associated with a specified command, typically the recipes that are associated with a lifecycle event\. You cannot use it to execute a particular recipe\. To execute one or more specified recipes, use the Execute Recipes stack command or the equivalent CLI or API actions \([http://docs.aws.amazon.com/cli/latest/reference/opsworks/create-deployment.html](http://docs.aws.amazon.com/cli/latest/reference/opsworks/create-deployment.html) and [http://docs.aws.amazon.com/opsworks/latest/APIReference/API_CreateDeployment.html](http://docs.aws.amazon.com/opsworks/latest/APIReference/API_CreateDeployment.html)\)\.
+The `run_command` command is limited to executing the group of recipes that is associated with a specified command, typically the recipes that are associated with a lifecycle event\. You cannot use it to execute a particular recipe\. To execute one or more specified recipes, use the [Execute Recipes stack command](workingstacks-commands.md) or the equivalent CLI or API actions \([http://docs.aws.amazon.com/cli/latest/reference/opsworks/create-deployment.html](http://docs.aws.amazon.com/cli/latest/reference/opsworks/create-deployment.html) and [http://docs.aws.amazon.com/opsworks/latest/APIReference/API_CreateDeployment.html](http://docs.aws.amazon.com/opsworks/latest/APIReference/API_CreateDeployment.html)\)\.
 
 The `run_command` command is quite useful for debugging custom recipes, especially recipes that are assigned to the Setup and Configure lifecycle events, which you can't trigger directly from the console\. By using `run_command`, you can run a particular event's recipes as often as you need without having to start or stop instances\.
 
 **Note**  
-AWS OpsWorks Stacks runs recipes from the instance's cookbook cache, not the cookbook repository\. AWS OpsWorks Stacks downloads cookbooks to this cache when the instance starts, but does not automatically update the cache on online instances if you subsequently modify your cookbooks\. If you have modified your cookbooks since starting the instance, be sure to run the Update Cookbooks stack command stack command to update the cookbook cache with the most recent version from the repository\.
+AWS OpsWorks Stacks runs recipes from the instance's cookbook cache, not the cookbook repository\. AWS OpsWorks Stacks downloads cookbooks to this cache when the instance starts, but does not automatically update the cache on online instances if you subsequently modify your cookbooks\. If you have modified your cookbooks since starting the instance, be sure to run the [Update Cookbooks stack command](workingstacks-commands.md) stack command to update the cookbook cache with the most recent version from the repository\.
 
-The agent caches only the most recent commands\. You can list them by running `list_commands`, which returns a list of cached commands and the time that they were performed\.
+The agent caches only the most recent commands\. You can list them by running [`list_commands`](agent-list.md), which returns a list of cached commands and the time that they were performed\.
 
 ```
 sudo opsworks-agent-cli list_commands
@@ -60,7 +57,7 @@ For example, to rerun the Setup recipes, you can run the following command:
 sudo opsworks-agent-cli run_command setup
 ```
 
-Each command has an associated stack configuration and deployment JSON that represents stack and deployment state at the time the command was run\. Because that data can change from one command to the next, an older instance of a command might use somewhat different data than the most recent one\. To rerun a particular instance of a command, copy the time from the `list_commands` output and run the following:
+Each command has an associated [stack configuration and deployment JSON](workingcookbook-json.md) that represents stack and deployment state at the time the command was run\. Because that data can change from one command to the next, an older instance of a command might use somewhat different data than the most recent one\. To rerun a particular instance of a command, copy the time from the `list_commands` output and run the following:
 
 ```
 sudo opsworks-agent-cli run_command time
@@ -74,7 +71,7 @@ sudo opsworks-agent-cli run_command /path/to/valid/json.file
 
 ## Displaying Chef Logs<a name="troubleshoot-debug-cli-log"></a>
 
-The agent CLI `show_log` command displays a specified log\. After the command is finished, you will be looking at the end of the file\. The `show_log` command therefore provides a convenient way to tail the log, which is typically where you find error information\. You can scroll up to see the earlier parts of the log\.
+The agent CLI [`show_log`](agent-show.md) command displays a specified log\. After the command is finished, you will be looking at the end of the file\. The `show_log` command therefore provides a convenient way to tail the log, which is typically where you find error information\. You can scroll up to see the earlier parts of the log\.
 
 To display the current command's log, run this:
 
@@ -82,7 +79,7 @@ To display the current command's log, run this:
 sudo opsworks-agent-cli show_log
 ```
 
-You can also display logs for a particular command, but be aware that the agent caches logs for only the last thirty commands\. You can list an instance's commands by running `list_commands`, which returns a list of cached commands and the time that they were performed\. For an example, see [Executing Recipes](#troubleshoot-debug-cli-recipes)\.
+You can also display logs for a particular command, but be aware that the agent caches logs for only the last thirty commands\. You can list an instance's commands by running [`list_commands`](agent-list.md), which returns a list of cached commands and the time that they were performed\. For an example, see [Executing Recipes](#troubleshoot-debug-cli-recipes)\.
 
 To show the log for the most recent execution of a particular command, run the following:
 
@@ -108,9 +105,9 @@ If Chef runs out of memory or exits unexpectedly, the log will end abruptly\. If
 
 ## Displaying the Stack Configuration and Deployment JSON<a name="troubleshoot-debug-cli-json"></a>
 
-Much of the data used by recipes comes from the stack configuration and deployment JSON, which defines a set of Chef attributes that provide a detailed description of the stack configuration, any deployments, and optional custom attributes that users can add\. For each command, AWS OpsWorks Stacks installs a JSON that represents the stack and deployment state at the time of the command \. For more information, see [Stack Configuration and Deployment Attributes](workingcookbook-json.md)\.
+Much of the data used by recipes comes from the [stack configuration and deployment JSON](workingcookbook-json.md), which defines a set of Chef attributes that provide a detailed description of the stack configuration, any deployments, and optional custom attributes that users can add\. For each command, AWS OpsWorks Stacks installs a JSON that represents the stack and deployment state at the time of the command \. For more information, see [Stack Configuration and Deployment Attributes](workingcookbook-json.md)\.
 
-If your custom recipes obtain data from the stack configuration and deployment JSON, you can verify the data by examining the JSON\. The easiest way to display the stack configuration and deployment JSON is to run the agent CLI `get_json` command, which displays a formatted version of the JSON object\. The following shows the first few lines of some typical output:
+If your custom recipes obtain data from the stack configuration and deployment JSON, you can verify the data by examining the JSON\. The easiest way to display the stack configuration and deployment JSON is to run the agent CLI [`get_json`](agent-json.md) command, which displays a formatted version of the JSON object\. The following shows the first few lines of some typical output:
 
 ```
 {

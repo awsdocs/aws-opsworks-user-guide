@@ -13,4 +13,4 @@ Although recipes typically are  run automatically in response to lifecycle event
 
 1. Under **Instances**, select the instances on which AWS OpsWorks Stacks should run the recipes\. 
 
-When a lifecycle event occurs, the AWS OpsWorks Stacks agent receives a command to run the associated recipes\. You can manually run these commands on a particular instance by using the appropriate stack command or by using the agent CLI's [ run\_command](agent-run.md) command\. For more information on how to use the agent CLI, see [AWS OpsWorks Stacks Agent CLI](agent.md)\.
+When a lifecycle event occurs, the AWS OpsWorks Stacks agent receives a command to run the associated recipes\. You can manually run these commands on a particular instance by using the appropriate [stack command](workingstacks-commands.md) or by using the agent CLI's [ run\_command](agent-run.md) command\. For more information on how to use the agent CLI, see [AWS OpsWorks Stacks Agent CLI](agent.md)\.

@@ -5,6 +5,6 @@
 **Note**  
 AWS CodePipeline and AWS OpsWorks Stacks integration is not supported for deploying to Chef 11\.4 and older stacks\.
 
-
+**Topics**
 + [AWS CodePipeline with AWS OpsWorks Stacks \- Chef 12 Stacks](other-services-cp-chef12.md)
 + [AWS CodePipeline with AWS OpsWorks Stacks \- Chef 11 Stacks](other-services-cp-chef11.md)

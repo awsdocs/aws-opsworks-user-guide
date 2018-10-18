@@ -1,14 +1,11 @@
 # Attaching and Moving Resources<a name="resources-attach"></a>
 
 After you register a resource with a stack, you can attach it to one of the stack's instances\. You can also move an attached resource from one instance to another\. Note the following:
-
-+ When you attach or move Amazon EBS volumes, the instances involved in the operation must be offline\. If the instance you are interested in is not on the **Resources** page, go to the **Instances** page and stop the instance\. After it has stopped, you can return to the **Resources** page and attach or move the resource\.
-
++ When you attach or move Amazon EBS volumes, the instances involved in the operation must be offline\. If the instance you are interested in is not on the **Resources** page, go to the **Instances** page and [stop the instance](workinginstances-starting.md)\. After it has stopped, you can return to the **Resources** page and attach or move the resource\.
 + When you attach or move Elastic IP addresses, the instances can be online or offline\.
-
 + If you delete an instance, any attached resources remain registered with the stack\. You can then attach the resource to another instance or, if you no longer need it, deregister the resource\.
 
-
+**Topics**
 + [Assigning Amazon EBS Volumes to an Instance](#resources-attach-ebs)
 + [Associating Elastic IP Addresses with an Instance](#resources-attach-eip)
 + [Attaching Amazon RDS Instances to an App](#resources-attach-rds)
@@ -40,10 +37,8 @@ You can also use the details page to move an assigned Amazon EBS volume to anoth
 1. On the **Resources** page, click **Volumes** and then click **edit** in the volume's **Actions** column\.
 
 1. Do one of the following:
-
    + To move the volume to another instance in the stack, select the appropriate instance from the **Instance** list and click **Save**\.
-
-   + To move the volume to an instance in another stack, deregister the volume, register the volume with the new stack, and attach it to the news instance\.
+   + To move the volume to an instance in another stack, [deregister the volume](resources-dereg.md), [register the volume](resources-reg.md) with the new stack, and [attach it](#resources-attach) to the news instance\.
 
 ## Associating Elastic IP Addresses with an Instance<a name="resources-attach-eip"></a>
 
@@ -67,13 +62,11 @@ You can also use the details page to move an associated Elastic IP address to an
 1. On the **Resources** page, click **Elastic IPs** and click **edit** in the address's **Actions** column\.
 
 1. Do one of the following:
-
    + To move the address to another instance in the stack, select the appropriate instance from the **Instance** list and click **Save**\.
-
    + To move the address to an instance in another stack, click **change** in the **Stack** settings to see a list of the available stacks\. Select a stack from the **Stack** list and an instance from the **Instance** list\. Then click **Save**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/resources-eip7.png)
 
-After you attach or move an address, AWS OpsWorks Stacks triggers a Configure lifecycle event to notify the stack's instances of the change\.
+After you attach or move an address, AWS OpsWorks Stacks triggers a [Configure lifecycle event](workingcookbook-events.md) to notify the stack's instances of the change\.
 
 ## Attaching Amazon RDS Instances to an App<a name="resources-attach-rds"></a>
 

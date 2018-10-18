@@ -1,12 +1,10 @@
-# Step 2\.3: Add an Instance to the PHP App Server Layer<a name="gettingstarted-simple-instance"></a>
+# Step 2\.3: Add an Instance to the PHP App Server Layer \- Chef 11<a name="gettingstarted-simple-instance"></a>
 
 An AWS OpsWorks Stacks instance represents a particular Amazon EC2 instance:
-
 + The instance's configuration specifies some basics like the Amazon EC2operating system and size; it runs but doesn't do very much\. 
-
 + The instance's layer adds functionality to the instance by determining which packages are to be installed, whether the instance has an Elastic IP address, and so on\.
 
-AWS OpsWorks Stacks installs an agent on each instance that interacts with the service\. To add a layer's functionality to an instance, AWS OpsWorks Stacks directs the agent to run small applications called [Chef recipes](http://docs.chef.io/recipes.html), which can install applications and packages, create configuration files, and so on\. AWS OpsWorks Stacks runs recipes at key points in the instance's lifecycle\. For example, OpsWorks runs Setup recipes after the instance has finished booting to handle tasks such as installing software, and runs Deploy recipes when you deploy an app to install the code and related files\.
+AWS OpsWorks Stacks installs an agent on each instance that interacts with the service\. To add a layer's functionality to an instance, AWS OpsWorks Stacks directs the agent to run small applications called [Chef recipes](http://docs.chef.io/recipes.html), which can install applications and packages, create configuration files, and so on\. AWS OpsWorks Stacks runs recipes at key points in the instance's [lifecycle](workingcookbook-events.md)\. For example, OpsWorks runs Setup recipes after the instance has finished booting to handle tasks such as installing software, and runs Deploy recipes when you deploy an app to install the code and related files\.
 
 **Note**  
 If you are curious about how the recipes work, all of the AWS OpsWorks Stacks built\-in recipes are in a public GitHub repository: [OpsWorks Cookbooks](https://github.com/aws/opsworks-cookbooks)\. You can also create your own custom recipes and have AWS OpsWorks Stacks run them, as described later\.

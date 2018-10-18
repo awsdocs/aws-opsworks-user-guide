@@ -1,21 +1,20 @@
-# Getting Started with AWS OpsWorks for Puppet Enterprise<a name="gettingstarted-opspup"></a>
+# Getting Started with OpsWorks for Puppet Enterprise<a name="gettingstarted-opspup"></a>
 
-AWS OpsWorks for Puppet Enterprise lets you run a [Puppet Enterprise](https://puppet.com/products/puppet-enterprise) server in AWS\. You can provision a Puppet Enterprise master server in about 15 minutes\.
+OpsWorks for Puppet Enterprise lets you run a [Puppet Enterprise](https://puppet.com/products/puppet-enterprise) server in AWS\. You can provision a Puppet Enterprise master server in about 15 minutes\.
 
-The following walkthrough helps you create your first Puppet master in AWS OpsWorks for Puppet Enterprise\.
+The following walkthrough helps you create your first Puppet master in OpsWorks for Puppet Enterprise\.
 
 ## Prerequisites<a name="gettingstarted-opspup-prereqs"></a>
 
-
+**Topics**
 + [Get an AWS Account and Your AWS Credentials](#getting-started-signup)
-+ [Install the Puppet Development Kit](#w3ab2b7c15b7b9)
-+ [Install the Puppet Enterprise Client Tools](#w3ab2b7c15b7c11)
-+ [Generate a Short\-term Token](#w3ab2b7c15b7c13)
++ [Install the Puppet Development Kit](#w4ab1b7c19b7b9)
++ [Install the Puppet Enterprise Client Tools](#w4ab1b7c19b7c11)
 + [Set Up a Git Control Repository](#configure-control-repository)
 + [Set Up a VPC](#set-up-vpc-puppet)
-+ [Set Up an EC2 Key Pair \(Optional\)](#w3ab2b7c15b7c19)
++ [Set Up an EC2 Key Pair \(Optional\)](#w4ab1b7c19b7c17)
 
-First, create the resources outside of AWS OpsWorks for Puppet Enterprise that you'll need to access and manage your Puppet master\. If you already have an AWS account set up, skip to [Set Up a VPC](#set-up-vpc-puppet)\.
+First, create the resources outside of OpsWorks for Puppet Enterprise that you'll need to access and manage your Puppet master\. If you already have an AWS account set up, skip to [Set Up a VPC](#set-up-vpc-puppet)\.
 
 ### Get an AWS Account and Your AWS Credentials<a name="getting-started-signup"></a>
 
@@ -37,7 +36,7 @@ AWS sends you a confirmation e\-mail after the sign\-up process is complete\. At
 
 Access keys consist of an access key ID and secret access key, which are used to sign programmatic requests that you make to AWS\. If you don't have access keys, you can create them from the AWS Management Console\. We recommend that you use IAM access keys instead of AWS account root user access keys\. IAM lets you securely control access to AWS services and resources in your AWS account\.
 
-The only time that you can view or download the secret access keys is when you create the keys\. You cannot recover them later\. However, you can create new access keys at any time\. You must also have permissions to perform the required IAM actions\. For more information, see [Permissions Required to Access IAM Resources](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_permissions-required.html) in the *IAM User Guide*\.
+The only time that you can view or download the secret access keys is when you create the keys\. You cannot recover them later\. However, you can create new access keys at any time\. You must also have permissions to perform the required IAM actions\. For more information, see [Permissions Required to Access IAM Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_permissions-required.html) in the *IAM User Guide*\.
 
 1. Open the [IAM console](https://console.aws.amazon.com/iam/home?#home)\.
 
@@ -48,9 +47,7 @@ The only time that you can view or download the secret access keys is when you c
 1. Choose the **Security credentials** tab and then choose **Create access key**\.
 
 1. To see the new access key, choose **Show**\. Your credentials will look something like this:
-
    + Access key ID: AKIAIOSFODNN7EXAMPLE
-
    + Secret access key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 1. To download the key pair, choose **Download \.csv file**\. Store the keys in a secure location\.
@@ -58,47 +55,30 @@ The only time that you can view or download the secret access keys is when you c
    Keep the keys confidential in order to protect your AWS account, and never email them\. Do not share them outside your organization, even if an inquiry appears to come from AWS or Amazon\.com\. No one who legitimately represents Amazon will ever ask you for your secret key\.
 
 **Related topics**
++ [What Is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) in the *IAM User Guide*
++ [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) in *AWS General Reference* 
 
-+ [What Is IAM?](http://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) in the *IAM User Guide*
-
-+ [AWS Security Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) in *AWS General Reference* 
-
-### Install the Puppet Development Kit<a name="w3ab2b7c15b7b9"></a>
+### Install the Puppet Development Kit<a name="w4ab1b7c19b7b9"></a>
 
 1. From the Puppet website, [download the Puppet Development Kit](https://puppet.com/download-puppet-development-kit) that matches your local computer's operating system\.
 
 1. Install the Puppet Development Kit\.
 
 1. Add the Puppet Development Kit to your local computer's `PATH` variable\.
-
    + On a Linux or macOS operating system, you can add the Puppet Development Kit to your `PATH` variable by running the following command in a Bash shell\.
 
      ```
      echo 'export PATH=/opt/puppetlabs/pdk/bin/pdk:$PATH' >> ~/.bash_profile && source ~/.bash_profile
      ```
-
    + On a Windows\-based operating system, you can add the Puppet Development Kit to your `PATH` variable by using the following \.NET Framework command in a PowerShell session, or in the **Environment Variables** dialog box accessible from **System Properties**\. You may need to run your PowerShell session as an administrator to run the following command\.
 
      ```
      [Environment]::SetEnvironmentVariable("Path","new path value","Machine")
      ```
 
-### Install the Puppet Enterprise Client Tools<a name="w3ab2b7c15b7c11"></a>
+### Install the Puppet Enterprise Client Tools<a name="w4ab1b7c19b7c11"></a>
 
 Puppet Enterprise \(PE\) client tools are a set of command\-line tools that let you access Puppet Enterprise services from your workstation\. The tools can be installed on many different operating systems, and they can also be installed on nodes that you are managing by using Puppet\. For information about supported operating systems for the tools, and how to install them, see [Installing PE client tools](https://puppet.com/docs/pe/2017.3/installing/installing_pe_client_tools.html) in the Puppet Enterprise documentation\.
-
-### Generate a Short\-term Token<a name="w3ab2b7c15b7c13"></a>
-
-To use the Puppet API, you must create a short\-term token for yourself\. This step is not required to use the Puppet Enterprise console\. Generate the token by running the following command\.
-
-The default token lifetime is five minutes, but you can change this default\. For more information about how to change the default token lifetime, see [Change the token's default lifetime](https://puppet.com/docs/pe/2017.3/rbac/rbac_token_auth_intro.html#change-the-token-default-lifetime) in the Puppet Enterprise documentation\.
-
-```
-puppet-access login --config-file .config/puppetlabs/client-tools/puppet-access.conf --lifetime 8h
-```
-
-**Note**  
-Because the default token lifetime is five minutes, the preceding example command adds the `--lifetime` parameter to extend the token lifetime for a longer period\. You can set the token lifetime for a period of up to 10 years \(`10y`\)\. For more information about how to change the default token lifetime, see [Change the token's default lifetime](https://puppet.com/docs/pe/2017.3/rbac/rbac_token_auth_intro.html#change-the-token-default-lifetime) in the Puppet Enterprise documentation\.
 
 ### Set Up a Git Control Repository<a name="configure-control-repository"></a>
 
@@ -131,20 +111,17 @@ Before you can launch a Puppet master, you must have a control repository config
             └── webserver.pp
 ```
 
-#### Setting up a repository by using AWS CodeCommit<a name="w3ab2b7c15b7c15b7"></a>
+#### Setting up a repository by using AWS CodeCommit<a name="w4ab1b7c19b7c13b7"></a>
 
-You can create a new repository by using AWS CodeCommit\. For more information about how to use AWS CodeCommit to create your control repository, see [[ERROR] BAD/MISSING LINK TEXT](opspup-puppet-codecommit.md) in this guide\. For more information about how to get started with Git on AWS CodeCommit, see [Getting started with AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html)\. To authorize your AWS OpsWorks for Puppet Enterprise server for your repository, attach the `AWSCodeCommitReadOnly` policy to your IAM instance profile role\.
+You can create a new repository by using AWS CodeCommit\. For more information about how to use AWS CodeCommit to create your control repository, see [Optional: Use AWS CodeCommit as a Puppet r10k Remote Control Repository](opspup-puppet-codecommit.md) in this guide\. For more information about how to get started with Git on AWS CodeCommit, see [Getting started with AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html)\. To authorize your OpsWorks for Puppet Enterprise server for your repository, attach the `AWSCodeCommitReadOnly` policy to your IAM instance profile role\.
 
 ### Set Up a VPC<a name="set-up-vpc-puppet"></a>
 
-Your AWS OpsWorks for Puppet Enterprise server must operate in an Amazon Virtual Private Cloud\. You can add it to an existing VPC, use the default VPC, or create a new VPC to contain the server\. For information about Amazon VPC and how to create a new VPC, see the [Amazon VPC Getting Started Guide](http://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/)\.
+Your OpsWorks for Puppet Enterprise server must operate in an Amazon Virtual Private Cloud\. You can add it to an existing VPC, use the default VPC, or create a new VPC to contain the server\. For information about Amazon VPC and how to create a new VPC, see the [Amazon VPC Getting Started Guide](https://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/)\.
 
 If you create your own VPC, or use an existing one, the VPC should have the following settings or properties\.
-
 + The VPC should have a single, public subnet\.
-
 + **DNS resolution** should be enabled\.
-
 + On the subnet, enable **Auto\-assign public IP**\.
 
 If you are unfamiliar with creating VPCs or running your instances in them, you can run the following AWS CLI command to create a VPC, by using an AWS CloudFormation template that AWS OpsWorks provides for you\. If you prefer to use the AWS Management Console, you can also upload the [template](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-vpc.yaml) to the AWS CloudFormation console\.
@@ -153,7 +130,7 @@ If you are unfamiliar with creating VPCs or running your instances in them, you 
 aws cloudformation create-stack --stack-name OpsWorksVPC --template-url https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-vpc.yaml
 ```
 
-### Set Up an EC2 Key Pair \(Optional\)<a name="w3ab2b7c15b7c19"></a>
+### Set Up an EC2 Key Pair \(Optional\)<a name="w4ab1b7c19b7c17"></a>
 
 An SSH connection is not necessary or recommended for typical management of the Puppet server; you can use the AWS Management Console and AWS CLI commands to perform many management tasks on your Puppet server\.
 

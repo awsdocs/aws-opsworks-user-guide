@@ -1,17 +1,12 @@
 # Deregistering a Registered Instance<a name="registered-instances-deregister"></a>
 
-When you no longer want a registered instance in your stack, you can deregister it\. On the **Instances** page, just click the instance name and then click **Deregister**\. AWS OpsWorks Stacks then does the following:
-
+When you no longer want a registered instance in your stack, you can deregister it\. On the **Instances** page, choose the instance name and then choose **Deregister**\. AWS OpsWorks Stacks then does the following:
 + Unassigns the instance from any assigned layers\.
-
 + Shuts down and uninstalls the agent\.
-
 + Deregisters any attached resources \(Elastic IP addresses and Amazon EBS volumes\)\.
 
   This procedure includes resources that were attached to the instance prior to registration, and resources that you used AWS OpsWorks Stacks to attach to the instance while it was part of the stack\. After deregistration, the resources are no longer part of the stack's resources, but they remain attached to the instance\. 
-
 + Removes the instance from the stack\.
-
 + For on\-premises instances, stops the charges\.
 
 The instance remains in the running state, but it is under your direct control and is no longer managed by AWS OpsWorks Stacks\. 

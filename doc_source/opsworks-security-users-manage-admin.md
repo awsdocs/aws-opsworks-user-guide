@@ -24,7 +24,5 @@ The AWSOpsWorksFullAccess policy allows users to create and manage AWS OpsWorks 
 1. Attach additional customer\-managed policies to fine\-tune the user's permissions, as needed\. For example, you might want an administrative user to be able to create or delete stacks, but not import new users\. For more information, see [Attaching an IAM Policy](opsworks-security-users-policy.md)\.
 
 If you have multiple administrative users, instead of setting permissions separately for each user, you can attach an AWSOpsWorksFullAccess policy to an [IAM group](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html) and add the users to that group\. 
-
 + To create a new group, choose **Groups** in the navigation pane, and then choose **Create New Group**\. In the **Create New Group Wizard**, name your group and specify the **AWSOpsWorksFullAccess** policy\. You can also specify the **AdministratorAccess** policy, which includes the **AWSOpsWorksFullAccess** permissions\.
-
 + To add full AWS OpsWorks Stacks permissions to an existing group, choose **Groups** in the navigation pane, select the group, and then choose the **Permissions** tab\. Choose **Attach Policy** or **Attach Another Policy**\. In the **Manage Group Permissions** wizard, select the** AWSOpsWorksFullAccess** policy\.

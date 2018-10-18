@@ -24,26 +24,26 @@ search("aws_opsworks_rds_db_instance").each do |rds_db_instance|
 end
 ```
 
-**address**  
+**address**  <a name="data-bag-json-rds-address"></a>
 The instance's DNS name\.
 
-**port**  
+**port**  <a name="data-bag-json-rds-port"></a>
 The instance's port\.
 
-**db\_instance\_identifier**  
+**db\_instance\_identifier**  <a name="data-bag-json-rds-id"></a>
 The instance's ID\.
 
-**db\_password**  
+**db\_password**  <a name="data-bag-json-rds-password"></a>
 The instance's master password\.
 
-**db\_user**  
+**db\_user**  <a name="data-bag-json-rds-user"></a>
 The instance's master user name\.
 
-**engine**  
+**engine**  <a name="data-bag-json-rds-engine"></a>
 The instance's database engine, such as `mysql`\.
 
-**rds\_db\_instance\_arn**  
+**rds\_db\_instance\_arn**  <a name="data-bag-json-rds-arn"></a>
 The instance's Amazon Resource Name \(ARN\)\.
 
-**region**  
+**region**  <a name="data-bag-json-rds-region"></a>
 The instance's AWS region, such as `us-west-2`\.

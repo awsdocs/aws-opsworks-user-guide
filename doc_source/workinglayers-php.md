@@ -3,17 +3,23 @@
 **Note**  
 This layer is available only for Linux\-based stacks\.
 
-The PHP App Server layer is an AWS OpsWorks Stacks layer that provides a blueprint for instances that function as PHP application servers\. The PHP App Server layer is based on [Apache2](http://httpd.apache.org/) with mod\_php and has no standard configuration options\. The PHP and Apache version depends on which operating system you specify for the layer's instances\. 
+The PHP App Server layer is an AWS OpsWorks Stacks layer that provides a blueprint for instances that function as PHP application servers\. The PHP App Server layer is based on [Apache2](http://httpd.apache.org/) with `mod_php` and has no standard configuration options\. The PHP and Apache version depends on which [operating system](workinginstances-os.md) you specify for the layer's instances\. 
 
 
 | Operating System | PHP Version | Apache Version | 
 | --- | --- | --- | 
+| Amazon Linux 2018\.03 | 5\.3 | 2\.2 | 
+| Amazon Linux 2017\.09 | 5\.3 | 2\.2 | 
+| Amazon Linux 2017\.03 | 5\.3 | 2\.2 | 
+| Amazon Linux 2016\.09 | 5\.3 | 2\.2 | 
+| Amazon Linux 2016\.03 | 5\.3 | 2\.2 | 
+| Amazon Linux 2015\.09 | 5\.3 | 2\.2 | 
 | Amazon Linux 2015\.03 | 5\.3 | 2\.2 | 
 | Amazon Linux 2014\.09 | 5\.3 | 2\.2 | 
 | Ubuntu 14\.04 LTS | 5\.5 | 2\.4 | 
 | Ubuntu 12\.04 LTS | 5\.3 | 2\.2 | 
 
-**Installation**: AWS OpsWorks Stacks uses the instance's package installer to install Apache2 and mod\_php in their default locations\. For more information about installation, see [Apache](http://httpd.apache.org/)\.
+**Installation**: AWS OpsWorks Stacks uses the instance's package installer to install Apache2 and `mod_php` in their default locations\. For more information about installation, see [Apache](http://httpd.apache.org/)\.
 
 The **Add Layer** page provides the following configuration options:
 

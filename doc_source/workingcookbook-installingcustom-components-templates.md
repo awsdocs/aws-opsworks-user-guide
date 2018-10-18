@@ -49,11 +49,9 @@ KeepAliveTimeout 3
 ```
 
 Much of the template's text is simply copied from the template to the `httpd.conf` file\. However, `<%= ... %>` content is handled as follows:
-
 + Chef replaces `<%= node[:attribute][:sub_attribute][:...]%>` with the attribute's value\.
 
   For example, `StartServers <%= node[:apache][:prefork][:startservers] %>` becomes `StartServers 16` in the `httpd.conf`\.
-
 + You can use `<%if-%>, <%else-%>, and <%end-%>` to conditionally select a value\.
 
   The example sets a different file path for `accept.lock` depending on the platform\.

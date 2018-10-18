@@ -8,17 +8,13 @@ The registered instance lifecycle starts after the agent is installed and runnin
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/on-prem-state.png)
 
 Each state corresponds to an instance status\. The edges represent one of the following AWS OpsWorks Stacks commands\. The details are discussed in the following sections\.
-
-+ **Setup** – This command corresponds to the Setup lifecycle event and runs the instance's Setup recipes\.
-
++ **Setup** – This command corresponds to the Setup [lifecycle event](workingcookbook-events.md) and runs the instance's Setup recipes\.
 + **Configure** – This command corresponds to the Configure lifecycle event\.
 
   AWS OpsWorks Stacks triggers this event on every instance in the stack when an instance enters or leaves the online state\. The instances run their Configure recipes, which make any changes that are required to accommodate the new instance\.
-
 + **Shutdown** – This command corresponds to the Shutdown lifecycle event, which runs the instance's Shutdown recipes\.
 
   These recipes perform tasks such as shutting down services, but they do not stop the instance\.
-
 + **Deregister** – This command deregisters an instance and does not correspond to a lifecycle event\.
 
 **Note**  
@@ -26,7 +22,7 @@ For simplicity the diagram does not show the Deregistering and Deleted states\. 
 If you deregister an online instance, AWS OpsWorks Stacks sends a Configure command to the remaining instances in the stack to notify them that the instance is going offline\.
 After the Deregister command is acknowledged, the instance is still running, but it is in the Deleted state and no longer part of the stack\. If you want to incorporate the instance into the stack again, you must re\-register it\.
 
-
+**Topics**
 + [Registering](#registered-instances-lifecycle-registering)
 + [Running Setup](#registered-instances-lifecycle-running-setup)
 + [Registered](#registered-instances-lifecycle-registered)
@@ -47,7 +43,7 @@ The Running Setup state runs the instance's Setup recipes\. The details how setu
 **Note**  
 If you unassign the instance while it is in the Running Setup state, AWS OpsWorks Stacks sends a Shutdown command, which runs the instance's Shutdown recipes but does not stop the instance\. The instance moves to the [Unassigning](#registered-instances-lifecycle-unassigning) state\.
 
-
+**Topics**
 + [Registering](#registered-instances-lifecycle-running-setup-registering)
 + [Assigning](#registered-instances-lifecycle-running-setup-assigning)
 + [Setup Failed](#registered-instances-lifecycle-running-setup-failed)
@@ -60,17 +56,13 @@ One key change performed by initial setup is overwriting the instance's hosts fi
 
 **Note**  
 For consistency, AWS OpsWorks Stacks runs every core Setup recipe\. However, some of them perform some or all of their tasks only if an instance has been assigned to at least one layer, so they do not necessarily affect initial setup\.
-
 + If setup is successful, the instance moves to the [Registered](#registered-instances-lifecycle-registered) state\.
-
 + If setup is unsuccessful, the instance moves to the [Setup Failed](#registered-instances-lifecycle-setup-failed) state\.
 
 ### Assigning<a name="registered-instances-lifecycle-running-setup-assigning"></a>
 
-The instance has at least one assigned layer\. AWS OpsWorks Stacks runs each layer's Setup recipes, including any custom recipes that you have assigned to the layers' Setup event\.
-
+The instance has at least one assigned layer\. AWS OpsWorks Stacks runs each layer's Setup recipes, including any custom recipes that you have [assigned to the layers' Setup event](workingcookbook-executing.md)\.
 + If setup is successful, the instance moves to the Online state and AWS OpsWorks Stacks triggers a Configure lifecycle event on every instance in the stack to notify them of the new instance\.
-
 + If setup is unsuccessful, the instance moves to the Setup Failed state\.
 
 **Note**  
@@ -78,10 +70,8 @@ This setup process runs the core recipes a second time\. However, Chef recipes a
 
 ### Setup Failed<a name="registered-instances-lifecycle-running-setup-failed"></a>
 
-If a setup process for an instance in the [Assigning](#registered-instances-lifecycle-assigning) state fails, you can try again by using the Setup stack command to manually rerun the instance's Setup recipes\.
-
+If a setup process for an instance in the [Assigning](#registered-instances-lifecycle-assigning) state fails, you can try again by using the [Setup stack command](workingstacks-commands.md) to manually rerun the instance's Setup recipes\.
 + If setup is successful, the assigned instance moves to the [Online](#registered-instances-lifecycle-online) state and AWS OpsWorks Stacks triggers a Configure lifecycle event on every instance in the stack to notify them of the new instance\.
-
 + If the setup attempt is unsuccessful, the instance moves back to the Setup Failed state\.
 
 ## Registered<a name="registered-instances-lifecycle-registered"></a>
@@ -105,11 +95,9 @@ If you unassign the instance while it is in the Online state, AWS OpsWorks Stack
 ## Setup Failed<a name="registered-instances-lifecycle-setup-failed"></a>
 
 The Setup command has failed\.
-
-+ You can try again by running the Setup stack command\.
++ You can try again by running the [Setup stack command](workingstacks-commands.md)\.
 
   The instance returns to the [Running Setup](#registered-instances-lifecycle-running-setup) state\.
-
 + If you unassign the instance, AWS OpsWorks Stacks sends a Shutdown command to the instance\.
 
   The instance moves to the [Unassigning](#registered-instances-lifecycle-unassigning) state\.
@@ -163,32 +151,25 @@ Initial setup also creates a swap file on Amazon EC2 micro instances\.
 Initial setup makes the following changes to Ubuntu systems\.
 
 Package Sources  
-Initial setup changes package sources to the following:  
-
+Initial setup changes package sources to the following\.  
 + `deb http://archive.ubuntu.com/ubuntu/ ${code_name} main universe`
 
   To: `deb-src http://archive.ubuntu.com/ubuntu/ ${code_name} main universe`
-
 + `deb http://archive.ubuntu.com/ubuntu/ ${code_name}-updates main universe`
 
   To: `deb-src http://archive.ubuntu.com/ubuntu/ ${code_name}-updates main universe`
-
 + `deb http://archive.ubuntu.com/ubuntu ${code_name}-security main universe`
 
   To: `deb-src http://archive.ubuntu.com/ubuntu ${code_name}-security main universe`
-
 + `deb http://archive.ubuntu.com/ubuntu/ ${code_name}-updates multiverse`
 
   To: `deb-src http://archive.ubuntu.com/ubuntu/ ${code_name}-updates multiverse`
-
 + `deb http://archive.ubuntu.com/ubuntu ${code_name}-security multiverse`
 
   To: `deb-src http://archive.ubuntu.com/ubuntu ${code_name}-security multiverse`
-
 + `deb http://archive.ubuntu.com/ubuntu/ ${code_name} multiverse`
 
   To: `deb-src http://archive.ubuntu.com/ubuntu/ ${code_name} multiverse`
-
 + `deb http://security.ubuntu.com/ubuntu ${code_name}-security multiverse`
 
   To: `deb-src http://security.ubuntu.com/ubuntu ${code_name}-security multiverse`

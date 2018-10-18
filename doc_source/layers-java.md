@@ -23,7 +23,7 @@ You can specify other configuration settings by using custom JSON or a custom at
 **Important**  
 If your Java application uses SSL, we recommend that you disable SSLv3 if possible to address the vulnerabilities described in [CVE\-2014\-3566](http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566)\. For more information, see [Disabling SSLv3 for Apache Servers](#layers-java-sslv3)\.
 
-
+**Topics**
 + [Disabling SSLv3 for Apache Servers](#layers-java-sslv3)
 + [Custom Configuration](layers-java-config.md)
 + [Deploying Java Apps](layers-java-deploy.md)

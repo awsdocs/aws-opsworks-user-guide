@@ -1,19 +1,19 @@
 # Create a Puppet Enterprise Master<a name="gettingstarted-opspup-create"></a>
 
-You can create a Puppet master by using the AWS OpsWorks for Puppet Enterprise console, or the AWS CLI\.
+You can create a Puppet master by using the OpsWorks for Puppet Enterprise console, or the AWS CLI\.
 
+**Topics**
++ [Create a Puppet Enterprise Master by using the AWS Management Console](#w4ab1b7c19b9b7)
++ [Create a Puppet Enterprise Master by using the AWS CLI](#w4ab1b7c19b9b9)
 
-+ [Create a Puppet Enterprise Master by using the AWS Management Console](#w3ab2b7c15b9b7)
-+ [Create a Puppet Enterprise Master by using the AWS CLI](#w3ab2b7c15b9b9)
-
-## Create a Puppet Enterprise Master by using the AWS Management Console<a name="w3ab2b7c15b9b7"></a>
+## Create a Puppet Enterprise Master by using the AWS Management Console<a name="w4ab1b7c19b9b7"></a>
 
 1. Sign in to the AWS Management Console and open the AWS OpsWorks console at [https://console\.aws\.amazon\.com/opsworks/](https://console.aws.amazon.com/opsworks/)\.
 
 1. On the AWS OpsWorks home page, choose **Go to OpsWorks for Puppet Enterprise**\.  
 ![\[AWS OpsWorks service home\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_day0.png)
 
-1. On the AWS OpsWorks for Puppet Enterprise home page, choose **Create Puppet Enterprise server**\.  
+1. On the OpsWorks for Puppet Enterprise home page, choose **Create Puppet Enterprise server**\.  
 ![\[Puppet master dashboard\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_dashboardhome.png)
 
 1. On the **Set name, region, and type** page, specify a name for your server\. Puppet master names can be a maximum of 40 characters, must start with a letter, and can contain only alphanumeric characters and dashes\. Select a supported region, and then choose an instance type that supports the number of nodes that you want to manage\. You can change the instance type after your server has been created, if needed\. For this walkthrough, we are creating a **c4\.large** instance type in the US West \(Oregon\) Region\. Choose **Next**\.  
@@ -30,7 +30,7 @@ You can create a Puppet master by using the AWS OpsWorks for Puppet Enterprise c
    The maintenance window is required\. You can change the start day and time later by using the AWS Management Console, AWS CLI, or the APIs\.  
 ![\[System maintenance\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_sysmaint.png)
 
-1. Configure backups\. By default, automatic backups are enabled\. Set a preferred frequency and hour for automatic backup to start, and set the number of backup generations to store in Amazon Simple Storage Service\. A maximum of 30 backups can be kept; when the maximum is reached, AWS OpsWorks for Puppet Enterprise deletes the oldest backups to make room for new ones\.  
+1. Configure backups\. By default, automatic backups are enabled\. Set a preferred frequency and hour for automatic backup to start, and set the number of backup generations to store in Amazon Simple Storage Service\. A maximum of 30 backups can be kept; when the maximum is reached, OpsWorks for Puppet Enterprise deletes the oldest backups to make room for new ones\.  
 ![\[Automatic backups\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_backupconfig.png)
 
 1. When you are finished configuring advanced settings, choose **Next**\.
@@ -39,15 +39,15 @@ You can create a Puppet master by using the AWS OpsWorks for Puppet Enterprise c
 
    While you are waiting for AWS OpsWorks to create your Puppet master, go on to [Configure the Puppet Master Using the Starter Kit](opspup-starterkit.md) and download the Starter Kit and the Puppet Enterprise console credentials\. Do not wait until your server is online to download these items\. 
 
-   When server creation is finished, your Puppet master is available on the AWS OpsWorks for Puppet Enterprise home page, with a status of **online**\. After the server is online, the Puppet Enterprise console is available on the server's domain, at a URL in the following format: `https://your_server_name-randomID.region.opsworks-cm.io`\.
+   When server creation is finished, your Puppet master is available on the OpsWorks for Puppet Enterprise home page, with a status of **online**\. After the server is online, the Puppet Enterprise console is available on the server's domain, at a URL in the following format: `https://your_server_name-randomID.region.opsworks-cm.io`\.
 
-## Create a Puppet Enterprise Master by using the AWS CLI<a name="w3ab2b7c15b9b9"></a>
+## Create a Puppet Enterprise Master by using the AWS CLI<a name="w4ab1b7c19b9b9"></a>
 
-Creating an AWS OpsWorks for Puppet Enterprise master server by running AWS CLI commands differs from creating a server in the console\. In the console, AWS OpsWorks creates a service role and security group for you, if you do not specify existing ones that you want to use\. In the AWS CLI, AWS OpsWorks can create a security group for you if you do not specify one, but it does not automatically create a service role; you must provide a service role ARN as part of your `create-server` command\. In the console, while AWS OpsWorks is creating your Puppet master, you download the starter kit and the sign\-in credentials for the Puppet Enterprise console\. Because you cannot do this when you create an AWS OpsWorks for Puppet Enterprise master by using the AWS CLI, you use a JSON processing utility to get the sign\-in credentials and the starter kit from the results of the `create-server` command after your new AWS OpsWorks for Puppet Enterprise master is online\.
+Creating an OpsWorks for Puppet Enterprise master server by running AWS CLI commands differs from creating a server in the console\. In the console, AWS OpsWorks creates a service role and security group for you, if you do not specify existing ones that you want to use\. In the AWS CLI, AWS OpsWorks can create a security group for you if you do not specify one, but it does not automatically create a service role; you must provide a service role ARN as part of your `create-server` command\. In the console, while AWS OpsWorks is creating your Puppet master, you download the starter kit and the sign\-in credentials for the Puppet Enterprise console\. Because you cannot do this when you create an OpsWorks for Puppet Enterprise master by using the AWS CLI, you use a JSON processing utility to get the sign\-in credentials and the starter kit from the results of the `create-server` command after your new OpsWorks for Puppet Enterprise master is online\.
 
 If your local computer is not already running the AWS CLI, download and install the AWS CLI by following [installation instructions](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\. This section does not describe all parameters that you can use with the `create-server` command\. For more information about `create-server` parameters, see [https://docs.aws.amazon.com/cli/latest/reference/opsworks-cm/create-server.html](https://docs.aws.amazon.com/cli/latest/reference/opsworks-cm/create-server.html) in the *AWS CLI Reference*\.
 
-1. Be sure to complete the \. To create your Puppet master, you need a subnet ID, so you must have a VPC\.
+1. Be sure to complete the [Prerequisites](gettingstarted-opspup.md#gettingstarted-opspup-prereqs)\. To create your Puppet master, you need a subnet ID, so you must have a VPC\.
 
 1. Create a service role and an instance profile\. AWS OpsWorks provides an AWS CloudFormation template that you can use to create both\. Run the following AWS CLI command to create an AWS CloudFormation stack that creates the service role and instance profile for you\.
 
@@ -104,26 +104,16 @@ If your local computer is not already running the AWS CLI, download and install 
    }
    ```
 
-1. Create the AWS OpsWorks for Puppet Enterprise master by running the `create-server` command\.
-
+1. Create the OpsWorks for Puppet Enterprise master by running the `create-server` command\.
    + The `--engine` value is `Puppet`, `--engine-model` is `Monolithic`, and `--engine-version` is `2017`\.
-
    + The server name must be unique within your AWS account, within each region\. Server names must start with a letter; then letters, numbers, or hyphens \(\-\) are allowed, up to a maximum of 40 characters\.
-
    + Use the instance profile ARN and service role ARN that you copied in Step 2\.
-
    + Valid instance types are `c4.large`, `c4.xlarge`, or `c4.2xlarge`\. For more information about the specifications of these instance types, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon EC2 User Guide*\.
-
    + The `--engine-attributes` parameter is optional; if you don't specify a Puppet administrator password, the server creation process generates one for you\. If you add `--engine-attributes`, specify a `PUPPET_ADMIN_PASSWORD`, an administrator password for signing in to the Puppet Enterprise console webpage\. The password must use between 8 and 32 ASCII characters\.
-
    + An SSH key pair is optional, but can help you connect to your Puppet master if you need to reset the console administrator password\. For more information about creating an SSH key pair, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide*\.
-
    + Weekly system maintenance is required\. Valid values must be specified in the following format: `DDD:HH:MM`\. The specified time is in coordinated universal time \(UTC\)\. If you do not specify a value for `--preferred-maintenance-window`, the default value is a random, one\-hour period on Tuesday, Wednesday, or Friday\.
-
    + Valid values for `--preferred-backup-window` must be specified in one of the following formats: `HH:MM` for daily backups, or `DDD:HH:MM` for weekly backups\. The specified time is in UTC\. The default value is a random, daily start time\. To opt out of automatic backups, add the parameter `--disable-automated-backup` instead\.
-
    + For `--security-group-ids`, enter one or more security group IDs, separated by a space\.
-
    + For `--subnet-ids`, enter a subnet ID\.
 
    ```
@@ -133,12 +123,12 @@ If your local computer is not already running the AWS CLI, download and install 
    The following is an example\.
 
    ```
-   aws opsworks-cm create-server --engine "Puppet" --engine-model "Monolithic" --engine-version "2017" --server-name "puppet-02" --instance-profile-arn "arn:aws:iam::1019881987024:instance-profile/aws-opsworks-cm-ec2-role" --instance-type "c4.large" --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' --key-pair "amazon-test" --preferred-maintenance-window "Mon:08:00" --preferred-backup-window "Sun:02:00" --security-group-ids sg-b00000001 sg-b0000008 --service-role-arn "arn:aws:iam::044726508045:role/aws-opsworks-cm-service-role" --subnet-ids subnet-383daa71
+   aws opsworks-cm create-server --engine "Puppet" --engine-model "Monolithic" --engine-version "2017" --server-name "puppet-02" --instance-profile-arn "arn:aws:iam::1019881987024:instance-profile/aws-opsworks-cm-ec2-role" --instance-type "c4.large" --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' --key-pair "amazon-test" --preferred-maintenance-window "Mon:08:00" --preferred-backup-window "Sun:02:00" --security-group-ids sg-b00000001 sg-b0000008 --service-role-arn "arn:aws:iam::044726508045:role/service-role/aws-opsworks-cm-service-role" --subnet-ids subnet-383daa71
    ```
 
-1. AWS OpsWorks for Puppet Enterprise takes about 15 minutes to create a new server\. Do not dismiss the output of the `create-server` command or close your shell session, because the output can contain important information that is not shown again\. To get passwords and the starter kit from the `create-server` results, go on to the next step\.
+1. OpsWorks for Puppet Enterprise takes about 15 minutes to create a new server\. Do not dismiss the output of the `create-server` command or close your shell session, because the output can contain important information that is not shown again\. To get passwords and the starter kit from the `create-server` results, go on to the next step\.
 
-1. If you opted to have AWS OpsWorks for Puppet Enterprise generate a password for you, you can extract it in a usable format from the `create-server` results by using a JSON processor such as [jq](https://stedolan.github.io/jq/)\. After you install [jq](https://stedolan.github.io/jq/), you can run the following commands to extract the Puppet administrator password and starter kit\. If you did not provide your own password in Step 3, be sure to save the extracted administrator password in a convenient but secure location\.
+1. If you opted to have OpsWorks for Puppet Enterprise generate a password for you, you can extract it in a usable format from the `create-server` results by using a JSON processor such as [jq](https://stedolan.github.io/jq/)\. After you install [jq](https://stedolan.github.io/jq/), you can run the following commands to extract the Puppet administrator password and starter kit\. If you did not provide your own password in Step 3, be sure to save the extracted administrator password in a convenient but secure location\.
 
    ```
    #Get the Puppet password:
@@ -150,4 +140,4 @@ If your local computer is not already running the AWS CLI, download and install 
 **Note**  
 You cannot regenerate a new Puppet master starter kit in the AWS Management Console\. When you create a Puppet master by using the AWS CLI, run the preceding `jq` command to save the base64\-encoded starter kit in the `create-server` results as a ZIP file\.
 
-1. Go on to the next section, [[ERROR] BAD/MISSING LINK TEXT](opspup-starterkit.md)\.
+1. Go on to the next section, [Configure the Puppet Master Using the Starter Kit](opspup-starterkit.md)\.

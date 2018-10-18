@@ -66,11 +66,8 @@ var server = app.listen(process.env.PORT || 3000, function() {
 ```
 
 Here's what the file does:
-
 + `require` loads modules that contain some dependent code that this web app needs to run as expected\.
-
 + The `add_comment` and `get_comments` functions write information to, and read information from, the `comments.json` file\.
-
 + For information about `app.get`, `app.listen`, `app.post`, `app.set`, and `app.use`, see the [Express API Reference](http://expressjs.com/4x/api.html)\.
 
  To learn how to create and package your app for deployment, see [Application Source](workingapps-creating.md#workingapps-creating-source)\.

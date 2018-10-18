@@ -20,45 +20,28 @@ An AWS Flow \(Ruby\) layer provides a blueprint for instances that host Amazon S
 **Default security group:** AWS\-OpsWorks\-AWS\-Flow\-Ruby\-Server
 
 **Setup recipes:**
-
 + opsworks\_initial\_setup
-
 + ssh\_host\_keys
-
 + ssh\_users
-
 + mysql::client
-
 + dependencies
-
 + ebs
-
 + opsworks\_ganglia::client
-
 + opsworks\_aws\_flow\_ruby::setup
 
 **Configure recipes:**
-
 + opsworks\_ganglia::configure\-client
-
 + ssh\_users
-
 + mysql::client
-
 + agent\_version
-
 + opsworks\_aws\_flow\_ruby::configure 
 
 **Deploy recipes:**
-
 + deploy::default
-
 + deploy::aws\-flow\-ruby 
 
 **Undeploy recipes:**
-
 + deploy::aws\-flow\-ruby\-undeploy
 
 **Shutdown recipes:**
-
 + opsworks\_shutdown::default

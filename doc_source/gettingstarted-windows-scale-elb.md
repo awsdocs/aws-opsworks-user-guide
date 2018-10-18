@@ -1,11 +1,9 @@
 # Add a Load Balancer<a name="gettingstarted-windows-scale-elb"></a>
 
 Elastic Load Balancing is an AWS service that automatically distributes incoming application traffic across multiple Amazon EC2 instances\. A load balancer can serve two purposes\. The obvious one is to equalize the load on your application servers\. Many sites prefer to isolate their application servers and databases from direct user access\. In addition to distributing traffic, Elastic Load Balancing does the following:
-
 + Detects unhealthy Amazon EC2 instances\.
 
   It reroutes traffic to the remaining healthy instances until the unhealthy instances have been restored\.
-
 + Automatically scales request handling capacity in response to incoming traffic\.
 
 **Note**  

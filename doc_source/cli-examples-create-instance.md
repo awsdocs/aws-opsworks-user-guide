@@ -2,7 +2,7 @@
 
 Use the [create\-instance](http://docs.aws.amazon.com/cli/latest/reference/opsworks/create-instance.html) command to create an instance on a specified stack\.
 
-
+**Topics**
 + [Create an Instance with a Default Host Name](#cli-examples-create-instance-default)
 + [Create an Instance with a Themed Host Name](#cli-examples-create-instance-themed)
 + [Create an Instance with a Custom AMI](#cli-examples-create-instance-custom-ami)
@@ -15,13 +15,9 @@ C:\>aws opsworks --region us-west-1 create-instance --stack-id 935450cc-61e0-4b0
 ```
 
 The arguments are as follows:
-
 + `stack-id` – You can get the stack ID from the stack's settings page on the console \(look for **OpsWorks ID**\) or by calling [describe\-stacks](http://docs.aws.amazon.com/cli/latest/reference/opsworks/describe-stacks.html)\.
-
 + `layer-ids` – You can get layer IDs from the layer's details page on the console \(look for **OpsWorks ID**\) or by calling [describe\-layers](http://docs.aws.amazon.com/cli/latest/reference/opsworks/describe-layers.html)\. In this example, the instance belongs to only one layer\.
-
 + `instance-type` – The specification that defines the memory, CPU, storage capacity, and hourly cost for the instance; `m1.large` for this example\.
-
 + `os` – The instance's operating system; Amazon Linux for this example\.
 
 The command returns a JSON object that contains the instance ID, as follows:
@@ -71,15 +67,10 @@ C:\>aws opsworks create-instance --region us-west-1 --stack-id c5ef46ce-3ccd-472
 ```
 
 The arguments are as follows:
-
 + `stack-id` – You can get the stack ID from the stack's settings page on the console \(look for **OpsWorks ID**\) or by calling [describe\-stacks](http://docs.aws.amazon.com/cli/latest/reference/opsworks/describe-stacks.html)\.
-
 + `layer-ids` – You can get layer IDs from the layer's details page on the console \(look for **OpsWorks ID**\) or by calling [describe\-layers](http://docs.aws.amazon.com/cli/latest/reference/opsworks/describe-layers.html)\. In this example, the instance belongs to only one layer\.\.
-
 + `instance-type` – The value defines the instance's memory, CPU, storage capacity, and hourly cost, and must be compatible with the AMI \(`c3.large` for this example\)\.
-
 + `os` – The instance's operating system, which must be set to `Custom` for a custom AMI\.
-
 + `ami-id` – The AMI ID, which should look something like `ami-6c61f104`
 
 **Note**  

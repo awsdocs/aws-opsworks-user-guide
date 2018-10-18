@@ -11,9 +11,7 @@ Although you can manually set up `cron` jobs on individual Linux\-based instance
 1. Install the cookbook on your stack\. For more information, see [Installing Custom Cookbooks](workingcookbook-installingcustom-enable.md)\.
 
 1. Have AWS OpsWorks Stacks run the recipe automatically on the layer's instances by assigning it to the following lifecycle events\. For more information, see [Automatically Running Recipes](workingcookbook-assigningcustom.md)\.
-
    + **Setup** – Assigning `cronjob.rb` to this event directs AWS OpsWorks Stacks to run the recipe on all new instances\.
-
    + **Deploy** – Assigning `cronjob.rb` to this event directs AWS OpsWorks Stacks to run the recipe on all online instances when you deploy or redeploy an app to the layer\.
 
    You can also manually run the recipe on online instances by using the `Execute Recipes` stack command\. For more information, see [Run Stack Commands](workingstacks-commands.md)\.
@@ -30,11 +28,8 @@ end
 ```
 
 `cron` is a Chef resource that represents a `cron` job\. When AWS OpsWorks Stacks runs the recipe on an instance, the associated provider handles the details of setting up the job\.
-
 + `job_name` is a user\-defined name for the `cron` job, such as `weekly report`\.
-
 + `hour`/`minute`/`weekday` specify when the commands should run\. This example runs the commands every Saturday at 1:10 AM\.
-
 + `command` specifies the commands to be run\.
 
   This example runs two commands\. The first navigates to the `/srv/www/myapp/current` directory\. The second runs the user\-implemented `mailing.php` application, which collects the sales data and sends the report\.

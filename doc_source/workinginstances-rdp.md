@@ -1,15 +1,12 @@
 # Using RDP to Log In to a Windows Instance<a name="workinginstances-rdp"></a>
 
 You can use the Windows remote desktop protocol \(RDP\) to log in to an online Windows instance, as follows:
-
 + The instance must have a security group with an inbound rule that allows RDP access\.
 
   For more information on working with security groups, see [Using Security Groups](workingsecurity-groups.md)\.
-
 + Ordinary users – AWS OpsWorks Stacks provides authorized ordinary users with an RDP password that is valid for a limited time period, which can range from 30 minutes to 12 hours\.
 
-  In addition to being authorized, users must have at least a Show permission level or their attached AWS Identity and Access Management \(IAM\) policies must allow the `opsworks:GrantAccess` action\.
-
+  In addition to being authorized, users must have at least a [Show permission level](opsworks-security-users-console.md) or their attached AWS Identity and Access Management \(IAM\) policies must allow the `opsworks:GrantAccess` action\.
 + Administrators – You can use the Administrator password to log in for an unlimited amount of time\.
 
   As described later, if you have specified an Amazon Elastic Compute Cloud \(Amazon EC2\) key pair for the instance, you can use it to retrieve the Administrator password\.
@@ -17,7 +14,7 @@ You can use the Windows remote desktop protocol \(RDP\) to log in to an online W
 **Note**  
 This topic describes how to use the Windows Remote Desktop Connection client to log in from a Windows workstation\. You can also use one of the available RDP clients for Linux or OS X, but the procedure might be somewhat different\. For more information on RDP clients that are compatible with Microsoft Windows Server 2012 R2, see [Microsoft Remote Desktop Clients](https://technet.microsoft.com/en-us/library/dn473009.aspx)\.
 
-
+**Topics**
 + [Providing a Security Group that Allows RDP Access](#workinginstances-rdp-rdp-ingress)
 + [Logging in As an Ordinary User](#workinginstances-rdp-ordinary)
 + [Logging in As Administrator](#workinginstances-rdp-admin)
@@ -33,9 +30,7 @@ Before you can use RDP to log into a Windows instance, the instance's security g
 1. Select **AWS\-OpsWorks\-RDP\-Server**, choose the **Inbound** tab, and choose **Edit**\.
 
 1. Choose **Add Rule** and specify the following settings:
-
    + **Type** – **RDP**
-
    + **Source** – The permissible source IP addresses\.
 
      You typically allow inbound RDP requests from your IP address or a specified IP address range \(typically your corporate IP address range\)\.
@@ -64,11 +59,9 @@ Authorized users can log in to any of the stack's online instances, as follows\.
 1. Record the **public DNS name**, **username**, and **password** values, then choose **Acknowledge and close**\.
 
 1. Open the Windows Remote Desktop Connection client, choose **Show Options,** and provide the following from the information that you recorded in Step 4: 
-
    + **Computer** – The instance's public DNS name\.
 
      You can also use the public IP address, if you prefer\. Choose **Instances** and copy the address from the instance's **Public IP** column\.
-
    + **User name** – The user name\.
 
 1. When the client prompts for your credentials, enter the password that you saved in Step 4\.
@@ -81,13 +74,13 @@ AWS OpsWorks Stacks generates a user password only for online instances\. If you
 You can log in to an instance as Administrator by using the appropriate password\. If you have assigned an EC2 key pair to an instance, Amazon EC2 uses it to automatically create and encrypt an Administrator password when the instance starts\. You can then use the key pair's private key with the EC2 console, API, or CLI to retrieve and decrypt the password\.
 
 **Note**  
-You cannot use a personal SSH key pair to retrieve an Administrator password; you must use an EC2 key pair\. 
+You cannot use a [personal SSH key pair](security-ssh-access.md) to retrieve an Administrator password; you must use an EC2 key pair\. 
 
 The following describes how to use the EC2 console to retrieve an Administrator password and log in to an instance\. If you prefer command\-line tools, you can also use the AWS CLI `[get\-password\-data](http://docs.aws.amazon.com/cli/latest/reference/ec2/get-password-data.html)` command to retrieve the password\.
 
 **To log in as Administrator**
 
-1. Make sure that you have specified an EC2 key pair for the instance\. You can specify a default key pair for all of the stack's instances when you create the stack, or you can  specify a key pair for a particular instance when you create the instance\.
+1. Make sure that you have specified an EC2 key pair for the instance\. You can [specify a default key pair for all of the stack's instances](workingstacks-creating.md) when you create the stack, or you can [ specify a key pair for a particular instance](workinginstances-add.md) when you create the instance\.
 
 1. Open the [EC2 console](https://console.aws.amazon.com/ec2/v2/), set it to the stack's region, and choose **Instances** from the navigation pane\.
 
@@ -96,9 +89,7 @@ The following describes how to use the EC2 console to retrieve an Administrator 
 1. Provide a path to the EC2 key pair's private key on your workstation, and choose **Decrypt Password**\. Copy the decrypted password for later use\.
 
 1. Open the Windows Remote Desktop Connection client, choose **Show Options,** and provide the following information: 
-
    + **Computer** – The instance's public DNS name or public IP address, which you can get from the instance's details page\.
-
    + **User name** – `Administrator`\.
 
 1. When the client prompts for your credentials, provide the decrypted password from Step 4\.

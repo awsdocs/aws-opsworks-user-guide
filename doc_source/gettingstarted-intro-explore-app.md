@@ -11,4 +11,4 @@ Examine the settings that AWS OpsWorks Stacks used for the app\.
 
 To learn about what some of the settings represent, choose **Edit**, and then hover over each of the settings\. \(Not all settings have on\-screen descriptions\.\) For more information about these the settings, see [Adding Apps](workingapps-creating.md)\.
 
-In the next step, you can explore layer monitoring reports\.
+In the [next step](gettingstarted-intro-explore-monitoring.md), you can explore layer monitoring reports\.

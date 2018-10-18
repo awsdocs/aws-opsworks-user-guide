@@ -2,7 +2,7 @@
 
 Your cookbook has one recipe that just installs and starts IIS\. This is enough to create the layer and verify that you have a working IIS instance\. Later, you will add application deployment functionality to the layer\.
 
-## Create a Layer<a name="w3ab2c11c39c15c21c21b5"></a>
+## Create a Layer<a name="w4ab1c11c39c15c21c21b5"></a>
 
 You start by adding a layer to the stack\. You then add functionality to that layer by assigning custom recipes to the appropriate lifecycle events\.
 
@@ -11,16 +11,14 @@ You start by adding a layer to the stack\. You then add functionality to that la
 1. Choose **Layers** in the navigation pane and then choose **Add a layer**\.
 
 1. Configure the layer as follows:
-
    + **Name**– **IISExample** 
-
    + **Short name** – **iisexample**
 
      AWS OpsWorks Stacks uses the short name to identify the layer internally\. You also use the short name to identify the layer in recipes, although this example does not do so\. You can specify any short name, but it can consist only of lowercase alphanumeric characters and a small number of punctuation marks\. For more information, see [Custom Layers](workinglayers-custom.md)\.
 
 1. Choose **Add Layer**\.
 
-If you were to add an instance to IISWalkthrough at this point and start it, AWS OpsWorks Stacks would automatically install the cookbooks but it would not run `install.rb`\. After an instance is online, you can run recipes manually by using the Execute Recipes stack command\. However, a better approach is to assign the recipe to one of the layer's lifecycle events\. AWS OpsWorks Stacks then automatically runs the recipe at the appropriate point in the instance's lifecycle\.
+If you were to add an instance to IISWalkthrough at this point and start it, AWS OpsWorks Stacks would automatically install the cookbooks but it would not run `install.rb`\. After an instance is online, you can run recipes manually by using the [Execute Recipes stack command](workingstacks-commands.md)\. However, a better approach is to assign the recipe to one of the layer's [lifecycle events](workingcookbook-events.md)\. AWS OpsWorks Stacks then automatically runs the recipe at the appropriate point in the instance's lifecycle\.
 
 You will probably want to install and start IIS as soon as the instance finishes booting\. You can accomplish this by assigning `install.rb` to the layer's Setup event\.
 
@@ -40,7 +38,7 @@ You use `cookbook-name::recipe-name` to identify recipes, where you omit the rec
 
 1. Choose **Save** to save the new configuration\. The custom Setup recipes should now include `iis-cookbook::install`\.
 
-## Add an Instance to the Layer and Start It<a name="w3ab2c11c39c15c21c21b7"></a>
+## Add an Instance to the Layer and Start It<a name="w4ab1c11c39c15c21c21b7"></a>
 
 You can try the recipe out by adding an instance to the layer and starting the instance\. AWS OpsWorks Stacks will automatically install the cookbooks and run `install.rb` during setup, as soon as the instance finishes booting\.
 
@@ -58,7 +56,7 @@ You can try the recipe out by adding an instance to the layer and starting the i
 
    The process may take a number of minutes, during which the **Status** column displays a series of status states\. When you get to **online** status, the setup process is complete and the instance is ready for use\.
 
-## Confirm that IIS is Installed and Running<a name="w3ab2c11c39c15c21c21b9"></a>
+## Confirm that IIS is Installed and Running<a name="w4ab1c11c39c15c21c21b9"></a>
 
 You can use RDP to connect to the instance and verify that your Setup recipe worked correctly\.
 

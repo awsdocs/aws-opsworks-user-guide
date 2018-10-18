@@ -29,7 +29,7 @@ The statistics page's user name, which you must provide to view the statistics p
 A statistics page password, which you must provide to view the statistics page\. The default value is a randomly generated string\.
 
 **Health check URL**  
-The health check URL suffix\. HAProxy uses this URL to periodically call an HTTP method on each application server instance to determine whether the instance is functioning\. If the health check fails, HAProxy stops routing traffic to the instance until it is restarted, either manually or through auto healing\. The default value for the URL suffix is "/", which corresponds to the server instance's home page: http://*DNSName*/\. 
+The health check URL suffix\. HAProxy uses this URL to periodically call an HTTP method on each application server instance to determine whether the instance is functioning\. If the health check fails, HAProxy stops routing traffic to the instance until it is restarted, either manually or through [auto healing](workinginstances-autohealing.md)\. The default value for the URL suffix is "/", which corresponds to the server instance's home page: http://*DNSName*/\. 
 
 **Health check method**  
 An HTTP method to be used to check whether instances are functioning\. The default value is **OPTIONS** and you can also specify **GET** or **HEAD**\. For more information, see [httpchk](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html)\. 
@@ -44,26 +44,21 @@ Record the password for later use; AWS OpsWorks Stacks does not allow you to vie
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/haproxy_update_password.png)
 
-## How the HAProxy Layer Works<a name="w3ab2c11c63b7c19c11c19"></a>
+## How the HAProxy Layer Works<a name="w4ab1c11c63b7c19c11c19"></a>
 
 By default, HAProxy does the following:
-
 + Listens for requests on the HTTP and HTTPS ports\.
 
   You can configure HAProxy to listen on only the HTTP or HTTPS port by overriding the Chef configuration template, `haproxy.cfg.erb`\.
-
 + Routes incoming traffic to instances that are members of any application server layer\.
 
   By default, AWS OpsWorks Stacks configures HAProxy to distribute traffic to instances that are members of any application server layer\. You could, for example, have a stack with both Rails App Server and PHP App Server layers, and an HAProxy master distributes traffic to the instances in both layers\. You can configure the default routing by using a custom recipe\.
-
 + Routes traffic across multiple Availability Zones\.
 
   If one Availability Zone goes down, the load balancer routes incoming traffic to instances in other zones so your application continues to run without interruption\. For this reason, a recommended practice is to distribute your application servers across multiple Availability Zones\.
-
 + Periodically runs the specified health check method on each application server instance to assess its health\.
 
   If the method does not return within a specified timeout period, the instance is presumed to have failed and HAProxy stops routing requests to the instance\. AWS OpsWorks Stacks also provides a way to automatically replace failed instances\. For more information, see [Using Auto Healing](workinginstances-autohealing.md)\. You can change the health check method when you create the layer\. 
-
 + Collects statistics and optionally displays them on a web page\.
 
 **Important**  
@@ -78,20 +73,16 @@ When you stop an HAProxy instance, AWS OpsWorks Stacks retains the Elastic IP ad
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/delete_lb.png)
 
 This option affects what happens when you add a new instance to the layer to replace a deleted instance:
-
 + If you retained the deleted instance's Elastic IP address, AWS OpsWorks Stacks assigns the address to the new instance\.
-
 + Otherwise, AWS OpsWorks Stacks assigns a new Elastic IP address to the instance and you must update your DNS registrar settings to map to the new address\.
 
-When application server instances come on line or go off line—either manually or as a consequence of automatic scaling or auto healing—the load balancer configuration must be updated to route traffic to the current set of online instances\. This task is handled automatically by the layer's built\-in recipes:
-
-+ When new instances come on line, AWS OpsWorks Stacks triggers a Configure lifecycle event\. The HAProxy layer's built\-in Configure recipes update the load balancer configuration so that it also distributes requests to any new application server instances\.
-
+When application server instances come on line or go off line—either manually or as a consequence of [automatic scaling](workinginstances-autoscaling.md) or [auto healing](workinginstances-autohealing.md)—the load balancer configuration must be updated to route traffic to the current set of online instances\. This task is handled automatically by the layer's built\-in recipes:
++ When new instances come on line, AWS OpsWorks Stacks triggers a Configure [lifecycle event](workingcookbook-events.md)\. The HAProxy layer's built\-in Configure recipes update the load balancer configuration so that it also distributes requests to any new application server instances\.
 + When instances go off line or an instance fails a health check, AWS OpsWorks Stacks also triggers a Configure lifecycle event\. The HAProxy Configure recipes update the load balancer configuration to route traffic to only the remaining online instances\. 
 
 Finally, you can also use a custom domain with the HAProxy layer\. For more information, see [Using Custom Domains](workingapps-domains.md)\. 
 
-## Statistics Page<a name="w3ab2c11c63b7c19c11c21"></a>
+## Statistics Page<a name="w4ab1c11c63b7c19c11c21"></a>
 
 If you have enabled the statistics page, the HAProxy displays a page containing a variety of metrics at the specified URL\.
 

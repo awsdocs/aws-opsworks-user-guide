@@ -58,8 +58,10 @@ The `templates/default` directory works for Amazon Linux and Ubuntu 12\.04 insta
 
 1. Create a `.zip` archive of `opsworks_cookbooks` named `opsworks_cookbooks.zip`, and then upload the file to an Amazon Simple Storage Service \(Amazon S3\) bucket\. For simplicity, [make the archive public](http://docs.aws.amazon.com/AmazonS3/latest/UG/EditingPermissionsonanObject.html)\. Record the archive's URL for later use\. You can also store your cookbooks in a private Amazon S3 archive or in other repository types\. For more information, see [Cookbook Repositories](workingcookbook-installingcustom-repo.md)\.
 
+   Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
+
 **Note**  
-For simplicity, this example adds a hardcoded error message to the template\. To change it, you must modify the template and reinstall the cookbook\. To give yourself greater flexibility, you can define a default custom attribute for the error string in the custom cookbook's `customize.rb` attribute file and assign the value of that attribute to `ErrorDocument 500`\. For example, if you name the attribute `[:apache][:custom][:error500]`, the corresponding line in `apache2.conf.erb` would then look something like the following:  
+For simplicity, this example adds a hardcoded error message to the template\. To change it, you must modify the template and [reinstall the cookbook](workingcookbook-installingcustom-enable-update.md)\. To give yourself greater flexibility, you can [define a default custom attribute](cookbooks-101-opsworks-attributes.md) for the error string in the custom cookbook's `customize.rb` attribute file and assign the value of that attribute to `ErrorDocument 500`\. For example, if you name the attribute `[:apache][:custom][:error500]`, the corresponding line in `apache2.conf.erb` would then look something like the following:  
 
 ```
 ...
@@ -67,7 +69,7 @@ ErrorDocument 500 <%= node[:apache][:custom][:error500] %>
 #ErrorDocument 404 /missing.html
 ...
 ```
-You can then change the custom error message at any time by overriding `[:apache][:custom][:error500]`\. If you use custom JSON to override the attribute, you don't even need to touch the cookbook\.
+You can then change the custom error message at any time by overriding `[:apache][:custom][:error500]`\. If you [use custom JSON to override the attribute](workingcookbook-json-override.md), you don't even need to touch the cookbook\.
 
 To use the custom template, create a stack and install the cookbook\.
 
@@ -76,30 +78,25 @@ To use the custom template, create a stack and install the cookbook\.
 1. Open the [AWS OpsWorks Stacks console](https://console.aws.amazon.com/opsworks/), and then choose **Add Stack**\.
 
 1. Specify the following standard settings:
-
    + **Name** – ApacheTemplate
-
    + **Region** – US West \(Oregon\)
-
    + **Default SSH key** – An Amazon Elastic Compute Cloud \(Amazon EC2\) key pair
 
      If you need to create an Amazon EC2 key pair, see [Amazon EC2 Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)\. Note that the key pair must belong to the same AWS region as the instance\.
 
    Choose **Advanced>>**, choose **Use custom Chef cookbooks**, to specify the following settings:
-
    + **Repository type** – **Http Archive**
-
    + **Repository URL** – The cookbook archive's URL that you recorded earlier
 
    Accept the default values for the other settings, and then choose **Add Stack** to create the stack\.
 
-1. Choose **Add a layer**, and then add a Java App Server layer to the stack with default settings\.
+1. Choose **Add a layer**, and then [add a Java App Server layer](layers-java.md) to the stack with default settings\.
 
-1. Add a 24/7 instance with default settings to the layer, and then start the instance\.
+1. [Add a 24/7 instance](workinginstances-add.md) with default settings to the layer, and then start the instance\.
 
    A t2\.micro instance is sufficient for this example\.
 
-1. After the instance is online, connect to it with SSH\. The `httpd.conf` file is in the `/etc/httpd/conf` directory\. The file should contain your custom `ErrorDocument` setting, which will look something like the following: 
+1. After the instance is online, [connect to it with SSH](workinginstances-ssh.md)\. The `httpd.conf` file is in the `/etc/httpd/conf` directory\. The file should contain your custom `ErrorDocument` setting, which will look something like the following: 
 
    ```
    ...

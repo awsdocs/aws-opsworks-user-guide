@@ -59,15 +59,10 @@ You must first create an Amazon S3 bucket\. You can do this directly by using th
 ```
 
 Several things happen when you launch the template:
-
 + The `[AWS::S3::Bucket](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html)` resource creates an Amazon S3 bucket\.
-
 + The `[AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)` resource creates an instance profile that will be assigned to the application server instances\.
-
 + The `[AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)` resource creates the instance profile's role\.
-
 + The `[AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)` resource sets the role's permissions to allow unrestricted access to Amazon S3 buckets\.
-
 + The `Outputs` section displays the bucket and instance profile names in AWS CloudFormation console after you have launched the template\.
 
   You will need these values to set up your stack and app\.
@@ -80,19 +75,19 @@ For more information on how to create AWS CloudFormation templates, see [Learn T
 
    This example assumes that the file is named `appserver.template`\.
 
-1. Open the [AWS CloudFormation](https://console.aws.amazon.com/cloudformation/) console and click **Create Stack**\.
+1. Open the [AWS CloudFormation](https://console.aws.amazon.com/cloudformation/) console and choose **Create Stack**\.
 
 1. In the **Stack Name** box, enter the stack name\.
 
    This example assumes that the name is **AppServer**\.
 
-1. Click **Upload template file**, click **Browse**, select the `appserver.template` file that you created in Step 1, and click **Next Step**\.
+1. Choose **Upload template file**, choose **Browse**, select the `appserver.template` file that you created in Step 1, and then choose **Next Step**\.
 
-1. On the **Specify Parameters** page, select **I acknowledge that this template may create IAM resources**, then click **Next Step** on each page of the wizard until you reach the end\. Click **Create**\. 
+1. On the **Specify Parameters** page, select **I acknowledge that this template may create IAM resources**, then choose **Next Step** on each page of the wizard until you reach the end\. Choose **Create**\. 
 
-1. After the **AppServer** stack reaches **CREATE\_COMPLETE** status, select it and click its **Outputs** tab\.
+1. After the **AppServer** stack reaches **CREATE\_COMPLETE** status, select it and choose the **Outputs** tab\.
 
-   You might need to click refresh a few times to update the status\.
+   You might need to refresh a few times to update the status\.
 
 1. On the **Outputs** tab, record the **BucketName** and **InstanceProfileName** values for later use\.
 

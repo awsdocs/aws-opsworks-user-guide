@@ -14,4 +14,4 @@ Test the results of the app deployment on the instance\.
 
 You have now successfully tested the deployed app on the instance\.
 
-In the remaining steps, you can use the AWS OpsWorks Stacks console to explore settings of the stack and its components\. In the next step, you can start your exploration by examining the stack's settings\.
+In the remaining steps, you can use the AWS OpsWorks Stacks console to explore settings of the stack and its components\. In the [next step](gettingstarted-intro-explore-stack.md), you can start your exploration by examining the stack's settings\.
