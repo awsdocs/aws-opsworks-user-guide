@@ -14,6 +14,13 @@ While Puppet master creation is still in progress, the server's Properties page 
 
 1. Download the Starter Kit, and unzip the Starter Kit \.zip file into your workspace directory\. Do not share your sign\-in credentials\. If other users will be managing the Puppet master, add them as administrators in the Puppet Enterprise console later\. For more information about how to add users to the Puppet master, see [Creating and managing users and user roles](https://docs.puppet.com/pe/latest/rbac_user_roles.html#add-a-user-to-a-user-role) in the Puppet Enterprise documentation\.
 
+## Install the Puppet Master Certificate<a name="opspup-post-launch"></a>
+
+To work with your Puppet master and add nodes to manage, you'll need to install its certificate\. Install it by running the following AWS CLI command\. You cannot perform this task in the AWS Management Console\.
+
+```
+aws --region region opsworks-cm describe-servers --server-name server_name --query "Servers[0].EngineAttributes[?Name=='PUPPET_API_CA_CERT'].Value" --output text > .config/ssl/cert/ca.pem
+```
 ## Set Up the Starter Kit Nginx Example<a name="w3ab2b7c15c11c11"></a>
 
 After you download and unzip the Starter Kit, you can use the example branch in the included, sample `control-repo-example` folder to configure an Nginx web server on your managed nodes\. 
@@ -39,7 +46,3 @@ Do not push to a `master` branch\. The `master` branch is reserved for the Puppe
    ```
 
 For more information about how you can apply the sample Nginx configuration to managed nodes that you create in Amazon EC2, see \.
-
-## Set Up Authentication for Code Manager<a name="w3ab2b7c15c11c15"></a>
-
-To securely deploy your environments, Code Manager requires an authentication token\. To generate a token for Code Manager, assign a user to the deployment role, and then request an authentication token\. You can complete this procedure by following steps in the section [Set up authentication for Code Manager](https://puppet.com/docs/pe/2017.3/code_management/code_mgr_config.html#set-up-authentication-for-code-manager) in the Puppet Enterprise documentation\.
