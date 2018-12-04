@@ -7,6 +7,7 @@ The following table describes important changes to the Chef 12 agent that AWS Op
 
 | Agent Version | Description | Release Date | 
 | --- | --- | --- | 
+| 4032 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | November 15, 2018 | 
 | 4031 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | August 15, 2018 | 
 | 4030 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | May 31, 2018 | 
 | 4029 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | May 2, 2018 | 

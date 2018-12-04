@@ -14,7 +14,7 @@ Amazon Elastic Compute Cloud \(Amazon EC2\) refers to Microsoft Windows Server 2
 
 **Creating Instances**  
 You create Windows instances with the AWS OpsWorks Stacks console, API, or CLI\. Windows instances are Amazon EBS\-backed, but you cannot mount extra Amazon EBS volumes\.  
-Windows stacks can use [24/7](workinginstances-starting.md) instances, which you start and stop manually\. They can also use [time\-based automatic scaling](workinginstances-autoscaling-timebased.md), which automatically starts and stops instances based on a user\-specified schedule, or [load\-based automatic scaling](workinginstances-autoscaling-loadbased.md), which allows a stack to handle variable loads by starting additional instances when traffic is high and stopping instances when traffic is low\.  
+Windows stacks can use [24/7](workinginstances-starting.md) instances, which you start and stop manually\. They can also use [time\-based automatic scaling](workinginstances-autoscaling-timebased.md), which automatically starts and stops instances based on a user\-specified schedule\. Windows\-based stacks cannot use [load\-based automatic scaling](workinginstances-autoscaling-loadbased.md)\.  
 You cannot [register Windows instances](registered-instances.md) that were created outside of AWS OpsWorks Stacks with a stack\.
 
 **Updates**  

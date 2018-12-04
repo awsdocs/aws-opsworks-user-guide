@@ -89,6 +89,7 @@ A list of the instance's layers, identified by their unique IDs; for example, `3
 
 **os**  <a name="data-bag-json-instance-os"></a>
 The instance's operating system \(string\)\. Valid values include:  
++ `"Amazon Linux 2"`
 + `"Amazon Linux 2018.03"`
 + `"Amazon Linux 2017.09"`
 + `"Amazon Linux 2017.03"`

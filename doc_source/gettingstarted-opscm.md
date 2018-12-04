@@ -4,30 +4,30 @@ AWS OpsWorks for Chef Automate lets you run a [Chef Automate](https://www.chef.i
 
 The following walkthrough helps you create your first Chef server in AWS OpsWorks for Chef Automate\.
 
-## Prerequisites<a name="w4ab1b9c21b7"></a>
+## Prerequisites<a name="gettingstarted-opscm-prereq"></a>
 
 First, create the resources outside of AWS OpsWorks for Chef Automate that you'll need to access and manage your Chef server\. If you already have an AWS account set up, skip to [Set Up a VPC](#set-up-vpc)\.
 
 **Topics**
-+ [Get an AWS Account and Your AWS Credentials](#getting-started-signup)
++ [Get an AWS Account and Your AWS account root user Credentials](#getting-started-signup)
 + [Set Up a VPC](#set-up-vpc)
-+ [Set Up an EC2 Key Pair \(Optional\)](#w4ab1b9c21b7c10)
++ [Set Up an EC2 Key Pair \(Optional\)](#w4ab1b9c21b7c11)
 
-### Get an AWS Account and Your AWS Credentials<a name="getting-started-signup"></a>
+### Get an AWS Account and Your AWS account root user Credentials<a name="getting-started-signup"></a>
 
-To access AWS, you will need to sign up for an AWS account\.
+To access AWS, you must sign up for an AWS account\.
 
 **To sign up for an AWS account**
 
 1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
 **Note**  
-This might be unavailable in your browser if you previously signed into the AWS Management Console\. In that case, choose **Sign in to a different account**, and then choose **Create a new AWS account**\.
+If you previously signed in to the AWS Management Console using AWS account root user credentials, choose **Sign in to a different account**\. If you previously signed in to the console using IAM credentials, choose **Sign\-in using root account credentials**\. Then choose **Create a new AWS account**\.
 
 1. Follow the online instructions\.
 
-   Part of the sign\-up procedure involves receiving a phone call and entering a PIN using the phone keypad\.
+   Part of the sign\-up procedure involves receiving a phone call and entering a verification code using the phone keypad\.
 
-AWS sends you a confirmation e\-mail after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and clicking **My Account/Console**\.
+ AWS sends you a confirmation e\-mail after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and choosing **My Account**\.
 
 **To get the access key ID and secret access key for an IAM user**
 
@@ -60,7 +60,7 @@ The only time that you can view or download the secret access keys is when you c
 Your AWS OpsWorks for Chef Automate server must operate in an Amazon Virtual Private Cloud\. You can add it to an existing VPC, use the default VPC, or create a new VPC to contain the server\. For information about Amazon VPC and how to create a new VPC, see the [Amazon VPC Getting Started Guide](https://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/)\.
 
 If you create your own VPC, or use an existing one, the VPC should have the following settings or properties\.
-+ The VPC should have a single, public subnet\.
++ The VPC should have only one subnet, and it should be public\.
 + **DNS resolution** should be enabled\.
 + On the subnet, enable **Auto\-assign public IP**\.
 
@@ -70,7 +70,7 @@ If you are unfamiliar with creating VPCs or running your instances in them, you 
 aws cloudformation create-stack --stack-name OpsWorksVPC --template-url https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-vpc.yaml
 ```
 
-### Set Up an EC2 Key Pair \(Optional\)<a name="w4ab1b9c21b7c10"></a>
+### Set Up an EC2 Key Pair \(Optional\)<a name="w4ab1b9c21b7c11"></a>
 
 An SSH connection is not necessary or recommended for typical management of the Chef server; you can use [https://docs.chef.io/knife.html](https://docs.chef.io/knife.html) commands to perform most management tasks on your Chef server\.
 

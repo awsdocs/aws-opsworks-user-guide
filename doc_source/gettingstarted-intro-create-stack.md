@@ -19,7 +19,7 @@ Before you begin this step, complete the [prerequisites](gettingstarted-intro-pr
 
 1. AWS OpsWorks Stacks creates a stack named **My Sample Stack \(Linux\)**\. AWS OpsWorks Stacks also adds all of the necessary components to deploy the app to the stack:
    + A *layer*, which is a blueprint for a set of instances\. It specifies things like the instance's settings, resources, installed packages, and security groups\. \(For more information, see [Layers](workinglayers.md)\.\) The layer is named **Node\.js App Server**\.
-   + An *instance*, which in this case is an Amazon Linux 2018\.03 EC2 instance\. \(For more information about instances, see [Instances](workinginstances.md)\.\) The instance's hostname is **nodejs\-server1**\.
+   + An *instance*, which in this case is an Amazon Linux 2 EC2 instance\. \(For more information about instances, see [Instances](workinginstances.md)\.\) The instance's hostname is **nodejs\-server1**\.
    + An *app*, which is code to run on the instance\. \(For more information about apps, see [Apps](workingapps.md)\.\) The app is named **Node\.js Sample App**\.
 
 1. After AWS OpsWorks Stacks creates the stack, choose **Explore the sample stack** to display the **My Sample Stack \(Linux\)** page \(if you complete this walkthrough multiple times, **My Sample Stack \(Linux\)** may have a sequential number after it, such as **2** or **3**\):  

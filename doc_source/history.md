@@ -2,11 +2,14 @@
 
 | Change | Description | Date | 
 | --- |--- |--- |
-| [AWS OpsWorks Stacks](#history) | AWS OpsWorks Stacks now supports instances running Amazon Linux 2018\.03\. | August 23, 2018 | 
+| [AWS OpsWorks for Puppet Enterprise](#history) | Added procedure for setting up an SSH\-based connection to a control repository that uses AWS CodeCommit\. | December 3, 2018 | 
+| [AWS OpsWorks Stacks](#history) | AWS OpsWorks Stacks now supports instances running Amazon Linux 2 in Chef 12 stacks\. | November 15, 2018 | 
+| [AWS OpsWorks Stacks](#history) | AWS OpsWorks Stacks now supports instances running Amazon Linux 2018\.03 in Chef 11\.10 stacks\. | October 23, 2018 | 
+| [AWS OpsWorks Stacks](#history) | AWS OpsWorks Stacks now supports instances running Amazon Linux 2018\.03 in Chef 12 stacks\. | August 23, 2018 | 
 | [AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise](#history) | OpsWorks for Puppet Enterprise has upgraded to PE 2018\.1\.2\. AWS OpsWorks for Chef Automate has upgraded to Chef Automate 1\.8\.68\. | June 29, 2018 | 
 + **AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise API version:** 2016\-11\-01
 + **AWS OpsWorks Stacks API version: **2016\-03\-08
-+ **Latest documentation update: **June 29, 2018
++ **Latest documentation update: **December 4, 2018
 
 ## Earlier Updates<a name="history-older"></a>
 

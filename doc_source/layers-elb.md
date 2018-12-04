@@ -7,8 +7,8 @@ Elastic Load Balancing works somewhat differently than an AWS OpsWorks Stacks la
 
 After you attach a load balancer to a layer, AWS OpsWorks Stacks does the following:
 + Deregisters any currently registered instances\.
-+ Automatically registers the layer's instance's when they come online and deregisters instances when they leave the online state, including load\-based and time\-based instances\.
-+ Automatically activates and deactivates the instances' Availability Zones\.
++ Automatically registers the layer's instances when they come online and deregisters instances when they go offline, including load\-based and time\-based instances\.
++ Automatically starts routing requests to registered instances in their Availability Zones\.
 
 If you have enabled the load balancer's [connection draining](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/config-conn-drain.html) feature, you can specify whether AWS OpsWorks Stacks supports it\. If you enable connection draining support \(the default setting\), after an instance is shut down, AWS OpsWorks Stacks does the following: 
 + Deregisters the instance from the load balancer\.

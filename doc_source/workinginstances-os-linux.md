@@ -76,9 +76,10 @@ To update an instance's Amazon Linux version, do one of the following:
 
 | Amazon Linux Version | Node\.js Versions | 
 | --- | --- | 
-|   <pre>2018author="gabykap" timestamp="20160930T124501-0700".03author="gabykap" timestamp="20160930T124501-0700"</pre>   |   <pre>0.12.18author="gabykap" timestamp="20160930T124501-0700"</pre>   | 
-|  <pre>2017.09</pre>  |  <pre>0.12.18author="gabykap" timestamp="20160930T124501-0700"</pre>  | 
-|  <pre>2017.03</pre>  |  <pre>0.12.18author="gabykap" timestamp="20160930T124501-0700"</pre>  | 
+|   <pre>2author="gabykap" timestamp="20160930T124501-0700"</pre>   |  <pre>(Not applicable to operating systems that are available for Chef 12 and higher stacks only)</pre>  | 
+|   <pre>2018author="gabykap" timestamp="20160930T124501-0700".03author="gabykap" timestamp="20160930T124501-0700"</pre>   |   <pre>0.12.18<br />0.12.17<br />0.12.16<br />0.12.15<br />0.12.14<br />0.12.13<br />0.12.12<br />0.12.10<br />0.10.40author="gabykap" timestamp="20160930T124501-0700"</pre>   | 
+|  <pre>2017.09</pre>  |    <pre>0.12.18<br />0.12.17<br />0.12.16<br />0.12.15<br />0.12.14<br />0.12.13<br />0.12.12<br />0.12.10<br />0.10.40author="gabykap" timestamp="20160930T124501-0700"</pre>    | 
+|  <pre>2017.03</pre>  |    <pre>0.12.18<br />0.12.17<br />0.12.16<br />0.12.15<br />0.12.14<br />0.12.13<br />0.12.12<br />0.12.10<br />0.10.40author="gabykap" timestamp="20160930T124501-0700"</pre>    | 
 |  <pre>2016.09</pre>  |  <pre>0.12.18<br />0.12.17<br />0.12.16<br />author="gabykap" timestamp="20160930T124501-0700"0.12.15</pre>  | 
 |  <pre>2016.03</pre>  |  <pre>0.12.18<br />0.12.17<br />0.12.16<br />0.12.15<br />0.12.13<br />0.12.12<br />0.12.10</pre>  | 
 |  <pre>2015.09</pre>  |  <pre>0.12.15<br />0.12.13<br />0.12.12<br />0.12.10<br />0.12.7<br />0.10.40</pre>  | 
@@ -89,8 +90,8 @@ To update an instance's Amazon Linux version, do one of the following:
 
 | Chef Version | Supported Amazon Linux Versions | 
 | --- | --- | 
-|  <pre>12</pre>  |  <pre>Amazon Linux 2018.03<br />Amazon Linux 2017.09<br />Amazon Linux 2017.03<br />Amazon Linux 2016.09<br />Amazon Linux 2016.03</pre>  | 
-|  <pre>11.10</pre>  |  <pre>Amazon Linux 2017.09<br />Amazon Linux 2017.03<br />Amazon Linux 2016.09<br />Amazon Linux 2016.03<br />Amazon Linux 2015.09<br />Amazon Linux 2015.03<br />Amazon Linux 2014.09 (deprecated)<br />Amazon Linux 2014.03 (deprecated)</pre>  | 
+|  <pre>12</pre>  |  <pre>Amazon Linux 2<br />Amazon Linux 2018.03<br />Amazon Linux 2017.09<br />Amazon Linux 2017.03<br />Amazon Linux 2016.09<br />Amazon Linux 2016.03</pre>  | 
+|  <pre>11.10</pre>  |  <pre>Amazon Linux 2018.03<br />Amazon Linux 2017.09<br />Amazon Linux 2017.03<br />Amazon Linux 2016.09<br />Amazon Linux 2016.03<br />Amazon Linux 2015.09<br />Amazon Linux 2015.03<br />Amazon Linux 2014.09 (deprecated)<br />Amazon Linux 2014.03 (deprecated)</pre>  | 
 |  <pre>11.4 (deprecated)</pre>  |  <pre>Amazon Linux 2016.09<br />Amazon Linux 2016.03<br />Amazon Linux 2015.09<br />Amazon Linux 2015.03<br />Amazon Linux 2014.09 (deprecated)<br />Amazon Linux 2014.03 (deprecated)</pre>  | 
 
 **Important**  

@@ -7,7 +7,7 @@ The following walkthrough helps you create your first Puppet master in OpsWorks 
 ## Prerequisites<a name="gettingstarted-opspup-prereqs"></a>
 
 **Topics**
-+ [Get an AWS Account and Your AWS Credentials](#getting-started-signup)
++ [Get an AWS Account and Your AWS account root user Credentials](#getting-started-signup)
 + [Install the Puppet Development Kit](#w4ab1b7c19b7b9)
 + [Install the Puppet Enterprise Client Tools](#w4ab1b7c19b7c11)
 + [Set Up a Git Control Repository](#configure-control-repository)
@@ -16,21 +16,21 @@ The following walkthrough helps you create your first Puppet master in OpsWorks 
 
 First, create the resources outside of OpsWorks for Puppet Enterprise that you'll need to access and manage your Puppet master\. If you already have an AWS account set up, skip to [Set Up a VPC](#set-up-vpc-puppet)\.
 
-### Get an AWS Account and Your AWS Credentials<a name="getting-started-signup"></a>
+### Get an AWS Account and Your AWS account root user Credentials<a name="getting-started-signup"></a>
 
-To access AWS, you will need to sign up for an AWS account\.
+To access AWS, you must sign up for an AWS account\.
 
 **To sign up for an AWS account**
 
 1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
 **Note**  
-This might be unavailable in your browser if you previously signed into the AWS Management Console\. In that case, choose **Sign in to a different account**, and then choose **Create a new AWS account**\.
+If you previously signed in to the AWS Management Console using AWS account root user credentials, choose **Sign in to a different account**\. If you previously signed in to the console using IAM credentials, choose **Sign\-in using root account credentials**\. Then choose **Create a new AWS account**\.
 
 1. Follow the online instructions\.
 
-   Part of the sign\-up procedure involves receiving a phone call and entering a PIN using the phone keypad\.
+   Part of the sign\-up procedure involves receiving a phone call and entering a verification code using the phone keypad\.
 
-AWS sends you a confirmation e\-mail after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and clicking **My Account/Console**\.
+ AWS sends you a confirmation e\-mail after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and choosing **My Account**\.
 
 **To get the access key ID and secret access key for an IAM user**
 
@@ -120,7 +120,7 @@ You can create a new repository by using AWS CodeCommit\. For more information a
 Your OpsWorks for Puppet Enterprise server must operate in an Amazon Virtual Private Cloud\. You can add it to an existing VPC, use the default VPC, or create a new VPC to contain the server\. For information about Amazon VPC and how to create a new VPC, see the [Amazon VPC Getting Started Guide](https://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/)\.
 
 If you create your own VPC, or use an existing one, the VPC should have the following settings or properties\.
-+ The VPC should have a single, public subnet\.
++ The VPC should have only one subnet, and it should be public\.
 + **DNS resolution** should be enabled\.
 + On the subnet, enable **Auto\-assign public IP**\.
 

@@ -231,6 +231,10 @@ The following is an example response\.
                 {
                     "Version": "12",
                     "Name": "Chef"
+                },
+                {
+                    "Version": "11.10",
+                    "Name": "Chef"
                 }
             ]
         },

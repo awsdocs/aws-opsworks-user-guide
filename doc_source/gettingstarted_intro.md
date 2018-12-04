@@ -14,7 +14,7 @@ If you have existing computing resources—Amazon EC2 instances or even *on\-pre
 
 ## Region Support<a name="gettingstarted-intro-region"></a>
 
-You can access AWS OpsWorks Stacks globally; you can also create and manage instances globally\. Users can configure AWS OpsWorks Stacks instances to be launched in any AWS region except AWS GovCloud \(US\) and the China \(Beijing\) Region\. To work with AWS OpsWorks Stacks, instances must be able to connect to one of the following AWS OpsWorks Stacks instance service API endpoints\.
+You can access AWS OpsWorks Stacks globally; you can also create and manage instances globally\. Users can configure AWS OpsWorks Stacks instances to be launched in any AWS region except AWS GovCloud \(US\-West\) and the China \(Beijing\) Region\. To work with AWS OpsWorks Stacks, instances must be able to connect to one of the following AWS OpsWorks Stacks instance service API endpoints\.
 
 Resources can be managed only in the region in which they are created\. Resources that are created in one regional endpoint are not available, nor can they be cloned to, another regional endpoint\. You can launch instances in any of the following regions\.
 + US East \(Ohio\) Region
