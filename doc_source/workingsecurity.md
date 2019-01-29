@@ -3,7 +3,7 @@
 Each of your users must have appropriate AWS credentials to access your account's AWS resources\. The recommended way to provide credentials to users is with [AWS Identity and Access Management](http://aws.amazon.com/iam/) \(IAM\)\. AWS OpsWorks Stacks integrates with IAM to let you control the following:
 + How individual users can interact with AWS OpsWorks Stacks\.
 
-  For example, you can allow some users to deploy apps to any stack but not modify the stack itself ,while allowing other users full access but only to certain stacks, and so on\.
+  For example, you can allow some users to deploy apps to any stack but not modify the stack itself, while allowing other users full access but only to certain stacks, and so on\.
 + How AWS OpsWorks Stacks can act on your behalf to access stack resources such as Amazon EC2 instances and Amazon S3 buckets\.
 
   AWS OpsWorks Stacks provides a service role that grants permissions for these tasks\. 
