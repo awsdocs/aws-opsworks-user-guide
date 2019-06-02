@@ -52,14 +52,14 @@ You typically download the application by using a repository's public API\. This
 Add a recipe named `deploy.rb` to the `iis-cookbook` `recipes` directory, with the following contents\.
 
 ```
-chef_gem "aws-sdk" do
+chef_gem "aws-sdk-s3" do
   compile_time false
   action :install
 end
 
 ruby_block "download-object" do
   block do
-    require 'aws-sdk'
+    require 'aws-sdk-s3'
 
     #1  
     # Aws.config[:ssl_ca_bundle] = 'C:\ProgramData\Git\bin\curl-ca-bundle.crt'
