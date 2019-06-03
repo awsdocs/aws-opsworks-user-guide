@@ -56,7 +56,7 @@ Set the cookbook up as follows\.
      environments_path: ./environments
    
    platforms:
-     - name: ubuntu-12.04
+     - name: ubuntu-14.04
    
    suites:
      - name: s3bucket
@@ -93,7 +93,7 @@ Notice that the example uses nested attributes, with `cookbooks_101` as the firs
 The following recipe downloads `myfile.text` from the `cookbook_bucket` bucket\.
 
 ```
-gem_package "aws-sdk" do
+gem_package "aws-sdk ~> 3" do
   action :install
 end
 
@@ -101,11 +101,11 @@ ruby_block "download-object" do
   block do
     require 'aws-sdk'
 
-    s3 = AWS::S3.new(
+    s3 = Aws::S3::Client.new(
           :access_key_id => "#{node['cookbooks_101']['access_key']}",
           :secret_access_key => "#{node['cookbooks_101']['secret_key']}")
 
-    myfile = s3.buckets['cookbook_bucket'].objects['myfile.txt']
+    myfile = s3.bucket['cookbook_bucket'].objects['myfile.txt']
     Dir.chdir("/tmp")
     File.open("myfile.txt", "w") do |f|
       f.write(myfile.read)
@@ -119,7 +119,7 @@ end
 The first part of the recipe installs the SDK for Ruby, which is a gem package\. The [gem\_package](https://docs.chef.io/chef/resources.html#gem-package) resource installs gems that will be used by recipes or other applications\.
 
 **Note**  
-Your instance will usually have two Ruby instances, which are typically different versions\. One is a dedicated instance that is used by the Chef client\. The other is used by applications and recipes running on the instance\. It's important to understand this distinction when installing gem packages, because there are two resources for installing gems, [gem\_package](https://docs.chef.io/chef/resources.html#gem-package) and [chef\_gem](https://docs.chef.io/chef/resources.html#chef-gem)\. If the gem package is to be used by applications or recipes, install it with `gem_package`; `chef_gem` is only for gem packages used by Chef client\.
+Your instance usually has two Ruby instances, which are typically different versions\. One is a dedicated instance that is used by the Chef client\. The other is used by applications and recipes running on the instance\. It's important to understand this distinction when installing gem packages, because there are two resources for installing gems, [gem\_package](https://docs.chef.io/chef/resources.html#gem-package) and [chef\_gem](https://docs.chef.io/chef/resources.html#chef-gem)\. If applications or recipes use the gem package, install it with `gem_package`\. `chef_gem` is only for gem packages used by Chef client\.
 
 The remainder of the recipe is a [ruby\_block](https://docs.chef.io/chef/resources.html#ruby-block) resource, which contains the Ruby code that downloads the file\. You might think that because a recipe is a Ruby application, you could put the code in the recipe directly\. However, a Chef run compiles all of that code before executing any resources\. If you put the example code directly in the recipe, Ruby will attempt to resolve the `require 'aws-sdk'` statement before it executes the `gem_package` resource\. Because the SDK for Ruby hasn't been installed yet, compilation will fail\.
 
@@ -127,11 +127,11 @@ Code in a `ruby_block` resource isn't compiled until that resource is executed\.
 
 The code in the `ruby_block` works as follows\. 
 
-1. Creates a new [http://docs.aws.amazon.com/AWSRubySDK/latest/AWS/S3.html](http://docs.aws.amazon.com/AWSRubySDK/latest/AWS/S3.html) object, which provides the service interface\.
+1. Creates a new [https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3.html](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3.html) object, which provides the service interface\.
 
    The access and secret keys are specified by referencing the values stored in the node object\.
 
-1. Calls the `S3` object's `buckets.objects` method, which returns an [http://docs.aws.amazon.com/AWSRubySDK/latest/AWS/S3/S3Object.html](http://docs.aws.amazon.com/AWSRubySDK/latest/AWS/S3/S3Object.html) object named `myfile` that represents `myfile.txt`\.
+1. Calls the `S3` object's `bucket.objects` association, which returns an [https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Object.html](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Object.html) object named `myfile` that represents `myfile.txt`\.
 
 1. Uses `Dir.chdir` to set the working directory to `/tmp`\.
 
@@ -143,7 +143,7 @@ The code in the `ruby_block` works as follows\.
 
 1. Run `kitchen converge`\.
 
-1. Run `kitchen login` to log in to the instance and then run `ls /tmp`\. You should see the `myfile.txt`, along with several Test Kitchen files and directories\.
+1. Run `kitchen login` to log in to the instance, and then run `ls /tmp`\. You should see the `myfile.txt`, along with several Test Kitchen files and directories\.
 
    ```
    vagrant@s3bucket-ubuntu-1204:~$ ls /tmp

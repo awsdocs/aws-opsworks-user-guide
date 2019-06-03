@@ -1,22 +1,22 @@
-# Optional: Use AWS CodeCommit as a Puppet r10k Remote Control Repository<a name="opspup-puppet-codecommit"></a>
+# Optional: Use CodeCommit as a Puppet r10k Remote Control Repository<a name="opspup-puppet-codecommit"></a>
 
-You can create a new repository by using AWS CodeCommit, and use it as your r10k remote control repository\. To complete steps in this section, and work with an AWS CodeCommit repository, you need an IAM user that has the **AWSCodeCommitReadOnly** managed policy attached\. For more information about how to create an IAM user, see [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)\.
+You can create a new repository by using CodeCommit, and use it as your r10k remote control repository\. To complete steps in this section, and work with an CodeCommit repository, you need an IAM user that has the **AWSCodeCommitReadOnly** managed policy attached\. For more information about how to create an IAM user, see [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)\.
 
 **Topics**
-+ [Step 1: Use AWS CodeCommit as a Repository with an HTTPS connection type](#codecommit-puppet-https)
-+ [Step 2: \(Optional\) Use AWS CodeCommit as a Repository with an SSH connection type](#codecommit-puppet-ssh)
++ [Step 1: Use CodeCommit as a Repository with an HTTPS connection type](#codecommit-puppet-https)
++ [Step 2: \(Optional\) Use CodeCommit as a Repository with an SSH connection type](#codecommit-puppet-ssh)
 
-## Step 1: Use AWS CodeCommit as a Repository with an HTTPS connection type<a name="codecommit-puppet-https"></a>
+## Step 1: Use CodeCommit as a Repository with an HTTPS connection type<a name="codecommit-puppet-https"></a>
 
-1. In the AWS CodeCommit console, create a new repository\.  
-![\[Creating new repository in AWS CodeCommit.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_cc_remote.png)
+1. In the CodeCommit console, create a new repository\.  
+![\[Creating new repository in CodeCommit.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_cc_remote.png)
 
 1. Choose **Skip** to skip setting up an Amazon SNS topic\.
 
 1. On the **Code** page, choose **Connect to your repository**\.
 
 1. On the **Connect to your repository** page, choose **HTTPS** as the **Connection type**, and choose your operating system\.  
-![\[Creating a new repository in AWS CodeCommit.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_cc_connect.png)
+![\[Creating a new repository in CodeCommit.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_cc_connect.png)
 
    In the **Steps to clone your repository** area, your `git clone` URL should resemble the following: `https://git-codecommit.region.amazonaws.com/v1/repos/control-repo`\. Copy this URL to a convenient place for use in Puppet server setup\.
 
@@ -26,7 +26,7 @@ You can create a new repository by using AWS CodeCommit, and use it as your r10k
 
 1. In the IAM console, attach the **AWSCodeCommitReadOnly** policy to the instance profile role of your Puppet master\. For more information about how to attach a policy to an IAM role, see [Attaching Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-using.html#attach-managed-policy-console) in the *IAM User Guide*\.
 
-1. Follow the steps in [Setup for HTTPS Users Using Git Credentials](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) in the *AWS CodeCommit User Guide* to push your existing `control-repo` content to the new AWS CodeCommit repository\.
+1. Follow the steps in [Setup for HTTPS Users Using Git Credentials](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) in the *CodeCommit User Guide* to push your existing `control-repo` content to the new CodeCommit repository\.
 
 1. Now, you can continue by following the instructions in [Configure the Puppet Master Using the Starter Kit](opspup-starterkit.md), and use the Starter Kit to deploy code to your Puppet master\. The following command is an example\.
 
@@ -34,12 +34,12 @@ You can create a new repository by using AWS CodeCommit, and use it as your r10k
    puppet-code deploy --all --wait --config-file .config/puppet-code.conf
    ```
 
-## Step 2: \(Optional\) Use AWS CodeCommit as a Repository with an SSH connection type<a name="codecommit-puppet-ssh"></a>
+## Step 2: \(Optional\) Use CodeCommit as a Repository with an SSH connection type<a name="codecommit-puppet-ssh"></a>
 
-You can configure an AWS CodeCommit r10k remote control repository to use SSH key pair authentication\. The following prerequisites must be completed before you start this procedure\. 
-+ You must have launched your OpsWorks for Puppet Enterprise server with an HTTPS control repository as described in the preceding section, [Step 1: Use AWS CodeCommit as a Repository with an HTTPS connection type](#codecommit-puppet-https)\. This must be completed first so you can upload the required configuration to the Puppet master\.
+You can configure an CodeCommit r10k remote control repository to use SSH key pair authentication\. The following prerequisites must be completed before you start this procedure\. 
++ You must have launched your OpsWorks for Puppet Enterprise server with an HTTPS control repository as described in the preceding section, [Step 1: Use CodeCommit as a Repository with an HTTPS connection type](#codecommit-puppet-https)\. This must be completed first so you can upload the required configuration to the Puppet master\.
 + Be sure you have an IAM user with the **AWSCodeCommitReadOnly** managed policy attached\. For more information about how to create an IAM user, see [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) in the *AWS Identity and Access Management User Guide*\.
-+ Create and associate an SSH key with your IAM user\. Follow instructions for creating a public/private key pair with `ssh-keygen` in [Step 3: Configure Credentials on Linux, macOS, or Unix](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-ssh-unixes.html#setting-up-ssh-unixes-keys) in the *AWS CodeCommit User Guide*\.
++ Create and associate an SSH key with your IAM user\. Follow instructions for creating a public/private key pair with `ssh-keygen` in [Step 3: Configure Credentials on Linux, macOS, or Unix](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-ssh-unixes.html#setting-up-ssh-unixes-keys) in the *CodeCommit User Guide*\.
 
 1. In an AWS CLI session, run the following command to upload the private key file contents to AWS Systems Manager Parameter Store\. Your OpsWorks for Puppet Enterprise server queries this parameter to get a required certificate file\. Replace *private\_key\_file* with the path to your SSH private key file\.
 
@@ -126,7 +126,7 @@ You can configure an AWS CodeCommit r10k remote control repository to use SSH ke
    }
    ```
 
-1. Push your control repository to AWS CodeCommit\. Run the following commands to push the new manifest file to your repository\.
+1. Push your control repository to CodeCommit\. Run the following commands to push the new manifest file to your repository\.
 
    ```
    git add ./site/profile/manifests/codecommit.pp

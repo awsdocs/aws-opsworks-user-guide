@@ -20,6 +20,7 @@ The ECS Cluster layer has the following restrictions and requirements:
   + Amazon Linux 2016\.03
   + Amazon Linux 2015\.09
   + Amazon Linux 2015\.03
+  + Ubuntu 18\.04 LTS
   + Ubuntu 16\.04 LTS
   + Ubuntu 14\.04 LTS
   + Custom
@@ -93,12 +94,12 @@ Initially, an ECS Cluster layer does not include any container instances, even i
 + Manually [add 24/7 instances](workinginstances-add.md) to the layer and [delete them](workinginstances-delete.md) when they are no longer needed\.
 + Add or delete instances on a schedule by adding [time\-based instances](workinginstances-autoscaling-timebased.md) to the layer\.
 + Add or delete instances based on AWS OpsWorks Stacks host metrics or CloudWatch alarms by adding [load\-based instances](workinginstances-autoscaling-loadbased.md) to the layer\.
-If Amazon ECS is not supported for the stack's default operating system, you must explicitly specify a supported operating system—Amazon Linux 2, Amazon Linux 2018\.03, Amazon Linux 2017\.09, Amazon Linux 2017\.03, Amazon Linux 2016\.09, Amazon Linux 2016\.03, Amazon Linux 2015\.09, Amazon Linux 2015\.03, Ubuntu 14\.04 LTS, or Custom—when you create the container instances\. Do not use the ECS Optimized AMI to create instances in an ECS layer, because this AMI already includes the ECS agent\. AWS OpsWorks Stacks also attempts to install the ECS agent during the instance setup process, and the conflict can cause setup to fail\.
-For more information, see [Optimizing the Number of Servers](best-practices-autoscale.md)\. AWS OpsWorks Stacks assigns the AWS\-OpsWorks\-ECS\-Cluster security group to each instance\. After each new instance finishes booting, AWS OpsWorks Stacks converts it into a container instance by installing Docker and the Amazon ECS agent, and then registering the instance with the cluster\.  
+If Amazon ECS is not supported for the stack's default operating system, you must explicitly specify a supported operating system—Amazon Linux 2, Amazon Linux 2018\.03, Amazon Linux 2017\.09, Amazon Linux 2017\.03, Amazon Linux 2016\.09, Amazon Linux 2016\.03, Amazon Linux 2015\.09, Amazon Linux 2015\.03, Ubuntu 18\.04 LTS, Ubuntu 16\.04 LTS, Ubuntu 14\.04 LTS, or Custom—when you create the container instances\. Do not use the ECS Optimized AMI to create instances in an ECS layer, because this AMI already includes the ECS agent\. AWS OpsWorks Stacks also attempts to install the ECS agent during the instance setup process, and the conflict can cause setup to fail\.
+For more information, see [Optimizing the Number of Servers](best-practices-autoscale.md)\. AWS OpsWorks Stacks assigns the **AWS\-OpsWorks\-ECS\-Cluster** security group to each instance\. After each new instance finishes booting, AWS OpsWorks Stacks converts it into a container instance by installing Docker and the Amazon ECS agent, and then registering the instance with the cluster\.  
 If you prefer to use existing container instances, you can [register them with the stack](registered-instances-register.md) and [assign them to the ECS Cluster layer](registered-instances-assign.md)\. Note that the instances must be running a supported operating system, Amazon Linux 2015\.03 or later, or Ubuntu 14\.04 LTS or later\.  
 A container instance cannot belong to both an ECS Cluster layer and another built\-in layer\. However, a container instance *can* belong to an ECS Cluster layer and one or more [custom layers](workinglayers-custom.md)\.
 
-**Execute operating system and package updates**  
+**Run operating system and package updates**  
 After a new instance finishes booting, AWS OpsWorks Stacks installs the latest updates\. You can then use AWS OpsWorks Stacks to keep the container instances up to date\. For more information, see [Managing Security Updates](workingsecurity-updates.md)\. 
 
 **Manage user permissions**  

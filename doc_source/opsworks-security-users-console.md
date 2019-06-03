@@ -29,13 +29,13 @@ The default permission level is IAM Policies Only, which grants users only those
      If you authorize **SSH/RDP** access, you can optionally select **sudo/admin**, which grants the user sudo \(Linux\) or administrative \(Windows\) privileges on the stack's instances\.   
 ![\[Managing IAM Users with the Permissions page.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/permissions-edit.png)
 
-You can assign each user to one of the following permissions levels\. For a list of the actions that are allowed by each level, see [Permissions Levels](opsworks-security-users-standard.md)\.
+You can assign each user to one of the following permissions levels\. For a list of the actions that are allowed by each level, see [AWS OpsWorks Stacks Permissions LevelsPermissions Levels](opsworks-security-users-standard.md)\.
 
 **Deny**  
 The user cannot perform any AWS OpsWorks Stacks actions on the stack, even if they have an attached IAM policy that grants AWS OpsWorks Stacks full access permissions\. You might use this, for example, to deny some users access to stacks for unreleased products\.
 
 **IAM Policies Only**  
-The default level, which is assigned to all newly imported users, and to all users for newly created stacks\. The user's permissions are  determined by their attached IAM policy\. If a user has no IAM policy, or their policy has no explicit AWS OpsWorks Stacks permissions, they cannot access the stack\. Administrative users are typically assigned this level because their attached IAM policies already grant full access permissions\.
+The default level, which is assigned to all newly imported users, and to all users for newly created stacks\. The user's permissions are determined by their attached IAM policy\. If a user has no IAM policy, or their policy has no explicit AWS OpsWorks Stacks permissions, they cannot access the stack\. Administrative users are typically assigned this level because their attached IAM policies already grant full access permissions\.
 
 **Show**  
 The user can view a stack, but not perform any operations\. For example, managers might want to monitor an account's stacks, but would not need to deploy apps or modify the stack in any way\.

@@ -1,14 +1,14 @@
-# Step 5: Create a pipeline in AWS CodePipeline<a name="other-services-cp-chef12-pipeline"></a>
+# Step 5: Create a pipeline in CodePipeline<a name="other-services-cp-chef12-pipeline"></a>
 
-After you have a stack with a layer and at least one instance configured in AWS OpsWorks Stacks, create a pipeline in AWS CodePipeline with AWS OpsWorks Stacks as the provider to deploy apps or Chef cookbooks to your AWS OpsWorks Stacks resources\.
+After you have a stack with a layer and at least one instance configured in AWS OpsWorks Stacks, create a pipeline in CodePipeline with AWS OpsWorks Stacks as the provider to deploy apps or Chef cookbooks to your AWS OpsWorks Stacks resources\.
 
 **To create a pipeline**
 
-1. Open the AWS CodePipeline console at [https://console\.aws\.amazon\.com/codepipeline/](https://console.aws.amazon.com/codepipeline/)\.
+1. Open the CodePipeline console at [https://console\.aws\.amazon\.com/codepipeline/](https://console.aws.amazon.com/codepipeline/)\.
 
 1. Choose **Create pipeline**\.
 
-1. On the **Getting started with AWS CodePipeline** page, type **MyOpsWorksPipeline**, or any other pipeline name that is unique to your account, and then choose **Next step**\.
+1. On the **Getting started with CodePipeline** page, type **MyOpsWorksPipeline**, or any other pipeline name that is unique to your account, and then choose **Next step**\.
 
 1. On the **Source Location** page, select **Amazon S3** from the **Source provider** drop\-down list\.
 

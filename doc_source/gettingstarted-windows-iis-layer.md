@@ -20,7 +20,7 @@ You start by adding a layer to the stack\. You then add functionality to that la
 
 If you were to add an instance to IISWalkthrough at this point and start it, AWS OpsWorks Stacks would automatically install the cookbooks but it would not run `install.rb`\. After an instance is online, you can run recipes manually by using the [Execute Recipes stack command](workingstacks-commands.md)\. However, a better approach is to assign the recipe to one of the layer's [lifecycle events](workingcookbook-events.md)\. AWS OpsWorks Stacks then automatically runs the recipe at the appropriate point in the instance's lifecycle\.
 
-You will probably want to install and start IIS as soon as the instance finishes booting\. You can accomplish this by assigning `install.rb` to the layer's Setup event\.
+Install and start IIS as soon as the instance finishes booting\. To do this, assign `install.rb` to the layer's `Setup` event\.
 
 **To assign the recipe to a lifecycle event**
 
@@ -32,7 +32,7 @@ You will probably want to install and start IIS as soon as the instance finishes
 
 1. Under **Custom Chef Recipes**, in the **Setup** recipes box, type **iis\-cookbook::install**\. 
 **Note**  
-You use `cookbook-name::recipe-name` to identify recipes, where you omit the recipe name's `.rb` suffix\.
+Use `cookbook-name::recipe-name` to identify recipes, where you omit the recipe name's `.rb` suffix\.
 
 1. Choose **\+** to add the recipe to the layer\. A red x appears next to the recipe to make it easy to remove later\.
 
@@ -40,7 +40,7 @@ You use `cookbook-name::recipe-name` to identify recipes, where you omit the rec
 
 ## Add an Instance to the Layer and Start It<a name="w4ab1c11c39c15c21c21b7"></a>
 
-You can try the recipe out by adding an instance to the layer and starting the instance\. AWS OpsWorks Stacks will automatically install the cookbooks and run `install.rb` during setup, as soon as the instance finishes booting\.
+You can try the recipe out by adding an instance to the layer and starting the instance\. AWS OpsWorks Stacks automatically installs the cookbooks and runs `install.rb` during setup, as soon as the instance finishes booting\.
 
 **To add an instance to a layer and start it**
 

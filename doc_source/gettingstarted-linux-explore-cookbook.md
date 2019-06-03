@@ -6,14 +6,14 @@ A *cookbook* is a Chef concept\. Cookbooks are archive files that contain config
 
 To see the contents of the cookbook used in this walkthrough, extract the contents of the [opsworks\-linux\-demo\-cookbooks\-nodejs\.tar\.gz](https://s3.amazonaws.com/opsworks-demo-assets/opsworks-linux-demo-cookbooks-nodejs.tar.gz) file to an empty directory on your local workstation\. \(You can also log in to the instance that you deployed the cookbook to and explore the contents of the `/var/chef/cookbooks` directory\.\)
 
-The `default.rb` file in the `cookbooks/nodejs_demo/recipes` directory is where the cookbook start running its code: 
+The `default.rb` file in the `cookbooks/nodejs_demo/recipes` directory is where the cookbook runs its code: 
 
 ```
 app = search(:aws_opsworks_app).first
 app_path = "/srv/#{app['shortname']}"
 
 package "git" do
-  options "--force-yes" if node["platform"] == "ubuntu" && node["platform_version"] == "16.04"
+  options "--force-yes" if node["platform"] == "ubuntu" && node["platform_version"] == "18.04"
 end
 
 application app_path do

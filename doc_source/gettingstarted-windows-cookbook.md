@@ -68,21 +68,21 @@ In general, cookbooks can contain a variety of other directories\. For example, 
 ## Implement a Recipe to Install and Start IIS<a name="gettingstarted-windows-layer-recipe-iis"></a>
 
  IIS is a Windows *feature*, one of a set of optional system components that you can install on Windows Server\. You can have a recipe install IIS in either of the following ways:
-+ By using a [https://docs.chef.io/chef/resources.html#powershell-script](https://docs.chef.io/chef/resources.html#powershell-script) resource to run the [https://msdn.microsoft.com/en-us/library/ee662309.aspx](https://msdn.microsoft.com/en-us/library/ee662309.aspx) cmdlet\. 
-+ By using the Chef [windows cookbook's](https://github.com/opscode-cookbooks/windows) `windows_feature` resource\.
++ By using a [https://docs.chef.io/chef/resources.html#powershell-script](https://docs.chef.io/chef/resources.html#powershell-script) resource to run the [https://docs.microsoft.com/en-us/powershell/module/servermanager/install-windowsfeature?view=winserver2012-ps](https://docs.microsoft.com/en-us/powershell/module/servermanager/install-windowsfeature?view=winserver2012-ps) cmdlet\.
++ By using the Chef [windows cookbook](https://github.com/opscode-cookbooks/windows) `windows_feature` resource\.
 
-  The `windows` cookbook contains a set of resources whose underlying providers use [Deployment Image Servicing and Management](https://technet.microsoft.com/en-us/library/dd744256%28v=ws.10%29.aspx) to perform a variety of tasks on Windows instances, including feature installation\.
+  The `windows` cookbook contains a set of resources whose providers use [Deployment Image Servicing and Management](https://technet.microsoft.com/en-us/library/dd744256%28v=ws.10%29.aspx) \(DISM\) to perform a variety of tasks on Windows instances, including feature installation\.
 
 **Note**  
-`powershell_script` is among the most useful resources for Windows recipes\. You can use it to perform a wide variety of tasks on an instance by running the appropriate Windows PowerShell script\. It's especially useful for tasks that aren't supported by a Chef resource\.
+`powershell_script` is among the most useful resources for Windows recipes\. You can use it to perform a variety of tasks on an instance by running a PowerShell script or cmdlet\. It's especially useful for tasks that aren't supported by a Chef resource\.
 
-This example uses a Windows PowerShell script to install and start IIS\. The `windows` cookbook is described later\. For an example of how to use `windows_feature` to install IIS, see [Installing a Windows Feature: IIS](cookbooks-101-opsworks-install-software-feature.md)\.
+This example runs a PowerShell script to install and start Web Server \(IIS\)\. The `windows` cookbook is described later\. For an example of how to use `windows_feature` to install IIS, see [Installing a Windows Feature: IIS](cookbooks-101-opsworks-install-software-feature.md)\.
 
 Add a recipe named `install.rb` with the following contents to the cookbook's `recipes` directory\.
 
 ```
 powershell_script 'Install IIS' do
-  code 'Add-WindowsFeature Web-Server'
+  code 'Install-WindowsFeature Web-Server'
   not_if "(Get-WindowsFeature -Name Web-Server).Installed"
 end
 
@@ -94,17 +94,17 @@ end
 The recipe contains two resources\.
 
 **powershell\_script**  
-`powershell_script` runs the specified Windows PowerShell script\. The example has the following attribute settings:  
-+ `code` – The Windows PowerShell cmdlets to be run\.
+`powershell_script` runs the specified PowerShell script or cmdlet\. The example has the following attribute settings:  
++ `code` – The PowerShell cmdlets to run\.
 
-  This example runs a single `Add-WindowsFeature` cmdlet, which installs IIS\. In general, the `code` attribute can have any number of lines, so you can run as many cmdlets as you need\.
+  This example runs an `Install-WindowsFeature` cmdlet, which installs Web Server \(IIS\)\. In general, the `code` attribute can have any number of lines, so you can run as many cmdlets as you need\.
 + `not-if` – A [https://docs.chef.io/chef/resources.html#guards](https://docs.chef.io/chef/resources.html#guards) that ensures that the recipe installs IIS only if it has not yet been installed\.
 
   You generally want recipes to be *idempotent*, so they do not waste time performing the same task more than once\.
-Every resource has an action, which specifies the action the provider is to take\. There is no explicit action for this example, so the provider takes the default `:run` action, which runs the specified Windows PowerShell script\. For more information, see [Running a Windows PowerShell Script](cookbooks-101-opsworks-opsworks-powershell.md)\.
+Every resource has an action, which specifies the action the provider is to take\. There is no explicit action for this example, so the provider takes the default `:run` action, which runs the specified PowerShell script\. For more information, see [Running a Windows PowerShell Script](cookbooks-101-opsworks-opsworks-powershell.md)\.
 
 **service**  
-A [https://docs.chef.io/chef/resources.html#service](https://docs.chef.io/chef/resources.html#service) manages a service, the IIS service \(W3SVC\) in this case\. The example uses default attributes and specifies two actions, `:start` and `:enable`, which start and enable IIS\.
+A [https://docs.chef.io/chef/resources.html#service](https://docs.chef.io/chef/resources.html#service) manages a service, the Web Server IIS service \(W3SVC\) in this case\. The example uses default attributes and specifies two actions, `:start` and `:enable`, which start and enable IIS\.
 
 **Note**  
 If you want to install software that uses a package installer, such as MSI, you can use a `windows_package` resource\. For more information, see [Installing a Package](cookbooks-101-opsworks-install-software-package.md)\.
@@ -112,7 +112,7 @@ If you want to install software that uses a package installer, such as MSI, you 
 ## Enable the Custom Cookbook<a name="gettingstarted-windows-layer-enable-cookbook"></a>
 
 AWS OpsWorks Stacks runs recipes from a local cache on each instance\. To run your custom recipes, you must do the following:
-+ Put the cookbook in a remote repository\.
++ Store the cookbook in a remote repository\.
 
   AWS OpsWorks Stacks downloads the cookbooks from this repository to each instance's local cache\.
 + Edit the stack to enable custom cookbooks\.
@@ -129,17 +129,15 @@ AWS OpsWorks Stacks supports S3 archives and Git repositories for custom cookboo
 
 1. Upload the archive to an S3 bucket in the US West \(N\. California\) region, and make the file public\. You can also use private S3 archives, but public archives are sufficient for this example and somewhat simpler to work with\. 
 
-**To upload the archive to an S3 bucket**
-
    1. Sign in to the AWS Management Console and open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
 
-   1. If you do not already have a bucket in us\-west\-1, click **Create Bucket** and create a bucket in the US Standard region\.
+   1. If you do not already have a bucket in `us-west-1`, choose **Create Bucket** and create a bucket in the US West \(N\. California\) region\.
 
-   1. In the buckets list, click the name of bucket to which you want to upload the file, and then click **Upload**\. 
+   1. In the buckets list, choose the name of bucket to which you want to upload the file, and then choose **Upload**\. 
 
    1. Choose **Add Files**\.
 
-   1. Select the archive file that you will upload, and then click **Open**\.
+   1. Select the archive file to upload, and then choose **Open**\.
 
    1. At the bottom of the **Upload \- Select Files and Folders** dialog, choose **Set Details**\.
 
@@ -147,11 +145,11 @@ AWS OpsWorks Stacks supports S3 archives and Git repositories for custom cookboo
 
    1. In the **Set Permissions** dialog, choose **Make everything public**\.
 
-   1. At the bottom of the **Set Permissions** dialog, choose **Start Upload**\. When the upload finishes, the `iis-cookbook.zip` file will appear in your bucket\.
+   1. At the bottom of the **Set Permissions** dialog, choose **Start Upload**\. When the upload finishes, the `iis-cookbook.zip` file appears in your bucket\.
 
-   1. Select the bucket in the bucket list, and then choose the **Properties** tab for the bucket\. Next to **Link**, record the archive file's URL for later use\. It should look something like `https://s3-us-west-2.amazonaws.com/windows-cookbooks/iis-cookbook.zip`\.
+   1. Choose the bucket, and then choose the **Properties** tab for the bucket\. Next to **Link**, record the archive file's URL for later use\. It should look something like `https://s3-us-west-2.amazonaws.com/windows-cookbooks/iis-cookbook.zip`\.
 
-   For more information about uploading files to an Amazon S3 bucket, see [Uploading Objects into Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/UG/UploadingObjectsintoAmazonS3.html)\.
+   For more information about uploading files to an Amazon S3 bucket, see [How Do I Upload Files and Folders to an S3 Bucket?](http://docs.aws.amazon.com/AmazonS3/latest/UG/UploadingObjectsintoAmazonS3.html) in the *Amazon S3 Console User Guide*\.
 
 **Important**  
 Up to this point, the walkthrough has cost you only a little time; the AWS OpsWorks Stacks service itself is free\. However, you must pay for any AWS resources that you use, such as Amazon S3 storage\. As soon as you upload the archive you begin incurring charges\. For more information, see [AWS Pricing](http://aws.amazon.com/pricing/)\.
@@ -168,4 +166,4 @@ Up to this point, the walkthrough has cost you only a little time; the AWS OpsWo
 
 1. Choose **Save** to update the stack configuration\.
 
-AWS OpsWorks Stacks will now install your custom cookbook on all new instances\. Note that AWS OpsWorks Stacks does not automatically install or update custom cookbooks on online instances\. You can do that manually, as described later\.
+AWS OpsWorks Stacks installs your custom cookbook on all new instances\. Note that AWS OpsWorks Stacks does not automatically install or update custom cookbooks on online instances\. You can do that manually, as described later\.

@@ -13,7 +13,7 @@ The recommended way to add nodes is by using the AWS OpsWorks `associateNode()` 
 
 | Supported operating system | Versions | 
 | --- | --- | 
-| Ubuntu | 14\.04, 16\.04 | 
+| Ubuntu | 18\.04, 14\.04, 16\.04 | 
 | Red Hat Enterprise Linux \(RHEL\) | 6 | 
 | Windows | 64\-bit editions of all [Puppet\-supported](https://puppet.com/docs/pe/2017.3/installing/supported_operating_systems.html#agent-platforms) Windows releases | 
 

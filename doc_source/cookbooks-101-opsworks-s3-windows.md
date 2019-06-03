@@ -40,14 +40,14 @@ The procedure for setting up the cookbook is similar to the one used by [Running
    ```
    Chef::Log.info("******Downloading an object from S3******")
    
-   chef_gem "aws-sdk" do
+   chef_gem "aws-sdk-s3" do
      compile_time false
      action :install
    end
    
    ruby_block "download-object" do
      block do
-       require 'aws-sdk'
+       require 'aws-sdk-s3'
        
        Aws.use_bundled_cert!
    

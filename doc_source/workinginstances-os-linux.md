@@ -5,6 +5,7 @@ AWS OpsWorks Stacks supports the 64\-bit versions of the following Linux operati
 + [Ubuntu 12\.04 LTS](https://wiki.ubuntu.com/LTS)
 + [Ubuntu 14\.04 LTS](https://wiki.ubuntu.com/LTS)
 + [Ubuntu 16\.04 LTS](https://wiki.ubuntu.com/LTS)
++ [Ubuntu 18\.04 LTS](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes)
 + [CentOS 7](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7)
 + [Red Hat Enterprise Linux 7](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/)
 
@@ -116,16 +117,17 @@ Ubuntu releases a new Ubuntu LTS version approximately every two years and suppo
 AWS OpsWorks Stacks supports the 64\-bit versions of Ubuntu 12\.04 LTS and Ubuntu 14\.04 LTS\.
 + Ubuntu 12\.04 is supported for all stacks\.
 + Ubuntu 14\.04 is supported only for Chef 11\.10 and higher stacks\.
-+ You cannot update an existing Ubuntu 12\.04 instance to Ubuntu 14\.04, or from either Ubuntu 12\.04 or 14\.04 to Ubuntu 16\.04\.
++ You cannot update an existing Ubuntu instance to a newer release of Ubuntu\.
 
-  You must [create a new Ubuntu 14\.04 or 16\.04 instance](workinginstances-add.md) and [delete the older instance](workinginstances-delete.md)\.
-+ Ubuntu 16\.04 LTS is supported only for Chef 12 and higher stacks\.
+  You must [create a new Ubuntu 14\.04, 16\.04, or 18\.04 instance](workinginstances-add.md) and [delete the older instance](workinginstances-delete.md)\.
++ Ubuntu 16\.04 LTS and 18\.04 LTS are supported only for Chef 12 and higher stacks\.
 
 
 **Ubuntu: Supported Node\.js Versions**  
 
 | Ubuntu Version | Node\.js Versions | 
 | --- | --- | 
+|  <pre>18.04 LTS</pre>  |  <pre>(Not applicable to operating systems that are available for Chef 12 and higher stacks only)</pre>  | 
 |  <pre>16.04 LTS</pre>  |  <pre>(Not applicable to operating systems that are available for Chef 12 and higher stacks only)</pre>  | 
 |  <pre>14.04 LTS</pre>  |  <pre>0.10.27<br />0.10.29<br />0.10.40<br />0.12.10<br />0.12.12<br />0.12.13<br />0.12.15</pre>  | 
 |  <pre>12.04 LTS</pre>  |  <pre>0.8.19<br />0.8.26<br />0.10.11<br />0.10.21<br />0.10.24<br />0.10.25<br />0.10.27<br />0.10.29<br />0.10.40<br />0.12.10<br />0.12.12<br />0.12.13<br />0.12.15</pre>  | 
@@ -135,7 +137,7 @@ AWS OpsWorks Stacks supports the 64\-bit versions of Ubuntu 12\.04 LTS and Ubunt
 
 | Chef Version | Supported Ubuntu Versions | 
 | --- | --- | 
-|  <pre>12</pre>  |  <pre>Ubuntu 16.04 LTS<br />Ubuntu 14.04 LTS<br />Ubuntu 12.04 LTS</pre>  | 
+|  <pre>12</pre>  |  <pre>Ubuntu 18.04 LTS<br />Ubuntu 16.04 LTS<br />Ubuntu 14.04 LTS<br />Ubuntu 12.04 LTS</pre>  | 
 |  <pre>11.10</pre>  |  <pre>Ubuntu 14.04 LTS<br />Ubuntu 12.04 LTS</pre>  | 
 |  <pre>11.4 (deprecated)</pre>  |  <pre>Ubuntu 12.04 LTS</pre>  | 
 

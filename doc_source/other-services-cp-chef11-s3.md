@@ -2,10 +2,10 @@
 
 Because you must provide a link to your code repository as part of pipeline setup, have the code repository ready before you create your pipeline\. In this walkthrough, you upload a PHP app to an Amazon S3 bucket\.
 
-Although AWS CodePipeline can use code directly from GitHub or AWS CodeCommit as sources, this walkthrough demonstrates how to use an Amazon S3 bucket\. The Amazon S3 bucket enables AWS CodePipeline to detect changes to the app code and deploy the changed app automatically\. If you wish, you can use an existing bucket\. Be sure the bucket meets criteria for AWS CodePipeline as described in [Simple Pipeline Walkthrough \(Amazon S3 Bucket\)](http://docs.aws.amazon.com/codepipeline/latest/userguide/getting-started-w.html) in the AWS CodePipeline documentation\.
+Although CodePipeline can use code directly from GitHub or CodeCommit as sources, this walkthrough demonstrates how to use an Amazon S3 bucket\. The Amazon S3 bucket enables CodePipeline to detect changes to the app code and deploy the changed app automatically\. If you wish, you can use an existing bucket\. Be sure the bucket meets criteria for CodePipeline as described in [Simple Pipeline Walkthrough \(Amazon S3 Bucket\)](http://docs.aws.amazon.com/codepipeline/latest/userguide/getting-started-w.html) in the CodePipeline documentation\.
 
 **Important**  
-The Amazon S3 bucket must be in the same region in which you later create your pipeline\. At this time, AWS CodePipeline supports the AWS OpsWorks Stacks provider in the US East \(N\. Virginia\) Region \(us\-east\-1\) only\. All resources in this walkthrough should be created in the US East \(N\. Virginia\) Region\. The bucket must also be versioned because AWS CodePipeline requires a versioned source\. For more information, see [Using Versioning](http://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html)\.
+The Amazon S3 bucket must be in the same region in which you later create your pipeline\. At this time, CodePipeline supports the AWS OpsWorks Stacks provider in the US East \(N\. Virginia\) Region \(us\-east\-1\) only\. All resources in this walkthrough should be created in the US East \(N\. Virginia\) Region\. The bucket must also be versioned because CodePipeline requires a versioned source\. For more information, see [Using Versioning](http://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html)\.
 
 **To upload your app to an Amazon S3 bucket**
 

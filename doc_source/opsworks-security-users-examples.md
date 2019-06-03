@@ -4,7 +4,7 @@ This section shows some examples of IAM policies that can be attached to AWS Ops
 + [ Administrative Permissions](#opsworks-security-users-examples-admin) shows two policies that can be used to grant permissions to administrative users\.
 + [ Manage Permissions](#opsworks-security-users-examples-manage) and [ Deploy Permissions](#opsworks-security-users-examples-deploy) show examples of policies that can be attached to a user to augment or restrict the Manage and Deploy permissions levels\.
 
-  AWS OpsWorks Stacks determines the user's permissions by evaluating the permissions granted by attached IAM policies as well as the permissions granted by the **Permissions** page\. For more information, see [Overview of AWS IAM Permissions](http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsOverview.html)\. For more information on the **Permissions** page permissions, see [Permissions Levels](opsworks-security-users-standard.md)\.
+  AWS OpsWorks Stacks determines the user's permissions by evaluating the permissions granted by attached IAM policies as well as the permissions granted by the **Permissions** page\. For more information, see [Overview of AWS IAM Permissions](http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsOverview.html)\. For more information on the **Permissions** page permissions, see [AWS OpsWorks Stacks Permissions LevelsPermissions Levels](opsworks-security-users-standard.md)\.
 
 ## Administrative Permissions<a name="opsworks-security-users-examples-admin"></a>
 

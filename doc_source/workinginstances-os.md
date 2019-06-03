@@ -377,6 +377,19 @@ The following is an example response\.
             ]
         },
         {
+            "Name": "Ubuntu 18.04 LTS",
+            "Type": "Linux",
+            "ReportedVersion": "18.04",
+            "ReportedName": "ubuntu",
+            "Id": "Ubuntu 18.04 LTS",
+            "ConfigurationManagers": [
+                {
+                    "Version": "12",
+                    "Name": "Chef"
+                }
+            ]
+        },
+        {
             "ConfigurationManagers": [
                 {
                     "Version": "12",

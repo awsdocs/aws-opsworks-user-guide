@@ -49,6 +49,21 @@ For a detailed discussion of VPCs, see [Amazon Virtual Private Cloud](http://doc
 
 AWS OpsWorks Stacks requires the VPC to be configured so that every instance in the stack, including instances in private subnets, has access to the following endpoints:
 + One of the AWS OpsWorks Stacks service endpoints listed in the "Region Support" section of [Getting Started with AWS OpsWorks Stacks](gettingstarted_intro.md)\.
++ One of the following instance service endpoints, used by the AWS OpsWorks Stacks agent\. The agent runs on managed customer instances to exchange data with the service\.
+  + opsworks\-instance\-service\.us\-east\-2\.amazonaws\.com
+  + opsworks\-instance\-service\.us\-east\-1\.amazonaws\.com
+  + opsworks\-instance\-service\.us\-west\-1\.amazonaws\.com
+  + opsworks\-instance\-service\.us\-west\-2\.amazonaws\.com
+  + opsworks\-instance\-service\.ap\-south\-1\.amazonaws\.com
+  + opsworks\-instance\-service\.ap\-northeast\-1\.amazonaws\.com
+  + opsworks\-instance\-service\.ap\-northeast\-2\.amazonaws\.com
+  + opsworks\-instance\-service\.ap\-southeast\-1\.amazonaws\.com
+  + opsworks\-instance\-service\.ap\-southeast\-2\.amazonaws\.com
+  + opsworks\-instance\-service\.ca\-central\-1\.amazonaws\.com
+  + opsworks\-instance\-service\.eu\-central\-1\.amazonaws\.com
+  + opsworks\-instance\-service\.eu\-west\-1\.amazonaws\.com
+  + opsworks\-instance\-service\.eu\-west\-2\.amazonaws\.com
+  + opsworks\-instance\-service\.eu\-west\-3\.amazonaws\.com
 + Amazon S3
 + Any package repositories that your operating system depends on, such as the Amazon Linux or Ubuntu Linux repositories\.
 + Your app and custom cookbook repositories\.
@@ -102,7 +117,7 @@ You can launch a VPC template using the AWS CloudFormation console with just a f
 1. Open the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation/), select the **US East \(N\. Virginia\)** region, and choose **Create Stack**\.
 
 1. On the **Select Template** page, select **Specify an Amazon S3 template URL** and paste the template URL: **http://cloudformation\-templates\-us\-east\-1\.s3\.amazonaws\.com/OpsWorksinVPC\.template**\. Choose **Continue**\.  
-![\[CloudFormation Select Template page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/)![\[CloudFormation Select Template page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/)![\[CloudFormation Select Template page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/)
+![\[CloudFormation Select Template page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/vpc_create_vpc.png)
 
    You can also launch this stack by opening [AWS CloudFormation Sample Templates](http://aws.amazon.com/cloudformation/aws-cloudformation-templates/), locating the AWS OpsWorks Stacks VPC template, and choosing **Launch Stack**\.
 

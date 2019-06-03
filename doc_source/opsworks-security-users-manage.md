@@ -8,13 +8,13 @@ Regular users don't require an attached policy\. If they do have one, it typical
 + **Deploy** permissions include the **Show** permissions and also allow users to deploy and update apps\.
 + **Manage** permissions include the **Deploy** permissions and also allow users to perform stack management operations, such as adding layers or instances, use the **Permissions** page to set user permissions, and enable their own SSH/RDP and sudo/admin privileges\.
 + **Deny** permissions deny access to the stack\.
-If these permissions levels are not quite what you want for a particular user, you can customize the user's permissions by attaching an IAM policy\. For example, you might want to use the AWS OpsWorks Stacks **Permissions** page to assign **Manage** permissions level to a user, which grants them permissions to perform all stack management operations, but not to create or clone stacks\. You could then attach a policy that restricts those permissions by denying them permission to add or delete layers or augments those permissions by allowing them to create or clone stacks\. For more information, see [Attaching an IAM Policy](opsworks-security-users-policy.md)\. 
+If these permissions levels are not quite what you want for a particular user, you can customize the user's permissions by attaching an IAM policy\. For example, you might want to use the AWS OpsWorks Stacks **Permissions** page to assign **Manage** permissions level to a user, which grants them permissions to perform all stack management operations, but not to create or clone stacks\. You could then attach a policy that restricts those permissions by denying them permission to add or delete layers or augments those permissions by allowing them to create or clone stacks\. For more information, see [Managing AWS OpsWorks Stacks Permissions by Attaching an IAM PolicyAttaching an IAM Policy](opsworks-security-users-policy.md)\. 
 
 **AWS OpsWorks Stacks Administrative Users**  
 Administrative users are the account owner or an IAM user with the permissions that are defined by the [AWSOpsWorksFullAccess policy](opsworks-security-users-examples.md#opsworks-security-users-examples-admin)\. In addition to the permissions granted to **Manage** users, this policy includes permissions for actions that cannot be granted through the **Permissions** page, such as the following:  
 + Importing users into AWS OpsWorks Stacks
 + Creating and cloning stacks
-For the complete policy, see [Example Policies](opsworks-security-users-examples.md)\. For a detailed list of permissions that can be granted to users only by attaching an IAM policy, see [Permissions Levels](opsworks-security-users-standard.md)\.
+For the complete policy, see [Example Policies](opsworks-security-users-examples.md)\. For a detailed list of permissions that can be granted to users only by attaching an IAM policy, see [AWS OpsWorks Stacks Permissions LevelsPermissions Levels](opsworks-security-users-standard.md)\.
 
 **Topics**
 + [Users and Regions](#UsersandRegions)

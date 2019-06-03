@@ -7,7 +7,9 @@ The following table describes important changes to the Chef 12 agent that AWS Op
 
 | Agent Version | Description | Release Date | 
 | --- | --- | --- | 
-| 4032 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | November 15, 2018 | 
+| 4034 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | January 10, 2019 | 
+| 4033 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | November 26, 2018 | 
+| 4032 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | October 24, 2018 | 
 | 4031 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | August 15, 2018 | 
 | 4030 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | May 31, 2018 | 
 | 4029 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | May 2, 2018 | 
@@ -39,6 +41,8 @@ The following table describes important changes to the Chef 11\.10 agent that AW
 
 | Agent Version | Description | Release Date | 
 | --- | --- | --- | 
+| 3451 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | March 20, 2019 | 
+| 3450 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | December 3, 2018 | 
 | 3449 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | June 5, 2018 | 
 | 3448 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | May 8, 2018 | 
 | 3447 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | January 31, 2018 | 

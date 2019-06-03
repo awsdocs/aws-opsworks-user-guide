@@ -11,7 +11,7 @@ First, create the resources outside of AWS OpsWorks for Chef Automate that you'l
 **Topics**
 + [Get an AWS Account and Your AWS account root user Credentials](#getting-started-signup)
 + [Set Up a VPC](#set-up-vpc)
-+ [Set Up an EC2 Key Pair \(Optional\)](#w4ab1b9c21b7c11)
++ [Set Up an EC2 Key Pair \(Optional\)](#w4ab1b9c23b7c11)
 
 ### Get an AWS Account and Your AWS account root user Credentials<a name="getting-started-signup"></a>
 
@@ -60,17 +60,19 @@ The only time that you can view or download the secret access keys is when you c
 Your AWS OpsWorks for Chef Automate server must operate in an Amazon Virtual Private Cloud\. You can add it to an existing VPC, use the default VPC, or create a new VPC to contain the server\. For information about Amazon VPC and how to create a new VPC, see the [Amazon VPC Getting Started Guide](https://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/)\.
 
 If you create your own VPC, or use an existing one, the VPC should have the following settings or properties\.
-+ The VPC should have only one subnet, and it should be public\.
++ The VPC should have at least one subnet\.
+
+  If your AWS OpsWorks for Chef Automate server will be publicly accessible, make the subnet public, and enable **Auto\-assign public IP**\.
 + **DNS resolution** should be enabled\.
 + On the subnet, enable **Auto\-assign public IP**\.
 
-If you are unfamiliar with creating VPCs or running your instances in them, you can run the following AWS CLI command to create a VPC, by using an AWS CloudFormation template that AWS OpsWorks provides for you\. If you prefer to use the AWS Management Console, you can also upload the [template](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-vpc.yaml) to the AWS CloudFormation console\.
+If you are unfamiliar with creating VPCs or running your instances in them, you can run the following AWS CLI command to create a VPC with a single public subnet, by using an AWS CloudFormation template that AWS OpsWorks provides for you\. If you prefer to use the AWS Management Console, you can also upload the [template](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-vpc.yaml) to the AWS CloudFormation console\.
 
 ```
 aws cloudformation create-stack --stack-name OpsWorksVPC --template-url https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-vpc.yaml
 ```
 
-### Set Up an EC2 Key Pair \(Optional\)<a name="w4ab1b9c21b7c11"></a>
+### Set Up an EC2 Key Pair \(Optional\)<a name="w4ab1b9c23b7c11"></a>
 
 An SSH connection is not necessary or recommended for typical management of the Chef server; you can use [https://docs.chef.io/knife.html](https://docs.chef.io/knife.html) commands to perform most management tasks on your Chef server\.
 

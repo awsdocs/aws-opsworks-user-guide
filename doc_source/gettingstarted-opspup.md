@@ -82,7 +82,7 @@ Puppet Enterprise \(PE\) client tools are a set of command\-line tools that let 
 
 ### Set Up a Git Control Repository<a name="configure-control-repository"></a>
 
-Before you can launch a Puppet master, you must have a control repository configured in Git to store and change\-manage your Puppet modules and classes\. A URL to a Git repository and SSH account information to access the repository are required in the steps to launch your Puppet Enterprise master server\. For more information about how to set up a control repository that your Puppet Enterprise master will use, see [Setting up a control repository](https://puppet.com/docs/pe/2017.3/code_management/control_repo.html)\. You can also find control repository setup instructions in the readme for Puppet's [`control-repo` sample repository on GitHub](https://github.com/puppetlabs/control-repo)\. The structure of the control repository resembles the following\.
+Before you can launch a Puppet master, you must have a control repository configured in Git to store and change\-manage your Puppet modules and classes\. A URL to a Git repository and HTTPS or SSH account information to access the repository are required in the steps to launch your Puppet Enterprise master server\. For more information about how to set up a control repository that your Puppet Enterprise master will use, see [Setting up a control repository](https://puppet.com/docs/pe/2017.3/code_management/control_repo.html)\. You can also find control repository setup instructions in the readme for Puppet's [`control-repo` sample repository on GitHub](https://github.com/puppetlabs/control-repo)\. The structure of the control repository resembles the following\.
 
 ```
 ├── LICENSE
@@ -111,20 +111,22 @@ Before you can launch a Puppet master, you must have a control repository config
             └── webserver.pp
 ```
 
-#### Setting up a repository by using AWS CodeCommit<a name="w4ab1b7c19b7c13b7"></a>
+#### Setting up a repository by using CodeCommit<a name="w4ab1b7c19b7c13b7"></a>
 
-You can create a new repository by using AWS CodeCommit\. For more information about how to use AWS CodeCommit to create your control repository, see [Optional: Use AWS CodeCommit as a Puppet r10k Remote Control Repository](opspup-puppet-codecommit.md) in this guide\. For more information about how to get started with Git on AWS CodeCommit, see [Getting started with AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html)\. To authorize your OpsWorks for Puppet Enterprise server for your repository, attach the `AWSCodeCommitReadOnly` policy to your IAM instance profile role\.
+You can create a new repository by using CodeCommit\. For more information about how to use CodeCommit to create your control repository, see [Optional: Use CodeCommit as a Puppet r10k Remote Control Repository](opspup-puppet-codecommit.md) in this guide\. For more information about how to get started with Git on CodeCommit, see [Getting started with AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html)\. To authorize your OpsWorks for Puppet Enterprise server for your repository, attach the `AWSCodeCommitReadOnly` policy to your IAM instance profile role\.
 
 ### Set Up a VPC<a name="set-up-vpc-puppet"></a>
 
-Your OpsWorks for Puppet Enterprise server must operate in an Amazon Virtual Private Cloud\. You can add it to an existing VPC, use the default VPC, or create a new VPC to contain the server\. For information about Amazon VPC and how to create a new VPC, see the [Amazon VPC Getting Started Guide](https://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/)\.
+Your OpsWorks for Puppet Enterprise master must operate in an Amazon Virtual Private Cloud\. You can add it to an existing VPC, use the default VPC, or create a new VPC to contain the server\. For information about Amazon VPC and how to create a new VPC, see the [Amazon VPC Getting Started Guide](https://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/)\.
 
 If you create your own VPC, or use an existing one, the VPC should have the following settings or properties\.
-+ The VPC should have only one subnet, and it should be public\.
++ The VPC should have at least one subnet\.
+
+  If your OpsWorks for Puppet Enterprise master will be publicly accessible, make the subnet public, and enable **Auto\-assign public IP**\.
 + **DNS resolution** should be enabled\.
 + On the subnet, enable **Auto\-assign public IP**\.
 
-If you are unfamiliar with creating VPCs or running your instances in them, you can run the following AWS CLI command to create a VPC, by using an AWS CloudFormation template that AWS OpsWorks provides for you\. If you prefer to use the AWS Management Console, you can also upload the [template](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-vpc.yaml) to the AWS CloudFormation console\.
+If you are unfamiliar with creating VPCs or running your instances in them, you can run the following AWS CLI command to create a VPC with a single public subnet, by using an AWS CloudFormation template that AWS OpsWorks provides for you\. If you prefer to use the AWS Management Console, you can also upload the [template](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-vpc.yaml) to the AWS CloudFormation console\.
 
 ```
 aws cloudformation create-stack --stack-name OpsWorksVPC --template-url https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-vpc.yaml

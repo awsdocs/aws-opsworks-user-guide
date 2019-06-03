@@ -1,6 +1,6 @@
 # Step 7 \(Optional\): Clean up resources<a name="other-services-cp-chef11-cleanup"></a>
 
-To help prevent unwanted charges to your AWS account, you can delete the AWS resources that you used for this walkthrough\. These AWS resources include the AWS OpsWorks Stacks stack, the IAM role and instance profile, and the pipeline that you created in AWS CodePipeline\. However, you might want to keep using these AWS resources as you continue to learn more about AWS OpsWorks Stacks and AWS CodePipeline\. If you want to keep these resources, you have finished this walkthrough\.
+To help prevent unwanted charges to your AWS account, you can delete the AWS resources that you used for this walkthrough\. These AWS resources include the AWS OpsWorks Stacks stack, the IAM role and instance profile, and the pipeline that you created in CodePipeline\. However, you might want to keep using these AWS resources as you continue to learn more about AWS OpsWorks Stacks and CodePipeline\. If you want to keep these resources, you have finished this walkthrough\.
 
 **To delete the app from the stack**
 
@@ -22,9 +22,9 @@ Because you created the stack by running an AWS CloudFormation template, you can
 
 **To delete the pipeline**
 
-1. Open the AWS CodePipeline console\.
+1. Open the CodePipeline console\.
 
-1. In the AWS CodePipeline dashboard, choose the pipeline you created for this walkthrough\.
+1. In the CodePipeline dashboard, choose the pipeline you created for this walkthrough\.
 
 1. On the pipeline page, choose **Edit**\.
 

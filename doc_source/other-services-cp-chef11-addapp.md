@@ -1,6 +1,6 @@
 # Step 3: Add your app to AWS OpsWorks Stacks<a name="other-services-cp-chef11-addapp"></a>
 
-Before you create a pipeline in AWS CodePipeline, add the PHP test app to AWS OpsWorks Stacks\. When you create the pipeline, you will need to select the app that you've added to AWS OpsWorks Stacks\.
+Before you create a pipeline in CodePipeline, add the PHP test app to AWS OpsWorks Stacks\. When you create the pipeline, you will need to select the app that you've added to AWS OpsWorks Stacks\.
 
 Have the Amazon S3 bucket link from step 10 of the preceding procedure ready\. You will need the link to the bucket in which you stored your test app to complete this procedure\.
 
@@ -25,4 +25,4 @@ Have the Amazon S3 bucket link from step 10 of the preceding procedure ready\. Y
 
 1. You do not need to change any other settings in this form\. Choose **Add App**\.
 
-1. When the **PHPTestApp** app appears in the list on the **Apps** page, continue to the next procedure, [Step 4: Create a pipeline in AWS CodePipeline](other-services-cp-chef11-pipeline.md)\.
+1. When the **PHPTestApp** app appears in the list on the **Apps** page, continue to the next procedure, [Step 4: Create a pipeline in CodePipeline](other-services-cp-chef11-pipeline.md)\.

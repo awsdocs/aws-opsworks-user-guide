@@ -64,7 +64,7 @@ You must use the Elastic Load Balancing console or API to temporarily remove an 
 1. When you have finished, choose **Edit Instances**, and return the instance to the load balancer\.
 
 **Important**  
-If you use the Elastic Load Balancing console or API to remove an instance from a load balancer, you must also use Elastic Load Balancing to put it back\. AWS OpsWorks Stacks is not aware of operations that you perform with other service consoles or APIs, and it will not return the instance to the load balancer for you\.
+If you use the Elastic Load Balancing console or API to remove an instance from a load balancer, you must also use Elastic Load Balancing to put it back\. AWS OpsWorks Stacks is not aware of operations that you perform with other service consoles or APIs, and it will not return the instance to the load balancer for you\. Sometimes, AWS OpsWorks Stacks can add the instance back to the ELB, but this is not guaranteed behavior and does not occur in all cases\.
 
 You can attach multiple load balancers to a particular set of instances as follows:
 

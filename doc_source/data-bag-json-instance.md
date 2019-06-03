@@ -107,6 +107,7 @@ The instance's operating system \(string\)\. Valid values include:
 + `"Ubuntu 12.04 LTS"`
 + `"Ubuntu 14.04 LTS"`
 + `"Ubuntu 16.04 LTS"`
++ `"Ubuntu 18.04 LTS"`
 
 **private\_dns**  <a name="data-bag-json-instance-private-dns"></a>
 The private DNS name \(string\)\.

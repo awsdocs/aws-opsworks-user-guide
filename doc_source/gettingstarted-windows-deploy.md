@@ -42,7 +42,7 @@ You can use any repository you prefer for your applications\. For simplicity, th
 **Note**  
 This is a very simple application, but you can extend the basic principles to handle production\-level applications\.  
 For more complex applications with multiple files, it is usually simpler to create a \.zip archive of `iis-application` and upload it to your S3 bucket\.  
-You can then download that file and extract the contents to the appropriate directory\. There's no need to download multiple files, create a directory structure, and so on\.
+You can then download the \.zip file and extract the contents to the appropriate directory\. There's no need to download multiple files, create a directory structure, or so on\.
 For a production application, you will probably want to keep your files private\. For an example of how to have a recipe download files from a private S3 bucket, see [Using the SDK for Ruby on an AWS OpsWorks Stacks Windows Instance](cookbooks-101-opsworks-s3-windows.md)\.
 You can store your application in any suitable repository\.  
 You typically download the application by using a repository's public API\. This example uses the Amazon S3 API\. If, for example, you store your application on GitHub, you can use the [GitHub API](https://developer.github.com/guides/getting-started/)\.
@@ -52,14 +52,14 @@ You typically download the application by using a repository's public API\. This
 Add a recipe named `deploy.rb` to the `iis-cookbook` `recipes` directory, with the following contents\.
 
 ```
-chef_gem "aws-sdk" do
+chef_gem "aws-sdk-s3" do
   compile_time false
   action :install
 end
 
 ruby_block "download-object" do
   block do
-    require 'aws-sdk'
+    require 'aws-sdk-s3'
 
     #1  
     # Aws.config[:ssl_ca_bundle] = 'C:\ProgramData\Git\bin\curl-ca-bundle.crt'
@@ -131,7 +131,7 @@ To download an object from Amazon S3, you need the AWS region, bucket name, and 
   "deploy": true
 }
 ```
-The app's environment variables are stored in the `[:environment]` attribute\. To retrieve them, you use a Chef search query to retrieve the app's hash table, which are all under the `aws_opsworks_app` node\. This app will be defined as the `other` type, so the query searches for apps of that type\. The recipe takes advantage of the fact that there is only one app on this instance, so the hash table of interest is just `app[0]`\. For convenience, the recipe then assigns the region, bucket, and file names to variables\.  
+The app's environment variables are stored in the `[:environment]` attribute\. To retrieve them, use a Chef search query to retrieve the app's hash table, which is under the `aws_opsworks_app` node\. This app will be defined as the `other` type, so the query searches for apps of that type\. The recipe takes advantage of the fact that there is only one app on this instance, so the hash table of interest is just `app[0]`\. For convenience, the recipe then assigns the region, bucket, and file names to variables\.  
 For more information about how to use Chef search, see \.[Obtaining Attribute Values with Chef Search](cookbooks-101-opsworks-opsworks-stack-config-search.md)
 
 **3: Download the file**  
@@ -146,17 +146,17 @@ AWS OpsWorks Stacks automatically installs custom cookbooks on new instances\. H
 
 **To update the instance's cookbooks**
 
-1. Create a `.zip` archive of `iis-cookbook` and upload it to the S3 bucket\.
+1. Create a `.zip` archive of `iis-cookbook`, and upload it to the S3 bucket\.
 
-   This will overwrite the old cookbook, but the URL will stay the same, so you don't need to update the stack configuration\.
+   This overwrites the existing cookbook, but the URL stays the same, so you don't need to update the stack configuration\.
 
 1. If your instance is not online, restart it\.
 
 1. After the instance is online, choose **Stack** in the navigation pane, and then choose **Run Command**\.
 
-1. For **Command**, choose [Update Custom Cookbooks](workingstacks-commands.md)\. This command will install the updated cookbook on the instance\.
+1. For **Command**, choose [Update Custom Cookbooks](workingstacks-commands.md)\. This command installs the updated cookbook on the instance\.
 
-1. Choose **Update Custom Cookbooks**\. The command may take a few minutes to complete\.
+1. Choose **Update Custom Cookbooks**\. The command might take a few minutes to finish\.
 
 ## Add the Recipe to the Custom IIS Layer<a name="w4ab1c11c39c15c21c23c19"></a>
 
@@ -176,13 +176,13 @@ As with `install.rb`, the preferred way to handle deployment is to assign `deplo
 
 ## Add an App<a name="w4ab1c11c39c15c21c23c21"></a>
 
-The final piece of the puzzle is to add an app to the stack to represent your application in the AWS OpsWorks Stacks environment\. An app includes metadata such as the application's display name, and the data that is required to download the app from its repository\.
+The final task is to add an app to the stack to represent your application in the AWS OpsWorks Stacks environment\. An app includes metadata such as the application's display name, and the data that is required to download the app from its repository\.
 
 **To add the app to the stack**
 
 1. Choose **Apps** in the navigation pane, and then choose **Add an app**\.
 
-1. Configure the app as follows:
+1. Configure the app with the following settings\.
    + **Name** – I**IIS\-Example\-App**
    + **Repository Type** – **Other**
    + **Environment Variables** – Add the following three environment variables:
@@ -190,25 +190,25 @@ The final piece of the puzzle is to add an app to the stack to represent your ap
      + **BUCKET** – The bucket name, such as `windows-example-app`\.
      + **FILENAME** – The file name: **default\.htm**\.
 
-1. Accept the default values for the remaining settings, and then choose **Add App** to add the app to the stack\.
+1. Accept default values for the remaining settings, and then choose **Add App** to add the app to the stack\.
 
 **Note**  
-This example uses environment variables to provide the download data\. An alternative approach is to use an S3 Archive repository type and provide the file's URL\. AWS OpsWorks Stacks will add the information, along with optional data, such as your AWS credentials, to the app's `app_source` attribute\. Your deploy recipe would then need to retrieve the URL from the app attributes and parse it to extract the region, bucket name, and file name\.
+This example uses environment variables to provide the download data\. An alternative approach is to use an S3 Archive repository type and provide the file's URL\. AWS OpsWorks Stacks adds the information, along with optional data, such as your AWS credentials, to the app's `app_source` attribute\. Your deploy recipe must get the URL from the app attributes and parse it to extract the region, bucket name, and file name\.
 
 ## Deploy the App and Open the Application<a name="w4ab1c11c39c15c21c23c23"></a>
 
-AWS OpsWorks Stacks automatically deploys apps to new instances, but not to online instances\. Because your instance is already running, you will have to deploy the app manually\.
+AWS OpsWorks Stacks automatically deploys apps to new instances, but not to online instances\. Because your instance is already running, you must deploy the app manually\.
 
 **To deploy the app**
 
 1. Choose **Apps** in the navigation pane, and then choose **deploy** in the app's **Actions** column\.
 
-1. **Command** should be set to **Deploy**, so click the **Deploy** button at the lower right of the **Deploy App** page\. The command may take a few minutes to complete\.
+1. **Command** should be set to **Deploy**\. Choose **Deploy** at the lower right of the **Deploy App** page\. The command might take a few minutes to finish\.
 
-   After the deployment is complete, you will automatically return to the **Apps** page\. The **Status** indicator will show **successful** in green, and the app name will have a green check mark next to it to indicate a successful deployment\.
+   After deployment is finished, you return to the **Apps** page\. The **Status** indicator shows **successful** in green, and the app name has a green check mark next to it to indicate a successful deployment\.
 
 **Note**  
-Windows apps are always the Other app type, so deploying the app does the following:  
+Windows apps are always the **Other** app type, so deploying the app does the following:  
 Adds the app's data to the [stack configuration and deployment attributes](workingcookbook-json.md), as described earlier\.
 Triggers a Deploy event on the stack's instances, which runs your custom Deploy recipes\.
 

@@ -22,5 +22,5 @@ We recommend that you disassociate nodes from a Puppet master before you delete 
 
 For more information about how to delete an OpsWorks for Puppet Enterprise server, see [Delete an OpsWorks for Puppet Enterprise Server](opspup-delete-server.md)\.
 
-## See Also<a name="w4ab1b7c27c11"></a>
+## See Also<a name="w4ab1b7c29c11"></a>
 + [Remove nodes](https://puppet.com/docs/pe/2017.3/managing_nodes/adding_and_removing_nodes.html#remove-nodes) in the Puppet Enterprise documentation

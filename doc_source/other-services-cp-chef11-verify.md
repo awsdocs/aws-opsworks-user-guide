@@ -1,6 +1,6 @@
 # Step 5: Verifying the app deployment in AWS OpsWorks Stacks<a name="other-services-cp-chef11-verify"></a>
 
-To verify that AWS CodePipeline deployed the PHP app to your stack, sign in to the instance you created in [Step 1: Create a stack, layer, and an instance in AWS OpsWorks Stacks](other-services-cp-chef11-stack.md)\. You should be able to see and use the PHP web app\.
+To verify that CodePipeline deployed the PHP app to your stack, sign in to the instance you created in [Step 1: Create a stack, layer, and an instance in AWS OpsWorks Stacks](other-services-cp-chef11-stack.md)\. You should be able to see and use the PHP web app\.
 
 **To verify the app deployment in your AWS OpsWorks Stacks instance**
 

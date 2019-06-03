@@ -1,6 +1,6 @@
-# Step 7 \(Optional\): Update the app code to see AWS CodePipeline redeploy your app automatically<a name="other-services-cp-chef12-update"></a>
+# Step 7 \(Optional\): Update the app code to see CodePipeline redeploy your app automatically<a name="other-services-cp-chef12-update"></a>
 
-When you make changes to code in apps or cookbooks that you have deployed by using AWS CodePipeline, the updated artifacts will be deployed automatically by AWS CodePipeline to your target instances \(in this case, to a target AWS OpsWorks Stacks stack\)\. This section shows you the automatic redeployment when you update the code in your sample Node\.js app\. If you still have the app code for this walkthrough stored locally, and no one else has made changes to the code since you started the walkthrough, you can skip steps 1\-4 of this procedure\.
+When you make changes to code in apps or cookbooks that you have deployed by using CodePipeline, the updated artifacts will be deployed automatically by CodePipeline to your target instances \(in this case, to a target AWS OpsWorks Stacks stack\)\. This section shows you the automatic redeployment when you update the code in your sample Node\.js app\. If you still have the app code for this walkthrough stored locally, and no one else has made changes to the code since you started the walkthrough, you can skip steps 1\-4 of this procedure\.
 
 **To edit the code in the sample app**
 
@@ -24,14 +24,14 @@ When you make changes to code in apps or cookbooks that you have deployed by usi
 
 1. Upload the new ZIP file to your Amazon S3 bucket\. In this walkthrough, the name of the bucket is `my-appbucket`\.
 
-1. Open the AWS CodePipeline console, and open your AWS OpsWorks Stacks pipeline \(**MyOpsWorksPipeline**\)\. Choose **Release Change**\.
+1. Open the CodePipeline console, and open your AWS OpsWorks Stacks pipeline \(**MyOpsWorksPipeline**\)\. Choose **Release Change**\.
 
-   \(You can wait for AWS CodePipeline to detect the code change from the updated version of the app in your Amazon S3 bucket\. To save you time, this walkthrough instructs you to simply choose **Release Change**\.\)
+   \(You can wait for CodePipeline to detect the code change from the updated version of the app in your Amazon S3 bucket\. To save you time, this walkthrough instructs you to simply choose **Release Change**\.\)
 
-1. Observe as AWS CodePipeline runs through the stages of the pipeline\. First, AWS CodePipeline detects changes to the source artifact\.  
+1. Observe as CodePipeline runs through the stages of the pipeline\. First, CodePipeline detects changes to the source artifact\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cp_integ_cpupdatesource.png)
 
-   AWS CodePipeline pushes the updated code to your stack in AWS OpsWorks Stacks\.  
+   CodePipeline pushes the updated code to your stack in AWS OpsWorks Stacks\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cp_integ_updatestack.png)
 
 1. When both stages of the pipeline have been successfully completed, open your stack in AWS OpsWorks Stacks\.

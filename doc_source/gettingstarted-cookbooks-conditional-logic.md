@@ -14,7 +14,7 @@ This recipe does two things based on data bag content: displays a message in the
    
    if os == "Red Hat Enterprise Linux 7"
      Chef::Log.info("********** Operating system is Red Hat Enterprise Linux. **********")
-   elsif os == "Ubuntu 12.04 LTS" || os == "Ubuntu 14.04 LTS" || os == "Ubuntu 16.04 LTS"
+   elsif os == "Ubuntu 12.04 LTS" || os == "Ubuntu 14.04 LTS" || os == "Ubuntu 16.04 LTS" || os == "Ubuntu 18.04 LTS"
      Chef::Log.info("********** Operating system is Ubuntu. **********") 
    elsif os == "Microsoft Windows Server 2012 R2 Base"
      Chef::Log.info("********** Operating system is Windows. **********")
@@ -27,7 +27,7 @@ This recipe does two things based on data bag content: displays a message in the
    end
    
    case os
-   when "Ubuntu 12.04 LTS", "Ubuntu 14.04 LTS", "Ubuntu 16.04 LTS"
+   when "Ubuntu 12.04 LTS", "Ubuntu 14.04 LTS", "Ubuntu 16.04 LTS", "Ubuntu 18.04 LTS"
      apt_package "Install a package with apt-get" do
        package_name "tree"
      end

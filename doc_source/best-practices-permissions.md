@@ -52,7 +52,7 @@ For example, suppose you want a user to be able to perform most operations on a 
   }
   ```
 
-For more information, including example policies, see [Attaching an IAM Policy](opsworks-security-users-policy.md)\.
+For more information, including example policies, see [Managing AWS OpsWorks Stacks Permissions by Attaching an IAM PolicyAttaching an IAM Policy](opsworks-security-users-policy.md)\.
 
 **Note**  
 Another way to use IAM policy is to set a condition that limits stack access to employees with a specified IP address or address range\. For example, to ensure that employees access stacks only from inside your corporate firewall, set a condition that limits access to your corporate IP address range\. For more information, see [Conditions](http://docs.aws.amazon.com/IAM/latest/UserGuide/AccessPolicyLanguage_ElementDescriptions.html#Condition)\.

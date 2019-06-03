@@ -2,14 +2,18 @@
 
 | Change | Description | Date | 
 | --- |--- |--- |
-| [AWS OpsWorks for Puppet Enterprise](#history) | Added procedure for setting up an SSH\-based connection to a control repository that uses AWS CodeCommit\. | December 3, 2018 | 
+| [AWS OpsWorks Stacks now supports Ruby 2\.6\.1](#history) | AWS OpsWorks Stacks supports Ruby 2\.6\.1 on Rails App Server layers in Chef 11\.10 stacks\. | May 2, 2019 | 
+| [AWS OpsWorks for Chef Automate now supports Chef Automate 2\.0](#history) | New AWS OpsWorks for Chef Automate servers will run Chef Automate 2\.0, which includes updates to Chef InSpec, new features in compliance scanning and reporting, and Chef Infra\. | April 30, 2019 | 
+| [AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise](#history) | You can now use AWS CloudFormation to create an AWS OpsWorks for Chef Automate server or an AWS OpsWorks for Puppet Enterprise master server\. | January 24, 2019 | 
+| [AWS OpsWorks Stacks](#history) | AWS OpsWorks Stacks now supports instances running Ubuntu 18\.04 LTS in Chef 12 stacks\. | December 18, 2018 | 
+| [AWS OpsWorks for Puppet Enterprise](#history) | Added procedure for setting up an SSH\-based connection to a control repository that uses CodeCommit\. | December 3, 2018 | 
 | [AWS OpsWorks Stacks](#history) | AWS OpsWorks Stacks now supports instances running Amazon Linux 2 in Chef 12 stacks\. | November 15, 2018 | 
 | [AWS OpsWorks Stacks](#history) | AWS OpsWorks Stacks now supports instances running Amazon Linux 2018\.03 in Chef 11\.10 stacks\. | October 23, 2018 | 
 | [AWS OpsWorks Stacks](#history) | AWS OpsWorks Stacks now supports instances running Amazon Linux 2018\.03 in Chef 12 stacks\. | August 23, 2018 | 
 | [AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise](#history) | OpsWorks for Puppet Enterprise has upgraded to PE 2018\.1\.2\. AWS OpsWorks for Chef Automate has upgraded to Chef Automate 1\.8\.68\. | June 29, 2018 | 
 + **AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise API version:** 2016\-11\-01
 + **AWS OpsWorks Stacks API version: **2016\-03\-08
-+ **Latest documentation update: **December 4, 2018
++ **Latest documentation update: **May 2, 2019
 
 ## Earlier Updates<a name="history-older"></a>
 
@@ -40,7 +44,7 @@ The following table describes important changes in each release of the *AWS OpsW
 | Added support for Node\.js 0\.12\.15 and Ruby 2\.3 in built\-in layers\. | July 6, 2016 | 
 | Added support for the Asia Pacific \(Mumbai\) Region\. | June 28, 2016 | 
 | Added support for stacks and instances that run the CentOS 7 operating system\. | June 22, 2016 | 
-| Added walkthrough describing AWS CodePipeline and AWS OpsWorks Stacks integration\. | June 2, 2016 | 
+| Added walkthrough describing CodePipeline and AWS OpsWorks Stacks integration\. | June 2, 2016 | 
 | Added support for stacks and instances that run the Ubuntu 16\.04 LTS operating system\. | June 1, 2016 | 
 | Added Chef 12 Linux support and related documentation\.  | December 3, 2015 | 
 | Added Node\.js walkthrough to Getting Started\. | July 14, 2015 | 

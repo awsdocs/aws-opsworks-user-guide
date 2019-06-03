@@ -22,7 +22,7 @@ Before you begin, complete the [prerequisites](gettingstarted-linux-prerequisite
    + If a VPC is available, choose it\. \(For more information, see [Running a Stack in a VPC](workingstacks-vpc.md)\.\)
    + Otherwise, choose **No VPC**\.
 
-1. For **Default operating system**, choose **Linux** and **Ubuntu 16\.04 LTS**\.
+1. For **Default operating system**, choose **Linux** and **Ubuntu 18\.04 LTS**\.
 
 1. For **Use custom Chef cookbooks**, choose **Yes**\.
 

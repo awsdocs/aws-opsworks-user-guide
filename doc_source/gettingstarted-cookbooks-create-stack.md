@@ -1,6 +1,6 @@
 # Step 2: Create the Stack and its Components<a name="gettingstarted-cookbooks-create-stack"></a>
 
-Create an AWS OpsWorks Stacks stack and its components, which include a layer and an instance\. In later steps, you will upload your cookbook to the instance and then run the cookbook's recipes on that instance\.
+Create an AWS OpsWorks Stacks stack and its components, which include a layer and an instance\. In later steps, you upload your cookbook to the instance and then run the cookbook's recipes on that instance\.
 
 **To create the stack**
 

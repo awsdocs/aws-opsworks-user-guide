@@ -1,7 +1,7 @@
 # AWS OpsWorks User Guide
 
 -----
-*****Copyright &copy; 2018 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -21,7 +21,8 @@ Amazon's trademarks and trade dress may not be used in
       + [Configure the Puppet Master Using the Starter Kit](opspup-starterkit.md)
       + [Add Nodes for the Puppet Master to Manage](opspup-addnodes.md)
       + [Sign in to the Puppet Enterprise Console](opspup-puppet-dashboard.md)
-      + [Optional: Use AWS CodeCommit as a Puppet r10k Remote Control Repository](opspup-puppet-codecommit.md)
+      + [Optional: Use CodeCommit as a Puppet r10k Remote Control Repository](opspup-puppet-codecommit.md)
+   + [Create an AWS OpsWorks for Puppet Enterprise Master by using AWS CloudFormation](opspup-create-server-cfn.md)
    + [Back Up and Restore an OpsWorks for Puppet Enterprise Server](opspup-backup-restore.md)
       + [Back Up an OpsWorks for Puppet Enterprise Server](opspup-backup.md)
       + [Restore an OpsWorks for Puppet Enterprise Server from a Backup](opspup-restore.md)
@@ -37,11 +38,12 @@ Amazon's trademarks and trade dress may not be used in
       + [Configure the Chef Server Using the Starter Kit](opscm-starterkit.md)
       + [Add Nodes for the Chef Server to Manage](opscm-addnodes.md)
       + [Sign in to the Chef Automate dashboard](opscm-chef-dashboard.md)
+   + [Create an AWS OpsWorks for Chef Automate Server by using AWS CloudFormation](opscm-create-server-cfn.md)
    + [Back Up and Restore an AWS OpsWorks for Chef Automate Server](opscm-backup-restore.md)
       + [Back Up an AWS OpsWorks for Chef Automate Server](opscm-chef-backup.md)
       + [Restore an AWS OpsWorks for Chef Automate Server from a Backup](opscm-chef-restore.md)
    + [System Maintenance in AWS OpsWorks for Chef Automate](opscm-maintenance.md)
-   + [Chef Compliance in AWS OpsWorks for Chef Automate](opscm-chefcompliance.md)
+   + [Compliance Scans in AWS OpsWorks for Chef Automate](opscm-chefcompliance.md)
    + [Adding Nodes Automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md)
    + [Disassociate a Node from an AWS OpsWorks for Chef Automate Server](opscm-disassociate-node.md)
    + [Delete an AWS OpsWorks for Chef Automate Server](opscm-delete-server.md)
@@ -385,17 +387,17 @@ Amazon's trademarks and trade dress may not be used in
             + [Step 2: Configure your stack and layer to use custom cookbooks](other-services-cp-stackconfig.md)
             + [Step 3: Upload app code to an Amazon S3 bucket](other-services-cp-chef12-s3.md)
             + [Step 4: Add your app to AWS OpsWorks Stacks](other-services-cp-chef12-addapp.md)
-            + [Step 5: Create a pipeline in AWS CodePipeline](other-services-cp-chef12-pipeline.md)
+            + [Step 5: Create a pipeline in CodePipeline](other-services-cp-chef12-pipeline.md)
             + [Step 6: Verifying the app deployment in AWS OpsWorks Stacks](other-services-cp-chef12-verify.md)
-            + [Step 7 (Optional): Update the app code to see AWS CodePipeline redeploy your app automatically](other-services-cp-chef12-update.md)
+            + [Step 7 (Optional): Update the app code to see CodePipeline redeploy your app automatically](other-services-cp-chef12-update.md)
             + [Step 8 (Optional): Clean up resources](other-services-cp-chef12-cleanup.md)
          + [AWS CodePipeline with AWS OpsWorks Stacks - Chef 11 Stacks](other-services-cp-chef11.md)
             + [Step 1: Create a stack, layer, and an instance in AWS OpsWorks Stacks](other-services-cp-chef11-stack.md)
             + [Step 2: Upload app code to an Amazon S3 bucket](other-services-cp-chef11-s3.md)
             + [Step 3: Add your app to AWS OpsWorks Stacks](other-services-cp-chef11-addapp.md)
-            + [Step 4: Create a pipeline in AWS CodePipeline](other-services-cp-chef11-pipeline.md)
+            + [Step 4: Create a pipeline in CodePipeline](other-services-cp-chef11-pipeline.md)
             + [Step 5: Verifying the app deployment in AWS OpsWorks Stacks](other-services-cp-chef11-verify.md)
-            + [Step 6 (Optional): Update the app code to see AWS CodePipeline redeploy your app automatically](other-services-cp-chef11-update.md)
+            + [Step 6 (Optional): Update the app code to see CodePipeline redeploy your app automatically](other-services-cp-chef11-update.md)
             + [Step 7 (Optional): Clean up resources](other-services-cp-chef11-cleanup.md)
    + [Using the AWS OpsWorks Stacks CLI](cli-examples.md)
       + [Create an Instance (create-instance)](cli-examples-create-instance.md)

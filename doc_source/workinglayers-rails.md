@@ -10,7 +10,7 @@ The Rails App Server layer is an AWS OpsWorks Stacks layer that provides a bluep
 The **Add Layer** page provides the following configuration options, all of which are optional\.
 
 **Ruby Version**  
-The Ruby version that will be used by your applications\. The default value is 2\.0\.0\.   
+The Ruby version that will be used by your applications\. The default value is 2\.3\.  
 You can also specify your preferred Ruby version by [overriding the `[:opsworks][:ruby_version]`](workingcookbook-attributes.md) attribute\.  
 AWS OpsWorks Stacks installs a separate Ruby package to be used by recipes and the instance agent\. For more information, see [Ruby Versions](workingcookbook-ruby.md)\.
 
@@ -28,16 +28,16 @@ gem 'unicorn'
 ```
 
 **Passenger Version**  
-If you have specified Apache2/Passenger, you must specify the Passenger version\. The default value is 4\.0\.46\.
+If you have specified Apache2/Passenger, you must specify the Passenger version\. The default value is 5\.0\.28\.
 
 **Rubygems Version**  
-The default [Rubygems](http://rubygems.org/) version is 2\.2\.2\. 
+The default [Rubygems](http://rubygems.org/) version is 2\.5\.1
 
 **Install and Manage Bundler**  
 Lets you choose whether to install and manage [Bundler](http://gembundler.com/)\. The default value is **Yes**\.
 
 **Bundler version**  
-The default Bundler version is 1\.5\.3\.
+The default Bundler version is 1\.12\.5\.
 
 **Custom security groups**  
 This setting appears if you chose to not automatically associate a built\-in AWS OpsWorks Stacks security group with your layers\. You must specify which security group to associate with the layer\. For more information, see [Create a New Stack](workingstacks-creating.md)\.
@@ -57,8 +57,8 @@ If your Ruby on Rails application uses SSL, we recommend that you disable SSLv3 
 
 ## Disabling SSLv3 for Rails Servers<a name="workinglayers-rails-sslv3"></a>
 
-To disable SSLv3 for Rails servers, update the layer's **Ruby Version** setting to 2\.1, which installs Ruby 2\.1\.4 as the version that applications use\.
-+ Update the layer's **Ruby Version** setting to 2\.1, which installs Ruby 2\.1\.4 as the version that applications use\.
+To disable SSLv3 for Rails servers, update the layer's **Ruby Version** setting to 2\.1 or higher, which installs Ruby 2\.1\.4 or higher as the version that applications use\.
++ Update the layer's **Ruby Version** setting to 2\.1 or higher\.
 + Update the configuration file for your Rails stack, as follows\.
 
 **Apache with Phusion Passenger**  

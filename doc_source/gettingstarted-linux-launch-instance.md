@@ -18,7 +18,7 @@ Use AWS OpsWorks Stacks to start up an Ubuntu Server Amazon EC2 instance\. This 
 1. Leave the defaults for the following:
    + **Scaling type** \(**24/7**\)
    + **SSH key** \(**Do not use a default SSH key**\)
-   + **Operating system** \(**Ubuntu 16\.04 LTS**\)
+   + **Operating system** \(**Ubuntu 18\.04 LTS**\)
    + **OpsWorks Agent version** \(**Inherit from stack**\)
    + **Tenancy** \(**Default \- Rely on VPC settings**\)
    + **Root device type** \(**EBS backed**\)

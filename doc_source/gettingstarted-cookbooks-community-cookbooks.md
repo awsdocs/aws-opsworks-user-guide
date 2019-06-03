@@ -2,7 +2,7 @@
 
 Finally, update the cookbook to use functionality provided in an external cookbook provided by the Chef community\. The external cookbook that you will use for this walkthrough is available through the [Chef Supermarket](https://supermarket.chef.io/), a popular location for accessing external Chef cookbooks\. This external cookbook provides a custom resource that lets you download and install applications, similar to what you did in [Step 4: Update the Cookbook to Install a Package](gettingstarted-cookbooks-install-package.md)\. However, this resource can install web applications and other application types in addition to packages\.
 
-When a cookbook depends on another cookbook, you must specify a dependency on the other cookbook\. To declare and manage cookbook dependencies, we recommend that you use a tool called Berkshelf\. To complete this step, install Berkshelf on your local workstation by following the instructions at [Berkshelf](http://berkshelf.com/)\.
+When a cookbook depends on another cookbook, you must specify a dependency on the other cookbook\. To declare and manage cookbook dependencies, we recommend that you use a tool called Berkshelf\. For more information about how to install Berkshelf on your local workstation, see [About Berkshelf](https://docs.chef.io/berkshelf.html) on the Chef website\.
 
 After you install Berkshelf, follow these procedures to declare the cookbook dependency and then create a recipe that calls the resource in the external cookbook:
 
@@ -16,13 +16,13 @@ After you install Berkshelf, follow these procedures to declare the cookbook dep
 
    This declares a dependency on a cookbook named `application`, version 5\.0\.0\. 
 
-1. From the root of the `opsworks_cookbook_demo` directory, run the following command:
+1. From the root of the `opsworks_cookbook_demo` directory, run the following command\. The period at the end of the command is intentional\.
 
    ```
    berks init .
    ```
 
-   \(Don't forget the period at the end of the command\.\) Berkshelf creates a number of folders and files that you can use later for more advanced scenarios\. The only file that we need for this walkthrough is the file named `Berksfile`\.
+   Berkshelf creates a number of folders and files that you can use later for more advanced scenarios\. The only file that we need for this walkthrough is the file named `Berksfile`\.
 
 1. Add the following line at the end of the `Berksfile` file: 
 
@@ -30,7 +30,7 @@ After you install Berkshelf, follow these procedures to declare the cookbook dep
    cookbook "application", "5.0.0"
    ```
 
-   This informs Berkshelf that you want to use [application cookbook version 5\.0\.0](https://supermarket.chef.io/cookbooks/application/versions/5.0.0), which Berkshelf can access through the Chef Supermarket\.
+   This informs Berkshelf that you want to use [application cookbook version 5\.0\.0](https://supermarket.chef.io/cookbooks/application/versions/5.0.0), which Berkshelf downloads from the Chef Supermarket\.
 
 1. At the terminal or command prompt, run the following command from the root of the `opsworks_cookbook_demo` directory:
 
@@ -38,7 +38,7 @@ After you install Berkshelf, follow these procedures to declare the cookbook dep
    berks install
    ```
 
-   Berkshelf then creates a list of the dependencies for both your cookbook and the application cookbook\. Berkshelf will use this list of dependencies in the next procedure\. 
+   Berkshelf creates a list of the dependencies for both your cookbook and the application cookbook\. Berkshelf uses this list of dependencies in the next procedure\.
 
 **To update the cookbook on the instance and to run the new recipe**
 
