@@ -124,6 +124,7 @@ If you create your own VPC, or use an existing one, the VPC should have the foll
 
   If your OpsWorks for Puppet Enterprise master will be publicly accessible, make the subnet public, and enable **Auto\-assign public IP**\.
 + **DNS resolution** should be enabled\.
++ On the subnet, enable **Auto\-assign public IP**\.
 
 If you are unfamiliar with creating VPCs or running your instances in them, you can run the following AWS CLI command to create a VPC with a single public subnet, by using an AWS CloudFormation template that AWS OpsWorks provides for you\. If you prefer to use the AWS Management Console, you can also upload the [template](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-vpc.yaml) to the AWS CloudFormation console\.
 

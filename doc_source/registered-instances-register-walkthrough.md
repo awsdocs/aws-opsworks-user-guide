@@ -3,7 +3,7 @@
 **Note**  
 This feature is supported only for Linux stacks\.
 
-The registration process is designed to support a variety of scenarios\. This section gets you started by walking you through an end\-to\-end example of one of those scenarios, how use your workstation to register an Amazon EC2 instance\. The other registration scenarios use a similar procedure\. For more information, see [Registering Amazon EC2 and On\-premises Instances](registered-instances-register-registering.md)\. 
+The registration process supports several scenarios\. This section walks you through an end\-to\-end example of one scenario: how to use your workstation to register an Amazon EC2 instance\. Other registration scenarios use a similar procedure\. For more information, see [Registering Amazon EC2 and On\-premises Instances](registered-instances-register-registering.md)\.
 
 **Note**  
 You typically want to register an existing Amazon EC2 instance\. However, you can just create a new instance and a new stack for the walkthrough and delete them when you are finished\.
@@ -36,7 +36,9 @@ While the instance is booting, you can proceed to the next section\.
 
 ## Step 2: Install and Configure the AWS CLI<a name="registered-instances-register-walkthrough-cli"></a>
 
-The key part of the registration process is handled by the `aws opsworks register` AWS CLI command\. Before you register your first instance, install a current version of the AWS CLI or update your existing version\. The installation details depend on your workstation's operating system\. See [Installing the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) for installation steps\.
+Registration is performed by the `aws opsworks register` AWS CLI command\. Before you register your first instance, you must be running version 1\.16\.180 of the AWS CLI or newer\. The installation details depend on your workstation's operating system\. For more information about installing the AWS CLI, see [Installing the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)\. To check the version of the AWS CLI that you are running, enter `aws --version` in a shell session\.
+
+We strongly recommend that you do not skip this step, even if you are already running the AWS CLI on your workstation\. Using the most current release of the AWS CLI is a security best practice\.
 
 You must provide `register` with a set of AWS credentials that have appropriate permissions\. The recommended way to do this—so that you avoid installing credentials directly on an instance—is to register instances that are launched with an instance profile, and then add the `--use-instance-profile` switch to your `register` command\. If you are getting credentials from an instance profile, skip to [Step 3: Register the Instance with the EC2Register Stack](#registered-instances-register-walkthrough-register) in this topic\. However, if your instance was not launched with an instance profile, you can create an IAM user\. The following procedure creates a new IAM user with appropriate permissions, installing the user's credentials on the workstation, and then passing those credentials to `register`\.
 
@@ -48,8 +50,9 @@ You must provide `register` with a set of AWS credentials that have appropriate 
 
 1. On the **Set permissions** page, choose **Attach existing policies directly**\.
 
-1. Enter **OpsWorks** in the **Policy type** filter box to display the AWS OpsWorks policies, select **AWSOpsWorksRegisterCLI**, and then choose **Next: review**\. This policy grants your user the permissions that are required to run `register`\.  
-![\[Adding the AWSOpsWorksRegisterCLI policy\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/attach_IAM_registerCLI_policy.png)
+1. Enter **OpsWorks** in the **Policy type** filter box to display the AWS OpsWorks policies, select one of the following policies, and then choose **Next: review**\. The policy grants your user the permissions that are required to run `register`\.
+   + Choose `AWSOpsWorksRegisterCLI_EC2` to allow the user permissions to register EC2 instances that use instance profiles\.
+   + Choose `AWSOpsWorksRegisterCLI_OnPremises` to allow the user permissions to register on\-premises instances\.
 
 1. On the **Review** page, choose **Create user**\.
 

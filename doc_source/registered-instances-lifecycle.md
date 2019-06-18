@@ -38,7 +38,7 @@ After the agent sends a registration request, AWS OpsWorks Stacks starts the ins
 
 ## Running Setup<a name="registered-instances-lifecycle-running-setup"></a>
 
-The Running Setup state runs the instance's Setup recipes\. The details how setup works depend on the preceding state\.
+The Running Setup state runs the instance's Setup recipes\. Setup works depending on the preceding state\.
 
 **Note**  
 If you unassign the instance while it is in the Running Setup state, AWS OpsWorks Stacks sends a Shutdown command, which runs the instance's Shutdown recipes but does not stop the instance\. The instance moves to the [Unassigning](#registered-instances-lifecycle-unassigning) state\.
@@ -50,9 +50,11 @@ If you unassign the instance while it is in the Running Setup state, AWS OpsWork
 
 ### Registering<a name="registered-instances-lifecycle-running-setup-registering"></a>
 
-During the Registering process, setup creates an AWS OpsWorks Stacks instance to represent the registered instance in the stack and performs an initial setup by running a set of core Setup recipes on the instance\. 
+During the Registering process, setup creates an AWS OpsWorks Stacks instance to represent the registered instance in the stack, and runs a set of core Setup recipes on the instance\.
 
 One key change performed by initial setup is overwriting the instance's hosts file\. By registering the instance, you have handed user management over to AWS OpsWorks Stacks, which must have its own hosts file to control SSH login permissions\. Initial setup also creates or modifies a number of files and, on Ubuntu systems, modifies package sources and installs a set of packages\. For details, see [Initial Setup Configuration Changes](#registered-instances-lifecycle-setup-config)\.
+
+During registering, the process calls the IAM `AttachUserPolicy` that is part of the permissions attached to the IAM user that you create as a prerequisite\. If `AttachUserPolicy` does not exist \(most likely because you are running an older release of the AWS CLI\), the process falls back to calling `PutUserPolicy`\.
 
 **Note**  
 For consistency, AWS OpsWorks Stacks runs every core Setup recipe\. However, some of them perform some or all of their tasks only if an instance has been assigned to at least one layer, so they do not necessarily affect initial setup\.

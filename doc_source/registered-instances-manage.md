@@ -20,7 +20,7 @@ After you register an instance, it is in the Registered state\. AWS OpsWorks Sta
 
 To take full advantage of AWS OpsWorks Stacks management functionality, you can assign the instance to a layer\. For more information, see [Assigning a Registered Instance to a Layer](registered-instances-assign.md)\.
 
-Some differences exist in the way AWS OpsWorks Stacks manages Amazon EC2 and on\-premises instances\.
+There are differences between the way AWS OpsWorks Stacks manages Amazon EC2 and on\-premises instances\.
 
 Amazon EC2 Instances  
 + If you stop a registered Amazon EC2 instance, AWS OpsWorks Stacks terminates instance store\-backed instances and stops Amazon EBS\-backed instances\.

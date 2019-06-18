@@ -3,7 +3,7 @@
 **Note**  
 This feature is supported only for Linux stacks\.
 
-You register an instance by running the `register` command from your workstation or from the instance\. The simplest way to handle the operation is to use the [AWS OpsWorks Stacks console's](https://console.aws.amazon.com/opsworks/) registration wizard, which simplifies the process of constructing the command string\. After you are familiar with the registration procedure, you can skip the wizard if you prefer, and run the `register` command\.
+You register an instance by running the AWS CLI `register` command from your workstation or from the instance\. The simplest way to handle the operation is to use the [AWS OpsWorks Stacks console's](https://console.aws.amazon.com/opsworks/) registration wizard, which simplifies the process of constructing the command string\. After you are familiar with the registration procedure, you can skip the wizard if you prefer, and run the `register` command\.
 
 The following describes how to use the registration wizard to register an instance with an existing stack\.
 
@@ -18,11 +18,11 @@ To register an instance with a new stack, you can do so by choosing **Register I
 
 1. On the **Choose an Instance Type** page, specify whether you want to register an Amazon EC2 or an on\-premises instance:
    + If you are registering an Amazon EC2 instance, choose **Next: Select Instances**\.
-   + If you are registering an on\-premises instance, choose **Next:Install AWS CLI**, and then go to Step 5\.
+   + If you are registering an on\-premises instance, choose **Next: Install AWS CLI**, and then go to Step 5\.
 
 1. If you are registering an Amazon EC2 instance, open the **Select Instances** page to select the instance to register\. AWS OpsWorks Stacks collects the information needed to build the command\. When you are finished, choose **Next:Install AWS CLI**\.
 
-1. The instance on which you plan to run `register` must have a current version of the AWS CLI\. To install or update the AWS CLI, the installation wizard page provides links to installation and configuration instructions\. After you have verified the CLI installation, specify whether you are running the command from the instance to be registered or from a separate workstation\. and then choose **Next: Register Instances**\.
+1. The instance on which you plan to run `register` must be running version 1\.16\.180 of the AWS CLI or newer\. To install or update the AWS CLI, the registration wizard page provides links to installation and configuration instructions\. After you have verified the AWS CLI installation, choose whether you are running the command from the instance to be registered or from a separate workstation, and then choose **Next: Register Instances**\.
 
 1. The **Register Instances** page displays a template for a `register` command string that incorporates your selected options\. For example, if you are registering an Amazon EC2 instance from a separate workstation, the default template resembles the following\.
 
@@ -39,11 +39,9 @@ If you want `register` to log on with a password, set **I use SSH keys** to **No
 
    Copy this string to a text editor\. and edit it as required\. Note the following\.
    + The bracketed text represents information that you must supply, such as the location of your SSH key file\.
-   + The template assumes that you are running `register` with default AWS credentials\.
+   + The template assumes that you are running `register` with default AWS credentials\. If not, add a `--profile` argument to the command string, and specify the credential profile name that you want to use\.
 
-     If not, add a `--profile` argument to the command string, and specify the credential profile name that you want to use\.
-
-   For other scenarios, you might need to change the command further\. For an explanation of the available `register` arguments and alternative ways to construct the command string, see [Using the register Command](registered-instances-register-registering-command.md)\. You can also display the command's documentation by running `aws opsworks help register` from the command line\. For some example command strings, see [Example register Commands](registered-instances-register-registering-examples.md)\.
+   For other scenarios, you might need to change the command further\. For an explanation of the available `register` arguments and alternative ways to construct the command string, see [Using the `register` Command](registered-instances-register-registering-command.md)\. You can also display the command's documentation by running `aws opsworks help register` from the command line\. For some example command strings, see [Example register Commands](registered-instances-register-registering-examples.md)\.
 
 1. After you have finished editing the command string, open a terminal window on your workstation or use SSH to log on to the instance and run the command\. The entire operation typically takes around five minutes, during which the instance is in the **Registering** state\.
 

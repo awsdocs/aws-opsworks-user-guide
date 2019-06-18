@@ -1,9 +1,9 @@
-# Using the register Command<a name="registered-instances-register-registering-command"></a>
+# Using the `register` Command<a name="registered-instances-register-registering-command"></a>
 
 **Note**  
 This feature is supported only for Linux stacks\.
 
-The following shows the general syntax for the `register` command\.
+To register an instance, be sure you are running at least version 1\.16\.180 of the AWS CLI\. The following shows the general syntax for the `register` command\.
 
 ```
 aws opsworks register \
@@ -58,10 +58,10 @@ For more information about `ssh`, see [SSH](http://www.openbsd.org/cgi-bin/man.c
 **`--override-hostname`**  
  \(Optional\) Specifies a host name for the instance, which is used only by AWS OpsWorks Stacks\. The default value is the instance's host name\.
 
-**\-\-debug**  
+**`--debug`**  
 \(Optional\) Provides debugging information if the registration process fails\. For troubleshooting information, see [Troubleshooting Instance Registration](common-issues.md#common-issues-instance-registration)\.
 
-**\-\-use\-instance\-profile**  
+**`--use-instance-profile`**  
 \(Optional, but highly recommended for Amazon EC2 instances\) Lets the `register` command use an attached instance profile, instead of creating an IAM user\. Adding this parameter can help prevent errors that occur if you try to manage a registered instance when the IAM user has accidentally been deleted\.  
 The IAM user that is created during the registration process is required throughout the life of a registered instance\. Deleting the user causes the AWS OpsWorks Stacks agent to be unable to communicate with the service\. To help prevent problems managing registered instances in the event that the IAM user is accidentally deleted, add the `--use-instance-profile` parameter to your `register` command to use the instance's built\-in instance profile instead\. Adding the `--use-instance-profile` parameter also prevents errors from occurring when you rotate AWS account access keys every 90 days \(a recommended best practice\), because it prevents mismatches between the access keys available to the AWS OpsWorks agent and required IAM user\.
 

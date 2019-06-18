@@ -43,7 +43,7 @@ aws opsworks register \
 ```
 
 **Register an Instance by Running `register` from the Instance**  <a name="registered-instances-register-registering-examples-local"></a>
-The following example shows how to register an Amazon EC2 instance by running `register` from the instance itself\. The command string depends on default credentials for its permissions\. To use the example for an on\-premises instance, change `--infrastructure-class` to `on-premises`   
+The following example shows how to register an Amazon EC2 instance by running `register` from the instance itself\. The command string depends on default credentials for its permissions\. To use the example for an on\-premises instance, change `--infrastructure-class` to `on-premises`\.  
 
 ```
 aws opsworks register \

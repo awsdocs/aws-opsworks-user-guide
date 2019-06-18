@@ -57,9 +57,9 @@ You can configure an CodeCommit r10k remote control repository to use SSH key pa
 
    1. On the **Permissions** tab, choose **Attach policies**\.
 
-   1. In the **Search** bar, enter **AmazonEC2RoleforSSM**\.
+   1. In the **Search** bar, enter **AmazonSSMManagedInstanceCore**\.
 
-   1. In the search results, choose **AmazonEC2RoleforSSM**\.
+   1. In the search results, choose **AmazonSSMManagedInstanceCore**\.
 
    1. Choose **Attach policy**\.
 

@@ -152,7 +152,7 @@ Amazon's trademarks and trade dress may not be used in
                + [Registering the Instance](registered-instances-register-registering-register.md)
                + [Using the register Command](registered-instances-register-registering-command.md)
                + [Example register Commands](registered-instances-register-registering-examples.md)
-               + [The AWSOpsWorksRegisterCLI Policy](registered-instances-register-registering-template.md)
+               + [Instance Registration Policies](registered-instances-register-registering-template.md)
          + [Managing Registered Instances](registered-instances-manage.md)
          + [Assigning a Registered Instance to a Layer](registered-instances-assign.md)
          + [Unassigning a Registered Instance](registered-instances-unassign.md)

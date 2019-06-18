@@ -9,6 +9,6 @@ This section describes how to register an Amazon EC2 or on\-premises instance wi
 + [Preparing the Instance](registered-instances-register-registering-prepare.md)
 + [Installing and Configuring the AWS CLI](registered-instances-register-registering-cli.md)
 + [Registering the Instance](registered-instances-register-registering-register.md)
-+ [Using the register Command](registered-instances-register-registering-command.md)
++ [Using the `register` Command](registered-instances-register-registering-command.md)
 + [Example register Commands](registered-instances-register-registering-examples.md)
-+ [The AWSOpsWorksRegisterCLI Policy](registered-instances-register-registering-template.md)
++ [Instance Registration Policies](registered-instances-register-registering-template.md)
