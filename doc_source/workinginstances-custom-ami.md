@@ -112,7 +112,7 @@ For instances in a Chef 12 stack, add the following two folders to this command:
 
    1. `sudo rpm -e chef`
 
-1. For an Ubuntu 16\.04 LTS instance in a Chef 12 stack, do the following\.
+1. For an Ubuntu 16\.04 LTS or 18\.04 LTS instance in a Chef 12 stack, do the following\.
 
    1. `sudo systemctl stop opsworks-agent`
 
@@ -121,6 +121,14 @@ For instances in a Chef 12 stack, add the following two folders to this command:
    1. `sudo apt-get -y remove chef`
 
    1. `sudo dpkg -r opsworks-agent-ruby`
+
+   1. `systemctl stop apt-daily.timer`
+
+   1. `systemctl stop apt-daily-upgrade.timer`
+
+   1. `rm /var/lib/systemd/timers/stamp-apt-daily.timer`
+
+   1. `rm /var/lib/systemd/timers/stamp-apt-daily-upgrade.timer`
 
 1. For other supported Ubuntu versions in a Chef 12 stack, do the following\.
 

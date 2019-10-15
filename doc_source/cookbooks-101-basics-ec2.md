@@ -13,13 +13,11 @@ You will need AWS credentials to create an Amazon EC2 instance\. If you don't ha
 
 **To sign up for AWS**
 
-1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
-**Note**  
-If you previously signed in to the AWS Management Console using AWS account root user credentials, choose **Sign in to a different account**\. If you previously signed in to the console using IAM credentials, choose **Sign\-in using root account credentials**\. Then choose **Create a new AWS account**\.
+1. Open [https://portal\.aws\.amazon\.com/billing/signup](https://portal.aws.amazon.com/billing/signup)\.
 
 1. Follow the online instructions\.
 
-   Part of the sign\-up procedure involves receiving a phone call and entering a verification code using the phone keypad\.
+   Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
 You should then [create an IAM user](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_SettingUpUser.html) with permissions to access Amazon EC2 and save the user's access and secret keys to a secure location on your workstation\. Test Kitchen will use those credentials to create the instance\. The preferred way to provide credentials to Test Kitchen is to assign the keys to the following environment variables on your workstation\.
 + AWS\_ACCESS\_KEY – your user's access key, which will look something like AKIAIOSFODNN7EXAMPLE\.

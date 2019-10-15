@@ -28,12 +28,14 @@ This section describes how to use an AWS CloudFormation template to build a stac
 
 1. On the AWS CloudFormation home page, choose **Create stack**\.
 
-1. On the **Select template** page, choose **Upload a template to Amazon S3**, and upload an AWS CloudFormation template that creates a Puppet Enterprise server\. Choose **Next**\.
+1. In **Prerequisite \- Prepare template**, if you are using the [example AWS CloudFormation template](samples/opsworkscm-puppet-server.zip), choose **Template is ready**\.
+
+1. In **Specify template**, choose the source of your template\. For this walkthrough, choose **Upload a template file**, and upload an AWS CloudFormation template that creates a Puppet Enterprise server\. Browse for your template file, and then choose **Next**\.
 
    An AWS CloudFormation template can be in either YAML or JSON format\. An [example AWS CloudFormation template](samples/opsworkscm-puppet-server.zip) is available for you to use; be sure to replace example values with your own\. You can use the AWS CloudFormation template designer to build a new template or validate an existing one\. For more information about how to do this, see [AWS CloudFormation Designer Interface Overview](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/working-with-templates-cfn-designer-overview.html) in the *AWS CloudFormation User Guide*\.  
-![\[CloudFormation Select Template page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cfn_select_template.png)
+![\[CloudFormation Create stack page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cfn_select_template.png)
 
-1. On the **Specify Details** page, enter a name for your stack\. This won't be the same as the name of your server, it is only a stack name\. In the **Parameters** area, enter an administrator password for signing in to the Puppet Enterprise console webpage\. The password must use between 8 and 32 ASCII characters\. Choose **Next**\.  
+1. On the **Specify stack details** page, enter a name for your stack\. This won't be the same as the name of your server, it is only a stack name\. In the **Parameters** area, enter an administrator password for signing in to the Puppet Enterprise console webpage\. The password must use between 8 and 32 ASCII characters\. Choose **Next**\.  
 ![\[Specify Details page in CloudFormation\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cfn_template_params.png)
 
 1. On the **Options** page, you can add tags to the server you're creating with the stack, and choose an IAM role for creating resources if you have not already specified an IAM role to use in your template\. When you're finished specifying options, choose **Next**\. For more information about advanced options such as rollback triggers, see [Setting AWS CloudFormation Stack Options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-add-tags.html) in the *AWS CloudFormation User Guide*\.

@@ -182,7 +182,7 @@ AoGBAKmMfWrNRqYVtGKgnWB6Tji9QrKQLMXjmHeGg95mppdJELiXHhpMvrHtpIyK
 
 **SSL certificates of Certification Authorities**  
 If you have a certificate chain file, paste the contents into the box\.  
-If you are using Nginx, you should leave this box empty\. If you have a certificate chain file, append it to the public key certificate file in **SSL Certificate Key**\.
+If you are using Nginx, you should leave this box empty\. If you have a certificate chain file, append it to the public key certificate file in **SSL Certificate**\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/app_ssl_settings.png)
 

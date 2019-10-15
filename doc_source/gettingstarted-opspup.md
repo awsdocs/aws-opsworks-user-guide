@@ -7,58 +7,58 @@ The following walkthrough helps you create your first Puppet master in OpsWorks 
 ## Prerequisites<a name="gettingstarted-opspup-prereqs"></a>
 
 **Topics**
-+ [Get an AWS Account and Your AWS account root user Credentials](#getting-started-signup)
-+ [Install the Puppet Development Kit](#w4ab1b7c19b7b9)
-+ [Install the Puppet Enterprise Client Tools](#w4ab1b7c19b7c11)
++ [Get an AWS Account and Your Root User Credentials](#getting-started-signup)
++ [Install the Puppet Development Kit](#w4ab1b7c19b7c11)
++ [Install the Puppet Enterprise Client Tools](#w4ab1b7c19b7c13)
 + [Set Up a Git Control Repository](#configure-control-repository)
 + [Set Up a VPC](#set-up-vpc-puppet)
-+ [Set Up an EC2 Key Pair \(Optional\)](#w4ab1b7c19b7c17)
++ [Set Up an EC2 Key Pair \(Optional\)](#w4ab1b7c19b7c19)
 
 First, create the resources outside of OpsWorks for Puppet Enterprise that you'll need to access and manage your Puppet master\. If you already have an AWS account set up, skip to [Set Up a VPC](#set-up-vpc-puppet)\.
 
-### Get an AWS Account and Your AWS account root user Credentials<a name="getting-started-signup"></a>
+### Get an AWS Account and Your Root User Credentials<a name="getting-started-signup"></a>
 
 To access AWS, you must sign up for an AWS account\.
 
 **To sign up for an AWS account**
 
-1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
-**Note**  
-If you previously signed in to the AWS Management Console using AWS account root user credentials, choose **Sign in to a different account**\. If you previously signed in to the console using IAM credentials, choose **Sign\-in using root account credentials**\. Then choose **Create a new AWS account**\.
+1. Open [https://portal\.aws\.amazon\.com/billing/signup](https://portal.aws.amazon.com/billing/signup)\.
 
 1. Follow the online instructions\.
 
-   Part of the sign\-up procedure involves receiving a phone call and entering a verification code using the phone keypad\.
+   Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
- AWS sends you a confirmation e\-mail after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and choosing **My Account**\.
+ AWS sends you a confirmation email after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and choosing **My Account**\.
 
-**To get the access key ID and secret access key for an IAM user**
+Access keys consist of an access key ID and secret access key, which are used to sign programmatic requests that you make to AWS\. If you don't have access keys, you can create them from the AWS Management Console\. As a best practice, do not use the AWS account root user access keys for any task where it's not required\. Instead, [create a new administrator IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) with access keys for yourself\.
 
-Access keys consist of an access key ID and secret access key, which are used to sign programmatic requests that you make to AWS\. If you don't have access keys, you can create them from the AWS Management Console\. We recommend that you use IAM access keys instead of AWS account root user access keys\. IAM lets you securely control access to AWS services and resources in your AWS account\.
+The only time that you can view or download the secret access key is when you create the keys\. You cannot recover them later\. However, you can create new access keys at any time\. You must also have permissions to perform the required IAM actions\. For more information, see [Permissions Required to Access IAM Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_permissions-required.html) in the *IAM User Guide*\.
 
-The only time that you can view or download the secret access keys is when you create the keys\. You cannot recover them later\. However, you can create new access keys at any time\. You must also have permissions to perform the required IAM actions\. For more information, see [Permissions Required to Access IAM Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_permissions-required.html) in the *IAM User Guide*\.
+**To create access keys for an IAM user**
 
-1. Open the [IAM console](https://console.aws.amazon.com/iam/home?#home)\.
+1. Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
 
-1. In the navigation pane of the console, choose **Users**\.
+1. In the navigation pane, choose **Users**\.
 
-1. Choose your IAM user name \(not the check box\)\.
+1. Choose the name of the user whose access keys you want to create, and then choose the **Security credentials** tab\.
 
-1. Choose the **Security credentials** tab and then choose **Create access key**\.
+1. In the **Access keys** section, choose **Create access key**\.
 
-1. To see the new access key, choose **Show**\. Your credentials will look something like this:
+1. To view the new access key pair, choose **Show**\. You will not have access to the secret access key again after this dialog box closes\. Your credentials will look something like this:
    + Access key ID: AKIAIOSFODNN7EXAMPLE
    + Secret access key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
-1. To download the key pair, choose **Download \.csv file**\. Store the keys in a secure location\.
+1. To download the key pair, choose **Download \.csv file**\. Store the keys in a secure location\. You will not have access to the secret access key again after this dialog box closes\.
 
-   Keep the keys confidential in order to protect your AWS account, and never email them\. Do not share them outside your organization, even if an inquiry appears to come from AWS or Amazon\.com\. No one who legitimately represents Amazon will ever ask you for your secret key\.
+   Keep the keys confidential in order to protect your AWS account and never email them\. Do not share them outside your organization, even if an inquiry appears to come from AWS or Amazon\.com\. No one who legitimately represents Amazon will ever ask you for your secret key\.
+
+1. After you download the `.csv` file, choose **Close**\. When you create an access key, the key pair is active by default, and you can use the pair right away\.
 
 **Related topics**
 + [What Is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) in the *IAM User Guide*
 + [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) in *AWS General Reference* 
 
-### Install the Puppet Development Kit<a name="w4ab1b7c19b7b9"></a>
+### Install the Puppet Development Kit<a name="w4ab1b7c19b7c11"></a>
 
 1. From the Puppet website, [download the Puppet Development Kit](https://puppet.com/download-puppet-development-kit) that matches your local computer's operating system\.
 
@@ -76,7 +76,7 @@ The only time that you can view or download the secret access keys is when you c
      [Environment]::SetEnvironmentVariable("Path","new path value","Machine")
      ```
 
-### Install the Puppet Enterprise Client Tools<a name="w4ab1b7c19b7c11"></a>
+### Install the Puppet Enterprise Client Tools<a name="w4ab1b7c19b7c13"></a>
 
 Puppet Enterprise \(PE\) client tools are a set of command\-line tools that let you access Puppet Enterprise services from your workstation\. The tools can be installed on many different operating systems, and they can also be installed on nodes that you are managing by using Puppet\. For information about supported operating systems for the tools, and how to install them, see [Installing PE client tools](https://puppet.com/docs/pe/2017.3/installing/installing_pe_client_tools.html) in the Puppet Enterprise documentation\.
 
@@ -111,7 +111,7 @@ Before you can launch a Puppet master, you must have a control repository config
             └── webserver.pp
 ```
 
-#### Setting up a repository by using CodeCommit<a name="w4ab1b7c19b7c13b7"></a>
+#### Setting up a repository by using CodeCommit<a name="w4ab1b7c19b7c15b7"></a>
 
 You can create a new repository by using CodeCommit\. For more information about how to use CodeCommit to create your control repository, see [Optional: Use CodeCommit as a Puppet r10k Remote Control Repository](opspup-puppet-codecommit.md) in this guide\. For more information about how to get started with Git on CodeCommit, see [Getting started with AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html)\. To authorize your OpsWorks for Puppet Enterprise server for your repository, attach the `AWSCodeCommitReadOnly` policy to your IAM instance profile role\.
 
@@ -132,7 +132,7 @@ If you are unfamiliar with creating VPCs or running your instances in them, you 
 aws cloudformation create-stack --stack-name OpsWorksVPC --template-url https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-vpc.yaml
 ```
 
-### Set Up an EC2 Key Pair \(Optional\)<a name="w4ab1b7c19b7c17"></a>
+### Set Up an EC2 Key Pair \(Optional\)<a name="w4ab1b7c19b7c19"></a>
 
 An SSH connection is not necessary or recommended for typical management of the Puppet server; you can use the AWS Management Console and AWS CLI commands to perform many management tasks on your Puppet server\.
 

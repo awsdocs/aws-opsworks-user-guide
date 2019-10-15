@@ -2,14 +2,14 @@
 
 Because you must provide a link to your code repository as part of pipeline setup, have the code repository ready before you create your pipeline\. In this walkthrough, you upload a Node\.js app to an Amazon S3 bucket\.
 
-Although CodePipeline can use code directly from GitHub or CodeCommit as sources, this walkthrough demonstrates how to use an Amazon S3 bucket\. Although the sample Node\.js app already is stored in an Amazon S3 bucket, in this walkthrough, you upload it to your own Amazon S3 bucket, so you can make changes to the app\. The Amazon S3 bucket that you create in this step enables CodePipeline to detect changes to the app code and deploy the changed app automatically\. If you wish, you can use an existing bucket\. Be sure the bucket meets the criteria described in [Simple Pipeline Walkthrough \(Amazon S3 Bucket\)](http://docs.aws.amazon.com/codepipeline/latest/userguide/getting-started-w.html) in the CodePipeline documentation\.
+Although CodePipeline can use code directly from GitHub or CodeCommit as sources, this walkthrough demonstrates how to use an Amazon S3 bucket\. In this walkthrough, you upload the sample [Node\.js app](samples/opsworks-nodejs-demo-app.zip) to your own Amazon S3 bucket, so you can make changes to the app\. The Amazon S3 bucket that you create in this step enables CodePipeline to detect changes to the app code and deploy the changed app automatically\. If you wish, you can use an existing bucket\. Be sure the bucket meets the criteria described in [Simple Pipeline Walkthrough \(Amazon S3 Bucket\)](http://docs.aws.amazon.com/codepipeline/latest/userguide/getting-started-w.html) in the CodePipeline documentation\.
 
 **Important**  
 The Amazon S3 bucket must be in the same region in which you will later create your pipeline\. At this time, CodePipeline supports the AWS OpsWorks Stacks provider in the US East \(N\. Virginia\) Region \(us\-east\-1\) only\. All resources in this walkthrough should be created in the US East \(N\. Virginia\) Region\. The bucket must also be versioned because CodePipeline requires a versioned source\. For more information, see [Using Versioning](http://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html)\.
 
 **To upload your app to an Amazon S3 bucket**
 
-1. Download the ZIP file of the AWS OpsWorks Stacks sample, [Node\.js app](https://s3.amazonaws.com/opsworks-codepipeline-demo/opsworks-nodejs-demo-app.zip), and save it to a convenient location on your local computer\.
+1. Download the ZIP file of the AWS OpsWorks Stacks sample, [Node\.js app](samples/opsworks-nodejs-demo-app.zip), and save it to a convenient location on your local computer\.
 
 1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
 
