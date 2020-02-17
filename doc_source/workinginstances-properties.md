@@ -1,3 +1,4 @@
+i3en.24xlarge
 # Editing the Instance Configuration<a name="workinginstances-properties"></a>
 
 You can edit instance configurations, including [registered Amazon Elastic Compute Cloud \(Amazon EC2\) instances](registered-instances.md), with the following limitations:
@@ -21,7 +22,7 @@ You cannot edit the configuration of registered on\-premises instances\.
 
 1. On the **Instances** page, click an instance name to display the **Details** page\.
 
-1. Click **Edit** to display the edit page\.
+1. Click **Edit** to display the details page\.
 
 1. Edit the instance's configuration, as appropriate\.
 
