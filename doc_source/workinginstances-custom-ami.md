@@ -82,6 +82,17 @@ The simplest way to create a custom AMIâ€”and the only option for Windows AMIsâ€
 
 1. Stop the instance and create a custom AMI\.
 
+If you are using an Ubuntu 16\.04 LTS or 18\.04 based AMI, do the following during AMI creation, or your instance may be stuck in the `booting` step:
+
+   1. `systemctl stop apt-daily.timer`
+
+   1. `systemctl stop apt-daily-upgrade.timer`
+
+   1. `rm /var/lib/systemd/timers/stamp-apt-daily.timer`
+
+   1. `rm /var/lib/systemd/timers/stamp-apt-daily-upgrade.timer`
+
+
 ### Create a Custom Linux AMI from an AWS OpsWorks Stacks Instance<a name="workinginstances-custom-ami-create-opsworks"></a>
 
 If you want to use a customized AWS OpsWorks Stacks Linux instance to create an AMI, you should be aware that every Amazon EC2 instance created by OpsWorks includes a unique identity\. If you create a custom AMI from such an instance, it will include that identity and all instances based on the AMI will have the same identity\. To ensure that the instances based on your custom AMI have a unique identity, you must remove the identity from the customized instance before creating the AMI\.
