@@ -24,7 +24,6 @@ You should delete AWS OpsWorks Stacks instances only by using the AWS OpsWorks S
      The instance remains a member of its other layers and can be restarted\.
    + To delete the instance from all its layers, which removes it from the stack, click **here**\.
 
-1. If you choose to completely remove an instance from the stack, or if the instance is a member of only one layer, AWS OpsWorks Stacks displays the following section\.  
-![\[delete action on Instances page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/delete_instance.png)
+1. If you choose to completely remove an instance from the stack, or if the instance is a member of only one layer, AWS OpsWorks Stacks prompts you to confirm the deletion\.
 
-   Click **Yes, delete** to confirm\. In addition to deleting the instance from the stack, this action deletes any associated logs or data; it also deletes any Amazon EBS volumes on the instance\.
+   Choose **Delete** to confirm\. In addition to deleting the instance from the stack, this action deletes any associated logs or data, and root volumes that are attached to the instance\. To remove all instance volumes, choose **Delete instance's EBS volumes \(snapshots will not be deleted\)** before you choose **Delete**\.

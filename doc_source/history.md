@@ -1,7 +1,18 @@
-# AWS OpsWorks Document History<a name="history"></a>
+# AWS OpsWorks document history<a name="history"></a>
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Updates to AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise](#history) | AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise have updated the managed policies [https://docs.aws.amazon.com/opsworks/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-awsopsworkscmservicerole](https://docs.aws.amazon.com/opsworks/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-awsopsworkscmservicerole) and [https://docs.aws.amazon.com/opsworks/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-awsopsworkscminstanceprofilerole](https://docs.aws.amazon.com/opsworks/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-awsopsworkscminstanceprofilerole), and now [store secrets in AWS Secrets Manager](https://docs.aws.amazon.com/opsworks/latest/userguide/data-protection.html#data-protection-secrets-manager)\. | May 3, 2021 | 
+| [Updates to AWS OpsWorks for Puppet Enterprise](#history) | The engine version of an OpsWorks for Puppet Enterprise server that you create in the console is now 2019\.8\.5\. By using the API, you can specify either version `2019` or `2017` when you create a Puppet Enterprise server\. The `DescribeServers` API now returns an attribute called `PUPPET_API_CRL` in its results\. This attribute contains a certificate revocation list for internal use\. | April 28, 2021 | 
+| [AWS OpsWorks Stacks uses a new managed policy](#history) | AWS OpsWorks Stacks has changed the managed policy that includes permissions to perform all actions in AWS OpsWorks Stacks\. The new policy is **AWSOpsWorks\_FullAccess**\. For more information about the permissions in this policy, see [Example policies](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users-examples.html)\. | February 19, 2021 | 
+| [Migrate AWS OpsWorks Stacks stacks from EC2\-Classic to a VPC](#history) | Documentation has been added describing how to migrate an AWS OpsWorks Stacks stack from EC2\-Classic to a VPC\. | September 29, 2020 | 
+| [Regenerate a starter kit for AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise](#history) | Documentation has been added describing how to regenerate the starter kit for an AWS OpsWorks for Chef Automate or an AWS OpsWorks for Puppet Enterprise server\. | July 29, 2020 | 
+| [AWS OpsWorks for Puppet Enterprise lets you create a server that uses a custom domain, certificate, and private key](#history) | You can now create an OpsWorks for Puppet Enterprise server that uses a custom domain, certificate, and private key\. You can update an existing Puppet Enterprise server to use a custom domain by creating a server from a backup of an existing server\. | April 17, 2020 | 
+| [AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise now support tagging in the console](#history) | You can now add tags to an AWS OpsWorks for Chef Automate server or an AWS OpsWorks for Puppet Enterprise master, or to server backups, by using either the AWS Management Console or the AWS CLI\. For more information, see [Work with Tags \(Chef\)](https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-tags.html) or [Work with Tags \(Puppet\)](https://docs.aws.amazon.com/opsworks/latest/userguide/opspup-tags.html)\. | February 26, 2020 | 
+| [AWS OpsWorks for Chef Automate simplifies upgrade of existing Chef Automate 1 servers to Chef Automate 2](#history) | You can upgrade eligible AWS OpsWorks for Chef Automate servers running Chef Automate 1 to Chef Automate 2 by choosing **Start upgrade** on your server's details page in the console, or by running the `StartMaintenance` API action\. For more information, see [Upgrade an AWS OpsWorks for Chef Automate Server to Chef Automate 2](https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html)\. | January 24, 2020 | 
+| [AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise](#history) | A new chapter about Security in AWS OpsWorks CM \(AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise\) has been added to the guide\. | December 23, 2019 | 
+| [AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise support tagging](#history) | You can now add tags to an AWS OpsWorks for Chef Automate server or an AWS OpsWorks for Puppet Enterprise master, or to server backups, by using the AWS CLI\. AWS OpsWorks CM now supports tag\-based authorization\. | December 18, 2019 | 
+| [AWS OpsWorks for Chef Automate lets you create a server that uses a custom domain, certificate, and private key](#history) | You can now create an AWS OpsWorks for Chef Automate 2\.0 server that uses a custom domain, certificate, and private key\. You can update an existing Chef Automate 2\.0 server to use a custom domain by creating a server from a backup of an existing server\. | October 22, 2019 | 
 | [AWS OpsWorks Stacks now supports Ruby 2\.6\.1](#history) | AWS OpsWorks Stacks supports Ruby 2\.6\.1 on Rails App Server layers in Chef 11\.10 stacks\. | May 2, 2019 | 
 | [AWS OpsWorks for Chef Automate now supports Chef Automate 2\.0](#history) | New AWS OpsWorks for Chef Automate servers will run Chef Automate 2\.0, which includes updates to Chef InSpec, new features in compliance scanning and reporting, and Chef Infra\. | April 30, 2019 | 
 | [AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise](#history) | You can now use AWS CloudFormation to create an AWS OpsWorks for Chef Automate server or an AWS OpsWorks for Puppet Enterprise master server\. | January 24, 2019 | 
@@ -13,9 +24,9 @@
 | [AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise](#history) | OpsWorks for Puppet Enterprise has upgraded to PE 2018\.1\.2\. AWS OpsWorks for Chef Automate has upgraded to Chef Automate 1\.8\.68\. | June 29, 2018 | 
 + **AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise API version:** 2016\-11\-01
 + **AWS OpsWorks Stacks API version: **2016\-03\-08
-+ **Latest documentation update: **October 15, 2019
++ **Latest documentation update: **April 29, 2021
 
-## Earlier Updates<a name="history-older"></a>
+## Earlier updates<a name="history-older"></a>
 
 The following table describes important changes in each release of the *AWS OpsWorks User Guide* before June 2018\.
 
@@ -28,7 +39,7 @@ The following table describes important changes in each release of the *AWS OpsW
 | Added support for AWS OpsWorks Stacks events in Amazon CloudWatch Events\. | February 20, 2018 | 
 | Added support for new EBS volume types in AWS OpsWorks Stacks, and a new API, DescribeOperatingSystems\. | January 25, 2018 | 
 | OpsWorks for Puppet Enterprise and AWS OpsWorks for Chef Automate now support selecting multiple security groups when you are creating a server\. | January 18, 2018 | 
-| Added support for AWS OpsWorks Stacks in the EU \(Paris\) Region\. | December 19, 2017 | 
+| Added support for AWS OpsWorks Stacks in the Europe \(Paris\) Region\. | December 19, 2017 | 
 | Added support for AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise in six additional regions, and added procedures for creating backups of AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise servers in the AWS Management Console\. | December 18, 2017 | 
 | Added the new OpsWorks for Puppet Enterprise service and documentation\. | November 16, 2017 | 
 | Added support for Amazon Linux 2017\.09 to AWS OpsWorks Stacks\. | November 7, 2017 | 

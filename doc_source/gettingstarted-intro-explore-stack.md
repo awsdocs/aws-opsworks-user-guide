@@ -6,8 +6,12 @@ Examine how AWS OpsWorks Stacks set up the stack\.
 
 1. In the service navigation bar, choose **Stack**\. The **My Sample Stack \(Linux\)** page displays\.
 
-1. Choose **Stack Settings**\. The **Settings My Sample Stack \(Linux\)** page displays:  
+1. Choose **Stack Settings**\. The **Settings My Sample Stack \(Linux\)** page displays:
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-example-stack-page-console.png)
+
+   
 
 To learn more about many of the settings, choose **Edit**, and then hover over each of the settings\. \(Not all settings have on\-screen descriptions\.\) For more information about these settings, see [Create a New Stack](workingstacks-creating.md)\.
 

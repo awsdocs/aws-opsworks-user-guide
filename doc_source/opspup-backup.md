@@ -4,7 +4,18 @@ You can define a daily or weekly recurring OpsWorks for Puppet Enterprise server
 
 Because backups are stored in Amazon S3, they incur additional fees\. You can define a backup retention period of up to 30 generations\. You can submit a service request to have that limit changed by using AWS support channels\. Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
+You can add tags to backups of an OpsWorks for Puppet Enterprise master\. If you have added tags to an OpsWorks for Puppet Enterprise master, automated backups of the Puppet master inherit those tags\. For more information about how to add and manage tags on backups, see [Working with Tags on AWS OpsWorks for Puppet Enterprise Resources](opspup-tags.md) in this guide\.
+
+**Topics**
++ [Automated Backups](#opscm-puppet-backup-auto)
++ [Manual Backups](#opscm-puppet-backup-manual)
++ [Delete backups](#opscm-puppet-backup-delete)
+
+## Automated Backups<a name="opscm-puppet-backup-auto"></a>
+
 When you configure your OpsWorks for Puppet Enterprise server, you choose either automated or manual backups\. OpsWorks for Puppet Enterprise starts automated backups during the hour and on the day that you choose in the **Automated backup** section of the **Configure advanced settings** page of the setup wizard\. After your server is online, you can change backup settings by performing the following steps on the server's properties page\.
+
+
 
 **To change automated backup settings**
 
@@ -15,7 +26,9 @@ When you configure your OpsWorks for Puppet Enterprise server, you choose either
 
 1. In the **Automated Backup** section, change the frequency, start time, or generations to keep\. Save your changes\.
 
-You can start a manual backup at any time in the AWS Management Console, or by running the AWS CLI [create\-backup](http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_CreateBackup.html) command\. Manual backups are not included in the maximum 30 generations of automated backups that are stored; a maximum of 10 manual backups are stored, and must be manually deleted from Amazon S3\.
+## Manual Backups<a name="opscm-puppet-backup-manual"></a>
+
+You can start a manual backup at any time in the AWS Management Console, or by running the AWS CLI [create\-backup](http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_CreateBackup.html) command\. Manual backups are not included in the maximum 30 generations of automated backups that are stored\. A maximum of 10 manual backups are stored, and must be manually deleted from Amazon S3\.
 
 **To perform a manual backup in the AWS Management Console**
 
@@ -28,6 +41,8 @@ You can start a manual backup at any time in the AWS Management Console, or by r
 1. The manual backup is finished when the page shows a green check mark in the backup's **Status** column\.
 
 **To perform a manual backup in the AWS CLI**
+
+You can add tags when you create a new, manual backup of an OpsWorks for Puppet Enterprise server\. For more information about how to add tags when you create a manual backup, see [Add Tags to a New Backup \(CLI\)](opspup-tags.md#opspup-tags-howto-createbackup)\.
 + To start a manual backup, run the following AWS CLI command\.
 
   ```

@@ -16,11 +16,21 @@ You can create a Puppet master by using the OpsWorks for Puppet Enterprise conso
 1. On the OpsWorks for Puppet Enterprise home page, choose **Create Puppet Enterprise server**\.  
 ![\[Puppet master dashboard\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_dashboardhome.png)
 
-1. On the **Set name, region, and type** page, specify a name for your server\. Puppet master names can be a maximum of 40 characters, must start with a letter, and can contain only alphanumeric characters and dashes\. Select a supported region, and then choose an instance type that supports the number of nodes that you want to manage\. You can change the instance type after your server has been created, if needed\. For this walkthrough, we are creating a **c4\.large** instance type in the US West \(Oregon\) Region\. Choose **Next**\.  
+1. On the **Set name, region, and type** page, specify a name for your server\. Puppet master names can be a maximum of 40 characters, must start with a letter, and can contain only alphanumeric characters and dashes\. Select a supported region, and then choose an instance type that supports the number of nodes that you want to manage\. You can change the instance type after your server has been created, if needed\. For this walkthrough, we are creating a **m5\.xlarge** instance type in the US West \(Oregon\) Region\. Choose **Next**\.  
 ![\[Set name, region, and type page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_setname.png)
 
-1. On the **Configure credentials** page, leave the default selection in the **SSH key** drop\-down list, unless you want to specify a key pair name\. In the **r10k remote** field of the **Configure Puppet Code Manager** area, specify a valid SSH or HTTPS URL of your Git remote\. In the **r10k private key** field, paste in the SSH private key that AWS OpsWorks can use to access the r10k remote repository\. This is provided by Git when you create a private repository, but not required if you are using HTTPS authentication to access your control repository\. Choose **Next**\.  
-![\[Configure credentials page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_configcreds.png)
+1. On the **Configure server** page, leave the default selection in the **SSH key** drop\-down list, unless you want to specify a key pair name\. In the **r10k remote** field of the **Configure Puppet Code Manager** area, specify a valid SSH or HTTPS URL of your Git remote\. In the **r10k private key** field, paste in the SSH private key that AWS OpsWorks can use to access the r10k remote repository\. This is provided by Git when you create a private repository, but not required if you are using HTTPS authentication to access your control repository\. Choose **Next**\.  
+![\[Configure server page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_configcreds.png)
+
+1. For **Specify server endpoint**, leave the default, **Use an automatically\-generated endpoint** and then choose **Next**, unless you want your server on a custom domain of your own\. To configure a custom domain, go on to the next step\.
+
+1. To use a custom domain, for **Specify server endpoint**, choose **Use a custom domain** from the drop\-down list\.
+
+   1. For **Fully qualified domain name \(FQDN\)**, specify an FQDN\. You must own the domain name that you want to use\.
+
+   1. For **SSL certificate**, paste in the entire PEM\-formatted certificate, beginning with `–––--BEGIN CERTIFICATE-----` and ending with `–––--END CERTIFICATE-----`\. The SSL certificate subject must match the FQDN you entered in the preceding step\. Remove any extra lines before and after the certificate\.
+
+   1. For **SSL private key**, paste in the entire RSA private key, beginning with `–––--BEGIN RSA PRIVATE KEY-----` and ending with `–––--END RSA PRIVATE KEY-----`\. The SSL private key must match the public key in the SSL certificate that you entered in the preceding step\. Remove any extra lines before and after the private key\. Choose **Next**\.
 
 1. On the **Configure advanced settings** page, in the **Network and security** area, choose a VPC, subnet, and one or more security groups\. AWS OpsWorks can generate a security group, service role, and instance profile for you, if you do not already have ones that you want to use\. Your server can be a member of multiple security groups\. You cannot change network and security settings for the Puppet master after you have left this page\.  
 ![\[Network and security\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_network_sec.png)
@@ -32,6 +42,8 @@ You can create a Puppet master by using the OpsWorks for Puppet Enterprise conso
 
 1. Configure backups\. By default, automatic backups are enabled\. Set a preferred frequency and hour for automatic backup to start, and set the number of backup generations to store in Amazon Simple Storage Service\. A maximum of 30 backups can be kept; when the maximum is reached, OpsWorks for Puppet Enterprise deletes the oldest backups to make room for new ones\.  
 ![\[Automatic backups\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_backupconfig.png)
+
+1. \(Optional\) In **Tags**, add tags to the server and related resources, such as the EC2 instance, Elastic IP address, security group, S3 bucket, and backups\. For more information about tagging an OpsWorks for Puppet Enterprise server, see [Working with Tags on AWS OpsWorks for Puppet Enterprise Resources](opspup-tags.md)\.
 
 1. When you are finished configuring advanced settings, choose **Next**\.
 
@@ -144,28 +156,80 @@ If your local computer is not already running the AWS CLI, download and install 
    ```
 
 1. Create the OpsWorks for Puppet Enterprise master by running the `create-server` command\.
-   + The `--engine` value is `Puppet`, `--engine-model` is `Monolithic`, and `--engine-version` is `2017`\.
+   + The `--engine` value is `Puppet`, `--engine-model` is `Monolithic`, and `--engine-version` can be `2019` or `2017`\.
    + The server name must be unique within your AWS account, within each region\. Server names must start with a letter; then letters, numbers, or hyphens \(\-\) are allowed, up to a maximum of 40 characters\.
    + Use the instance profile ARN and service role ARN that you copied in Steps 3 and 4\.
-   + Valid instance types are `c4.large`, `c4.xlarge`, or `c4.2xlarge`\. For more information about the specifications of these instance types, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon EC2 User Guide*\.
+   + Valid instance types are `m5.xlarge`, `c5.2xlarge`, or `c5.4xlarge`\. For more information about the specifications of these instance types, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the *Amazon EC2 User Guide*\.
    + The `--engine-attributes` parameter is optional; if you don't specify a Puppet administrator password, the server creation process generates one for you\. If you add `--engine-attributes`, specify a `PUPPET_ADMIN_PASSWORD`, an administrator password for signing in to the Puppet Enterprise console webpage\. The password must use between 8 and 32 ASCII characters\.
    + An SSH key pair is optional, but can help you connect to your Puppet master if you need to reset the console administrator password\. For more information about creating an SSH key pair, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide*\.
+   + To use a custom domain, add the following parameters to your command\. Otherwise, the Puppet master creation process automatically generates an endpoint for you\. All three parameters are required to configure a custom domain\. For information about additional requirements for using these parameters, see [CreateServer](https://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_CreateServer.html) in the AWS OpsWorks CM API Reference\.
+     + `--custom-domain` \- An optional public endpoint of a server, such as `https://aws.my-company.com`\.
+     + `--custom-certificate` \- A PEM\-formatted HTTPS certificate\. The value can be be a single, self\-signed certificate, or a certificate chain\.
+     + `--custom-private-key` \- A private key in PEM format for connecting to the server by using HTTPS\. The private key must not be encrypted; it cannot be protected by a password or passphrase\.
    + Weekly system maintenance is required\. Valid values must be specified in the following format: `DDD:HH:MM`\. The specified time is in coordinated universal time \(UTC\)\. If you do not specify a value for `--preferred-maintenance-window`, the default value is a random, one\-hour period on Tuesday, Wednesday, or Friday\.
    + Valid values for `--preferred-backup-window` must be specified in one of the following formats: `HH:MM` for daily backups, or `DDD:HH:MM` for weekly backups\. The specified time is in UTC\. The default value is a random, daily start time\. To opt out of automatic backups, add the parameter `--disable-automated-backup` instead\.
    + For `--security-group-ids`, enter one or more security group IDs, separated by a space\.
    + For `--subnet-ids`, enter a subnet ID\.
 
    ```
-   aws opsworks-cm create-server --engine "Puppet" --engine-model "Monolithic" --engine-version "2017" --server-name "server_name" --instance-profile-arn "instance_profile_ARN" --instance-type "instance_type" --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"ASCII_password"}' --key-pair "key_pair_name" --preferred-maintenance-window "ddd:hh:mm" --preferred-backup-window "ddd:hh:mm" --security-group-ids security_group_id1 security_group_id2 --service-role-arn "service_role_ARN" --subnet-ids subnet_ID
+   aws opsworks-cm create-server --engine "Puppet" --engine-model "Monolithic" --engine-version "2019" --server-name "server_name" --instance-profile-arn "instance_profile_ARN" --instance-type "instance_type" --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"ASCII_password"}' --key-pair "key_pair_name" --preferred-maintenance-window "ddd:hh:mm" --preferred-backup-window "ddd:hh:mm" --security-group-ids security_group_id1 security_group_id2 --service-role-arn "service_role_ARN" --subnet-ids subnet_ID
    ```
 
    The following is an example\.
 
    ```
-   aws opsworks-cm create-server --engine "Puppet" --engine-model "Monolithic" --engine-version "2017" --server-name "puppet-02" --instance-profile-arn "arn:aws:iam::1019881987024:instance-profile/aws-opsworks-cm-ec2-role" --instance-type "c4.large" --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' --key-pair "amazon-test" --preferred-maintenance-window "Mon:08:00" --preferred-backup-window "Sun:02:00" --security-group-ids sg-b00000001 sg-b0000008 --service-role-arn "arn:aws:iam::044726508045:role/service-role/aws-opsworks-cm-service-role" --subnet-ids subnet-383daa71
+   aws opsworks-cm create-server --engine "Puppet" --engine-model "Monolithic" --engine-version "2019" --server-name "puppet-02" --instance-profile-arn "arn:aws:iam::1019881987024:instance-profile/aws-opsworks-cm-ec2-role" --instance-type "m5.xlarge" --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' --key-pair "amazon-test" --preferred-maintenance-window "Mon:08:00" --preferred-backup-window "Sun:02:00" --security-group-ids sg-b00000001 sg-b0000008 --service-role-arn "arn:aws:iam::044726508045:role/service-role/aws-opsworks-cm-service-role" --subnet-ids subnet-383daa71
+   ```
+
+   The following example creates a Puppet master that uses a custom domain\.
+
+   ```
+   aws opsworks-cm create-server \
+       --engine "Puppet" \
+       --engine-model "Monolithic" \
+       --engine-version "2019" \
+       --server-name "puppet-02" \
+       --instance-profile-arn "arn:aws:iam::1019881987024:instance-profile/aws-opsworks-cm-ec2-role" \
+       --instance-type "m5.xlarge" \
+       --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' \
+       --custom-domain "my-puppet-master.my-corp.com" \
+       --custom-certificate "-----BEGIN CERTIFICATE----- EXAMPLEqEXAMPLE== -----END CERTIFICATE-----" \
+       --custom-private-key "-----BEGIN RSA PRIVATE KEY----- EXAMPLEqEXAMPLE= -----END RSA PRIVATE KEY-----" \
+       --key-pair "amazon-test" 
+       --preferred-maintenance-window "Mon:08:00" \
+       --preferred-backup-window "Sun:02:00" \
+       --security-group-ids sg-b00000001 sg-b0000008 \
+       --service-role-arn "arn:aws:iam::044726508045:role/service-role/aws-opsworks-cm-service-role" \
+       --subnet-ids subnet-383daa71
+   ```
+
+   The following example creates a Puppet master that adds two tags: `Stage: Production` and `Department: Marketing`\. For more information about adding and managing tags on OpsWorks for Puppet Enterprise servers, see [Working with Tags on AWS OpsWorks for Puppet Enterprise Resources](opspup-tags.md) in this guide\.
+
+   ```
+   aws opsworks-cm create-server \
+       --engine "Puppet" \
+       --engine-model "Monolithic" \
+       --engine-version "2019" \
+       --server-name "puppet-02" \
+       --instance-profile-arn "arn:aws:iam::1019881987024:instance-profile/aws-opsworks-cm-ec2-role" \
+       --instance-type "m5.xlarge" \
+       --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' \
+       --key-pair "amazon-test" 
+       --preferred-maintenance-window "Mon:08:00" \
+       --preferred-backup-window "Sun:02:00" \
+       --security-group-ids sg-b00000001 sg-b0000008 \
+       --service-role-arn "arn:aws:iam::044726508045:role/service-role/aws-opsworks-cm-service-role" \
+       --subnet-ids subnet-383daa71 \
+       --tags [{\"Key\":\"Stage\",\"Value\":\"Production\"},{\"Key\":\"Department\",\"Value\":\"Marketing\"}]
    ```
 
 1. OpsWorks for Puppet Enterprise takes about 15 minutes to create a new server\. Do not dismiss the output of the `create-server` command or close your shell session, because the output can contain important information that is not shown again\. To get passwords and the starter kit from the `create-server` results, go on to the next step\.
+
+   If you are using a custom domain with the server, in the output of the `create-server` command, copy the value of the `Endpoint` attribute\. The following is an example\.
+
+   ```
+   "Endpoint": "puppet-07-exampleexample.opsworks-cm.us-east-1.amazonaws.com"
+   ```
 
 1. If you opted to have OpsWorks for Puppet Enterprise generate a password for you, you can extract it in a usable format from the `create-server` results by using a JSON processor such as [jq](https://stedolan.github.io/jq/)\. After you install [jq](https://stedolan.github.io/jq/), you can run the following commands to extract the Puppet administrator password and starter kit\. If you did not provide your own password in Step 3, be sure to save the extracted administrator password in a convenient but secure location\.
 
@@ -178,5 +242,7 @@ If your local computer is not already running the AWS CLI, download and install 
    ```
 **Note**  
 You cannot regenerate a new Puppet master starter kit in the AWS Management Console\. When you create a Puppet master by using the AWS CLI, run the preceding `jq` command to save the base64\-encoded starter kit in the `create-server` results as a ZIP file\.
+
+1. If you are not using a custom domain, go on to the next step\. If you are using a custom domain with the server, create a CNAME entry in your enterprise's DNS management tool to point your custom domain to the OpsWorks for Puppet Enterprise endpoint that you copied in step 6\. You cannot reach or sign in to a server with a custom domain until you complete this step\.
 
 1. Go on to the next section, [Configure the Puppet Master Using the Starter Kit](opspup-starterkit.md)\.

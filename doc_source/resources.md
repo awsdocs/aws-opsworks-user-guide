@@ -16,6 +16,7 @@ Note the following constraints:
 + You can't attach an Amazon EBS volume to—or detach it from—a running instance\.
 
   You can operate only on offline instances\. For example, you can register an in\-use volume with a stack and attach it to an offline instance, but you must stop the original instance and detach the volume before starting the new instance\. Otherwise, the start process will fail\.
++ All registered resources are managed solely in AWS OpsWorks\. This can override resource lifecycle properties, such as `DeleteOnTermination` for EC2 volumes\.
 + You can attach an Elastic IP address to and detach it from a running instance\.
 
   You can operate on online or offline instances\. For example, you can register an in\-use address and assign it to a running instance, and AWS OpsWorks Stacks will automatically reassign the address\.

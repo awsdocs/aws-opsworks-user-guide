@@ -1,6 +1,6 @@
 # Managing AWS OpsWorks Stacks User Permissions<a name="opsworks-security-users"></a>
 
-One way to handle AWS OpsWorks Stacks permissions is to attach an IAM AWSOpsWorksFullAccess policy to every IAM user\. However, this policy allows a user to perform every AWS OpsWorks Stacks action on every stack\. It is often desirable instead to restrict AWS OpsWorks Stacks users to a specified set of actions or set of stack resources\. You can control AWS OpsWorks Stacks user permissions in two ways: By using the AWS OpsWorks Stacks **Permissions** page and by attaching an appropriate IAM policy\.
+One way to handle AWS OpsWorks Stacks permissions is to attach an IAM AWSOpsWorks\_FullAccess policy to every IAM user\. However, this policy allows a user to perform every AWS OpsWorks Stacks action on every stack\. As a best practice, restrict AWS OpsWorks Stacks users to a specified set of actions or set of stack resources\. You can control AWS OpsWorks Stacks user permissions in two ways: by using the AWS OpsWorks Stacks **Permissions** page, and by attaching an appropriate IAM policy\.
 
 The OpsWorks **Permissions** page—or the equivalent CLI or API actions—allows you to control user permissions in a multiuser environment on a per\-stack basis by assigning each user one of several *permission levels*\. Each level grants permissions for a standard set of actions for a particular stack resource\. Using the **Permissions** page, you can control the following:
 + Who can access each stack\.
@@ -30,7 +30,7 @@ The two approaches are not mutually exclusive and it is sometimes useful to comb
 
 The following is a typical model for managing user permissions\. In each case, the reader \(you\) is assumed to be an administrative user\.
 
-1. Use the [IAM console](https://console.aws.amazon.com/iam) to attach AWSOpsWorksFullAccess policies to one or more administrative users\.
+1. Use the [IAM console](https://console.aws.amazon.com/iam) to attach AWSOpsWorks\_FullAccess policies to one or more administrative users\.
 
 1. Create an IAM user for each nonadministrative user with a policy that grants no AWS OpsWorks Stacks permissions\.
 

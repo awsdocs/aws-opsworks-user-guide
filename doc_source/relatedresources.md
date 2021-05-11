@@ -15,7 +15,7 @@ Several helpful guides, forums, contact info, and other resources are available 
 + ** [AWS Developer Tools](https://aws.amazon.com/tools/)** – Links to developer tools, SDKs, IDE toolkits, and command line tools for developing and managing AWS applications\.
 + ** [AWS Whitepapers](https://aws.amazon.com/whitepapers/)** – Links to a comprehensive list of technical AWS whitepapers, covering topics such as architecture, security, and economics and authored by AWS Solutions Architects or other technical experts\.
 + ** [AWS Support Center](https://console.aws.amazon.com/support/home#/)** – The hub for creating and managing your AWS Support cases\. Also includes links to other helpful resources, such as forums, technical FAQs, service health status, and AWS Trusted Advisor\.
-+ ** [AWS Support](https://aws.amazon.com/premiumsupport/)** – The primary web page for information about AWS Support, a one\-on\-one, fast\-response support channel to help you build and run applications in the cloud\.
++ ** [AWS Support](https://aws.amazon.com/premiumsupport/)** – The primary webpage for information about AWS Support, a one\-on\-one, fast\-response support channel to help you build and run applications in the cloud\.
 + ** [Contact Us](https://aws.amazon.com/contact-us/)** – A central contact point for inquiries concerning AWS billing, account, events, abuse, and other issues\. 
 + ** [AWS Site Terms](https://aws.amazon.com/terms/)** – Detailed information about our copyright and trademark; your account, license, and site access; and other topics\.
 
@@ -29,8 +29,8 @@ Amazon Web Services provides software development kits for accessing AWS OpsWork
 +  **AWS SDK for JavaScript in Node\.js** – [Setup](http://docs.aws.amazon.com/nodejs/latest/dg/nodejs-dg-aws-sdk-for-node.js.html) and [other documentation](http://aws.amazon.com/documentation/sdkforjavascript/)
 + **AWS SDK for Python \(Boto\)** – [Setup](http://boto.readthedocs.org/en/latest/getting_started.html) and [other documentation](http://docs.pythonboto.org/en/latest/ref/opsworks.html)
 
-## Open Source Software<a name="w4ab1c13b9"></a>
+## Open Source Software<a name="w100ab1c16b9"></a>
 
 AWS OpsWorks Stacks includes a variety of open\-source software packages, which are governed by their respective licenses\. For more information, see the following:
 + For Chef 12 Linux instances, open the `THIRD_PARTY_LICENSES` file in the `/opt/aws/opsworks/current` directory on the instance\.
-+ For Chef 11\.10 and earlier versions for Linux, go to the [OpsWorks Linux Agent Attributions Document](https://opsworks-instance-assets-us-east-1.s3.amazonaws.com/licenses/OpsWorks-Linux-Agent-Attributions-Document-10-08-14.pdf)\.
++ For Chef 11\.10 and earlier versions for Linux, download the [OpsWorks Linux Agent Attributions Document](samples/OpsWorks-Linux-Agent-Attributions-Document-10-08-14.zip) PDF\.

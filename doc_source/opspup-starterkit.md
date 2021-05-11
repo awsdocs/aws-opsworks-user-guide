@@ -24,16 +24,16 @@ aws --region region opsworks-cm describe-servers --server-name server_name --que
 
 To use the Puppet API, you must create a short\-term token for yourself\. This step is not required to use the Puppet Enterprise console\. Generate the token by running the following command\.
 
-The default token lifetime is five minutes, but you can change this default\. For more information about how to change the default token lifetime, see [Change the token's default lifetime](https://puppet.com/docs/pe/2017.3/rbac/rbac_token_auth_intro.html#change-the-token-default-lifetime) in the Puppet Enterprise documentation\.
+The default token lifetime is five minutes, but you can change this default\.
 
 ```
 puppet-access login --config-file .config/puppetlabs/client-tools/puppet-access.conf --lifetime 8h
 ```
 
 **Note**  
-Because the default token lifetime is five minutes, the preceding example command adds the `--lifetime` parameter to extend the token lifetime for a longer period\. You can set the token lifetime for a period of up to 10 years \(`10y`\)\. For more information about how to change the default token lifetime, see [Change the token's default lifetime](https://puppet.com/docs/pe/2017.3/rbac/rbac_token_auth_intro.html#change-the-token-default-lifetime) in the Puppet Enterprise documentation\.
+Because the default token lifetime is five minutes, the preceding example command adds the `--lifetime` parameter to extend the token lifetime for a longer period\. You can set the token lifetime for a period of up to 10 years \(`10y`\)\. For more information about how to change the default token lifetime, see [Change the token's default lifetime](https://puppet.com/docs/pe/2019.8/rbac_token_auth_intro.html#change_the_token_s_default_lifetime) in the Puppet Enterprise documentation\.
 
-## Set Up the Starter Kit Nginx Example<a name="w4ab1b7c19c11c15"></a>
+## Set Up the Starter Kit Nginx Example<a name="w100ab1b7c19c13c15"></a>
 
 After you download and unzip the Starter Kit, you can use the example branch in the included, sample `control-repo-example` folder to configure an Nginx web server on your managed nodes\. 
 

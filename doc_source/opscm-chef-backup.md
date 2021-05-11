@@ -4,6 +4,15 @@ You can define a daily or weekly recurring AWS OpsWorks for Chef Automate server
 
 Because backups are stored in Amazon S3, they incur additional fees\. You can define a backup retention period of up to 30 generations\. You can submit a service request to have that limit changed by using AWS support channels\. Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
+You can add tags to backups of an AWS OpsWorks for Chef Automate server\. If you have added tags to an AWS OpsWorks for Chef Automate server, automated backups of the server inherit those tags\. For more information about how to add and manage tags on backups, see [Working with Tags on AWS OpsWorks for Chef Automate Resources](opscm-tags.md) in this guide\.
+
+**Topics**
++ [Automated Backups](#opscm-chef-backup-auto)
++ [Manual Backups](#opscm-chef-backup-manual)
++ [Delete backups](#opscm-chef-backup-delete)
+
+## Automated Backups<a name="opscm-chef-backup-auto"></a>
+
 When you configure your AWS OpsWorks for Chef Automate server, you choose either automated or manual backups\. AWS OpsWorks for Chef Automate starts automated backups during the hour and on the day that you choose in the **Automated backup** section of the **Configure advanced settings** page of Setup\. After your server is online, you can change backup settings by performing the following steps, either from the server's tile on the Chef Automate servers home page, or on the server's Properties page\.
 
 **To change automated backup settings**
@@ -14,7 +23,11 @@ When you configure your AWS OpsWorks for Chef Automate server, you choose either
 
 1. In the **Automated Backup** section, change the frequency, start time, or generations to keep\. Save your changes\.
 
+## Manual Backups<a name="opscm-chef-backup-manual"></a>
+
 You can start a manual backup at any time in the AWS Management Console, or by running the AWS CLI [create\-backup](http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_CreateBackup.html) command\. Manual backups are not included in the maximum 30 generations of automated backups that are stored; a maximum of 10 manual backups are stored, and must be manually deleted from Amazon S3\.
+
+You can add tags when you create a new, manual backup of an AWS OpsWorks for Chef Automate server\. For more information about how to add tags when you create a manual backup, see [Add Tags to a New Backup \(CLI\)](opscm-tags.md#opscm-tags-howto-createbackup)\.
 
 **To perform a manual backup in the AWS Management Console**
 

@@ -27,8 +27,8 @@ Resources can be managed only in the region in which they are created\. Resource
 + Asia Pacific \(Sydney\) Region
 + Asia Pacific \(Tokyo\) Region
 + Asia Pacific \(Seoul\) Region
-+ EU \(Frankfurt\) Region
-+ EU \(Ireland\) Region
-+ EU \(London\) Region
-+ EU \(Paris\) Region
++ Europe \(Frankfurt\) Region
++ Europe \(Ireland\) Region
++ Europe \(London\) Region
++ Europe \(Paris\) Region
 + South America \(São Paulo\) Region

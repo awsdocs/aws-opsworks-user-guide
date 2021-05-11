@@ -67,14 +67,45 @@ A service role also has a trust relationship\. Service roles created by AWS OpsW
 }
 ```
 
-The service role must have this trust relationship for AWS OpsWorks Stacks to act on your behalf\. If you use the default service role, do not modify the trust relationship\. If you are creating a custom service role, specify the trust relationship as follows: 
-+ If you are using the **Create role** wizard in the [IAM console](https://console.aws.amazon.com/iam/home#roles), specify the **AWS Opsworks** role type under **AWS Service Roles** on the wizard's second page\. Note that the **AWSOpsWorksRole** policy that you are prompted to add by default in the wizard has the appropriate trust relationship, and allows AWS OpsWorks to perform some actions on your behalf, but does not allow you to create new resources such as instances, Elastic Load Balancing load balancers, or Amazon ECS clusters\. To grant AWS OpsWorks permissions to create those resources on your behalf, attach a custom policy to your role that adds the following allowed actions to what is available in the **AWSOpsWorksRole** policy\.
+The service role must have this trust relationship for AWS OpsWorks Stacks to act on your behalf\. If you use the default service role, do not modify the trust relationship\. If you are creating a custom service role, specify the trust relationship by doing one of the following:
++ If you are using the **Create role** wizard in the [IAM console](https://console.aws.amazon.com/iam/home#roles), in **Choose a use case**, choose **Opsworks**\. This role has the appropriate trust relationship, but no policy is implicitly attached\. To grant AWS OpsWorks Stacks permissions to act on your behalf, create a customer\-managed policy that contains the following, and attach it to the new role\.
 
   ```
-  "ec2:*",
-  "ecs:*",
-  "elasticloadbalancing:*",
-  "rds:*"
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "cloudwatch:DescribeAlarms",
+          "cloudwatch:GetMetricStatistics",
+          "ec2:*",
+          "ecs:*",
+          "elasticloadbalancing:*",
+          "iam:GetRolePolicy",
+          "iam:ListInstanceProfiles",
+          "iam:ListRoles",
+          "iam:ListUsers",
+          "rds:*"
+        ],
+        "Resource": [
+          "*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "iam:PassRole"
+        ],
+        "Resource": "*",
+        "Condition": {
+          "StringEquals": {
+            "iam:PassedToService": "ec2.amazonaws.com"
+          }
+        }
+      }
+    ]
+  }
   ```
 + If you are using a AWS CloudFormation template, you can add something like the following to your template's **Resources** section\.
 

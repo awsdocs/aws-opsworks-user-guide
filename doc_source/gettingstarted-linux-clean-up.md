@@ -20,8 +20,12 @@ Content stored in the resources that you created for this walkthrough can contai
    + **shutting down** changes from **0** to **1**, and eventually back to **0**\.
    + **stopped** eventually changes from **0** to **1**\.
 
-   This process can take a few minutes\. When AWS OpsWorks Stacks is finished, the following results are shown\.  
+   This process can take a few minutes\. When AWS OpsWorks Stacks is finished, the following results are shown\.
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-linux-instance-stopped-console.png)
+
+   
 
 1. For **Actions**, choose **delete**\. When you see the confirmation message, choose **Delete**\. AWS OpsWorks Stacks deletes the instance and displays the **No instances** message\.
 

@@ -4,7 +4,7 @@ OpsWorks for Puppet Enterprise lets you launch a [Puppet Enterprise](https://pup
 
 A Puppet master manages the configuration of nodes in your environment by serving configuration catalogs for specific nodes to the [https://docs.puppet.com/puppet/4.9/about_agent.html](https://docs.puppet.com/puppet/4.9/about_agent.html) software, and serves as a central repository for your Puppet modules\. A Puppet master in OpsWorks for Puppet Enterprise deploys `puppet-agent` to your managed nodes, and provides premium features of Puppet Enterprise\.
 
-An OpsWorks for Puppet Enterprise master runs on an Amazon Elastic Compute Cloud instance\. OpsWorks for Puppet Enterprise servers are configured to run the newest version of Amazon Linux \(Amazon Linux 2\), and the most current version of Puppet Enterprise Master, version 2018\.1\.7\. For more information about changes in Puppet Enterprise 2018\.1\.7, see the [Puppet Enterprise Release Notes](https://puppet.com/docs/pe/2018.1/release_notes/release_notes.html)\.
+An OpsWorks for Puppet Enterprise master runs on an Amazon Elastic Compute Cloud instance\. OpsWorks for Puppet Enterprise servers are configured to run the newest version of Amazon Linux \(Amazon Linux 2\), and the most current version of Puppet Enterprise Master, version 2019\.8\.5\. For more information about changes in Puppet Enterprise 2019\.8\.5, see the [Puppet Enterprise Release Notes](https://puppet.com/docs/pe/2019.8/release_notes_pe_index.html)\.
 
 When new versions of Puppet software become available, system maintenance is designed to update the version of Puppet Enterprise on the server automatically, as soon as it passes AWS testing\. AWS performs extensive testing to verify that Puppet upgrades are production\-ready and do not disrupt existing customer environments\.
 
@@ -15,6 +15,9 @@ You can connect any on\-premises computer or EC2 instance that is running a supp
 + [Region Support for OpsWorks for Puppet Enterprise](#opspup-region)
 + [Getting Started with OpsWorks for Puppet Enterprise](gettingstarted-opspup.md)
 + [Create an AWS OpsWorks for Puppet Enterprise Master by using AWS CloudFormation](opspup-create-server-cfn.md)
++ [Update an OpsWorks for Puppet Enterprise Server to Use a Custom Domain](opspup-update-server-custom-domain.md)
++ [Regenerate the starter kit for an AWS OpsWorks for Puppet Enterprise server](opspup-regenerate-starterkit.md)
++ [Working with Tags on AWS OpsWorks for Puppet Enterprise Resources](opspup-tags.md)
 + [Back Up and Restore an OpsWorks for Puppet Enterprise Server](opspup-backup-restore.md)
 + [System Maintenance in OpsWorks for Puppet Enterprise](opspup-maintenance.md)
 + [Adding Nodes Automatically in OpsWorks for Puppet Enterprise](opspup-unattend-assoc.md)
@@ -37,5 +40,5 @@ The following regional endpoints support OpsWorks for Puppet Enterprise masters\
 + Asia Pacific \(Tokyo\) Region
 + Asia Pacific \(Singapore\) Region
 + Asia Pacific \(Sydney\) Region
-+ EU \(Frankfurt\) Region
-+ EU \(Ireland\) Region
++ Europe \(Frankfurt\) Region
++ Europe \(Ireland\) Region

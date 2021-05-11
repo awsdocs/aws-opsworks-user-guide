@@ -6,8 +6,12 @@ The procedure in this section applies to Chef 12 and newer stacks\. For informat
 
 **To specify the app to deploy**
 
-1. In the service navigation pane, choose **Apps**:  
+1. In the service navigation pane, choose **Apps**:
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-linux-nav-pane-console.png)
+
+   
 
 1. The **Apps** page is displayed\. Choose **Add an app**\. The **Add App** page is displayed\.
 
@@ -23,9 +27,15 @@ The procedure in this section applies to Chef 12 and newer stacks\. For informat
    + **Branch/Revision** \(blank\)
    + **Environment Variables** \(blank **KEY**, blank **VALUE**, unchecked **Protected Value**\)
    + **Add Domains**, **Domain Name** \(blank\)
-   + **SSL Settings**, **Enable SSL** \(**No**\)  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-linux-add-app-top-console.png)  
+   + **SSL Settings**, **Enable SSL** \(**No**\)
+
+     
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-linux-add-app-top-console.png)
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-linux-add-app-bottom-console.png)
+
+   
 
 1. Choose **Add App**\. AWS OpsWorks Stacks adds the app and displays the **Apps** page\.
 

@@ -34,7 +34,7 @@ To create an IAM user, see [Creating IAM Users \(AWS Management Console\)](https
 
 Set up your IAM user to enable access to the AWS OpsWorks Stacks service \(and related services that AWS OpsWorks Stacks relies on\)\.
 
-To assign service access permissions to your IAM user, see [Attaching Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-using.html#attach-managed-policy-console)\. Attach the `AWSOpsWorksFullAccess` and `AmazonS3FullAccess` policies to the user you created in the previous step or to the existing IAM user that you want to use\.
+To assign service access permissions to your IAM user, see [Attaching Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-using.html#attach-managed-policy-console)\. Attach the `AWSOpsWorks_FullAccess` and `AmazonS3FullAccess` policies to the user you created in the previous step or to the existing IAM user that you want to use\.
 
 ## Step 1\.4: Ensure AWS OpsWorks Stacks Users are Added to Your Domain<a name="gettingstarted-windows-prerequisites-adusers"></a>
 

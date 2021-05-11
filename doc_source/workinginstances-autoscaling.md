@@ -1,4 +1,4 @@
-# Managing Load with Time\-based and Load\-based Instances<a name="workinginstances-autoscaling"></a>
+# Managing load with time\-based and load\-based instances<a name="workinginstances-autoscaling"></a>
 
 As your incoming traffic varies, your stack may have either too few instances to comfortably handle the load or more instances than necessary\. You can save both time and money by using time\-based or load\-based instances to automatically increase or decrease a layer's instances so that you always have enough instances to adequately handle incoming traffic without paying for unneeded capacity\. There's no need to monitor server loads or manually start or stop instances\. In addition, time\- and load\-based instances automatically distribute, scale, and balance applications over multiple Availability Zones within a region, giving you geographic redundancy and scalability\.
 
@@ -25,14 +25,14 @@ For more information on how to use these scaling times, see [Optimizing the Numb
 If you have created apps for the instances' layer or created custom cookbooks, AWS OpsWorks Stacks automatically deploys the latest version to time\-based and load\-based instances when they are first started\. However, AWS OpsWorks Stacks does not necessarily deploy the latest cookbooks to restarted offline instances\. For more information, see [Editing Apps](workingapps-editing.md) and [Updating Custom Cookbooks](workingcookbook-installingcustom-enable-update.md)\. 
 
 **Topics**
-+ [Using Automatic Time\-based Scaling](workinginstances-autoscaling-timebased.md)
-+ [Using Automatic Load\-based Scaling](workinginstances-autoscaling-loadbased.md)
-+ [How Load\-based Scaling Differs from Auto Healing](#workinginstances-autoscaling-differs)
++ [Using automatic time\-based scaling](workinginstances-autoscaling-timebased.md)
++ [Using automatic load\-based scaling](workinginstances-autoscaling-loadbased.md)
++ [How load\-based scaling differs from auto healing](#workinginstances-autoscaling-differs)
 
-## How Load\-based Scaling Differs from Auto Healing<a name="workinginstances-autoscaling-differs"></a>
+## How load\-based scaling differs from auto healing<a name="workinginstances-autoscaling-differs"></a>
 
 Automatic load\-based scaling uses load metrics that are averaged across all running instances\. If the metrics remain between the specified thresholds, AWS OpsWorks Stacks does not start or stop any instances\. With auto healing, on the other hand, AWS OpsWorks Stacks automatically starts a new instance with the same configuration when an instance stops responding\. The instance may not be able to respond due to a network issue or some problem with the instance\.
 
-For example, suppose that your CPU upscaling threshold is 80%, and then one instance stops responding\. 
-+ If auto healing is disabled, and the remaining running instances are able to keep average CPU utilization below 80%, AWS OpsWorks Stacks does not start a new instance\. It starts a replacement instance only if the average CPU utilization across the remaining instances exceeds 80%\.
-+ If auto healing is enabled, AWS OpsWorks Stacks starts a replacement instance irrespective of the load thresholds\. 
+For example, suppose your CPU upscaling threshold is 80%, and one instance stops responding\.
++ If auto healing is disabled, and the remaining running instances can keep average CPU utilization below 80%, AWS OpsWorks Stacks does not start a new instance\. It starts a replacement instance only if the average CPU utilization across the remaining instances exceeds 80%\.
++ If auto healing is enabled, AWS OpsWorks Stacks starts a replacement instance regardless of load thresholds\.

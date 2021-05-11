@@ -10,11 +10,11 @@ System maintenance launches a new instance from a backup that is performed as pa
 System maintenance deletes any files or custom configuration that you have added to the OpsWorks for Puppet Enterprise server\. For more information about how to repair configuration or file loss, see [Restoring custom configurations and files after maintenance](#opspup-maintenance-restore) in this topic\.
 
 **Topics**
-+ [Configuring system maintenance](#w4ab1b7c25c13)
++ [Configuring system maintenance](#w100ab1b7c31c13)
 + [Starting system maintenance on demand](#opspup-maintenance-startdemand)
 + [Restoring custom configurations and files after maintenance](#opspup-maintenance-restore)
 
-## Configuring system maintenance<a name="w4ab1b7c25c13"></a>
+## Configuring system maintenance<a name="w100ab1b7c31c13"></a>
 
 When you create a new OpsWorks for Puppet Enterprise server, you can configure a weekday and time, in [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) \(UTC\), for system maintenance to start\. Maintenance starts during the hour that you specify\. Because you should expect the server to be offline during system maintenance, choose a time of low server demand within regular office hours\. The server status is `UNDER_MAINTENANCE` while maintenance is in progress\.
 
@@ -24,7 +24,7 @@ You can also change the system maintenance settings on an existing OpsWorks for 
 
 In the **System maintenance** section, set the day and hour that you want system maintenance to begin\.
 
-### Configuring system maintenance by using the AWS CLI<a name="w4ab1b7c25c13c10"></a>
+### Configuring system maintenance by using the AWS CLI<a name="w100ab1b7c31c13c10"></a>
 
 You can also configure the system maintenance automatic start time by using the AWS CLI\. The AWS CLI lets you configure daily automatic maintenance, if desired, by omitting the three\-character weekday prefix\.
 

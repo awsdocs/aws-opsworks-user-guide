@@ -2,7 +2,9 @@
 
 AWS OpsWorks is a configuration management service that helps you configure and operate applications in a cloud enterprise by using Puppet or Chef\. AWS OpsWorks Stacks and AWS OpsWorks for Chef Automate let you use [Chef](https://www.chef.io) cookbooks and solutions for configuration management, while OpsWorks for Puppet Enterprise lets you configure a [Puppet Enterprise](https://puppet.com/products/puppet-enterprise) master server in AWS\. Puppet offers a set of tools for enforcing the desired state of your infrastructure, and automating on\-demand tasks\.
 
-## AWS OpsWorks Services<a name="w4ab1b5b5"></a>
+## AWS OpsWorks Services<a name="w100ab1b5b5"></a>
+
+
 
 [AWS OpsWorks for Puppet Enterprise](welcome_opspup.md)  
 OpsWorks for Puppet Enterprise lets you create AWS\-managed Puppet master servers\. A Puppet master server manages nodes in your infrastructure, stores facts about those nodes, and serves as a central repository for your Puppet modules\. Modules are reusable, shareable units of Puppet code that contain instructions about how your infrastructure should be configured\. You can download community modules from the [Puppet Forge](https://forge.puppet.com/), or use the Puppet Development Kit to create your own custom modules, then manage their deployment with Puppet Code Manager\.  

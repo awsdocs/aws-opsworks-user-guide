@@ -26,7 +26,7 @@ You can attach an Elastic Load Balancing load balancer to the layer's instances\
 **Important**  
 If your stack includes a Ganglia layer, we recommend that you disable SSLv3 if possible for that layer to address the vulnerabilities described in [CVE\-2014\-3566](http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566)\. To do so, you must override the Apache server's `ssl.conf.erb` template to modify the `SSLProtocol` setting\. For details, see [Disabling SSLv3 for Apache Servers](layers-java.md#layers-java-sslv3)\.
 
-## View the Ganglia Statistics<a name="w4ab1c11c63b7c19c27b9c13"></a>
+## View the Ganglia Statistics<a name="w100ab1c14c63b7c19c27b9c13"></a>
 
 AWS OpsWorks Stacks recipes install a low\-overhead Ganglia client on every instance\. If your stack includes a Ganglia layer, the Ganglia client automatically starts reporting to the Ganglia as soon as the instance comes on line\. The Ganglia uses the client data to compute a variety of statistics and displays the results graphically on its statistics web page\.
 

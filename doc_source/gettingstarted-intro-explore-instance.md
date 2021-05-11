@@ -6,14 +6,26 @@ Examine the settings that AWS OpsWorks Stacks used to launch the instance\. You 
 
 1. In the service navigation pane, choose **Instances**\. The **Instances** page displays\.
 
-1. For **Node\.js App Server**, choose **nodejs\-server1**\. The instance's properties page is shown\.  
+1. For **Node\.js App Server**, choose **nodejs\-server1**\. The instance's properties page is shown\.
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-example-instance-details-page-console.png)
 
-1. To explore the instance logs, in the **Logs** section, for **Log**, choose **show**\.  
+   
+
+1. To explore the instance logs, in the **Logs** section, for **Log**, choose **show**\.
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-example-instance-details-logs-console.png)
 
-1. AWS OpsWorks Stacks displays the log in a separate web browser tab\.  
+   
+
+1. AWS OpsWorks Stacks displays the log in a separate web browser tab\.
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-example-instance-log-console.png)
+
+   
 
 To learn more about what some of the instance settings represent, return to the **nodejs\-server1** page, choose **Stop**, and when you see the confirmation message, choose **Stop**\. Choose **Edit** after **Status** changes from **stopping** to **stopped**, and then hover over each of the settings\. \(Not all settings have on\-screen descriptions\.\) For more information about these settings, see [Adding an Instance to a Layer](workinginstances-add.md)\.
 

@@ -3,11 +3,11 @@
 This section contains some commonly encountered AWS OpsWorks Stacks issues and their solutions\.
 
 **Topics**
-+ [Unable to Manage Instances](#w4ab1c11c69c15b7b7)
-+ [After a Chef Run, Instances Won't Boot](#w4ab1c11c69c15b7b9)
++ [Unable to Manage Instances](#w100ab1c14c69c15b7b7)
++ [After a Chef Run, Instances Won't Boot](#w100ab1c14c69c15b7b9)
 + [A Layer's Instances All Fail an Elastic Load Balancing Health Check](#common-issues-troubleshoot-health)
-+ [Can't Communicate with an Elastic Load Balancing Load Balancer](#w4ab1c11c69c15b7c13)
-+ [An Imported On\-premises Instance Fails to Finish Volume Setup After a Restart](#w4ab1c11c69c15b7c15)
++ [Can't Communicate with an Elastic Load Balancing Load Balancer](#w100ab1c14c69c15b7c13)
++ [An Imported On\-premises Instance Fails to Finish Volume Setup After a Restart](#w100ab1c14c69c15b7c15)
 + [An EBS Volume Does Not Reattach After a Reboot](#common-issues-troubleshoot-ebs)
 + [Can't Delete AWS OpsWorks Stacks Security Groups](#common-issues-troubleshoot-booting-secgroup)
 + [Accidentally Deleted an AWS OpsWorks Stacks Security Group](#common-issues-troubleshoot-booting-secgroup-delete)
@@ -18,7 +18,7 @@ This section contains some commonly encountered AWS OpsWorks Stacks issues and t
 + [`opsworks-agent` Processes are Running on Instances](#common-issues-troubleshoot-agent)
 + [Unexpected execute\_recipes Commands](#common-issues-troubleshoot-unexpected)
 
-## Unable to Manage Instances<a name="w4ab1c11c69c15b7b7"></a>
+## Unable to Manage Instances<a name="w100ab1c14c69c15b7b7"></a>
 
 **Problem:** You are no longer able to manage an instance that has been manageable in the past\. In some cases, logs can show an error similar to the following\.
 
@@ -33,7 +33,7 @@ Aws::CharlieInstanceService::Errors::UnrecognizedClientException - The security 
 
 **Solution:** Do not delete IAM users or roles upon which your instances depend\. If possible, edit volume or storage configurations only while dependent instances are running\. Use AWS OpsWorks to manage the load balancer or EIP memberships of AWS OpsWorks instances\. When you are registering an instance, to help prevent problems managing registered instances in the event that the IAM user is accidentally deleted, add the `--use-instance-profile` parameter to your `register` command to use the instance's built\-in instance profile instead\.
 
-## After a Chef Run, Instances Won't Boot<a name="w4ab1c11c69c15b7b9"></a>
+## After a Chef Run, Instances Won't Boot<a name="w100ab1c14c69c15b7b9"></a>
 
 **Problem:** On Chef 11\.10 or older stacks that are configured to use custom cookbooks, after a Chef run that used community cookbooks, instances won't boot\. Log messages can state that recipes failed to compile \("Recipe Compile Error"\), or can't be loaded because they are unable to find a dependency\.
 
@@ -49,7 +49,7 @@ Aws::CharlieInstanceService::Errors::UnrecognizedClientException - The security 
 
 **Solution:** Edit the load balancer's ping path\. For more information, see [Elastic Load Balancing](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/gs-ec2classic.html)
 
-## Can't Communicate with an Elastic Load Balancing Load Balancer<a name="w4ab1c11c69c15b7c13"></a>
+## Can't Communicate with an Elastic Load Balancing Load Balancer<a name="w100ab1c14c69c15b7c13"></a>
 
 **Problem:** You create an Elastic Load Balancing load balancer and attach it to an app server layer, but when you click the load balancer's DNS name or IP address to run the application, you get the following error: "The remote server is not responding"\.
 
@@ -67,7 +67,7 @@ Aws::CharlieInstanceService::Errors::UnrecognizedClientException - The security 
 
    For example, specifying **Anywhere** sets the CIDR to 0\.0\.0\.0/0, which directs the load balancer to accept incoming traffic from any IP address\. 
 
-## An Imported On\-premises Instance Fails to Finish Volume Setup After a Restart<a name="w4ab1c11c69c15b7c15"></a>
+## An Imported On\-premises Instance Fails to Finish Volume Setup After a Restart<a name="w100ab1c14c69c15b7c15"></a>
 
 **Problem:** You restart an EC2 instance that you have imported into AWS OpsWorks Stacks, and the AWS OpsWorks Stacks console displays **failed** as the instance status\. This can occur on either Chef 11 or Chef 12 instances\.
 

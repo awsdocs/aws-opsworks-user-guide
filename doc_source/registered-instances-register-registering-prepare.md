@@ -27,7 +27,7 @@ An on\-premises instance must satisfy the following criteria:
 ## Amazon EC2 Instances<a name="registered-instances-register-prepare-ec2"></a>
 
 An Amazon EC2 instance must satisfy the following criteria:
-+ The AMI must be based on one of the supported Linux operating systems\. For a current list, see [AWS OpsWorks Stacks Operating Systems](workinginstances-os.md)\.
++ The AMI must be based on one of the supported Linux operating systems\. For a current list, see [AWS OpsWorks Stacks operating systems](workinginstances-os.md)\.
 
   For more information, see [Using Custom AMIs](workinginstances-custom-ami.md)\.
 

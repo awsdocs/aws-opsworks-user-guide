@@ -25,21 +25,33 @@ Use AWS OpsWorks Stacks to start up an Ubuntu Server Amazon EC2 instance\. This 
    + **Volume type** \(**General Purpose \(SSD\)**\)
    + **Volume size** \(**8**\)
 
-1. Your results will be similar to the following screenshot:  
+1. Your results will be similar to the following screenshot:
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-linux-add-instance-console.png)
+
+   
 
 1. Choose **Add Instance**\. AWS OpsWorks Stacks adds the instance to the layer and displays the **Instances** page\.
 
-1. For **MyLinuxDemoLayer**, for **demo1**, for **Actions**, choose **start**:  
+1. For **MyLinuxDemoLayer**, for **demo1**, for **Actions**, choose **start**:
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-linux-start-instance-console.png)
+
+   
 
 1. Over the course of several minutes, the following occurs:
    + The **setting up** circle changes from **0** to **1**\. 
    + **Status** turns from **stopped** to **requested**, to **pending**, to **booting**, to **running\_setup**, and then finally to **online**\. Note that this process can take several minutes\.
    + After **Status** changes to **online**, the **setting up** circle indicator changes from **1** to **0**, and the **online** circle changes from **0** to **1** and changes to bright green\. Do not proceed until the **online** circle changes to bright green, and shows **1** instance online\. 
 
-1. Your results must match the following screenshot before you continue \(if you receive a failure message, you may want to consult the [Debugging and Troubleshooting Guide](troubleshoot.md)\):  
+1. Your results must match the following screenshot before you continue \(if you receive a failure message, you may want to consult the [Debugging and Troubleshooting Guide](troubleshoot.md)\):
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-linux-instance-started-console.png)
+
+   
 
 You now have an instance that is ready for the app to be deployed to it\. 
 

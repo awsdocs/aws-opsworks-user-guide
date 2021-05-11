@@ -40,12 +40,12 @@ You can deploy apps from the following repository types: Git, Amazon S3 bundle, 
 AWS OpsWorks Stacks automatically deploys applications from the standard repositories to the built\-in server layers\. If you use the Other repository type, which is the only option for Windows stacks, AWS OpsWorks Stacks puts the repository information in the app's [`deploy` attributes](workingcookbook-json.md#workingcookbook-json-deploy), but you must implement custom recipes to handle the deployment tasks\.
 
 **Topics**
-+ [HTTP Archive](#w4ab1c11c49c11b9b8b8)
-+ [Amazon S3 Archive](#w4ab1c11c49c11b9b8c10)
-+ [Git Repository](#w4ab1c11c49c11b9b8c12)
-+ [Other Repositories](#w4ab1c11c49c11b9b8c14)
++ [HTTP Archive](#w100ab1c14c49c11b9b8b8)
++ [Amazon S3 Archive](#w100ab1c14c49c11b9b8c10)
++ [Git Repository](#w100ab1c14c49c11b9b8c12)
++ [Other Repositories](#w100ab1c14c49c11b9b8c14)
 
-#### HTTP Archive<a name="w4ab1c11c49c11b9b8b8"></a>
+#### HTTP Archive<a name="w100ab1c14c49c11b9b8b8"></a>
 
 To use a publicly\-accessible HTTP server as a repository: 
 
@@ -59,7 +59,7 @@ AWS OpsWorks Stacks does not support uncompressed tarballs\.
 
     If the archive is password\-protected, under **Application Source**, specify the user name and password\.
 
-#### Amazon S3 Archive<a name="w4ab1c11c49c11b9b8c10"></a>
+#### Amazon S3 Archive<a name="w100ab1c14c49c11b9b8c10"></a>
 
 To use an Amazon Simple Storage Service bucket as a repository:
 
@@ -75,7 +75,7 @@ AWS OpsWorks Stacks does not support uncompressed tarballs\.
 
 1. To specify the repository in the AWS OpsWorks Stacks console, set **Repository type** to **S3 Archive** and enter the archive's URL\. For a private archive, you must also provide an AWS access key ID and secret access key whose policy grants permissions to access the bucket\. Leave these settings blank for public archives\.
 
-#### Git Repository<a name="w4ab1c11c49c11b9b8c12"></a>
+#### Git Repository<a name="w100ab1c14c49c11b9b8c12"></a>
 
 A [Git](http://git-scm.com/) repository provides source control and versioning\. AWS OpsWorks Stacks supports publicly hosted repository sites such as [GitHub](https://github.com/) or [Bitbucket](https://bitbucket.org) as well as privately hosted Git servers\. For both apps and Git submodules, the format you use to specify the repository's URL in **Application Source** depends on whether the repository is public or private:
 
@@ -96,7 +96,7 @@ The deploy SSH key cannot require a password; AWS OpsWorks Stacks has no way to 
 **Branch/Revision**  
 If the repository has multiple branches, AWS OpsWorks Stacks downloads the master branch by default\. To specify a particular branch, enter the branch name, SHA1 hash, or tag name\. To specify a particular commit, enter the full 40\-hexdigit commit identifier\.
 
-#### Other Repositories<a name="w4ab1c11c49c11b9b8c14"></a>
+#### Other Repositories<a name="w100ab1c14c49c11b9b8c14"></a>
 
 If the standard repositories do not meet your requirements, you can use other repositories, such as [Bazaar](http://bazaar.canonical.com/en/)\. However, AWS OpsWorks Stacks does not automatically deploy apps from such repositories\. You must implement custom recipes to handle the deployment process and assign them to the appropriate layers' Deploy events\. For an example of how to implement Deploy recipes, see [Deploy Recipes](create-custom-deploy.md)\.
 

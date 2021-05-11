@@ -32,7 +32,7 @@ Key AWS OpsWorks Stacks changes for Chef 12 Linux, as compared to support for pr
 
 ## Supported Operating Systems<a name="chef-12-linux-supported-oses"></a>
 
-Chef 12 supports the same Linux operating systems as previous versions of Chef\. For a list of Linux operating system types and versions that Chef 12 Linux stacks can use, see [Linux Operating Systems](workinginstances-os-linux.md)\.
+Chef 12 supports the same Linux operating systems as previous versions of Chef\. For a list of Linux operating system types and versions that Chef 12 Linux stacks can use, see [Linux operating systems](workinginstances-os-linux.md)\.
 
 ## Supported Instance Types<a name="chef-12-linux-supported-instance-types"></a>
 

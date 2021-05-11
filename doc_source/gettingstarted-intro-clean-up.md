@@ -16,8 +16,12 @@ Content stored in the resources that you created for this walkthrough can contai
 
 1. For **Node\.js App Server**, for **nodejs\-server1**, for **Actions**, choose **stop**\. When you see the confirmation message, choose **Stop**\.
 
-   This process can take a few minutes\. When AWS OpsWorks Stacks is finished, the following results are shown\.  
+   This process can take a few minutes\. When AWS OpsWorks Stacks is finished, the following results are shown\.
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-example-instance-stopped-console.png)
+
+   
 
 1. For **Actions**, choose **delete**\. When you see the confirmation message, choose **Delete**\. The instance is deleted, and the **No instances** message is displayed\.
 

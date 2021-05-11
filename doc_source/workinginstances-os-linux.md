@@ -1,4 +1,4 @@
-# Linux Operating Systems<a name="workinginstances-os-linux"></a>
+# Linux operating systems<a name="workinginstances-os-linux"></a>
 
 AWS OpsWorks Stacks supports the 64\-bit versions of the following Linux operating systems\.
 + [Amazon Linux](http://aws.amazon.com/amazon-linux-ami/faqs/) \(see the [AWS OpsWorks Stacks console](https://console.aws.amazon.com/opsworks/) for the currently supported versions\)
@@ -13,7 +13,7 @@ You can also use [custom AMIs](workinginstances-custom-ami.md) based on these op
 
 Some general notes on Linux instances:
 
-**Supported Package Versions**  
+**Supported package versions**  
 The supported versions and patch levels for packages, such as Ruby, depend on the operating system and version as described in the following sections\. 
 
 **Updates**  
@@ -21,7 +21,7 @@ By default, AWS OpsWorks Stacks ensures that Linux instances have the latest sec
 To avoid service interruptions, AWS OpsWorks Stacks does not automatically install updates after an instance is online\. You can manually update an online instance's operating system at any time by running the [Upgrade Operating System stack command](workingstacks-commands.md)\. For more information on how to manage security updates, see [Managing Security Updates](workingsecurity-updates.md)\.  
 For more control over how AWS OpsWorks Stacks updates your instances, create a custom AMI based on one of the supported operating systems\. For example, with custom AMIs you can specify which package versions are installed on an instance\. Each Linux distribution has different support timelines and package\-merge policies, so you should consider which approach best suits your requirements\. For more information, see [Using Custom AMIs](workinginstances-custom-ami.md)\.
 
-**Hosts File**  
+**Hosts file**  
 Each online instance has a `/etc/hosts` file that maps IP addresses to host names\. AWS OpsWorks Stacks includes the public and private addresses for all of the stack's online instances in each instance's `hosts` file\. For example, suppose that you have a stack with two Node\.js App Server instances, nodejs\-app1 and nodejs\-app2, and one MySQL instance, db\-master1\. The nodejs\-app1 instance's `hosts` file will look something like the following example, and the other instances' will have similar `hosts` files\.  
 
 ```
@@ -36,7 +36,7 @@ Each online instance has a `/etc/hosts` file that maps IP addresses to host name
 192.0.2.0 nodejs-app1-ext
 ```
 
-**AWS OpsWorks Stacks Agent Proxy Support**  
+**AWS OpsWorks Stacks agent proxy support**  
 The AWS OpsWorks Stacks agent for Chef 11\.10 and later stacks includes basic support for proxy servers, which are typically used with isolated VPCs\. To enable proxy server support, an instance must have an `/etc/environment` file that provides the appropriate settings for HTTP and HTTPS traffic\. The file should look similar to the following, where you replace the highlighted text with your proxy server's URL and port:  
 
 ```
@@ -67,7 +67,7 @@ To update an instance's Amazon Linux version, do one of the following:
 + For online instances, run the [**Upgrade Operating System** stack command](workingstacks-commands.md)\.
 
   When a new Amazon Linux version is available, the **Instances** and **Stack** pages display a notice with a link that takes you to the **Run Command** page\. You can then run **Upgrade Operating System** to upgrade your instance\.
-+ For offline Amazon Elastic Block Store\-backed \(EBS\-backed\) instances, start the instances and run **Upgrade Operating System**, as described in the preceding bullet item\.
++ For offline Amazon Elastic Block Store\-backed \(EBS\-backed\) instances, start the instances and run **Upgrade Operating System**, as described in the preceding statement\.
 + For offline instance store\-backed instances, including time\-based and load\-based instances, [edit the instance's **Operating system** setting](workinginstances-properties.md) to specify the new version\.
 
   AWS OpsWorks Stacks automatically updates the instances to the new version when they are restarted\.
@@ -78,13 +78,13 @@ To update an instance's Amazon Linux version, do one of the following:
 | Amazon Linux Version | Node\.js Versions | 
 | --- | --- | 
 |   <pre>2author="gabykap" timestamp="20160930T124501-0700"</pre>   |  <pre>(Not applicable to operating systems that are available for Chef 12 and higher stacks only)</pre>  | 
-|   <pre>2018author="gabykap" timestamp="20160930T124501-0700".03author="gabykap" timestamp="20160930T124501-0700"</pre>   |   <pre>0.12.18<br />0.12.17<br />0.12.16<br />0.12.15<br />0.12.14<br />0.12.13<br />0.12.12<br />0.12.10<br />0.10.40author="gabykap" timestamp="20160930T124501-0700"</pre>   | 
-|  <pre>2017.09</pre>  |    <pre>0.12.18<br />0.12.17<br />0.12.16<br />0.12.15<br />0.12.14<br />0.12.13<br />0.12.12<br />0.12.10<br />0.10.40author="gabykap" timestamp="20160930T124501-0700"</pre>    | 
-|  <pre>2017.03</pre>  |    <pre>0.12.18<br />0.12.17<br />0.12.16<br />0.12.15<br />0.12.14<br />0.12.13<br />0.12.12<br />0.12.10<br />0.10.40author="gabykap" timestamp="20160930T124501-0700"</pre>    | 
+|   <pre>2018author="gabykap" timestamp="20160930T124501-0700".03author="gabykap" timestamp="20160930T124501-0700"</pre>   |   <pre>0.12.18author="gabykap" timestamp="20160930T124501-0700"</pre>   | 
+|  <pre>2017.09</pre>  |    <pre>0.12.18author="gabykap" timestamp="20160930T124501-0700"</pre>    | 
+|  <pre>2017.03</pre>  |    <pre>0.12.18author="gabykap" timestamp="20160930T124501-0700"</pre>    | 
 |  <pre>2016.09</pre>  |  <pre>0.12.18<br />0.12.17<br />0.12.16<br />author="gabykap" timestamp="20160930T124501-0700"0.12.15</pre>  | 
-|  <pre>2016.03</pre>  |  <pre>0.12.18<br />0.12.17<br />0.12.16<br />0.12.15<br />0.12.13<br />0.12.12<br />0.12.10</pre>  | 
-|  <pre>2015.09</pre>  |  <pre>0.12.15<br />0.12.13<br />0.12.12<br />0.12.10<br />0.12.7<br />0.10.40</pre>  | 
-|  <pre>2015.03</pre>  |  <pre>0.12.15<br />0.12.13<br />0.12.12<br />0.12.10<br />0.12.7<br />0.10.40</pre>  | 
+|  <pre>2016.03</pre>  |  <pre>0.12.18<br />0.12.17<br />0.12.16<br />0.12.15<br />0.12.14<br />0.12.13<br />0.12.12<br />0.12.10</pre>  | 
+|  <pre>2015.09</pre>  |  <pre>0.12.18<br />0.12.17<br />0.12.16<br />0.12.15<br />0.12.14<br />0.12.13<br />0.12.12<br />0.12.10<br />0.12.9<br />0.12.7<br />0.10.40</pre>  | 
+|  <pre>2015.03</pre>  |  <pre>0.12.18<br />0.12.17<br />0.12.16<br />0.12.15<br />0.12.14<br />0.12.13<br />0.12.12<br />0.12.10<br />0.12.7<br />0.10.40<br />0.10.38<br />0.10.33</pre>  | 
 
 
 **Amazon Linux: Supported Chef Versions**  

@@ -52,7 +52,7 @@ You can have AWS OpsWorks Stacks launch an instance in a different Availability 
 + A custom AMI based on one of the supported operating systems\.
 
   If you select **Use custom AMI**, the operating system is determined by a custom AMI that you specify when you create instances\. For more information, see [Using Custom AMIs](workinginstances-custom-ami.md)\.
-For more information on the available operating systems, see [AWS OpsWorks Stacks Operating Systems](workinginstances-os.md)\.  
+For more information on the available operating systems, see [AWS OpsWorks Stacks operating systems](workinginstances-os.md)\.  
 You can override the default operating system when you create an instance\. However, you cannot override a Linux operating system to specify Windows, or Windows to specify a Linux operating system\.
 
 **Default SSH key**  
@@ -112,10 +112,10 @@ This setting takes its value from the region that you choose in the stack's basi
 + Asia Pacific \(Sydney\) Region
 + Asia Pacific \(Tokyo\) Region
 + Asia Pacific \(Seoul\) Region
-+ EU \(Frankfurt\) Region
-+ EU \(Ireland\) Region
-+ EU \(London\) Region
-+ EU \(Paris\) Region
++ Europe \(Frankfurt\) Region
++ Europe \(Ireland\) Region
++ Europe \(London\) Region
++ Europe \(Paris\) Region
 + South America \(São Paulo\) Region
 Stacks that are created in one API endpoint are not available in another API endpoint\. Because AWS OpsWorks Stacks users are also region\-specific, if you want AWS OpsWorks Stacks users in one of these endpoint regions to manage stacks in another endpoint region, you must import the users to the endpoint with which the stacks are associated\. For more information about importing users, see [Importing Users into AWS OpsWorks Stacks](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users-manage-import.html)\.
 

@@ -77,8 +77,8 @@ node[:passenger][:max_requests]
 
 **module\_path **  <a name="attributes-recipes-passenger-mod_path"></a>
 The module path \(string\)\. The default values are as follows:  
-+ Amazon Linux and RHEL: `"#{node['apache']['[libexecdir](attributes-recipes-apache.md#attributes-recipes-apache-libexecdir)']}/mod_passenger.so"`
-+ Ubuntu: `"#{passenger[:[root\_path](#attributes-recipes-passenger-root)]}/ext/apache2/mod_passenger.so"`
++ Amazon Linux and RHEL: `"#{node['apache']['libexecdir']}/mod_passenger.so"`
++ Ubuntu: `"#{passenger[:root\_path]}/ext/apache2/mod_passenger.so"`
 
 ```
 node[:passenger][:module_path]

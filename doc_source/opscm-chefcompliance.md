@@ -192,7 +192,7 @@ The AWS OpsWorks for Chef Automate starter kit includes a wrapper cookbook, `ops
    source 'https://supermarket.chef.io
         cookbook 'chef-client'
         cookbook 'apache2', '~> 5.0.1'
-        cookbook 'opsworks-audit', path: 'site-cookbooks/opsworks-audit', '~> 1.0.0'
+        cookbook 'opsworks-audit', path: 'cookbooks/opsworks-audit', '~> 1.0.0'
    ```
 
    All cookbooks are versioned in the cookbook's `metadata.rb` file\. Each time you change a cookbook, you must raise the version of the cookbook that is in its `metadata.rb`\.
@@ -256,7 +256,7 @@ The `ssh-hardening` cookbook makes changes to your nodes to comply with **DevSec
    source 'https://supermarket.chef.io'
         cookbook 'chef-client'
         cookbook 'apache2', '~> 5.0.1'
-        cookbook 'opsworks-audit', path: 'site-cookbooks/opsworks-audit', '~> 1.0.0' # optional
+        cookbook 'opsworks-audit', path: 'cookbooks/opsworks-audit', '~> 1.0.0' # optional
         cookbook 'ssh-hardening'
    ```
 

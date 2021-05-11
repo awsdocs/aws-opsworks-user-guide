@@ -22,8 +22,12 @@ You can connect any on\-premises computer or EC2 instance that is running a supp
 **Topics**
 + [Encryption in Chef Automate](#opscm-encrypt)
 + [Region Support for AWS OpsWorks for Chef Automate](#opscm-region)
++ [Upgrade an AWS OpsWorks for Chef Automate Server to Chef Automate 2](opscm-a2upgrade.md)
 + [Getting Started with AWS OpsWorks for Chef Automate](gettingstarted-opscm.md)
 + [Create an AWS OpsWorks for Chef Automate Server by using AWS CloudFormation](opscm-create-server-cfn.md)
++ [Update an AWS OpsWorks for Chef Automate Server to Use a Custom Domain](opscm-update-server-custom-domain.md)
++ [Regenerate the starter kit for an AWS OpsWorks for Chef Automate server](opscm-regenerate-starterkit.md)
++ [Working with Tags on AWS OpsWorks for Chef Automate Resources](opscm-tags.md)
 + [Back Up and Restore an AWS OpsWorks for Chef Automate Server](opscm-backup-restore.md)
 + [System Maintenance in AWS OpsWorks for Chef Automate](opscm-maintenance.md)
 + [Compliance Scans in AWS OpsWorks for Chef Automate](opscm-chefcompliance.md)
@@ -48,5 +52,5 @@ The following regional endpoints support AWS OpsWorks for Chef Automate servers\
 + Asia Pacific \(Tokyo\) Region
 + Asia Pacific \(Singapore\) Region
 + Asia Pacific \(Sydney\) Region
-+ EU \(Frankfurt\) Region
-+ EU \(Ireland\) Region
++ Europe \(Frankfurt\) Region
++ Europe \(Ireland\) Region

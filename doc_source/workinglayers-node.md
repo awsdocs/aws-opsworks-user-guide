@@ -10,7 +10,7 @@ The Node\.js App Server layer is an AWS OpsWorks Stacks layer that provides a bl
 The **Add Layer** page provides the following configuration options:
 
 **Node\.js version**  
-For a list of currently supported versions, see [AWS OpsWorks Stacks Operating Systems](workinginstances-os.md)\.
+For a list of currently supported versions, see [AWS OpsWorks Stacks operating systems](workinginstances-os.md)\.
 
 **Custom security groups**  
 This setting appears if you chose to not automatically associate a built\-in AWS OpsWorks Stacks security group with your layers\. You must specify which security group to associate with the layer\. For more information, see [Create a New Stack](workingstacks-creating.md)\.
@@ -21,7 +21,7 @@ You can attach an Elastic Load Balancing load balancer to the layer's instances\
 **Important**  
 If your Node\.js application uses SSL, we recommend that you disable SSLv3 if possible to address the vulnerabilities described in [CVE\-2015\-8027](http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-8027)\. To do so, you must set **Node\.js version** to `0.12.9`\.
 
-## Deploying Node\.js Apps<a name="w4ab1c11c63b7c19c19c17c15"></a>
+## Deploying Node\.js Apps<a name="w100ab1c14c63b7c19c19c17c15"></a>
 
 For a detailed walkthrough of how to implement a simple Node\.js application for AWS OpsWorks Stacks and deploy it to a stack, see [Creating Your First Node\.js Stack](gettingstarted-node.md)\. In general, Node\.js applications for AWS OpsWorks Stacks should meet the following conditions:
 + The main file must be named `server.js` and reside in the deployed application's root directory\.

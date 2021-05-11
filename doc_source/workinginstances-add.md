@@ -31,7 +31,7 @@ If you are using [load\-balanced instances](workinginstances-autoscaling-loadbas
      This ensures that when a Configure event occurs, all of the instance's CPU resources are immediately available\.
    + Make the `exceeded threshold` time significantly longer than the time required to process a Configure event, perhaps 5 minutes\.
 
-     For more information, see [Using Automatic Load\-based Scaling](workinginstances-autoscaling-loadbased.md)\.  
+     For more information, see [Using automatic load\-based scaling](workinginstances-autoscaling-loadbased.md)\.  
 **Availability Zone/Subnet**  
 If the stack is not in a VPC, this setting is labeled ** Availability Zone** and lists the region's zones\. You can use this setting to override the default Availability Zone you specified when you created the stack\.  
 If the stack is running in a VPC, this setting is labeled **Subnet** and lists the VPC's subnets\. You can use this setting to override the default subnet you specified when you created the stack\.  
@@ -41,7 +41,7 @@ Determines how the instance is started and stopped\.
    + The default value is a **24/7** instance, which you start and stop manually\.
    + AWS OpsWorks Stacks starts and stops **time\-based** instances based on a specified schedule\.
    + \(Linux only\) AWS OpsWorks Stacks starts and stops **load\-based** instances based on specified load metrics\.
-You do not start or stop load\-based or time\-based instances yourself\. Instead, you configure the instances, and AWS OpsWorks Stacks starts and stops them based on the configuration\. For more information, see [Managing Load with Time\-based and Load\-based Instances](workinginstances-autoscaling.md)\.  
+You do not start or stop load\-based or time\-based instances yourself\. Instead, you configure the instances, and AWS OpsWorks Stacks starts and stops them based on the configuration\. For more information, see [Managing load with time\-based and load\-based instances](workinginstances-autoscaling.md)\.  
 **SSH key**  
 An Amazon EC2 key pair\. AWS OpsWorks Stacks installs the public key on the instance\.  
    + For Linux instances, you can use the corresponding private key with an SSH client to [log in to the instance](workinginstances-ssh.md)\. 

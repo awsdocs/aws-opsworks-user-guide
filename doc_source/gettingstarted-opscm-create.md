@@ -19,10 +19,27 @@ You can create a Chef server by using the AWS OpsWorks for Chef Automate console
 1. On the **Set name, region, and type** page, specify a name for your server\. Chef server names can be a maximum of 40 characters, and can contain only alphanumeric characters and dashes\. Select a supported region, and then choose an instance type that supports the number of nodes that you want to manage\. You can change the instance type after your server has been created, if needed\. For this walkthrough, we are creating an **m5\.large** instance type in the US West \(Oregon\) Region\. Choose **Next**\.  
 ![\[Set name, region, and type page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opscm_setname.png)
 
-1. On the **Select an SSH key** page, leave the default selection in the **SSH key** drop\-down list, unless you want to specify a key pair name\. Choose **Next**\.  
+1. On the **Configure server** page, leave the default selection in the **SSH key** drop\-down list, unless you want to specify a key pair name\.  
 ![\[Select an SSH key page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opscm_keypair.png)
 
-1. On the **Configure Advanced Settings** page, in the **Network and Security** area, choose a VPC, subnet, and one or more security groups\. AWS OpsWorks can generate a security group, service role, and instance profile for you, if you do not already have ones that you want to use\. Your server can be a member of multiple security groups\. You cannot change network and security settings for the Chef server after you have left this page\.  
+1. For **Specify server endpoint**, leave the default, **Use an automatically\-generated endpoint** and then choose **Next**, unless you want your server on a custom domain of your own\. To configure a custom domain, go on to the next step\.  
+![\[Specify a server endpoint section\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opscm_use_auto_endpoint.png)
+
+1. To use a custom domain, for **Specify server endpoint**, choose **Use a custom domain** from the drop\-down list\.  
+![\[Use a custom domain\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opscm_use_custom_domain.png)
+
+   1. For **Fully qualified domain name \(FQDN\)**, specify an FQDN\. You must own the domain name that you want to use\.
+
+   1. For **SSL certificate**, paste in the entire PEM\-formatted certificate, beginning with `–––--BEGIN CERTIFICATE-----` and ending with `–––--END CERTIFICATE-----`\. The SSL certificate subject must match the FQDN you entered in the preceding step\.
+
+   1. For **SSL private key**, paste in the entire RSA private key, beginning with `–––--BEGIN RSA PRIVATE KEY-----` and ending with `–––--END RSA PRIVATE KEY-----`\. The SSL private key must match the public key in the SSL certificate that you entered in the preceding step\. Choose **Next**\.
+
+1. On the **Configure Advanced Settings** page, in the **Network and Security** area, choose a VPC, subnet, and one or more security groups\. The following are requirements for your VPC:
+   + The VPC must have at least one public subnet\.
+   + DNS resolution must be enabled\.
+   + **Auto\-assign public IP** must be enabled on public subnets\.
+
+   AWS OpsWorks can generate a security group, service role, and instance profile for you, if you do not already have ones that you want to use\. Your server can be a member of multiple security groups\. You cannot change network and security settings for the Chef server after you have left this page\.  
 ![\[Network and security\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opscm_networksec.png)
 
 1. In the **System maintenance** section, set the day and hour that you want system maintenance to begin\. Because you should expect the server to be offline during system maintenance, choose a time of low server demand within regular office hours\. Connected nodes enter a `pending-server` state until maintenance is complete\.
@@ -32,6 +49,8 @@ You can create a Chef server by using the AWS OpsWorks for Chef Automate console
 
 1. Configure backups\. By default, automatic backups are enabled\. Set a preferred frequency and hour for automatic backup to start, and set the number of backup generations to store in Amazon Simple Storage Service\. A maximum of 30 backups are kept; when the maximum is reached, AWS OpsWorks for Chef Automate deletes the oldest backups to make room for new ones\.  
 ![\[Automatic backups\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opscm_backupconfig.png)
+
+1. \(Optional\) In **Tags**, add tags to the server and related resources, such as the EC2 instance, Elastic IP address, security group, S3 bucket, and backups\. For more information about tagging an AWS OpsWorks for Chef Automate server, see [Working with Tags on AWS OpsWorks for Chef Automate Resources](opscm-tags.md)\.
 
 1. When you are finished configuring advanced settings, choose **Next**\.
 
@@ -160,6 +179,10 @@ If your local computer is not already running the AWS CLI, download and install 
 
      If you do not set a value for `CHEF_AUTOMATE_ADMIN_PASSWORD`, a password is generated and returned as part of the `create-server` response\. You can also download the starter kit again in the console, which regenerates this password\. The password length is a minimum of eight characters, and a maximum of 32\. The password can contain letters, numbers, and special characters \(`!/@#$%^+=_`\)\. The password must contain at least one lower case letter, one upper case letter, one number, and one special character\. 
    + An SSH key pair is optional, but can help you connect to your Chef Automate server if you need to reset the Chef Automate dashboard administrator password\. For more information about creating an SSH key pair, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide*\.
+   + To use a custom domain, add the following parameters to your command\. Otherwise, the Chef Automate server creation process automatically generates an endpoint for you\. All three parameters are required to configure a custom domain\. For information about additional requirements for using these parameters, see [CreateServer](https://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_CreateServer.html) in the AWS OpsWorks CM API Reference\.
+     + `--custom-domain` \- An optional public endpoint of a server, such as `https://aws.my-company.com`\.
+     + `--custom-certificate` \- A PEM\-formatted HTTPS certificate\. The value can be be a single, self\-signed certificate, or a certificate chain\.
+     + `--custom-private-key` \- A private key in PEM format for connecting to the server by using HTTPS\. The private key must not be encrypted; it cannot be protected by a password or passphrase\.
    + Weekly system maintenance is required\. Valid values must be specified in the following format: `DDD:HH:MM`\. The specified time is in coordinated universal time \(UTC\)\. If you do not specify a value for `--preferred-maintenance-window`, the default value is a random, one\-hour period on Tuesday, Wednesday, or Friday\.
    + Valid values for `--preferred-backup-window` must be specified in one of the following formats: `HH:MM` for daily backups, or `DDD:HH:MM` for weekly backups\. The specified time is in UTC\. The default value is a random, daily start time\. To opt out of automatic backups, add the parameter `--disable-automated-backup` instead\.
    + For `--security-group-ids`, enter one or more security group IDs, separated by a space\.
@@ -175,7 +198,49 @@ If your local computer is not already running the AWS CLI, download and install 
    aws opsworks-cm create-server --engine "ChefAutomate" --engine-model "Single" --engine-version "12" --server-name "automate-06" --instance-profile-arn "arn:aws:iam::12345678912:instance-profile/aws-opsworks-cm-ec2-role" --instance-type "m5.large" --engine-attributes '{"CHEF_AUTOMATE_PIVOTAL_KEY":"MZZE...Wobg","CHEF_AUTOMATE_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' --key-pair "amazon-test" --preferred-maintenance-window "Mon:08:00" --preferred-backup-window "Sun:02:00" --security-group-ids sg-b00000001 sg-b0000008 --service-role-arn "arn:aws:iam::12345678912:role/service-role/aws-opsworks-cm-service-role" --subnet-ids subnet-300aaa00
    ```
 
+   The following example creates a Chef Automate server that uses a custom domain\.
+
+   ```
+   aws opsworks-cm create-server --engine "ChefAutomate" --engine-model "Single" --engine-version "12" \
+       --server-name "my-custom-domain-server" \
+       --instance-profile-arn "arn:aws:iam::12345678912:instance-profile/aws-opsworks-cm-ec2-role" \
+       --instance-type "m5.large" \
+       --engine-attributes '{"CHEF_AUTOMATE_PIVOTAL_KEY":"MZZE...Wobg","CHEF_AUTOMATE_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' \
+       --custom-domain "my-chef-automate-server.my-corp.com" \
+       --custom-certificate "-----BEGIN CERTIFICATE----- EXAMPLEqEXAMPLE== -----END CERTIFICATE-----" \
+       --custom-private-key "-----BEGIN RSA PRIVATE KEY----- EXAMPLEqEXAMPLE= -----END RSA PRIVATE KEY-----" \
+       --key-pair "amazon-test" \
+       --preferred-maintenance-window "Mon:08:00" \
+       --preferred-backup-window "Sun:02:00" \
+       --security-group-ids sg-b00000001 sg-b0000008 \
+       --service-role-arn "arn:aws:iam::12345678912:role/service-role/aws-opsworks-cm-service-role" \
+       --subnet-ids subnet-300aaa00
+   ```
+
+   The following example creates a Chef Automate server that adds two tags: `Stage: Production` and `Department: Marketing`\. For more information about adding and managing tags on AWS OpsWorks for Chef Automate servers, see [Working with Tags on AWS OpsWorks for Chef Automate Resources](opscm-tags.md) in this guide\.
+
+   ```
+   aws opsworks-cm create-server --engine "ChefAutomate" --engine-model "Single" --engine-version "12" \
+       --server-name "my-test-chef-server" \
+       --instance-profile-arn "arn:aws:iam::12345678912:instance-profile/aws-opsworks-cm-ec2-role" \
+       --instance-type "m5.large" \
+       --engine-attributes '{"CHEF_AUTOMATE_PIVOTAL_KEY":"MZZE...Wobg","CHEF_AUTOMATE_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' \
+       --key-pair "amazon-test" \
+       --preferred-maintenance-window "Mon:08:00" \
+       --preferred-backup-window "Sun:02:00" \
+       --security-group-ids sg-b00000001 sg-b0000008 \
+       --service-role-arn "arn:aws:iam::12345678912:role/service-role/aws-opsworks-cm-service-role" \
+       --subnet-ids subnet-300aaa00 \
+       --tags [{\"Key\":\"Stage\",\"Value\":\"Production\"},{\"Key\":\"Department\",\"Value\":\"Marketing\"}]
+   ```
+
 1. AWS OpsWorks for Chef Automate takes about 15 minutes to create a new server\. Do not dismiss the output of the `create-server` command or close your shell session, because the output can contain important information that is not shown again\. To get passwords and the starter kit from the `create-server` results, go on to the next step\.
+
+   If you are using a custom domain with the server, in the output of the `create-server` command, copy the value of the `Endpoint` attribute\. The following is an example\.
+
+   ```
+   "Endpoint": "automate-07-exampleexample.opsworks-cm.us-east-1.amazonaws.com"
+   ```
 
 1. If you opted to have AWS OpsWorks for Chef Automate generate a key and password for you, you can extract them in usable formats from the `create-server` results by using a JSON processor such as [jq](https://stedolan.github.io/jq/)\. After you install [jq](https://stedolan.github.io/jq/), you can run the following commands to extract the pivotal key, Chef Automate dashboard administrator password, and starter kit\. If you did not provide your own pivotal key and password in Step 4, be sure to save the extracted pivotal key and administrator password in convenient but secure locations\.
 
@@ -191,5 +256,7 @@ If your local computer is not already running the AWS CLI, download and install 
    ```
 
 1. Optionally, if you did not extract the starter kit from `create-server` command results, you can download a new starter kit from the server's Properties page in the AWS OpsWorks for Chef Automate console\. Downloading a new starter kit resets the Chef Automate dashboard administrator password\.
+
+1. If you are not using a custom domain, go on to the next step\. If you are using a custom domain with the server, create a CNAME entry in your enterprise's DNS management tool to point your custom domain to the AWS OpsWorks for Chef Automate endpoint that you copied in step 7\. You cannot reach or sign in to a server with a custom domain until you complete this step\.
 
 1. When the server creation process is finished, go on to [Configure the Chef Server Using the Starter Kit](opscm-starterkit.md)\.

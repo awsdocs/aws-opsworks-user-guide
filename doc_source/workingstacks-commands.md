@@ -32,7 +32,7 @@ Installs the instances' packages\. Starting in Chef 12, this command is not avai
 Use the **Upgrade Operating System** command to upgrade instances to a new Amazon Linux version\.
 
 **Upgrade Operating System**  
-\(Linux only\) Upgrades the instances' Amazon Linux operating systems to the latest version\. For more information, see [AWS OpsWorks Stacks Operating Systems](workinginstances-os.md)\.   
+\(Linux only\) Upgrades the instances' Amazon Linux operating systems to the latest version\. For more information, see [AWS OpsWorks Stacks operating systems](workinginstances-os.md)\.   
 After running **Upgrade Operating System**, we recommend that you also run **Setup**\. This ensures that services are correctly restarted\.
 
 Stack commands have the following options, some of which appear only for certain commands\.

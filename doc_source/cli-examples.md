@@ -30,10 +30,10 @@ AWS CLI commands must specify a region, as shown in the examples\. Valid values 
 | US West \(N\. California\) Region | us\-west\-1 | 
 | US West \(Oregon\) Region | us\-west\-2 | 
 | Canada \(Central\) Region | ca\-central\-1 | 
-| EU \(Ireland\) Region | eu\-west\-1 | 
-| EU \(London\) Region | eu\-west\-2 | 
-| EU \(Paris\) Region | eu\-west\-3 | 
-| EU \(Frankfurt\) Region | eu\-central\-1 | 
+| Europe \(Ireland\) Region | eu\-west\-1 | 
+| Europe \(London\) Region | eu\-west\-2 | 
+| Europe \(Paris\) Region | eu\-west\-3 | 
+| Europe \(Frankfurt\) Region | eu\-central\-1 | 
 | Asia Pacific \(Tokyo\) Region | ap\-northeast\-1 | 
 | Asia Pacific \(Seoul\) Region | ap\-northeast\-2 | 
 | Asia Pacific \(Mumbai\) Region | ap\-south\-1 | 

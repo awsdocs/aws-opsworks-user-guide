@@ -58,9 +58,15 @@ The US East \(N\. Virginia\) regional endpoint includes older AWS regions for ba
    + **Custom JSON** \(blank\)
    + **Use OpsWorks security groups** \(**Yes**\)
 
-1. Your results should match the following screenshots except for perhaps **VPC**, **IAM role**, and **Default IAM instance profile**:  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-linux-add-stack-top-console.png)  
+1. Your results should match the following screenshots except for perhaps **VPC**, **IAM role**, and **Default IAM instance profile**:
+
+     
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-linux-add-stack-top-console.png)
+
+     
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/gs-linux-add-stack-bottom-console.png)
+
+   
 
 1. Choose **Add Stack**\. AWS OpsWorks Stacks creates the stack and displays the **MyLinuxDemoStack** page\.
 

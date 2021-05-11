@@ -4,7 +4,7 @@ All instances in a Linux stack have Ruby installed\. AWS OpsWorks Stacks install
 
 AWS OpsWorks Stacks does not install an application Ruby executable on Windows stacks\. The Chef 12\.2 client comes with Ruby 2\.0\.0 p451, but the Ruby executable is not added to the instances' PATH environment variable\. If you want to use this executable to run Ruby code, it is located at `\opscode\chef\embedded\bin\ruby.exe` on your Windows drive\.
 
-The following table summarizes AWS OpsWorks Stacks Ruby versions\. The available application Ruby versions also depend on the instance's operating system\. For more information, including the available patch versions, see [AWS OpsWorks Stacks Operating Systems](workinginstances-os.md)\.
+The following table summarizes AWS OpsWorks Stacks Ruby versions\. The available application Ruby versions also depend on the instance's operating system\. For more information, including the available patch versions, see [AWS OpsWorks Stacks operating systems](workinginstances-os.md)\.
 
 
 | Chef Version | Chef Ruby Version | Available Application Ruby Versions | 

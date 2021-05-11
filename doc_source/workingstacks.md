@@ -15,6 +15,7 @@ A common practice is to have multiple stacks that represent different environmen
 This section describes the basics of working with stacks\.
 
 **Topics**
++ [Migrating stacks from Amazon EC2\-Classic to a VPC](workingstacks-migrate-ec2-vpc.md)
 + [Create a New Stack](workingstacks-creating.md)
 + [Running a Stack in a VPC](workingstacks-vpc.md)
 + [Update a Stack](workingstacks-edit.md)

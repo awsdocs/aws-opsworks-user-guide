@@ -2,6 +2,8 @@
 
 AWS OpsWorks for Chef Automate lets you run a [Chef Automate](https://www.chef.io/automate/) server in AWS\. You can provision a Chef Automate server in about 15 minutes\.
 
+Starting May 3, 2021, AWS OpsWorks for Chef Automate stores some Chef Automate server attributes in AWS Secrets Manager\. For more information, see [Integration with AWS Secrets Manager](data-protection.md#data-protection-secrets-manager)\.
+
 The following walkthrough helps you create a server in AWS OpsWorks for Chef Automate by creating a stack in AWS CloudFormation\.
 
 **Topics**
@@ -13,6 +15,8 @@ The following walkthrough helps you create a server in AWS OpsWorks for Chef Aut
 Before you create a new Chef Automate server, create the resources outside of AWS OpsWorks for Chef Automate that you'll need to access and manage your Chef server\. For more information, see [Prerequisites](gettingstarted-opscm.md#gettingstarted-opscm-prereq) in the Getting Started section of this guide\.
 
 Review the [OpsWorks\-CM section](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opsworkscm-server.html) of the *AWS CloudFormation User Guide* Template Reference to learn about the supported and required values in the AWS CloudFormation template that you use to create your server\.
+
+If you are creating a server that uses a custom domain, you need a custom domain, certificate, and private key\. You must specify values for all three of these parameters in your AWS CloudFormation template\. For more information about requirements for the `CustomDomain`, `CustomCertificate`, and `CustomPrivateKey` parameters, see [CreateServer](https://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_CreateServer.html) in the *AWS OpsWorks CM API Reference*\.
 
 Create a password value for the `CHEF_AUTOMATE_ADMIN_PASSWORD` engine attribute\. The password length is a minimum of eight characters, and a maximum of 32\. The password can contain letters, numbers, and special characters `(!/@#$%^+=_)`\. The password must contain at least one lower case letter, one upper case letter, one number, and one special character\. You specify this password in your AWS CloudFormation template, or as the value of the `CHEF_AUTOMATE_ADMIN_PASSWORD` parameter when you are creating your stack\.
 
@@ -32,7 +36,7 @@ Generate a base64\-encoded RSA key pair before you get started creating a Chef A
 
 ## Create a Chef Automate Server in AWS CloudFormation<a name="opscm-create-server-cfn-main"></a>
 
-This section describes how to use an AWS CloudFormation template to build a stack that creates an AWS OpsWorks for Chef Automate server\. You can do this by using the AWS CloudFormation console or the AWS CLI\. An [example AWS CloudFormation template](samples/opsworkscm-server.zip) is available for you to use to build an AWS OpsWorks for Chef Automate server stack\. Be sure to update the example template with your own server name, IAM roles, instance profile, server description, backup retention count, and maintenance options\. You can specify the `CHEF_AUTOMATE_ADMIN_PASSWORD` and `CHEF_AUTOMATE_PIVOTAL_KEY` engine attributes and their values in the AWS CloudFormation template, or provide just the attributes, and then specify values for the attributes in the AWS CloudFormation **Create Stack** wizard or create\-stack command\. For more information about these attributes, see [Create a Chef Automate server in the AWS Management Console](gettingstarted-opscm-create.md#gettingstarted-opscm-create-console) in the Getting Started section of this guide\.
+This section describes how to use an AWS CloudFormation template to build a stack that creates an AWS OpsWorks for Chef Automate server\. You can do this by using the AWS CloudFormation console or the AWS CLI\. An [example AWS CloudFormation template](samples/opsworkscm-server.zip) is available for you to use to build an AWS OpsWorks for Chef Automate server stack\. Be sure to update the example template with your own server name, IAM roles, instance profile, server description, backup retention count, maintenance options, and optional tags\. If your server will use a custom domain, you must specify values for the `CustomDomain`, `CustomCertificate`, and `CustomPrivateKey` parameters in your AWS CloudFormation template\. You can specify the `CHEF_AUTOMATE_ADMIN_PASSWORD` and `CHEF_AUTOMATE_PIVOTAL_KEY` engine attributes and their values in the AWS CloudFormation template, or provide just the attributes, and then specify values for the attributes in the AWS CloudFormation **Create Stack** wizard or create\-stack command\. For more information about these attributes, see [Create a Chef Automate server in the AWS Management Console](gettingstarted-opscm-create.md#gettingstarted-opscm-create-console) in the Getting Started section of this guide\.
 
 **Topics**
 + [Create a Chef Automate Server by using AWS CloudFormation \(Console\)](#opscm-create-server-cfn-console)
@@ -63,6 +67,13 @@ This section describes how to use an AWS CloudFormation template to build a stac
    While you are waiting for AWS CloudFormation to create the stack, view the stack creation status\. If stack creation fails, review the error messages shown in the console to help you resolve the issues\. For more information about troubleshooting errors in AWS CloudFormation stacks, see [Troubleshooting Errors](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors) in the *AWS CloudFormation User Guide*\.
 
    When server creation is finished, your Chef Automate server is available on the AWS OpsWorks for Chef Automate home page, with a status of **online**\. Generate a new Starter Kit and the Chef Automate dashboard credentials from the server's Properties page\. After the server is online, the Chef Automate dashboard is available on the server's domain, at a URL in the following format: `https://your_server_name-randomID.region.opsworks-cm.io`\.
+**Note**  
+If you specified a custom domain, certificate, and private key for your server, create a CNAME entry in your enterprise's DNS management tool that maps your custom domain to the endpoint that AWS OpsWorks for Chef Automate automatically generated for the server\. You cannot manage the server or connect to the Chef Automate dashboard for the server until you map the generated endpoint to your custom domain value\.  
+To get the generated endpoint value, run the following AWS CLI command after your server is online:  
+
+   ```
+   aws opsworks describe-servers --server-name server_name
+   ```
 
 ### Create a Chef Automate Server by using AWS CloudFormation \(CLI\)<a name="opscm-create-server-cfn-cli"></a>
 
@@ -142,9 +153,11 @@ If your local computer is not already running the AWS CLI, download and install 
 
 1. When the stack creation is finished, open the Properties page for the new server in the AWS OpsWorks for Chef Automate console, and download a starter kit\. Downloading a new starter kit resets the Chef Automate dashboard administrator password\.
 
-1. Download the root certificate authority \(CA\) certificate from the following Amazon S3 bucket location: [https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2016-root.pem](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2016-root.pem)\. Save the certificate file in a secure but convenient location\. This certificate is required to configure `knife.rb` in the next step\.
+1. If your server will use a custom domain, certificate, and private key, follow steps for configuring `knife.rb` in [\(Optional\) Configure `knife` to Work with a Custom Domain](opscm-starterkit.md#opscm-starterkit-customdomain), and then go on to step 7\.
 
-1. To use `knife` commands on the new server, update Chef `knife.rb` configuration file settings\. An example `knife.rb` file is included with the starter kit\. The following example shows how to set up `knife.rb`\.
+   If you are not using a custom domain, download the root certificate authority \(CA\) certificate from the following Amazon S3 bucket location: [https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2016-root.pem](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2016-root.pem)\. Save the certificate file in a secure but convenient location\. This certificate is required to configure `knife.rb` in the next step\.
+
+1. To use `knife` commands on the new server, update Chef `knife.rb` configuration file settings\. An example `knife.rb` file is included with the starter kit\. The following example shows how to set up `knife.rb` on a server that does not use a custom domain\. If you are using a custom domain, see [\(Optional\) Configure `knife` to Work with a Custom Domain](opscm-starterkit.md#opscm-starterkit-customdomain) for `knife` configuration instructions\.
    + Replace *ENDPOINT* with the server's endpoint value\. This is part of the output of the stack creation operation\. You can get the endpoint by running the following command\.
 
      ```

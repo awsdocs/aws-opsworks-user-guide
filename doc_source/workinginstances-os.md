@@ -1,11 +1,11 @@
-# AWS OpsWorks Stacks Operating Systems<a name="workinginstances-os"></a>
+# AWS OpsWorks Stacks operating systems<a name="workinginstances-os"></a>
 
 AWS OpsWorks Stacks supports the 64\-bit versions of several built\-in operating systems, including Amazon and Ubuntu Linux distributions, and Microsoft Windows Server\. Some general notes:
 + A stack's instances can run either Linux or Windows\.
 
   A stack can have different Linux versions or distributions on different instances, but you cannot mix Linux and Windows instances\.
 + You can use [custom AMIs](workinginstances-custom-ami.md) \(Amazon Machine Images\), but they must be based on one of the AWS OpsWorks Stacks\-supported AMIs that are described in topics in this section\. While it might be possible to create or register instances with other operating systems \(such as CentOS 6\.*x*\) that have been created from custom or community\-generated AMIs, these are not officially supported\.
-  + [Linux Operating Systems](workinginstances-os-linux.md)
+  + [Linux operating systems](workinginstances-os-linux.md)
   + [Microsoft Windows Server](workinginstances-os-windows.md)
 + You can [start and stop instances manually](workinginstances-starting.md) or have AWS OpsWorks Stacks [automatically scale](workinginstances-autoscaling.md) the number of instances\.
 
@@ -14,7 +14,7 @@ AWS OpsWorks Stacks supports the 64\-bit versions of several built\-in operating
 
   This includes Amazon EC2 instances and instances running on your own hardware\. However, they must be running one of the supported Linux distributions\. You cannot register Amazon EC2 or on\-premises Windows instances\.
 
-You can use the AWS OpsWorks Stacks [https://docs.aws.amazon.com/opsworks/latest/APIReference/API_DescribeOperatingSystems.html](https://docs.aws.amazon.com/opsworks/latest/APIReference/API_DescribeOperatingSystems.html) API to return a list of supported operating systems and their supported versions of Chef\. The following is an example command, using the AWS CLI\.
+You can run the AWS OpsWorks Stacks [https://docs.aws.amazon.com/opsworks/latest/APIReference/API_DescribeOperatingSystems.html](https://docs.aws.amazon.com/opsworks/latest/APIReference/API_DescribeOperatingSystems.html) API to return a list of supported operating systems and their supported versions of Chef\. The following is an example command, using the AWS CLI\.
 
 ```
 aws opsworks describe-operating-systems
@@ -427,11 +427,6 @@ The following is an example response\.
 }
 ```
 
-```
-
-
-```
-
 **Topics**
-+ [Linux Operating Systems](workinginstances-os-linux.md)
++ [Linux operating systems](workinginstances-os-linux.md)
 + [Microsoft Windows Server](workinginstances-os-windows.md)

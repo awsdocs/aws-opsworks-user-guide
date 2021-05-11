@@ -7,9 +7,13 @@ When you attempt to connect to the dashboard webpage, certificate warnings appea
 **To install the AWS OpsWorks SSL certificate**
 + Choose the certificate that matches your system\.
   + For Linux or MacOS\-based systems, download the file with the **PEM** filename extension from the following Amazon S3 location: [https://s3\.amazonaws\.com/opsworks\-cm\-us\-east\-1\-prod\-default\-assets/misc/opsworks\-cm\-ca\-2016\-root\.pem](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2016-root.pem)\.
+**Note**  
+Additionally, download a newer PEM file from the following location: [https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2020-root.pem](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2020-root.pem)\. Because AWS OpsWorks for Chef Automate is currently renewing its root certificates, you must trust both old and new certificates\.
 
-    For more information about how to install an SSL certificate on MacOS, see [If your certificate isn’t being accepted](https://support.apple.com/kb/PH18677?locale=en_US) on the Apple Support website\.
+    For more information about how to manage SSL certificates on MacOS, see [Get information about a certificate in Keychain Access on Mac](https://support.apple.com/guide/keychain-access/get-information-about-a-certificate-kyca15178/11.0/mac/11.0) on the Apple Support website\.
   + For Windows\-based systems, download the file with the **P7B** filename extension from the following Amazon S3 location: [https://s3\.amazonaws\.com/opsworks\-cm\-us\-east\-1\-prod\-default\-assets/misc/opsworks\-cm\-ca\-2016\-root\.p7b](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2016-root.p7b)\.
+**Note**  
+Additionally, download a newer P7B file from the following location: [https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2020-root.p7b](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2020-root.p7b)\. Because AWS OpsWorks for Chef Automate is currently renewing its root certificates, you must trust both old and new certificates\.
 
     For more information about how to install an SSL certificate on Windows, see [Manage Trusted Root Certificates](https://technet.microsoft.com/en-us/library/cc754841.aspx) on Microsoft TechNet\.
 

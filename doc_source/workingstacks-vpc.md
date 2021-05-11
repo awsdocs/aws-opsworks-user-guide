@@ -105,7 +105,7 @@ If you want to extend your own network into the cloud and also directly access t
 
 ## Create a VPC for an AWS OpsWorks Stacks Stack<a name="workingstacks-vpc-create-vps"></a>
 
-This section shows how to create a VPC for an AWS OpsWorks Stacks stack by using an example [AWS CloudFormation](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) template\. You can download the template from [http://cloudformation\-templates\-us\-east\-1\.s3\.amazonaws\.com/OpsWorksinVPC\.template](http://cloudformation-templates-us-east-1.s3.amazonaws.com/OpsWorksinVPC.template)\. For more information on how to manually create a VPC like the one discussed in this topic, see [Scenario 2: VPC with Public and Private Subnets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html)\. For details on how to configure routing tables, security groups, and so on, see the example template\.
+This section shows how to create a VPC for an AWS OpsWorks Stacks stack by using an example [AWS CloudFormation](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) template\. You can download the template in the [OpsWorksVPCtemplates\.zip file](samples/OpsWorksVPCtemplates.zip)\. For more information on how to manually create a VPC like the one discussed in this topic, see [Scenario 2: VPC with Public and Private Subnets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html)\. For details on how to configure routing tables, security groups, and so on, see the example template\.
 
 **Note**  
 By default, AWS OpsWorks Stacks displays subnet names by concatenating their CIDR range and Availability Zone, such as `10.0.0.1/24 - us-east-1b`\. To make the names more readable, create a tag for each subnet with **Key** set to **Name** and **Value** set to the subnet name\. AWS OpsWorks Stacks then appends the subnet name to the default name\. For example, the private subnet in the following example has a tag with **Name** set to **Private**, which OpsWorks displays as `10.0.0.1/24 us-east - 1b - Private`\. 
@@ -116,7 +116,7 @@ You can launch a VPC template using the AWS CloudFormation console with just a f
 
 1. Open the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation/), select the **US East \(N\. Virginia\)** region, and choose **Create Stack**\.
 
-1. On the **Select Template** page, select **Specify an Amazon S3 template URL** and paste the template URL: **http://cloudformation\-templates\-us\-east\-1\.s3\.amazonaws\.com/OpsWorksinVPC\.template**\. Choose **Continue**\.  
+1. On the **Select Template** page, select **Upload a template**\. Browse for the `OpsWorksinVPC.template` file that you downloaded in the [OpsWorksVPCtemplates\.zip file](samples/OpsWorksVPCtemplates.zip)\.Choose **Continue**\.  
 ![\[CloudFormation Select Template page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/vpc_create_vpc.png)
 
    You can also launch this stack by opening [AWS CloudFormation Sample Templates](http://aws.amazon.com/cloudformation/aws-cloudformation-templates/), locating the AWS OpsWorks Stacks VPC template, and choosing **Launch Stack**\.

@@ -6,13 +6,31 @@ The minimum supported version of `chef-client` on nodes associated with an AWS O
 
 This walkthrough demonstrates how to run a `knife` command that adds, or *bootstraps*, an EC2 instance so that the Chef server can manage it\. For more information about how to bootstrap nodes automatically by using a script to perform unattended association of nodes with the Chef server, see [Adding Nodes Automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md)\.
 
-## Supported Operating Systems<a name="w4ab1b9c23c13b9"></a>
+## \(Optional\) Specify the URL of your Chef Automate Server Root CA<a name="opscm-addnodes-customdomain"></a>
+
+If your server is using a custom domain and certificate, you might need to edit the `ROOT_CA_URL` variable in the userdata script with a public URL that you can use to get the root CA PEM\-formatted certificate of your server\. The following AWS CLI commands upload your root CA to an Amazon S3 bucket, and generate a presigned URL that you can use for one hour\.
+
+1. Upload the root CA PEM\-formatted certificate to S3\.
+
+   ```
+   aws s3 cp ROOT_CA_PEM_FILE_PATH s3://bucket_name/
+   ```
+
+1. Generate a presigned URL that you can use for one hour \(3600 seconds, in this example\) to download the root CA\.
+
+   ```
+   aws s3 presign s3://bucket_name/ROOT_CA_PEM_FILE_NAME --expires-in 3600
+   ```
+
+1. Edit the variable `ROOT_CA_URL` in the userdata script with the value of the pre\-signed URL\.
+
+## Supported Operating Systems<a name="w100ab1b9c26c15c11"></a>
 
 For the current list of supported operating systems for nodes, see the [Chef website](https://docs.chef.io/platforms.html)\.
 
-## Add Nodes with Knife<a name="w4ab1b9c23c13c11"></a>
+## Add Nodes with Knife<a name="w100ab1b9c26c15c13"></a>
 
-The [https://github.com/chef/knife-ec2](https://github.com/chef/knife-ec2) plug\-in is included with the Chef DK\. If you are more familiar with `knife-ec2`, you can use it instead of `knife bootstrap` to provision and bootstrap new EC2instances\. Otherwise, launch a new EC2 instance, and then follow the steps in this section\.
+The [https://github.com/chef/knife-ec2](https://github.com/chef/knife-ec2) plug\-in is included with Chef Workstation\. If you are more familiar with `knife-ec2`, you can use it instead of `knife bootstrap` to provision and bootstrap new EC2instances\. Otherwise, launch a new EC2 instance, and then follow the steps in this section\.
 
 **To add nodes to manage**
 
@@ -33,6 +51,6 @@ The [https://github.com/chef/knife-ec2](https://github.com/chef/knife-ec2) plug\
    knife node show INSTANCE_NAME
    ```
 
-## More Info<a name="w4ab1b9c23c13c13"></a>
+## More Info<a name="w100ab1b9c26c15c15"></a>
 
 Visit the [Learn Chef tutorial site](https://learn.chef.io/tutorials/manage-a-node/opsworks) to learn more about using AWS OpsWorks for Chef Automate servers and Chef Automate premium features\.

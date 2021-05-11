@@ -24,13 +24,13 @@ If your application uses SSL, we recommend that you disable SSLv3, if possible, 
 [Ganglia Layer](workinglayers-ganglia.md)
 
 **Topics**
-+ [Step 1: Install and Configure OpenSSL](#w4ab1c11c49c27c13)
-+ [Step 2: Create a Private Key](#w4ab1c11c49c27c15)
-+ [Step 3: Create a Certificate Signing Request](#w4ab1c11c49c27c17)
-+ [Step 4: Submit the CSR to Certificate Authority](#w4ab1c11c49c27c19)
-+ [Step 5: Edit the App](#w4ab1c11c49c27c21)
++ [Step 1: Install and Configure OpenSSL](#w100ab1c14c49c27c13)
++ [Step 2: Create a Private Key](#w100ab1c14c49c27c15)
++ [Step 3: Create a Certificate Signing Request](#w100ab1c14c49c27c17)
++ [Step 4: Submit the CSR to Certificate Authority](#w100ab1c14c49c27c19)
++ [Step 5: Edit the App](#w100ab1c14c49c27c21)
 
-## Step 1: Install and Configure OpenSSL<a name="w4ab1c11c49c27c13"></a>
+## Step 1: Install and Configure OpenSSL<a name="w100ab1c14c49c27c13"></a>
 
 Creating and uploading server certificates requires a tool that supports the SSL and TLS protocols\. OpenSSL is an open\-source tool that provides the basic cryptographic functions necessary to create an RSA token and sign it with your private key\.
 
@@ -81,7 +81,7 @@ Add the OpenSSL binaries' path to your computer's path variable by opening a ter
 **Note**  
 Any changes you make to the environment variables by using these command lines are valid only for the current command\-line session\.
 
-## Step 2: Create a Private Key<a name="w4ab1c11c49c27c15"></a>
+## Step 2: Create a Private Key<a name="w100ab1c14c49c27c15"></a>
 
 You need a unique private key to create your Certificate Signing Request \(CSR\)\. Create the key by using the following command line:
 
@@ -89,7 +89,7 @@ You need a unique private key to create your Certificate Signing Request \(CSR\)
 openssl genrsa 2048 > privatekey.pem
 ```
 
-## Step 3: Create a Certificate Signing Request<a name="w4ab1c11c49c27c17"></a>
+## Step 3: Create a Certificate Signing Request<a name="w100ab1c14c49c27c17"></a>
 
 A Certificate Signing Request \(CSR\) is a file sent to a Certificate Authority \(CA\) to apply for a digital server certificate\. Create the CSR by using the following command line\.
 
@@ -126,7 +126,7 @@ The following table can help you create your certificate request\.
 **Note**  
 The Common Name field is often misunderstood and is completed incorrectly\. The common name is typically your host plus domain name\. It will look like "www\.example\.com" or "example\.com"\. You need to create a CSR using your correct common name\. 
 
-## Step 4: Submit the CSR to Certificate Authority<a name="w4ab1c11c49c27c19"></a>
+## Step 4: Submit the CSR to Certificate Authority<a name="w100ab1c14c49c27c19"></a>
 
 For production use, you would obtain a server certificate by submitting your CSR to a Certificate Authority \(CA\), which might require other credentials or proofs of identity\. If your application is successful, the CA returns digitally signed identity certificate and possibly a certificate chain file\. AWS does not recommend a specific CA\. For a partial listing of available CAs, see [Certificate Authority \- Providers](https://en.wikipedia.org/wiki/Certificate_authority#Providers) on Wikipedia\.
 
@@ -145,7 +145,7 @@ subject=/C=us/ST=washington/L=seattle/O=corporationx/OU=marketing/CN=example.com
 Getting Private key
 ```
 
-## Step 5: Edit the App<a name="w4ab1c11c49c27c21"></a>
+## Step 5: Edit the App<a name="w100ab1c14c49c27c21"></a>
 
 After you generate your certificate and sign it, update your app to enable SSL and provide your certificate information\. On the **Apps** page, choose an app to open the details page, and then click **Edit App**\. To enable SSL support, set **Enable SSL** to **Yes**, which displays the following configuration options\.
 

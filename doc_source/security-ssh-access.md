@@ -8,6 +8,8 @@ AWS OpsWorks Stacks supports SSH keys for both Linux and Windows stacks\.
 
   For more information, see [Logging In with RDP](workinginstances-rdp.md)\.
 
+
+
 Authentication is based on an SSH key pair, which consists of a public key and a private key:
 + You install the public key on the instance\.
 
