@@ -30,7 +30,7 @@ Generate a base64\-encoded RSA key pair before you get started creating a Chef A
   Then, export the RSA public key portion of the pair to a file\. The public key becomes the value of `CHEF_AUTOMATE_PIVOTAL_KEY`\.
 
   ```
-  openssl rsa -in pivotal_key_file_name.pem -out public.pem -outform PEM
+  openssl rsa -in pivotal_key_file_name.pem -pubout -out public.pem -outform PEM
   ```
 + On Windows\-based computers, you can use the PuTTYgen utility to generate a base64\-encoded RSA key pair\. For more information, see [PuTTYgen \- Key Generator for PuTTY on Windows](https://www.ssh.com/ssh/putty/windows/puttygen) on SSH\.com\.
 
