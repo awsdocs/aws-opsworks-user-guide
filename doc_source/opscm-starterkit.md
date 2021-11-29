@@ -26,7 +26,7 @@ The Starter Kit has the following contents\.
 + `README.md`, a Markdown\-based file that describes how to use the Starter Kit to set up your Chef Automate server for the first time\.
 + `.chef` is a hidden directory that contains a knife configuration file \(`knife.rb`\) and a secret authentication key file \(\.pem\)\.
   + `.chef/knife.rb` \- A knife configuration file \(`knife.rb`\)\. The [https://docs.chef.io/config_rb_knife.html](https://docs.chef.io/config_rb_knife.html) file is configured so that Chef's [https://docs.chef.io/knife.html](https://docs.chef.io/knife.html) tool operations run against the AWS OpsWorks for Chef Automate server\.
-  + `.chef/ca_certs/opsworks-cm-ca-2016-root.pem` \- A certification authority \(CA\)\-signed SSL private key that is provided by AWS OpsWorks\. This key allows the server to identify itself to the Chef Infra client agent on nodes that your server manages\.
+  + `.chef/ca_certs/opsworks-cm-ca-2020-root.pem` \- A certification authority \(CA\)\-signed SSL private key that is provided by AWS OpsWorks\. This key allows the server to identify itself to the Chef Infra client agent on nodes that your server manages\.
 
 ## Set Up Your Chef Repository<a name="w100ab1b9c26c13c15"></a>
 
@@ -164,13 +164,13 @@ Berkshelf is a tool for managing cookbooks and their dependencies\. If you prefe
    On Linux, run the following\.
 
    ```
-   SSL_CERT_FILE='.chef/ca_certs/opsworks-cm-ca-2016-root.pem' berks upload
+   SSL_CERT_FILE='.chef/ca_certs/opsworks-cm-ca-2020-root.pem' berks upload
    ```
 
    On Windows, run the following Chef Workstation command in a PowerShell session\. Before you run the command, be sure to set the execution policy in PowerShell to `RemoteSigned`\. Add `chef shell-init` to make Chef Workstation utility commands available to PowerShell\.
 
    ```
-   $env:SSL_CERT_FILE="ca_certs\opsworks-cm-ca-2016-root.pem"
+   $env:SSL_CERT_FILE="ca_certs\opsworks-cm-ca-2020-root.pem"
    chef shell-init berks upload
    Remove-Item Env:\SSL_CERT_FILE
    ```
