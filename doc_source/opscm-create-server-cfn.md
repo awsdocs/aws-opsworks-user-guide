@@ -155,7 +155,7 @@ If your local computer is not already running the AWS CLI, download and install 
 
 1. If your server will use a custom domain, certificate, and private key, follow steps for configuring `knife.rb` in [\(Optional\) Configure `knife` to Work with a Custom Domain](opscm-starterkit.md#opscm-starterkit-customdomain), and then go on to step 7\.
 
-   If you are not using a custom domain, download the root certificate authority \(CA\) certificate from the following Amazon S3 bucket location: [https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2016-root.pem](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2016-root.pem)\. Save the certificate file in a secure but convenient location\. This certificate is required to configure `knife.rb` in the next step\.
+   If you are not using a custom domain, download the root certificate authority \(CA\) certificate from the following Amazon S3 bucket location: [https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2020-root.pem](https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-ca-2020-root.pem)\. Save the certificate file in a secure but convenient location\. This certificate is required to configure `knife.rb` in the next step\.
 
 1. To use `knife` commands on the new server, update Chef `knife.rb` configuration file settings\. An example `knife.rb` file is included with the starter kit\. The following example shows how to set up `knife.rb` on a server that does not use a custom domain\. If you are using a custom domain, see [\(Optional\) Configure `knife` to Work with a Custom Domain](opscm-starterkit.md#opscm-starterkit-customdomain) for `knife` configuration instructions\.
    + Replace *ENDPOINT* with the server's endpoint value\. This is part of the output of the stack creation operation\. You can get the endpoint by running the following command\.
@@ -176,7 +176,7 @@ If your local computer is not already running the AWS CLI, download and install 
      cookbook_path            [File.join(base_dir, 'cookbooks')]
      
      chef_server_url          'ENDPOINT/organizations/default'
-     ssl_ca_file              File.join(base_dir, '.chef', 'ca_certs', 'opsworks-cm-ca-2016-root.pem')
+     ssl_ca_file              File.join(base_dir, '.chef', 'ca_certs', 'opsworks-cm-ca-2020-root.pem')
      trusted_certs_dir        File.join(base_dir, '.chef', 'ca_certs')
      ```
 
