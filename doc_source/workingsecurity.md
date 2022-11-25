@@ -26,6 +26,7 @@ Other aspects of security include the following:
 + [Managing AWS OpsWorks Stacks User Permissions](opsworks-security-users.md)
 + [Signing in as an IAM User](workingsecurity-login.md)
 + [Allowing AWS OpsWorks Stacks to Act on Your Behalf](opsworks-security-servicerole.md)
++ [Cross\-service confused deputy prevention in AWS OpsWorks Stacks](cross-service-confused-deputy-prevention-stacks.md)
 + [Specifying Permissions for Apps Running on EC2 instances](opsworks-security-appsrole.md)
 + [Managing SSH Access](security-ssh-access.md)
 + [Managing Linux Security Updates](workingsecurity-updates.md)

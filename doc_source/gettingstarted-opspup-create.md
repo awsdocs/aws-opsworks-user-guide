@@ -178,7 +178,7 @@ If your local computer is not already running the AWS CLI, download and install 
    The following is an example\.
 
    ```
-   aws opsworks-cm create-server --engine "Puppet" --engine-model "Monolithic" --engine-version "2019" --server-name "puppet-02" --instance-profile-arn "arn:aws:iam::1019881987024:instance-profile/aws-opsworks-cm-ec2-role" --instance-type "m5.xlarge" --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' --key-pair "amazon-test" --preferred-maintenance-window "Mon:08:00" --preferred-backup-window "Sun:02:00" --security-group-ids sg-b00000001 sg-b0000008 --service-role-arn "arn:aws:iam::044726508045:role/service-role/aws-opsworks-cm-service-role" --subnet-ids subnet-383daa71
+   aws opsworks-cm create-server --engine "Puppet" --engine-model "Monolithic" --engine-version "2019" --server-name "puppet-02" --instance-profile-arn "arn:aws:iam::111122223333:instance-profile/aws-opsworks-cm-ec2-role" --instance-type "m5.xlarge" --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' --key-pair "amazon-test" --preferred-maintenance-window "Mon:08:00" --preferred-backup-window "Sun:02:00" --security-group-ids sg-b00000001 sg-b0000008 --service-role-arn "arn:aws:iam::111122223333:role/service-role/aws-opsworks-cm-service-role" --subnet-ids subnet-383daa71
    ```
 
    The following example creates a Puppet master that uses a custom domain\.
@@ -189,7 +189,7 @@ If your local computer is not already running the AWS CLI, download and install 
        --engine-model "Monolithic" \
        --engine-version "2019" \
        --server-name "puppet-02" \
-       --instance-profile-arn "arn:aws:iam::1019881987024:instance-profile/aws-opsworks-cm-ec2-role" \
+       --instance-profile-arn "arn:aws:iam::111122223333:instance-profile/aws-opsworks-cm-ec2-role" \
        --instance-type "m5.xlarge" \
        --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' \
        --custom-domain "my-puppet-master.my-corp.com" \
@@ -199,7 +199,7 @@ If your local computer is not already running the AWS CLI, download and install 
        --preferred-maintenance-window "Mon:08:00" \
        --preferred-backup-window "Sun:02:00" \
        --security-group-ids sg-b00000001 sg-b0000008 \
-       --service-role-arn "arn:aws:iam::044726508045:role/service-role/aws-opsworks-cm-service-role" \
+       --service-role-arn "arn:aws:iam::111122223333:role/service-role/aws-opsworks-cm-service-role" \
        --subnet-ids subnet-383daa71
    ```
 
@@ -211,14 +211,14 @@ If your local computer is not already running the AWS CLI, download and install 
        --engine-model "Monolithic" \
        --engine-version "2019" \
        --server-name "puppet-02" \
-       --instance-profile-arn "arn:aws:iam::1019881987024:instance-profile/aws-opsworks-cm-ec2-role" \
+       --instance-profile-arn "arn:aws:iam::111122223333:instance-profile/aws-opsworks-cm-ec2-role" \
        --instance-type "m5.xlarge" \
        --engine-attributes '{"PUPPET_ADMIN_PASSWORD":"zZZzDj2DLYXSZFRv1d"}' \
        --key-pair "amazon-test" 
        --preferred-maintenance-window "Mon:08:00" \
        --preferred-backup-window "Sun:02:00" \
        --security-group-ids sg-b00000001 sg-b0000008 \
-       --service-role-arn "arn:aws:iam::044726508045:role/service-role/aws-opsworks-cm-service-role" \
+       --service-role-arn "arn:aws:iam::111122223333:role/service-role/aws-opsworks-cm-service-role" \
        --subnet-ids subnet-383daa71 \
        --tags [{\"Key\":\"Stage\",\"Value\":\"Production\"},{\"Key\":\"Department\",\"Value\":\"Marketing\"}]
    ```

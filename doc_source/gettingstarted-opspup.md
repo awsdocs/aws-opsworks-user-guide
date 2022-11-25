@@ -10,8 +10,8 @@ The following walkthrough helps you create your first Puppet master in OpsWorks 
 
 **Topics**
 + [Get an AWS account and your root user credentials](#getting-started-signup)
-+ [Install the Puppet Development Kit](#w100ab1b7c19b9c23)
-+ [Install the Puppet Enterprise Client Tools](#w100ab1b7c19b9c25)
++ [Install the Puppet Development Kit](#w2ab1b7c19b9c23)
++ [Install the Puppet Enterprise Client Tools](#w2ab1b7c19b9c25)
 + [Set Up a Git Control Repository](#configure-control-repository)
 + [Set Up a VPC](#set-up-vpc-puppet)
 + [Set Up an EC2 Key Pair \(Optional\)](#set-up-kp-puppet)
@@ -30,6 +30,8 @@ To access AWS, you must sign up for an AWS account\.
 1. Follow the online instructions\.
 
    Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
+
+   When you sign up for an AWS account, an *AWS account root user* is created\. The root user has access to all AWS services and resources in the account\. As a security best practice, [assign administrative access to an administrative user](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html), and use only the root user to perform [tasks that require root user access](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html#aws_tasks-that-require-root)\.
 
  AWS sends you a confirmation email after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and choosing **My Account**\.
 
@@ -61,7 +63,7 @@ The only time that you can view or download the secret access key is when you cr
 + [What is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) in the *IAM User Guide*
 + [AWS security credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) in *AWS General Reference* 
 
-### Install the Puppet Development Kit<a name="w100ab1b7c19b9c23"></a>
+### Install the Puppet Development Kit<a name="w2ab1b7c19b9c23"></a>
 
 1. From the Puppet website, [download the Puppet Development Kit](https://puppet.com/download-puppet-development-kit) that matches your local computer's operating system\.
 
@@ -79,7 +81,7 @@ The only time that you can view or download the secret access key is when you cr
      [Environment]::SetEnvironmentVariable("Path","new path value","Machine")
      ```
 
-### Install the Puppet Enterprise Client Tools<a name="w100ab1b7c19b9c25"></a>
+### Install the Puppet Enterprise Client Tools<a name="w2ab1b7c19b9c25"></a>
 
 Puppet Enterprise \(PE\) client tools are a set of command\-line tools that let you access Puppet Enterprise services from your workstation\. The tools can be installed on many different operating systems, and they can also be installed on nodes that you are managing by using Puppet\. For information about supported operating systems for the tools, and how to install them, see [Installing PE client tools](https://puppet.com/docs/pe/2019.8/installing_pe_client_tools.html) in the Puppet Enterprise documentation\.
 
@@ -114,7 +116,7 @@ Before you can launch a Puppet master, you must have a control repository config
             └── webserver.pp
 ```
 
-#### Setting up a repository by using CodeCommit<a name="w100ab1b7c19b9c27b7"></a>
+#### Setting up a repository by using CodeCommit<a name="w2ab1b7c19b9c27b7"></a>
 
 You can create a new repository by using CodeCommit\. For more information about how to use CodeCommit to create your control repository, see [Optional: Use AWS CodeCommit as a Puppet r10k Remote Control Repository](opspup-puppet-codecommit.md) in this guide\. For more information about how to get started with Git on CodeCommit, see [Getting started with AWS CodeCommit](http://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html)\. To authorize your OpsWorks for Puppet Enterprise server for your repository, attach the `AWSCodeCommitReadOnly` policy to your IAM instance profile role\.
 

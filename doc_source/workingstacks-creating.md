@@ -92,12 +92,11 @@ Determines the type of storage to be used for the instance's root volume\. For m
 + Windows stacks must use an Amazon EBS\-backed root volume\. 
 
 IAM role  
-\(Optional\) The stack's AWS Identity and Access Management \(IAM\) role, which AWS OpsWorks Stacks uses to interact with AWS on your behalf\. You should use a role that was created by AWS OpsWorks Stacks to ensure that it has all the required permissions\. If you don't have an existing AWS OpsWorks Stacks role, select **New IAM Role** to have AWS OpsWorks Stacks create a new IAM role for you\. For more information, see [Allowing AWS OpsWorks Stacks to Act on Your Behalf](opsworks-security-servicerole.md)\.
+\(Optional\) The stack's AWS Identity and Access Management \(IAM\) role, which AWS OpsWorks Stacks uses to interact with AWS on your behalf\.
 
 Default IAM instance profile  
 \(Optional\) The default [IAM role](http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html) to be associated with the stack's Amazon EC2 instances\. This role grants permissions to applications running on the stack's instances to access AWS resources such as S3 buckets\.   
 + To grant specific permissions to applications, choose an existing instance profile \(role\) that has the appropriate policies\.
-+ Otherwise, select **New IAM Instance Profile** to have AWS OpsWorks Stacks create a new instance profile for you\.
 + Initially, the profile's role grants no permissions, but you can use the IAM console, API, or CLI to attach appropriate policies\. For more information, see [Specifying Permissions for Apps Running on EC2 instances](opsworks-security-appsrole.md)\.
 
 API endpoint region  

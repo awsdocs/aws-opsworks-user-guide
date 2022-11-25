@@ -68,7 +68,7 @@ C:\>aws opsworks create-instance --region us-west-1 --stack-id c5ef46ce-3ccd-472
 
 The arguments are as follows:
 + `stack-id` – You can get the stack ID from the stack's settings page on the console \(look for **OpsWorks ID**\) or by calling [describe\-stacks](http://docs.aws.amazon.com/cli/latest/reference/opsworks/describe-stacks.html)\.
-+ `layer-ids` – You can get layer IDs from the layer's details page on the console \(look for **OpsWorks ID**\) or by calling [describe\-layers](http://docs.aws.amazon.com/cli/latest/reference/opsworks/describe-layers.html)\. In this example, the instance belongs to only one layer\.\.
++ `layer-ids` – You can get layer IDs from the layer's details page on the console \(look for **OpsWorks ID**\) or by calling [describe\-layers](http://docs.aws.amazon.com/cli/latest/reference/opsworks/describe-layers.html)\. In this example, the instance belongs to only one layer\.
 + `instance-type` – The value defines the instance's memory, CPU, storage capacity, and hourly cost, and must be compatible with the AMI \(`c3.large` for this example\)\.
 + `os` – The instance's operating system, which must be set to `Custom` for a custom AMI\.
 + `ami-id` – The AMI ID, which should look something like `ami-6c61f104`

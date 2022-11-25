@@ -10,12 +10,12 @@ System maintenance launches a new instance from a backup that is performed as pa
 System maintenance deletes any files or custom configuration that you have added to the AWS OpsWorks for Chef Automate server\. For more information about how to repair configuration or file loss, see [Restoring custom configurations and files after maintenance](#opscm-maintenance-restore) in this topic\.
 
 **Topics**
-+ [Ensuring nodes trust the AWS OpsWorks Certification Authority](#w100ab1b9c38c13)
-+ [Configuring system maintenance](#w100ab1b9c38c15)
++ [Ensuring nodes trust the AWS OpsWorks Certification Authority](#w2ab1b9c38c13)
++ [Configuring system maintenance](#w2ab1b9c38c15)
 + [Starting system maintenance on demand](#opscm-maintenance-startdemand)
 + [Restoring custom configurations and files after maintenance](#opscm-maintenance-restore)
 
-## Ensuring nodes trust the AWS OpsWorks Certification Authority<a name="w100ab1b9c38c13"></a>
+## Ensuring nodes trust the AWS OpsWorks Certification Authority<a name="w2ab1b9c38c13"></a>
 
 **Note**  
 Steps in this section are not required if you are using a custom domain and certificate with your AWS OpsWorks for Chef Automate server\.
@@ -35,7 +35,7 @@ In both paths, the region variable resolves to one of the following\.
 + `eu-central-1`
 + `eu-west-1`
 
-## Configuring system maintenance<a name="w100ab1b9c38c15"></a>
+## Configuring system maintenance<a name="w2ab1b9c38c15"></a>
 
 When you create a new AWS OpsWorks for Chef Automate server, you can configure a weekday and time, in [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) \(UTC\), for system maintenance to start\. Maintenance starts during the hour that you specify\. Because you should expect the server to be offline during system maintenance, choose a time of low server demand within regular office hours\. The server status is `UNDER_MAINTENANCE` while maintenance is in progress\.
 
@@ -45,7 +45,7 @@ You can also change the system maintenance settings on an existing AWS OpsWorks 
 
 In the **System maintenance** section, set the day and hour that you want system maintenance to begin\.
 
-### Configuring system maintenance by using the AWS CLI<a name="w100ab1b9c38c15c10"></a>
+### Configuring system maintenance by using the AWS CLI<a name="w2ab1b9c38c15c10"></a>
 
 You can also configure the system maintenance automatic start time by using the AWS CLI\. The AWS CLI lets you configure daily automatic maintenance, if desired, by omitting the three\-character weekday prefix\.
 

@@ -2,16 +2,13 @@
 
 If the applications running on your stack's Amazon EC2 instances need to access other AWS resources, such as Amazon S3 buckets, they must have appropriate permissions\. To confer those permissions, you use an instance profile\. You can specify an instance profile for each instance when you [create an AWS OpsWorks Stacks stack](workingstacks-creating.md)\. 
 
-![\[Advanced option in Add Stack page.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/add-stack-defaultiaminstanceproflie.png)
+![\[Advanced option in Add Stack page.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/add-stack-instanceproflie.png)
 
 You can also specify a profile for a layer's instances by [editing the layer configuration](workinglayers-basics-edit.md)\.
 
 The instance profile specifies an IAM role\. Applications running on the instance can assume that role to access AWS resources, subject to the permissions that are granted by the role's policy\. For more information about how an application assumes a role, see [Assuming the Role Using an API Call](http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-assume-role.html)\.
 
 You can create an instance profile in any of the following ways:
-+ Have AWS OpsWorks Stacks create a new profile when you create a stack\.
-
-  The profile will be named something like `aws-opsworks-ec2-role` and will have a trust relationship but no policy\. 
 + Use the IAM console or API to create a profile\.
 
   For more information, see [Roles \(Delegation and Federation\)](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html)\.
@@ -19,11 +16,11 @@ You can create an instance profile in any of the following ways:
 
   For some examples of how to include IAM resources in a template, see [Identity and Access Management \(IAM\) Template Snippets](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-iam.html)\.
 
-An instance profile must have a trust relationship and an attached policy that grants permissions to access AWS resources\. Instance profiles created by AWS OpsWorks Stacks have the following trust relationship\.
+An instance profile must have a trust relationship and an attached policy that grants permissions to access AWS resources\.
 
 ```
 {
-  "Version": "2008-10-17",
+  "Version": "2012-10-17",
   "Statement": [
     {
       "Sid": "",
@@ -64,14 +61,14 @@ The instance profile must have this trust relationship for AWS OpsWorks Stacks t
               "Path": "/",
               "Roles": [ {
                  "Ref": "OpsWorksEC2Role"
-              } ]
-           }
+              }
+           ]
         }
      }
   }
   ```
 
-If you create your own instance profile, you can attach an appropriate policy to the profile's role at that time\. If you have AWS OpsWorks Stacks create an instance profile for you when you create the stack, it does not have an attached policy and grants no permissions\. After you have created the stack, you must use the [IAM console](https://console.aws.amazon.com/iam/) or API to attach an appropriate policy to the profile's role\. For example, the following policy grants full access to any Amazon S3 bucket\.
+When you create your instance profile, you can attach an appropriate policy to the profile's role at that time\. After you have created the stack, you must use the [IAM console](https://console.aws.amazon.com/iam/) or API to attach an appropriate policy to the profile's role\. For example, the following policy grants full access to all objects in the Amazon S3 bucket named *DOC\-EXAMPLE\-BUCKET*\. Replace *region* and *DOC\-EXAMPLE\-BUCKET* with values appropriate to your configuration\.
 
 ```
 {
@@ -79,8 +76,8 @@ If you create your own instance profile, you can attach an appropriate policy to
   "Statement": [ {
     "Effect": "Allow",
     "Action": "s3:*",
-    "Resource": "*"
-  }
+    "Resource": "arn:aws:s3:region::DOC-EXAMPLE-BUCKET/*"
+    }
   ] 
 }
 ```
@@ -94,12 +91,23 @@ The following is an example of an IAM policy that allows you to call any AWS Ops
 ```
 {
   "Version": "2012-10-17",
-  "Statement": [ {
-    "Effect": "Allow",
-    "Action": [ "ec2:*", "s3:*", "opsworks:*", "iam:PassRole"],
-    "Resource": "*"
-  }
-  ] 
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:*",
+        "s3:*",
+        "opsworks:*",
+        "iam:PassRole"
+      ],
+      "Resource": "arn:aws:ec2:region:account_id:instance/*",
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "opsworks.amazonaws.com"
+        }
+      }
+    }
+  ]
 }
 ```
 

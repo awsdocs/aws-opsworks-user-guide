@@ -36,7 +36,7 @@ You can import AWS OpsWorks Stacks users from one region to the region to which 
 
 1. Select one or more users to import, or select all users, and then choose **Import to this region**\. Wait for AWS OpsWorks Stacks to display the imported users in the **Users** list\.
 
-## Unix IDs and Users Created Outside AWS OpsWorks Stacks<a name="w100ab1c14c59c13c33c15c15"></a>
+## Unix IDs and Users Created Outside AWS OpsWorks Stacks<a name="w2ab1c14c59c13c33c15c15"></a>
 
 AWS OpsWorks assigns users on AWS OpsWorks Stacks instances Unix ID \(UID\) values between 2000 and 4000\. Because AWS OpsWorks reserves the 2000\-4000 range of UIDs, users that you create outside of AWS OpsWorks \(by using cookbook recipes, or by importing users into AWS OpsWorks from IAM, for example\) can have UIDs that are overwritten by AWS OpsWorks Stacks for another user\. This can result in users that you have created outside of AWS OpsWorks Stacks not showing up in data bag search results, or being excluded from the AWS OpsWorks Stacks built\-in `sync_remote_users` operation\.
 

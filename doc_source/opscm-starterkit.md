@@ -16,7 +16,7 @@ In addition to the credentials that work only with the new server, the Starter K
 
 1. Download and install [Chef Workstation](https://downloads.chef.io/products/workstation) \(formerly known as the Chef Development Kit, or Chef DK\) on the computer you will use to manage your Chef server and nodes\. The [https://docs.chef.io/knife.html](https://docs.chef.io/knife.html) utility is part of Chef Workstation\. For instructions, see [Install Chef Workstation](https://docs.chef.io/workstation/install_workstation/) on the Chef website\.
 
-## Explore the Starter Kit Contents<a name="w100ab1b9c26c13c13"></a>
+## Explore the Starter Kit Contents<a name="w2ab1b9c26c13c13"></a>
 
 The Starter Kit has the following contents\.
 + `cookbooks/` \- A directory for cookbooks that you create\. The `cookbooks/` folder contains the `opsworks-webserver` cookbook, a wrapper cookbook that depends on the `nginx` cookbook from the [Chef Supermarket](https://supermarket.chef.io/cookbooks/nginx) website\. `Policyfile.rb` defaults to Chef supermarket as a secondary source if cookbook dependencies are not available in the `cookbooks/` directory\.
@@ -28,7 +28,7 @@ The Starter Kit has the following contents\.
   + `.chef/knife.rb` \- A knife configuration file \(`knife.rb`\)\. The [https://docs.chef.io/config_rb_knife.html](https://docs.chef.io/config_rb_knife.html) file is configured so that Chef's [https://docs.chef.io/knife.html](https://docs.chef.io/knife.html) tool operations run against the AWS OpsWorks for Chef Automate server\.
   + `.chef/ca_certs/opsworks-cm-ca-2020-root.pem` \- A certification authority \(CA\)\-signed SSL private key that is provided by AWS OpsWorks\. This key allows the server to identify itself to the Chef Infra client agent on nodes that your server manages\.
 
-## Set Up Your Chef Repository<a name="w100ab1b9c26c13c15"></a>
+## Set Up Your Chef Repository<a name="w2ab1b9c26c13c15"></a>
 
 A Chef repository contains several directories\. Each directory in the Starter Kit contains a README file that describes the directory's purpose, and how to use it for managing your systems with Chef\. There are two ways to get cookbooks installed on your Chef server: running `knife` commands, or running a Chef command to upload a policy file \(`Policyfile.rb`\) to your server that downloads and installs specified cookbooks\. This walkthrough uses Chef commands and `Policyfile.rb` to install cookbooks on your server\.
 

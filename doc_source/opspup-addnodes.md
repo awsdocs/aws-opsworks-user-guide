@@ -1,10 +1,10 @@
 # Add Nodes for the Puppet Master to Manage<a name="opspup-addnodes"></a>
 
 **Topics**
-+ [Supported Operating Systems](#w100ab1b7c19c15c13)
-+ [Run `associateNode()` API calls](#w100ab1b7c19c15c15)
-+ [Considerations for Adding On\-premises Nodes](#w100ab1b7c19c15c17)
-+ [More Information](#w100ab1b7c19c15c19)
++ [Supported Operating Systems](#w2ab1b7c19c15c13)
++ [Run `associateNode()` API calls](#w2ab1b7c19c15c15)
++ [Considerations for Adding On\-premises Nodes](#w2ab1b7c19c15c17)
++ [More Information](#w2ab1b7c19c15c19)
 
 The recommended way to add nodes is by using the AWS OpsWorks `associateNode()` API\. The Puppet Enterprise master server hosts a repository that you use to install the Puppet agent software on nodes that you want to manage, whether nodes are on\-premises physical computers or virtual machines\. Puppet agent software for some operating systems is installed on the OpsWorks for Puppet Enterprise server as part of the launch process\. The following table shows the operating system agents that are available on your OpsWorks for Puppet Enterprise server at launch\.
 
@@ -21,11 +21,11 @@ You can add `puppet-agent` to your server for other operating systems\. Be aware
 
 For information about how to associate nodes with your Puppet master automatically by populating EC2 instance user data, see [Adding Nodes Automatically in OpsWorks for Puppet Enterprise](opspup-unattend-assoc.md)\.
 
-## Supported Operating Systems<a name="w100ab1b7c19c15c13"></a>
+## Supported Operating Systems<a name="w2ab1b7c19c15c13"></a>
 
 For the current list of supported operating systems for nodes, see the [Puppet agent platforms](https://docs.puppet.com/pe/latest/sys_req_os.html#puppet-agent-platforms) in the Puppet Enterprise documentation\.
 
-## Run `associateNode()` API calls<a name="w100ab1b7c19c15c15"></a>
+## Run `associateNode()` API calls<a name="w2ab1b7c19c15c15"></a>
 
 After you add nodes by installing `puppet-agent`, nodes send certificate signing requests \(CSRs\) to the OpsWorks for Puppet Enterprise server\. You can view the CSRs in the Puppet console; for more information about node CSRs, see [Managing certificate signing requests](https://puppet.com/docs/pe/2019.8/adding_and_removing_nodes.html#managing_CSRs) in the Puppet Enterprise documentation\. Running the OpsWorks for Puppet Enterprise `associateNode()` API call processes node CSRs, and associates the node with your server\. The following is an example of how to use this API call in the AWS CLI to associate a single node\. You will need the PEM\-formatted CSR that the node sends; you can get this from the Puppet console\.
 
@@ -35,7 +35,7 @@ aws opsworks-cm associate-node --server-name "test-puppet-server" --node-name "n
 
 For more information about how to add nodes automatically by using `associateNode()`, see [Adding Nodes Automatically in OpsWorks for Puppet Enterprise](opspup-unattend-assoc.md)\.
 
-## Considerations for Adding On\-premises Nodes<a name="w100ab1b7c19c15c17"></a>
+## Considerations for Adding On\-premises Nodes<a name="w2ab1b7c19c15c17"></a>
 
 After you have installed `puppet-agent` on your on\-premises computers or virtual machines, you can use either of two ways to associate on\-premises nodes with your OpsWorks for Puppet Enterprise master\.
 + If a node supports installation of the [AWS SDK](https://aws.amazon.com/tools/), [AWS CLI](https://aws.amazon.com/cli/), or [AWS Tools for PowerShell](https://aws.amazon.com/powershell/), you can use the recommended method for associating a node, which is to run an `associateNode()` API call\. The starter kit that you download when you first create an OpsWorks for Puppet Enterprise master shows how to assign roles to nodes by using tags\. You can apply tags at the same time that you are associating nodes with the Puppet master by specifying trusted facts in the CSR\. For example, the demo control repository that is included with the starter kit is configured to use the tag `pp_role` to assign roles to Amazon EC2 instances\. For more information about how to add tags to a CSR as trusted facts, see [Extension requests \(permanent certificate data\)](https://puppet.com/docs/puppet/5.1/ssl_attributes_extensions.html#extension-requests-permanent-certificate-data)) in the Puppet platform documentation\.
@@ -56,6 +56,6 @@ Enabling the Puppet master to accept self\-signed CSRs or all CSRs is not recomm
 
 1. Save your changes\. Your changes are applied during the next Puppet run\. You can allow 30 minutes for changes to take effect \(and on\-premises nodes to be added\), or you can initiate a Puppet run manually in the **Run** section of the PE console\.
 
-## More Information<a name="w100ab1b7c19c15c19"></a>
+## More Information<a name="w2ab1b7c19c15c19"></a>
 
 Visit the [Learn Puppet tutorial site](https://learn.puppet.com/) to learn more about using OpsWorks for Puppet Enterprise servers and Puppet Enterprise console features\.

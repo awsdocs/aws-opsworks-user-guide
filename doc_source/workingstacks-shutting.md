@@ -29,7 +29,7 @@ If you no longer need a stack, you can delete it\. Only empty stacks can be dele
 1. On the stack page, choose **Delete stack**\. On the confirmation prompt, choose **Yes, Delete**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/delete_stack.png)
 
-## Deleting Other AWS Resources Used by a Stack<a name="w100ab1c14c43c31b7"></a>
+## Deleting Other AWS Resources Used by a Stack<a name="w2ab1c14c43c31b7"></a>
 
 You use other AWS resources with AWS OpsWorks Stacks to create and manage your stacks\. As you delete a stack, consider also deleting resources that worked with with the stack, if another stack is not using them, and resources outside AWS OpsWorks Stacks are not using them\. The following are suggested reasons for cleaning up external AWS resources that you used with a stack\.
 + External AWS resources can continue to accrue charges on your AWS account\.

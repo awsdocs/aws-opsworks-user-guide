@@ -53,12 +53,14 @@ One option is to include the application in your AMI and also [create an app](wo
 
 ## Creating a Custom AMI for AWS OpsWorks Stacks<a name="workinginstances-custom-ami-create"></a>
 
-To use a custom AMI with AWS OpsWorks Stacks, you must first create an AMI from a customized instance\. You can choose from two basic approaches:
+To use a custom AMI with AWS OpsWorks Stacks, you must first create an AMI from a customized instance\. You can choose from two options:
 + Use the Amazon EC2 console or API to create and customize an instance, based on a 64\-bit version of one of the [AWS OpsWorks Stacks\-supported AMIs](workinginstances-os.md)\.
 + For Linux AMIs, use OpsWorks to create an Amazon EC2 instance, based on the configuration of its associated layers\.
 
+Before you create a custom Linux AMI, disable `noexec` on the `/tmp` partition to allow AWS OpsWorks Stacks to install its agent on custom Linux instances\.
+
 **Note**  
-Be aware that an AMI might not work with all instance types, so make sure that your starting AMI is compatible with the instance types that you plan to use\. In particular, the [R3](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/r3-instances.html) instance types require a hardware\-assisted virtualization \(HVM\) AMI\. 
+Be aware that an AMI might not work with all instance types, so make sure that your starting AMI is compatible with the instance types that you plan to use\. In particular, the [R3](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/r3-instances.html) instance types require a hardware\-assisted virtualization \(HVM\) AMI\.
 
 You then use the Amazon EC2 console or API to create a custom AMI from the customized instance\. You can use your custom AMIs in any stack that is in the same region by adding an instance to a layer and specifying your custom AMI\. For more information on how to create an instance that uses a custom AMI, see [Adding an Instance to a Layer](workinginstances-add.md)\.
 
@@ -68,7 +70,7 @@ By default, AWS OpsWorks Stacks installs all Amazon Linux updates on boot, which
 **Topics**
 + [Create a Custom AMI using Amazon EC2](#workinginstances-custom-ami-create-ec2)
 + [Create a Custom Linux AMI from an AWS OpsWorks Stacks Instance](#workinginstances-custom-ami-create-opsworks)
-+ [Create a Custom Windows AMI](#w100ab1c14c47c13c11c19c18)
++ [Create a Custom Windows AMI](#w2ab1c14c47c13c11c19c20)
 
 ### Create a Custom AMI using Amazon EC2<a name="workinginstances-custom-ami-create-ec2"></a>
 
@@ -84,7 +86,7 @@ The simplest way to create a custom AMI—and the only option for Windows AMIs�
 
 ### Create a Custom Linux AMI from an AWS OpsWorks Stacks Instance<a name="workinginstances-custom-ami-create-opsworks"></a>
 
-If you want to use a customized AWS OpsWorks Stacks Linux instance to create an AMI, you should be aware that every Amazon EC2 instance created by OpsWorks includes a unique identity\. If you create a custom AMI from such an instance, it will include that identity and all instances based on the AMI will have the same identity\. To ensure that the instances based on your custom AMI have a unique identity, you must remove the identity from the customized instance before creating the AMI\.
+To use a customized AWS OpsWorks Stacks Linux instance to create an AMI, be aware that every Amazon EC2 instance created by OpsWorks includes a unique identity\. If you create a custom AMI from such an instance, it includes that identity, and all instances based on the AMI have the same identity\. To ensure that the instances based on your custom AMI have a unique identity, you must remove the identity from the customized instance before creating the AMI\.
 
 **To create a custom AMI from an AWS OpsWorks Stacks instance**
 
@@ -160,7 +162,7 @@ For instances in a Chef 12 stack, add the following two folders to this command:
 
 1. Clean up your stack by returning to the AWS OpsWorks Stacks console and [deleting the instance](workinginstances-delete.md) from the stack\.
 
-### Create a Custom Windows AMI<a name="w100ab1c14c47c13c11c19c18"></a>
+### Create a Custom Windows AMI<a name="w2ab1c14c47c13c11c19c20"></a>
 
 The following procedures create custom AMIs for Windows Server 2012 R2\. You can choose other Windows Server operating systems in the Amazon EC2 management console; the oldest available release of Windows Server is Windows Server 2003 R2\.
 
@@ -168,11 +170,11 @@ The following procedures create custom AMIs for Windows Server 2012 R2\. You can
 Currently, the AWS OpsWorks Stacks agent cannot be installed on—and AWS OpsWorks Stacks cannot manage—Windows\-based instances that use a system UI language other than **English \- United States** \(en\-US\)\.
 
 **Topics**
-+ [Creating a Custom Windows AMI with `Sysprep`](#w100ab1c14c47c13c11c19c18b9)
-+ [Creating a Custom Windows AMI Without `Sysprep`](#w100ab1c14c47c13c11c19c18c11)
-+ [Adding a New Instance by Using a Custom Windows AMI](#w100ab1c14c47c13c11c19c18c13)
++ [Creating a Custom Windows AMI with `Sysprep`](#w2ab1c14c47c13c11c19c20b9)
++ [Creating a Custom Windows AMI Without `Sysprep`](#w2ab1c14c47c13c11c19c20c11)
++ [Adding a New Instance by Using a Custom Windows AMI](#w2ab1c14c47c13c11c19c20c13)
 
-#### Creating a Custom Windows AMI with `Sysprep`<a name="w100ab1c14c47c13c11c19c18b9"></a>
+#### Creating a Custom Windows AMI with `Sysprep`<a name="w2ab1c14c47c13c11c19c20b9"></a>
 
 Creating custom Windows AMIs by using Sysprep typically results in a slower instance launch, but a cleaner process\. The first\-time startup of an instance created from an image created with `Sysprep` takes more time because of `Sysprep` activities, restarts, AWS OpsWorks Stacks provisioning, and the first AWS OpsWorks Stacks run, including setup and configuration\. Complete the steps for creating a custom Windows AMI in the Amazon EC2 console\.
 
@@ -200,7 +202,7 @@ Creating custom Windows AMIs by using Sysprep typically results in a slower inst
 
 1. Open the **Images** page, and wait for your image to change from the **pending** stage to **available**\. Your new AMI is ready to use\.
 
-#### Creating a Custom Windows AMI Without `Sysprep`<a name="w100ab1c14c47c13c11c19c18c11"></a>
+#### Creating a Custom Windows AMI Without `Sysprep`<a name="w2ab1c14c47c13c11c19c20c11"></a>
 
 Complete the steps for creating a custom Windows AMI in the Amazon EC2 console\.
 
@@ -228,7 +230,7 @@ Complete the steps for creating a custom Windows AMI in the Amazon EC2 console\.
 
 1. Open the **Images** page, and wait for your image to change from the **pending** stage to **available**\. Your new AMI is ready to use\.
 
-#### Adding a New Instance by Using a Custom Windows AMI<a name="w100ab1c14c47c13c11c19c18c13"></a>
+#### Adding a New Instance by Using a Custom Windows AMI<a name="w2ab1c14c47c13c11c19c20c13"></a>
 
 After your image changes to the **available** state, you can create new instances that are based on your custom Windows AMI\. When you choose **Use custom Windows AMI** from the **Operating system** list, AWS OpsWorks Stacks displays a list of custom AMIs\.
 

@@ -16,7 +16,6 @@ You can connect any on\-premises computer or EC2 instance that is running a supp
 + [Getting Started with OpsWorks for Puppet Enterprise](gettingstarted-opspup.md)
 + [Create an AWS OpsWorks for Puppet Enterprise Master by using AWS CloudFormation](opspup-create-server-cfn.md)
 + [Update an OpsWorks for Puppet Enterprise Server to Use a Custom Domain](opspup-update-server-custom-domain.md)
-+ [Regenerate the starter kit for an AWS OpsWorks for Puppet Enterprise server](opspup-regenerate-starterkit.md)
 + [Working with Tags on AWS OpsWorks for Puppet Enterprise Resources](opspup-tags.md)
 + [Back Up and Restore an OpsWorks for Puppet Enterprise Server](opspup-backup-restore.md)
 + [System Maintenance in OpsWorks for Puppet Enterprise](opspup-maintenance.md)

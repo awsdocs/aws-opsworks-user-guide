@@ -44,7 +44,7 @@ Record the password for later use; AWS OpsWorks Stacks does not allow you to vie
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/haproxy_update_password.png)
 
-## How the HAProxy Layer Works<a name="w100ab1c14c63b7c19c11c19"></a>
+## How the HAProxy Layer Works<a name="w2ab1c14c63b7c19c11c19"></a>
 
 By default, HAProxy does the following:
 + Listens for requests on the HTTP and HTTPS ports\.
@@ -82,7 +82,7 @@ When application server instances come on line or go off line—either manually 
 
 Finally, you can also use a custom domain with the HAProxy layer\. For more information, see [Using Custom Domains](workingapps-domains.md)\. 
 
-## Statistics Page<a name="w100ab1c14c63b7c19c11c21"></a>
+## Statistics Page<a name="w2ab1c14c63b7c19c11c21"></a>
 
 If you have enabled the statistics page, the HAProxy displays a page containing a variety of metrics at the specified URL\.
 
@@ -92,7 +92,7 @@ If you have enabled the statistics page, the HAProxy displays a page containing 
 
 1. On the **Layers** page, click **HAProxy** to open the layer's details page\.
 
-1. Obtain the the statistics URL from the layer details and append it to the Public DNS name\. For example: **http://ec2\-54\-245\-102\-172\.us\-west\-2\.compute\.amazonaws\.com/haproxy?stats**\. to it\.
+1. Obtain the statistics URL from the layer details and append it to the Public DNS name\. For example: **http://ec2\-54\-245\-102\-172\.us\-west\-2\.compute\.amazonaws\.com/haproxy?stats**\. to it\.
 
 1. Paste the URL from the previous step into your browser and use the user name and password that you specified when you created the layer to open the statistics page\.   
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/haproxy_stats.png)

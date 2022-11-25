@@ -38,7 +38,7 @@ aws cloudformation --region region ID create-stack --stack-name myPuppetinstance
 
 ## Step 2: Create Instances by Using an Unattended Association Script<a name="opspup-unattend-script"></a>
 
-To create EC2 instances, you can copy the user data script that is included in the [Starter Kit](opspup-starterkit.md) to the `userdata` section of EC2 instance instructions, Amazon EC2 Auto Scaling group launch configurations, or an AWS CloudFormation template\. The script is supported only for EC2 instances running Ubuntu and Amazon Linux operating systems\. For more information about adding scripts to user data, see [Running Commands on Your Linux Instance at Launch](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) in the Amazon EC2 documentation\. The easiest way to create a new node is to use the [Amazon EC2 instance launch wizard](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html)\. This walkthrough uses the Nginx web server example module setup described in [Getting Started with OpsWorks for Puppet Enterprise](gettingstarted-opspup.md)\.
+To create EC2 instances, you can copy the user data script that is included in the [Starter Kit](opspup-starterkit.md) to the `userdata` section of EC2 instance instructions, Amazon EC2 Auto Scaling group launch configurations, or an AWS CloudFormation template\. The script is supported only for EC2 instances running Ubuntu and Amazon Linux operating systems\. For more information about adding scripts to user data, see [Running Commands on Your Linux Instance at Launch](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) in the Amazon EC2 documentation\. The easiest way to create a new node is to use the [Amazon EC2 instance launch wizard](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html)\. This walkthrough uses the Apache web server example module setup described in [Getting Started with OpsWorks for Puppet Enterprise](gettingstarted-opspup.md)\.
 
 1. The user data script in the Starter Kit runs the `opsworks-cm` API [http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_AssociateNode.html](http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_AssociateNode.html) command to associate a new node with your Puppet master\. In this release, it also installs the current version of the AWS CLI on the node for you, in case it is not already running the most up\-to\-date version\. Save this script to a convenient location as `userdata.sh`\.
 
@@ -52,12 +52,12 @@ To create EC2 instances, you can copy the user data script that is included in t
 
 1. No changes are needed on the **Add Storage** page\. Go on to **Add Tags**\.
 
-   By applying tags to your EC2 instance, you can customize the behavior of `userdata.sh`\. For this example, apply the role `nginx_webserver` to your node by adding the following tag: **pp\_role**, with the value **nginx\_webserver**\.
+   By applying tags to your EC2 instance, you can customize the behavior of `userdata.sh`\. For this example, apply the role `apache_webserver` to your node by adding the following tag: **pp\_role**, with the value **apache\_webserver**\.
 
    Setting the `pp_role` value on the node sets data values that are permanently stored in the node's agent certificate, enabling trusted classification of the node\. For more information, see [Extension requests \(permanent certificate data\)](https://puppet.com/docs/puppet/5.1/ssl_attributes_extensions.html#extension-requests-permanent-certificate-data)) in the Puppet platform documentation\.
 
-1. On the **Configure Security Group** page, choose **Add Rule**, and then choose the type **HTTP** to open port 80 for the Nginx web server in this example\.
+1. On the **Configure Security Group** page, choose **Add Rule**, and then choose the type **HTTP** to open port 8080 for the Apache web server in this example\.
 
-1. Choose **Review and Launch**, and then choose **Launch**\. When your new node starts, it applies the Nginx configuration of the sample module you set up in [Getting Started with OpsWorks for Puppet Enterprise](gettingstarted-opspup.md)\.
+1. Choose **Review and Launch**, and then choose **Launch**\. When your new node starts, it applies the Apache configuration of the sample module you set up in [Set Up the Starter Kit Apache Example](opspup-starterkit.md#opspup-post-launch-web-server)\.
 
-1. When you open the webpage linked to the public DNS of your new node, you should see a website that is hosted by your Puppet\-managed Nginx web server\.
+1. When you open the webpage linked to the public DNS of your new node, you should see a website that is hosted by your Puppet\-managed Apache web server\.

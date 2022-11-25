@@ -6,8 +6,8 @@
 This topic describes how to use a pipeline to run and update an app on a Chef 11\.10 stack\. For information about how to use a pipeline to run and update an app on a Chef 12 stack, see [AWS CodePipeline with AWS OpsWorks Stacks \- Chef 12 Stacks](other-services-cp-chef12.md)\. Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
 **Topics**
-+ [Prerequisites](#w100ab1c14c65c17c11b9)
-+ [Other Supported Scenarios](#w100ab1c14c65c17c11c11)
++ [Prerequisites](#w2ab1c14c65c17c11b9)
++ [Other Supported Scenarios](#w2ab1c14c65c17c11c11)
 + [Step 1: Create a stack, layer, and an instance in AWS OpsWorks Stacks](other-services-cp-chef11-stack.md)
 + [Step 2: Upload app code to an Amazon S3 bucket](other-services-cp-chef11-s3.md)
 + [Step 3: Add your app to AWS OpsWorks Stacks](other-services-cp-chef11-addapp.md)
@@ -16,7 +16,7 @@ This topic describes how to use a pipeline to run and update an app on a Chef 11
 + [Step 6 \(Optional\): Update the app code to see CodePipeline redeploy your app automatically](other-services-cp-chef11-update.md)
 + [Step 7 \(Optional\): Clean up resources](other-services-cp-chef11-cleanup.md)
 
-## Prerequisites<a name="w100ab1c14c65c17c11b9"></a>
+## Prerequisites<a name="w2ab1c14c65c17c11b9"></a>
 
 Before you start this walkthrough, be sure that you have administrator permissions to perform all of the following tasks\. You can be a member of a group that has the **AdministratorAccess** policy applied, or you can be a member of a group that has the permissions and policies shown in the following table\. As a security best practice, you should belong to a group that has permissions to do the following tasks, instead of assigning required permissions to individual user accounts\.
 
@@ -32,7 +32,7 @@ For more information about creating a security group in IAM and assigning permis
 
 You must also have an Amazon EC2 key pair\. You will be prompted to provide the name of this key pair when you run the AWS CloudFormation template that creates the sample stack, layer, and instance in this walkthrough\. For more information about obtaining a key pair in the Amazon EC2 console, see [Create a Key Pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#create-a-key-pair) in the Amazon EC2 documentation\. The key pair should be in the US East \(N\. Virginia\) Region\. You can use an existing key pair if you already have one in that region\.
 
-## Other Supported Scenarios<a name="w100ab1c14c65c17c11c11"></a>
+## Other Supported Scenarios<a name="w2ab1c14c65c17c11c11"></a>
 
 
 

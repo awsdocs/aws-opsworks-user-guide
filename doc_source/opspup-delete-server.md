@@ -4,7 +4,7 @@ This section describes how to delete an OpsWorks for Puppet Enterprise server\. 
 
 Although deleting a server does not delete nodes, they are no longer managed by the deleted server, and will continuously attempt to reconnect\. For this reason, we recommend disassociating managed nodes before you delete a Puppet master\. In this release, you can disassociate nodes by running an AWS CLI command\.
 
-## Step 1: Disassociate Managed Nodes<a name="w100ab1b7c37b7"></a>
+## Step 1: Disassociate Managed Nodes<a name="w2ab1b7c37b7"></a>
 
 Disassociate nodes from the Puppet master before you delete the server, so that the nodes continue to operate without trying to reconnect with the server\. To do this, run the [http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_DisassociateNode.html](http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_DisassociateNode.html) AWS CLI command\.
 
@@ -18,7 +18,7 @@ Disassociate nodes from the Puppet master before you delete the server, so that 
 
 1. Wait until a response message indicates that the disassociation is finished\.
 
-## Step 2: Delete the Server<a name="w100ab1b7c37b9"></a>
+## Step 2: Delete the Server<a name="w2ab1b7c37b9"></a>
 
 1. On the server’s tile on the dashboard, expand the** Actions** menu\.  
 ![\[OpsWorks for Puppet Enterprise Delete Server command\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opspup_prop_delete.png)
@@ -27,5 +27,5 @@ Disassociate nodes from the Puppet master before you delete the server, so that 
 
 1. When you are prompted to confirm the deletion, fill in the check box to delete associated roles and resources, and then choose **Yes, Delete**\.
 
-## See Also<a name="w100ab1b7c37c11"></a>
+## See Also<a name="w2ab1b7c37c11"></a>
 + [Disassociate a Node from an OpsWorks for Puppet Enterprise Server](opspup-disassociate-node.md)

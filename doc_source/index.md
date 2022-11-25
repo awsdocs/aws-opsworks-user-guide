@@ -1,16 +1,16 @@
 # AWS OpsWorks User Guide
 
 -----
-*****Copyright &copy;  Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
-Amazon's trademarks and trade dress may not be used in 
-     connection with any product or service that is not Amazon's, 
-     in any manner that is likely to cause confusion among customers, 
-     or in any manner that disparages or discredits Amazon. All other 
-     trademarks not owned by Amazon are the property of their respective
-     owners, who may or may not be affiliated with, connected to, or 
-     sponsored by Amazon.
+Amazon's trademarks and trade dress may not be used in
+connection with any product or service that is not Amazon's,
+in any manner that is likely to cause confusion among customers,
+or in any manner that disparages or discredits Amazon. All other
+trademarks not owned by Amazon are the property of their respective
+owners, who may or may not be affiliated with, connected to, or
+sponsored by Amazon.
 
 -----
 ## Contents
@@ -24,7 +24,6 @@ Amazon's trademarks and trade dress may not be used in
       + [Optional: Use AWS CodeCommit as a Puppet r10k Remote Control Repository](opspup-puppet-codecommit.md)
    + [Create an AWS OpsWorks for Puppet Enterprise Master by using AWS CloudFormation](opspup-create-server-cfn.md)
    + [Update an OpsWorks for Puppet Enterprise Server to Use a Custom Domain](opspup-update-server-custom-domain.md)
-   + [Regenerate the starter kit for an AWS OpsWorks for Puppet Enterprise server](opspup-regenerate-starterkit.md)
    + [Working with Tags on AWS OpsWorks for Puppet Enterprise Resources](opspup-tags.md)
    + [Back Up and Restore an OpsWorks for Puppet Enterprise Server](opspup-backup-restore.md)
       + [Back Up an OpsWorks for Puppet Enterprise Server](opspup-backup.md)
@@ -64,6 +63,7 @@ Amazon's trademarks and trade dress may not be used in
       + [AWS OpsWorks CM Identity-Based Policy Examples](security_iam_opscm_id-based-policy-examples.md)
       + [Troubleshooting AWS OpsWorks CM Identity and Access](security_iam_troubleshoot_opscm.md)
       + [AWS managed policies for AWS OpsWorks Configuration Management](security-iam-awsmanpol.md)
+      + [Cross-service confused deputy prevention in AWS OpsWorks CM](cross-service-confused-deputy-prevention.md)
    + [Compliance Validation for AWS OpsWorks CM](opsworks-stacks-compliance-opscm.md)
    + [Resilience in AWS OpsWorks CM](disaster-recovery-resiliency-opscm.md)
    + [Infrastructure Security in AWS OpsWorks CM](infrastructure-security-opscm.md)
@@ -232,6 +232,7 @@ Amazon's trademarks and trade dress may not be used in
          + [AWS OpsWorks Stacks Permissions Levels](opsworks-security-users-standard.md)
       + [Signing in as an IAM User](workingsecurity-login.md)
       + [Allowing AWS OpsWorks Stacks to Act on Your Behalf](opsworks-security-servicerole.md)
+      + [Cross-service confused deputy prevention in AWS OpsWorks Stacks](cross-service-confused-deputy-prevention-stacks.md)
       + [Specifying Permissions for Apps Running on EC2 instances](opsworks-security-appsrole.md)
       + [Managing SSH Access](security-ssh-access.md)
          + [Installing an Amazon EC2 Key](security-settingec2key.md)

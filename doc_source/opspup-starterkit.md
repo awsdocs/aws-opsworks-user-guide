@@ -33,11 +33,11 @@ puppet-access login --config-file .config/puppetlabs/client-tools/puppet-access.
 **Note**  
 Because the default token lifetime is five minutes, the preceding example command adds the `--lifetime` parameter to extend the token lifetime for a longer period\. You can set the token lifetime for a period of up to 10 years \(`10y`\)\. For more information about how to change the default token lifetime, see [Change the token's default lifetime](https://puppet.com/docs/pe/2019.8/rbac_token_auth_intro.html#change_the_token_s_default_lifetime) in the Puppet Enterprise documentation\.
 
-## Set Up the Starter Kit Nginx Example<a name="w100ab1b7c19c13c15"></a>
+## Set Up the Starter Kit Apache Example<a name="opspup-post-launch-web-server"></a>
 
-After you download and unzip the Starter Kit, you can use the example branch in the included, sample `control-repo-example` folder to configure an Nginx web server on your managed nodes\. 
+After you download and unzip the Starter Kit, you can use the example branch in the included, sample `control-repo-example` folder to configure an Apache web server on your managed nodes\. 
 
-The Starter Kit includes two `control-repo` folders: `control-repo`, and `control-repo-example`\. The `control-repo` folder includes a `production` branch that is unchanged from what you would see in the [Puppet GitHub repository](https://github.com/puppetlabs/control-repo)\. The `control-repo-example` folder also has a `production` branch that includes example code to set up a Nginx server with a test website\.
+The Starter Kit includes two `control-repo` folders: `control-repo`, and `control-repo-example`\. The `control-repo` folder includes a `production` branch that is unchanged from what you would see in the [Puppet GitHub repository](https://github.com/puppetlabs/control-repo)\. The `control-repo-example` folder also has a `production` branch that includes example code to set up an Apache server with a test website\.
 
 1. Push the `control-repo-example` `production` branch to your Git remote \(the `r10k_remote` URL of your Puppet master\)\. In your Starter Kit root directory, run the following, replacing *r10kRemoteUrl* with your `r10k_remote` URL\.
 
@@ -47,7 +47,7 @@ The Starter Kit includes two `control-repo` folders: `control-repo`, and `contro
    git push origin production
    ```
 
-   Puppet's Code Manager uses Git branches as environments\. By default, all nodes are in the production environment\. 
+   Puppet's Code Manager uses Git branches as environments\. By default, all nodes are in the production environment\.
 **Important**  
 Do not push to a `master` branch\. The `master` branch is reserved for the Puppet master\.
 
@@ -57,4 +57,4 @@ Do not push to a `master` branch\. The `master` branch is reserved for the Puppe
    puppet-code deploy --all --wait --config-file .config/puppet-code.conf
    ```
 
-For more information about how you can apply the sample Nginx configuration to managed nodes that you create in Amazon EC2, see [Adding Nodes Automatically in OpsWorks for Puppet Enterprise](opspup-unattend-assoc.md)\.
+For more information about how you can apply the sample Apache configuration to managed nodes that you create in Amazon EC2, see [Step 2: Create Instances by Using an Unattended Association Script](opspup-unattend-assoc.md#opspup-unattend-script) in this guide\.

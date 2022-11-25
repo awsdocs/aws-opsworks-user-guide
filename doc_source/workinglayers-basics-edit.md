@@ -20,8 +20,8 @@ The following sections describe the settings on the various tabs that are availa
 + [Network](#workinglayers-basics-edit-network)
 + [EBS Volumes](#workinglayers-basics-edit-ebs)
 + [Security](#workinglayers-basics-edit-security)
-+ [CloudWatch Logs](#w100ab1c14c45c19b9c21)
-+ [Tags](#w100ab1c14c45c19b9c23)
++ [CloudWatch Logs](#w2ab1c14c45c19b9c21)
++ [Tags](#w2ab1c14c45c19b9c23)
 
 ## General Settings<a name="workinglayers-basics-edit-general"></a>
 
@@ -182,10 +182,10 @@ For more information on security groups, see [Amazon EC2 Security Groups](http:/
 **EC2 Instance Profile**  
 You can change the EC2 profile for the layer's instances\. For more information, see [Specifying Permissions for Apps Running on EC2 instances](opsworks-security-appsrole.md)\.
 
-## CloudWatch Logs<a name="w100ab1c14c45c19b9c21"></a>
+## CloudWatch Logs<a name="w2ab1c14c45c19b9c21"></a>
 
 The **CloudWatch Logs** tab lets you enable or disable Amazon CloudWatch Logs\. CloudWatch Logs integration works with Chef 11\.10 and Chef 12 Linux\-based stacks\. For more information about enabling CloudWatch Logs integration and specifying the logs that you want to manage in the CloudWatch Logs console, see [Using Amazon CloudWatch Logs with AWS OpsWorks Stacks](monitoring-cloudwatch-logs.md)\.
 
-## Tags<a name="w100ab1c14c45c19b9c23"></a>
+## Tags<a name="w2ab1c14c45c19b9c23"></a>
 
 The **Tags** tab lets you apply cost allocation tags to your layer\. After you add tags, you can activate them in the AWS Billing and Cost Management console\. When you create a tag, you are applying the tag to every resource within the tagged structure\. For example, if you apply a tag to a layer, you are applying the tag to every instance, Amazon EBS volume, or Elastic Load Balancing load balancer in the layer\. For more information about how to activate your tags and use them to track and manage the costs of your AWS OpsWorks Stacks resources, see [Using Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) and [Activating User\-Defined Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html) in the *Billing and Cost Management User Guide*\. For more information about tagging in AWS OpsWorks Stacks, see [Tags](tagging.md)\.

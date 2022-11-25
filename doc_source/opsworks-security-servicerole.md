@@ -5,9 +5,6 @@ AWS OpsWorks Stacks needs to interact with a variety of AWS services on your beh
 ![\[IAM role list in Add stack page.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/add-stack-iamrole.png)
 
 When you specify a new stack's service role, you can do one of the following:
-+ Have AWS OpsWorks Stacks create a new service role with a standard set of permissions\.
-
-  The role is named `aws-opsworks-service-role`, or similar\.
 + Specify a standard service role that you created earlier\.
 
   You can usually create a standard service role when you create your first stack, and then use that role for all subsequent stacks\.
@@ -29,6 +26,7 @@ If you create a custom service role, you must ensure that it grants all the perm
 
 ```
 {
+    "Version": "2012-10-17",
     "Statement": [
         {
             "Action": [
@@ -43,7 +41,12 @@ If you create a custom service role, you must ensure that it grants all the perm
             "Effect": "Allow",
             "Resource": [
                 "*"
-            ]
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "ec2.amazonaws.com"
+                }
+            }
         }
     ]
 }
@@ -53,10 +56,10 @@ A service role also has a trust relationship\. Service roles created by AWS OpsW
 
 ```
 {
-  "Version": "2008-10-17",
+  "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "",
+      "Sid": "StsAssumeRole",
       "Effect": "Allow",
       "Principal": {
         "Service": "opsworks.amazonaws.com"

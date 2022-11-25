@@ -24,11 +24,11 @@ If your server is using a custom domain and certificate, you might need to edit 
 
 1. Edit the variable `ROOT_CA_URL` in the userdata script with the value of the pre\-signed URL\.
 
-## Supported Operating Systems<a name="w100ab1b9c26c15c11"></a>
+## Supported Operating Systems<a name="w2ab1b9c26c15c11"></a>
 
 For the current list of supported operating systems for nodes, see the [Chef website](https://docs.chef.io/platforms.html)\.
 
-## Add Nodes with Knife<a name="w100ab1b9c26c15c13"></a>
+## Add Nodes with Knife<a name="w2ab1b9c26c15c13"></a>
 
 The [https://github.com/chef/knife-ec2](https://github.com/chef/knife-ec2) plug\-in is included with Chef Workstation\. If you are more familiar with `knife-ec2`, you can use it instead of `knife bootstrap` to provision and bootstrap new EC2instances\. Otherwise, launch a new EC2 instance, and then follow the steps in this section\.
 
@@ -51,6 +51,6 @@ The [https://github.com/chef/knife-ec2](https://github.com/chef/knife-ec2) plug\
    knife node show INSTANCE_NAME
    ```
 
-## More Info<a name="w100ab1b9c26c15c15"></a>
+## More Info<a name="w2ab1b9c26c15c15"></a>
 
 Visit the [Learn Chef tutorial site](https://learn.chef.io/tutorials/manage-a-node/opsworks) to learn more about using AWS OpsWorks for Chef Automate servers and Chef Automate premium features\.

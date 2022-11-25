@@ -34,7 +34,7 @@ After you have installed the client\-side SSL certificate, you can sign in to th
 1. In the Puppet Enterprise console, you can view detailed information about the nodes you're managing, module run progress and events, the compliance level of nodes, and much more\. For more information about the features of the Puppet Enterprise console and how to use them, see [Managing nodes](https://puppet.com/docs/pe/2019.8/managing_nodes.html) in the Puppet Enterprise documentation\.  
 ![\[Puppet Enterprise console\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/puppet_console_overview.png)
 
-## Group and Classify Nodes<a name="w100ab1b7c19c17c13"></a>
+## Group and Classify Nodes<a name="w2ab1b7c19c17c13"></a>
 
 Before you specify the desired configuration of your nodes by applying classes to them, group the nodes according to their roles in your enterprise or their common characteristics\. Grouping and classifying nodes involves the following high\-level tasks\. You can complete these tasks by using the PE console\. For detailed information about how to group and classify your nodes, see [Grouping and classifying nodes](https://puppet.com/docs/pe/2019.8/grouping_and_classifying_nodes.html) in the Puppet Enterprise documentation\.
 
@@ -44,7 +44,7 @@ Before you specify the desired configuration of your nodes by applying classes t
 
 1. Assign classes to node groups\.
 
-## Reset Administrator and User Passwords<a name="w100ab1b7c19c17c15"></a>
+## Reset Administrator and User Passwords<a name="w2ab1b7c19c17c15"></a>
 
 For information about how to change the password that you use to sign in to the Puppet Enterprise console, see [Reset the console administrator password](https://puppet.com/docs/pe/2019.8/console_accessing.html#reset_the_admin_password) in the Puppet Enterprise documentation\.
 

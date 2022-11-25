@@ -19,6 +19,8 @@ You will need AWS credentials to create an Amazon EC2 instance\. If you don't ha
 
    Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
+   When you sign up for an AWS account, an *AWS account root user* is created\. The root user has access to all AWS services and resources in the account\. As a security best practice, [assign administrative access to an administrative user](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html), and use only the root user to perform [tasks that require root user access](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html#aws_tasks-that-require-root)\.
+
 You should then [create an IAM user](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_SettingUpUser.html) with permissions to access Amazon EC2 and save the user's access and secret keys to a secure location on your workstation\. Test Kitchen will use those credentials to create the instance\. The preferred way to provide credentials to Test Kitchen is to assign the keys to the following environment variables on your workstation\.
 + AWS\_ACCESS\_KEY – your user's access key, which will look something like AKIAIOSFODNN7EXAMPLE\.
 + AWS\_SECRET\_KEY – your user's secret key, which will look something like wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\.
@@ -58,7 +60,7 @@ This approach reduces the chances of accidentally compromising your account by, 
 
 1. Add a `recipes` subdirectory to `createdir-ec2`\.
 
-## Configuring \.kitchen\.yml for Amazon EC2<a name="w100ab1c14c63b7c13c15c29c23"></a>
+## Configuring \.kitchen\.yml for Amazon EC2<a name="w2ab1c14c63b7c13c15c29c23"></a>
 
 You configure `.kitchen.yml` with the information that the `kitchen-ec2` driver needs to launch an appropriately configured Amazon EC2 instance\. The following is an example of a `.kitchen.yml` file for an Amazon Linux instance in the US West \(N\. California\) region\.
 
@@ -164,7 +166,7 @@ The `driver` attributes, which include the following:
 
 Replace the code in `.kitchen.yml` with the example, and assign appropriate values to account\-specific attributes such as `aws_access_key_id`\.
 
-## Running the Recipe<a name="w100ab1c14c63b7c13c15c29c25"></a>
+## Running the Recipe<a name="w2ab1c14c63b7c13c15c29c25"></a>
 
 This example uses the recipe from [Iteration](cookbooks-101-basics-ruby.md#cookbooks-101-basics-ruby-iteration)\.
 

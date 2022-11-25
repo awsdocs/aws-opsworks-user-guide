@@ -11,12 +11,12 @@ Each layer description includes a list of the built\-in recipes that AWS OpsWork
 + [MySQL OpsWorks Layer](workinglayers-db-mysql.md)
 + [Application Server Layers Reference](layers-server.md)
 + [Application Server Layers](workinglayers-servers.md)
-+ [ECS Cluster Layer Reference](#w100ab1c14c63b7c19c21)
++ [ECS Cluster Layer Reference](#w2ab1c14c63b7c19c21)
 + [Custom Layer Reference](layers-other-custom.md)
 + [Other Layers Reference](layers-other.md)
 + [Other Layers](workinglayers-other.md)
 
-## ECS Cluster Layer Reference<a name="w100ab1c14c63b7c19c21"></a>
+## ECS Cluster Layer Reference<a name="w2ab1c14c63b7c19c21"></a>
 
 **Note**  
 This layer is available only for Linux\-based stacks\.
