@@ -12,7 +12,7 @@ The default permission level is IAM Policies Only, which grants users only those
 **Topics**
 + [Setting a User's Permissions](#opsworks-security-users-console-set)
 + [Viewing your Permissions](#opsworks-security-users-console-viewing)
-+ [Using IAM Condition Keys to Verify Temporary Credentials](#w2ab1c14c59c13c35c19)
++ [Using IAM Condition Keys to Verify Temporary Credentials](#w2ab1c14c61c13c35c19)
 
 ## Setting a User's Permissions<a name="opsworks-security-users-console-set"></a>
 
@@ -60,6 +60,6 @@ If the user's policy allows additional actions, the result can appear to overrid
 
 If [self\-management](opsworks-security-users-manage-edit.md) is enabled, users can see a summary of their permission levels for every stack by choosing **My Settings**, on the upper right\. Users can also access **My Settings** if their attached policy grants permissions for the [DescribeMyUserProfile](http://docs.aws.amazon.com/opsworks/latest/APIReference/API_DescribeMyUserProfile.html) and [UpdateMyUserProfile](http://docs.aws.amazon.com/opsworks/latest/APIReference/API_UpdateMyUserProfile.html) actions\.
 
-## Using IAM Condition Keys to Verify Temporary Credentials<a name="w2ab1c14c59c13c35c19"></a>
+## Using IAM Condition Keys to Verify Temporary Credentials<a name="w2ab1c14c61c13c35c19"></a>
 
 AWS OpsWorks Stacks has a built\-in authorization layer that supports additional authorization cases \(such as the simplified management of read\-only or read\-write access to stacks for individual users\)\. This authorization layer relies on the usage of temporary credentials\. Because of this, you cannot use an `aws:TokenIssueTime` condition to verify that users are using long\-term credentials, or block actions from users who are using temporary credentials, as described in [Condition Operator to Check Existence of Condition Keys](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#Conditions_Null) in the IAM documentation\.

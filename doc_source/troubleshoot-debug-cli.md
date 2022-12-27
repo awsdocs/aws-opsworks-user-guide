@@ -66,7 +66,7 @@ sudo opsworks-agent-cli run_command time
 The preceding examples all rerun the command using the default JSON, which is the JSON was installed for that command\. You can rerun a command against an arbitrary JSON file as follows:
 
 ```
-sudo opsworks-agent-cli run_command /path/to/valid/json.file
+sudo opsworks-agent-cli run_command -f /path/to/valid/json.file
 ```
 
 ## Displaying Chef Logs<a name="troubleshoot-debug-cli-log"></a>

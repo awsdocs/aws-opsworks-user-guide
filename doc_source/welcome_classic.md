@@ -25,6 +25,7 @@ Although relatively simple, this stack shows all the key AWS OpsWorks Stacks fea
 + [Security and Permissions](#welcome-classic-security)
 + [Monitoring and Logging](#welcome-classic-monitoring)
 + [CLI, SDK, and AWS CloudFormation Templates](#welcome-classic-sdk)
++ [Migrating your AWS OpsWorks Stacks applications to AWS Systems Manager Application Manager](migrating-to-systems-manager.md)
 + [Getting Started with AWS OpsWorks Stacks](gettingstarted_intro.md)
 + [AWS OpsWorks Stacks Best Practices](best-practices.md)
 + [Stacks](workingstacks.md)

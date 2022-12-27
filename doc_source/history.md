@@ -2,6 +2,7 @@
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Updates to AWS OpsWorks Stacks](#history) | You can now migrate your AWS OpsWorks Stacks to AWS Systems Manager Application Manager by using a migration script\. For more information, see [Migrating your AWS OpsWorks Stacks applications to AWS Systems Manager Application Manager](https://docs.aws.amazon.com/opsworks/latest/userguide/migrating-to-systems-manager.html) in this guide\. | December 22, 2022 | 
 | [Updates to AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise](#history) | A troubleshooting procedure is now available that describes what you can do if system maintenance fails for your AWS OpsWorks for Chef Automate or OpsWorks for Puppet Enterprise server\. For more information, see [System maintenance fails for Chef Automate server](https://docs.aws.amazon.com/opsworks/latest/userguide/troubleshoot-opscm.html#tshooterrors-chef-maintenance-fails) or [System maintenance fails for Puppet Enterprise server\.](https://docs.aws.amazon.com/opsworks/latest/userguide/troubleshoot-opspup.html#tshooterrors-puppet-maintenance-fails) in this guide\. | September 29, 2022 | 
 | [Updates to AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise](#history) | A troubleshooting procedure is now available if your AWS OpsWorks for Chef Automate or OpsWorks for Puppet Enterprise server enters a `Connection lost` state\. For more information, see [Chef Automate server is in a `Connection lost` state](https://docs.aws.amazon.com/opsworks/latest/userguide/troubleshoot-opscm.html#tshooterrors-chef-connection-lost) or [Puppet Enterprise server is in a `Connection lost` state](https://docs.aws.amazon.com/opsworks/latest/userguide/troubleshoot-opspup.html#tshooterrors-puppet-connection-lost) in this guide\. | March 23, 2022 | 
 | [Updates to AWS OpsWorks Stacks](#history) | As a security best practice, you can now add an `aws:SourceArn` or `aws:SourceAccount` condition key \(or both\) to trust relationship policies that allow AWS OpsWorks Stacks access to perform tasks in other AWS services\. For more information, see [Cross\-service confused deputy prevention in AWS OpsWorks Stacks](https://docs.aws.amazon.com/opsworks/latest/userguide/cross-service-confused-deputy-prevention-stacks.html) in this guide\. | March 4, 2022 | 
@@ -28,7 +29,7 @@
 | [AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise](#history) | OpsWorks for Puppet Enterprise has upgraded to PE 2018\.1\.2\. AWS OpsWorks for Chef Automate has upgraded to Chef Automate 1\.8\.68\. | June 29, 2018 | 
 + **AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise API version:** 2016\-11\-01
 + **AWS OpsWorks Stacks API version: **2016\-03\-08
-+ **Latest documentation update: **2022\-10\-18
++ **Latest documentation update: **2022\-12\-22
 
 ## Earlier updates<a name="history-older"></a>
 
@@ -44,7 +45,7 @@ The following table describes important changes in each release of the *AWS OpsW
 | Added support for new EBS volume types in AWS OpsWorks Stacks, and a new API, DescribeOperatingSystems\. | January 25, 2018 | 
 | OpsWorks for Puppet Enterprise and AWS OpsWorks for Chef Automate now support selecting multiple security groups when you are creating a server\. | January 18, 2018 | 
 | Added support for AWS OpsWorks Stacks in the Europe \(Paris\) Region\. | December 19, 2017 | 
-| Added support for AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise in six additional Regions, and added procedures for creating backups of AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise servers in the AWS Management Console\. | December 18, 2017 | 
+| Added support for AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise in six additional regions, and added procedures for creating backups of AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise servers in the AWS Management Console\. | December 18, 2017 | 
 | Added the new OpsWorks for Puppet Enterprise service and documentation\. | November 16, 2017 | 
 | Added support for Amazon Linux 2017\.09 to AWS OpsWorks Stacks\. | November 7, 2017 | 
 | Added support for Chef Compliance to AWS OpsWorks for Chef Automate\. | October 25, 2017 | 

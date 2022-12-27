@@ -60,7 +60,7 @@ This approach reduces the chances of accidentally compromising your account by, 
 
 1. Add a `recipes` subdirectory to `createdir-ec2`\.
 
-## Configuring \.kitchen\.yml for Amazon EC2<a name="w2ab1c14c63b7c13c15c29c23"></a>
+## Configuring \.kitchen\.yml for Amazon EC2<a name="w2ab1c14c65b7c13c15c29c23"></a>
 
 You configure `.kitchen.yml` with the information that the `kitchen-ec2` driver needs to launch an appropriately configured Amazon EC2 instance\. The following is an example of a `.kitchen.yml` file for an Amazon Linux instance in the US West \(N\. California\) region\.
 
@@ -166,7 +166,7 @@ The `driver` attributes, which include the following:
 
 Replace the code in `.kitchen.yml` with the example, and assign appropriate values to account\-specific attributes such as `aws_access_key_id`\.
 
-## Running the Recipe<a name="w2ab1c14c63b7c13c15c29c25"></a>
+## Running the Recipe<a name="w2ab1c14c65b7c13c15c29c25"></a>
 
 This example uses the recipe from [Iteration](cookbooks-101-basics-ruby.md#cookbooks-101-basics-ruby-iteration)\.
 

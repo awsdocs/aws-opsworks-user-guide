@@ -39,11 +39,11 @@ This walkthrough uses a simple [Express](http://expressjs.com/) application that
 To implement the application, create a directory named `nodedb` in a convenient location on your workstation and add the following three files to it\. 
 
 **Topics**
-+ [The Package Descriptor](#w2ab1c14c63b7b9c11b8)
-+ [The Layout File](#w2ab1c14c63b7b9c11c10)
-+ [The Code File](#w2ab1c14c63b7b9c11c12)
++ [The Package Descriptor](#w2ab1c14c65b7b9c11b8)
++ [The Layout File](#w2ab1c14c65b7b9c11c10)
++ [The Code File](#w2ab1c14c65b7b9c11c12)
 
-### The Package Descriptor<a name="w2ab1c14c63b7b9c11b8"></a>
+### The Package Descriptor<a name="w2ab1c14c65b7b9c11b8"></a>
 
 To create the application's package descriptor, add a file named `package.json` with the following contents to the `nodedb` directory\. `package.json` is required for Express applications and must be located in the application's root directory\. 
 
@@ -67,7 +67,7 @@ This `package.json` example is fairly minimal\. It defines the required `name` a
 
 For more information on package descriptor files, see [package\.json](https://npmjs.org/doc/files/package.json.html)\. 
 
-### The Layout File<a name="w2ab1c14c63b7b9c11c10"></a>
+### The Layout File<a name="w2ab1c14c65b7b9c11c10"></a>
 
 To create the application's layout file, add a `views` directory to the `nodedb` directory, and then add a file to `views` named `index.html` with the following contents:
 
@@ -93,7 +93,7 @@ To create the application's layout file, add a `views` directory to the `nodedb`
 
 For this example, the layout file is a simple HTML document that displays some data from Amazon RDS\. Each `<%= ... =>` element represents the value of a variable that is defined in the application's code file, which we create next\.
 
-### The Code File<a name="w2ab1c14c63b7b9c11c12"></a>
+### The Code File<a name="w2ab1c14c65b7b9c11c12"></a>
 
 To create the application's code file, add a `server.js` file to the `nodedb` directory with the following contents\.
 

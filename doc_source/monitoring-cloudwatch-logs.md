@@ -4,7 +4,7 @@ To simplify the process of monitoring logs on multiple instances, AWS OpsWorks S
 
 CloudWatch Logs monitors selected logs for the occurrence of a user\-specified pattern\. For example, you can monitor logs for the occurrence of a literal term such as `NullReferenceException`, or count the number of such occurrences\. After you enable CloudWatch Logs in AWS OpsWorks Stacks, the AWS OpsWorks Stacks agent sends the logs to CloudWatch Logs\. For more information about CloudWatch Logs, see [Getting Started with CloudWatch Logs](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_GettingStarted.html)\.
 
-## Prerequisites<a name="w2ab1c14c57c13b7"></a>
+## Prerequisites<a name="w2ab1c14c59c13b7"></a>
 
 Before you can enable CloudWatch Logs, your instances must be running version 3444 or later of the AWS OpsWorks Stacks agent in Chef 11\.10 stacks, and 4023 or later in Chef 12 stacks\. You must also use a compatible instance profile for any instances that you are monitoring by using CloudWatch Logs\.
 
@@ -18,7 +18,7 @@ Updating the agent on all instances in a layer can take some time\. If you try t
 
 ![\[CloudWatch Logs tab on the Layer page\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cloudwatch_logs_upgrade_time.png)
 
-## Enabling CloudWatch Logs<a name="w2ab1c14c57c13b9"></a>
+## Enabling CloudWatch Logs<a name="w2ab1c14c59c13b9"></a>
 
 1. After any required agent and instance profile upgrades are complete, you can enable CloudWatch Logs by setting the slider control on the **CloudWatch Logs** tab to **On**\.  
 ![\[CloudWatch Logs slider control\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cw_logs_enable_switch.png)
@@ -32,7 +32,7 @@ Updating the agent on all instances in a layer can take some time\. If you try t
 1. Choose **Save**\. Within a few minutes, AWS OpsWorks Stacks log streams should be visible in the CloudWatch Logs console\.  
 ![\[CloudWatch Logs is enabled\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cw_logs_enabled.png)
 
-## Turning Off CloudWatch Logs<a name="w2ab1c14c57c13c11"></a>
+## Turning Off CloudWatch Logs<a name="w2ab1c14c59c13c11"></a>
 
 To turn off CloudWatch Logs, edit your layer settings\.
 
@@ -45,13 +45,13 @@ To turn off CloudWatch Logs, edit your layer settings\.
 
 1. Choose **Save**\.
 
-### Deleting Streamed Logs from CloudWatch Logs<a name="w2ab1c14c57c13c11b7"></a>
+### Deleting Streamed Logs from CloudWatch Logs<a name="w2ab1c14c59c13c11b7"></a>
 
 After you turn off CloudWatch Logs streaming from AWS OpsWorks Stacks, existing logs are still available in the CloudWatch Logs management console\. You still incur charges for stored logs, unless you export the logs to Amazon S3 or delete them\. For more information about exporting logs to S3, see [Exporting Log Data to Amazon S3](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/S3Export.html)\.
 
 You can delete log streams and log groups in the CloudWatch Logs management console, or by running the [http://docs.aws.amazon.com/cli/latest/reference/logs/delete-log-stream.html](http://docs.aws.amazon.com/cli/latest/reference/logs/delete-log-stream.html) and [http://docs.aws.amazon.com/cli/latest/reference/logs/delete-log-group.html](http://docs.aws.amazon.com/cli/latest/reference/logs/delete-log-group.html) AWS CLI commands\. For more information about changing log retention periods, see [Change Log Data Retention in CloudWatch Logs](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SettingLogRetention.html)\.
 
-## Managing Your Logs in CloudWatch Logs<a name="w2ab1c14c57c13c13"></a>
+## Managing Your Logs in CloudWatch Logs<a name="w2ab1c14c59c13c13"></a>
 
 The logs that you are streaming are managed in the CloudWatch Logs console\.
 
@@ -67,7 +67,7 @@ Custom logs have names that match the following pattern:
 
 When you've located your logs in CloudWatch Logs, you can [organize the logs into groups](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Create-Log-Group.html), [search and filter logs by creating metric filters](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringLogData.html), and [create custom alarms](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ConsoleAlarms.html)\.
 
-## Configuring Chef 12\.2 Windows Layers to Use CloudWatch Logs<a name="w2ab1c14c57c13c15"></a>
+## Configuring Chef 12\.2 Windows Layers to Use CloudWatch Logs<a name="w2ab1c14c59c13c15"></a>
 
 CloudWatch Logs automatic integration is not supported for Windows\-based instances\. The **CloudWatch Logs** tab is not available on layers in Chef 12\.2 stacks\. To manually enable streaming to CloudWatch Logs for Windows\-based instances, do the following\.
 + Update the instance profile for Windows\-based instances so that the CloudWatch Logs agent has appropriate permissions\. The **AWSOpsWorksCloudWatchLogs** policy statement shows which permissions are required\.

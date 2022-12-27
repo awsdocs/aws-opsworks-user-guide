@@ -2,7 +2,6 @@
 
 AWS OpsWorks Stacks supports the 64\-bit versions of the following Linux operating systems\.
 + [Amazon Linux](http://aws.amazon.com/amazon-linux-ami/faqs/) \(see the [AWS OpsWorks Stacks console](https://console.aws.amazon.com/opsworks/) for the currently supported versions\)
-+ [Ubuntu 12\.04 LTS](https://wiki.ubuntu.com/LTS)
 + [Ubuntu 14\.04 LTS](https://wiki.ubuntu.com/LTS)
 + [Ubuntu 16\.04 LTS](https://wiki.ubuntu.com/LTS)
 + [Ubuntu 18\.04 LTS](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes)

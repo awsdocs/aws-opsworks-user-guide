@@ -154,7 +154,7 @@ This example creates two cookbooks and packages the dependencies for them\.
 
 1.  Finally, create a zip package, upload it to Amazon S3, and modify your AWS OpsWorks Stacks stack to use the new cookbook source\. To do this, follow steps 2 through 4 in [Packaging Dependencies Locally for One Cookbook](#best-practices-packaging-cookbooks-locally-one)\. 
 
-## Additional resources<a name="w2ab1c14c41c15c15"></a>
+## Additional resources<a name="w2ab1c14c43c15c15"></a>
 
 For more information about packaging cookbook dependencies, see the following\.
 + [How to Package Cookbook Dependencies Locally with Berkshelf](https://aws.amazon.com/blogs/devops/how-to-package-cookbook-dependencies-locally-with-berkshelf/) on the AWS DevOps Blog
