@@ -1,6 +1,6 @@
-# How AWS OpsWorks CM Works with IAM<a name="security_iam_service-with-iam-opscm"></a>
+# How AWS OpsWorks CM Works with IAM<a name="security_iam_service-with-iam"></a>
 
-Before you use IAM to manage access to AWS OpsWorks CM, you should understand what IAM features are available to use with AWS OpsWorks CM\. To get a high\-level view of how AWS OpsWorks CM and other AWS services work with IAM, see [AWS Services That Work with IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html) in the *IAM User Guide*\.
+Before you use IAM to manage access to AWS OpsWorks CM, you should understand what IAM features are available to use with AWS OpsWorks CM\. To get a high\-level view of how AWS OpsWorks CM and other AWS services work with IAM, see [AWS services that work with IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html) in the *IAM User Guide*\.
 
 **Topics**
 + [AWS OpsWorks CM Identity\-Based Policies](#security_iam_service-with-iam-id-based-policies-opscm)
@@ -10,9 +10,9 @@ Before you use IAM to manage access to AWS OpsWorks CM, you should understand wh
 
 ## AWS OpsWorks CM Identity\-Based Policies<a name="security_iam_service-with-iam-id-based-policies-opscm"></a>
 
-With IAM identity\-based policies, you can specify allowed or denied actions and resources as well as the conditions under which actions are allowed or denied\. AWS OpsWorks CM supports specific actions, resources, and condition keys\. To learn about all of the elements that you use in a JSON policy, see [IAM JSON Policy Elements Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html) in the *IAM User Guide*\.
+With IAM identity\-based policies, you can specify allowed or denied actions and resources as well as the conditions under which actions are allowed or denied\. AWS OpsWorks CM supports specific actions, resources, and condition keys\. To learn about all of the elements that you use in a JSON policy, see [IAM JSON policy elements reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html) in the *IAM User Guide*\.
 
-In AWS OpsWorks CM, you can attach a custom policy statement to an IAM user, role, or group\.
+In AWS OpsWorks CM, you can attach a custom policy statement to a user, role, or group\.
 
 ### Actions<a name="security_iam_service-with-iam-id-based-policies-actions-opscm"></a>
 
@@ -96,17 +96,17 @@ To see a list of AWS OpsWorks CM resource types and their ARNs, see [Actions, Re
 
 ### Condition Keys<a name="security_iam_id-based-policies-conditionkeys"></a>
 
-AWS OpsWorks CM does not have service\-specific context keys that can be used in the `Condition` element of policy statements\. For the list of the global context keys that are available to all services, see [Available Keys for Conditions](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#AvailableKeys) in the *IAM Policy Reference*\. To see all AWS global condition keys, see [AWS Global Condition Context Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html) in the *IAM User Guide*\.
+AWS OpsWorks CM does not have service\-specific context keys that can be used in the `Condition` element of policy statements\. For the list of the global context keys that are available to all services, see [AWS global condition context keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#AvailableKeys) in the *IAM Policy Reference*\. To see all AWS global condition keys, see [AWS global condition context keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html) in the *IAM User Guide*\.
 
 The `Condition` element \(or `Condition` *block*\) lets you specify conditions in which a statement is in effect\. The `Condition` element is optional\. You can build conditional expressions that use [condition operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html), such as equals or less than, to match the condition in the policy with values in the request\. 
 
 If you specify multiple `Condition` elements in a statement, or multiple keys in a single `Condition` element, AWS evaluates them using a logical `AND` operation\. If you specify multiple values for a single condition key, AWS evaluates the condition using a logical `OR` operation\. All of the conditions must be met before the statement's permissions are granted\.
 
- You can also use placeholder variables when you specify conditions\. For example, you can grant an IAM user permission to access a resource only if it is tagged with their IAM user name\. For more information, see [IAM Policy Elements: Variables and Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_variables.html) in the *IAM User Guide*\.
+ You can also use placeholder variables when you specify conditions\. For example, you can grant a user permission to access a resource only if it is tagged with the user's name\. For more information, see [IAM policy elements: Variables and tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_variables.html) in the *IAM User Guide*\.
 
 ### Examples<a name="security_iam-id-based-policies-examples"></a>
 
-To view examples of AWS OpsWorks CM identity\-based policies, see [AWS OpsWorks CM Identity\-Based Policy Examples](security_iam_opscm_id-based-policy-examples.md)\.
+To view examples of AWS OpsWorks CM identity\-based policies, see [AWS OpsWorks CM Identity\-Based Policy Examples](security_iam_id-based-policy-examples.md)\.
 
 ## AWS OpsWorks CM and Resource\-Based Policies<a name="security_iam_resource-based-policies"></a>
 
@@ -123,7 +123,7 @@ You can attach tags to AWS OpsWorks CM resources or pass tags in a request to AW
 An [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) is an entity within your AWS account that has specific permissions\.
 
 AWS OpsWorks CM uses two roles:
-+ A service role that grants the AWS OpsWorks CM service permissions to work within a user's account\. If you use the default service role provided by OpsWorks CM, the name of this role is `aws-opsworks-cm-service-role`\.
++ A service role that grants the AWS OpsWorks CM service permissions to work within a user's AWS account\. If you use the default service role provided by OpsWorks CM, the name of this role is `aws-opsworks-cm-service-role`\.
 + An instance profile role that lets the AWS OpsWorks CM service call the OpsWorks CM API\. This role grants access to Amazon S3 and AWS CloudFormation to create the server and the S3 bucket for backups\. If you use the default instance profile provided by OpsWorks CM, the name of this instance profile role is `aws-opsworks-cm-ec2-role`\.
 
 AWS OpsWorks CM does not use service\-linked roles\.
@@ -145,7 +145,7 @@ AWS OpsWorks CM does not use service\-linked roles\.
 This feature allows a service to assume a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-role) on your behalf\. This role allows the service to access resources in other services to complete an action on your behalf\. Service roles appear in your IAM account and are owned by the account\. This means that an IAM administrator can change the permissions for this role\. However, doing so might break the functionality of the service\.
 
 AWS OpsWorks CM uses two roles:
-+ A service role that grants the AWS OpsWorks CM service permissions to work within a user's account\. If you use the default service role provided by OpsWorks CM, the name of this role is `aws-opsworks-cm-service-role`\.
++ A service role that grants the AWS OpsWorks CM service permissions to work within a user's AWS account\. If you use the default service role provided by OpsWorks CM, the name of this role is `aws-opsworks-cm-service-role`\.
 + An instance profile role that lets the AWS OpsWorks CM service call the OpsWorks CM API\. This role grants access to Amazon S3 and AWS CloudFormation to create the server and the S3 bucket for backups\. If you use the default instance profile provided by OpsWorks CM, the name of this instance profile role is `aws-opsworks-cm-ec2-role`\.
 
 ### Choosing an IAM Role in AWS OpsWorks CM<a name="security_iam_roles-choose"></a>

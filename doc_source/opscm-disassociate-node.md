@@ -6,18 +6,18 @@ We recommend that you disassociate nodes from a Chef server before you delete th
 
 **To disassociate nodes**
 
-1. In the AWS CLI, run the following command to disassociate nodes\. *Node\_name* is the name of the node that you want to disassociate; for Amazon EC2 instances, this is the instance ID\. *Server\_name* is the name of the Chef server from which you want to disassociate the node\. `--engine-attributes` specifies your default `CHEF_ORGANIZATION` name\. All three of these parameters are required\.
+1. In the AWS CLI, run the following command to disassociate nodes\. *Node\_name* is the name of the node that you want to disassociate; for Amazon EC2 instances, this is the instance ID\. *Server\_name* is the name of the Chef server from which you want to disassociate the node\. `--engine-attributes` specifies your default `CHEF_AUTOMATE_ORGANIZATION` name\. All three of these parameters are required\.
 
    The `--region` parameter is not required unless you want to disassociate a node from a Chef server that is not in your default region\.
 
    ```
-   aws opsworks-cm --region Region_name disassociate-node --node-name Node_name --server-name Server_name --engine-attributes "Name=CHEF_ORGANIZATION,Value='default'"
+   aws opsworks-cm --region Region_name disassociate-node --node-name Node_name --server-name Server_name --engine-attributes "Name=CHEF_AUTOMATE_ORGANIZATION,Value='default'"
    ```
 
    The following command is an example\.
 
    ```
-   aws opsworks-cm --region us-west-2 disassociate-node --node-name i-0010zzz00d66zzz90 --server-name opsworkstest --engine-attributes "Name=CHEF_ORGANIZATION,Value='default'"
+   aws opsworks-cm --region us-west-2 disassociate-node --node-name i-0010zzz00d66zzz90 --server-name opsworkstest --engine-attributes "Name=CHEF_AUTOMATE_ORGANIZATION,Value='default'"
    ```
 
 1. Wait until a response message indicates that the disassociation is finished\.

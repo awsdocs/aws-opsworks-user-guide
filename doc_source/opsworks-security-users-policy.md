@@ -6,7 +6,7 @@ You can specify a user's AWS OpsWorks Stacks permissions by attaching an IAM pol
 
 For a complete list of actions that require an attached policy, see [AWS OpsWorks Stacks Permissions LevelsPermissions Levels](opsworks-security-users-standard.md)\. 
 
-You can also use an attached policy to customize permission levels that were granted through the **Permissions** page\. This section provides a brief summary of how to attach an IAM policy to a user to specify AWS OpsWorks Stacks permissions\. For more information, see [Permissions and Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html)\.
+You can also use a policy to customize permission levels that were granted through the **Permissions** page\. This section provides a brief summary of how to apply an IAM policy to a user to specify AWS OpsWorks Stacks permissions\. For more information, see [Access management for AWS resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html)\.
 
 An IAM policy is a JSON object that contains one or more *statements*\. Each statement element has a list of permissions, which have three basic elements of their own:
 
@@ -35,18 +35,6 @@ For example, the following policy denies the user the ability to stop instances 
 }
 ```
 
-**To attach a policy to an IAM user**
+For information about adding permissions to an IAM user, see [https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console)\.
 
-1. Open the [IAM console](https://console.aws.amazon.com/iam/)\.
-
-1. To create a new managed policy for this user, choose **Policies** in the navigation pane, and then in the list of policies, choose **Create Policy** to create a new customer\-managed policy with the appropriate permissions\. For more information about how to create a customer\-managed policy, see [Customer Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies)\.
-
-1. When you have created the customer\-managed policy, choose **Users** in the IAM console navigation pane, select the user name, and then choose **Add permissions**\.
-
-1. On the **Add permissions** page, choose **Attach existing policies directly**\.
-
-1. In the **Policy Type** drop\-down list, select **Customer managed**, select the policy that you want to attach, and then choose **Next: Review**\.
-
-1. On the **Review** page, choose **Add permissions**\.
-
-For more information about how to create or modify IAM policies, see [Permissions and Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html)\. For some examples of AWS OpsWorks Stacks policies, see [Example Policies](opsworks-security-users-examples.md)\.
+For more information about how to create or modify IAM policies, see [Policies and permissions in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)\. For some examples of AWS OpsWorks Stacks policies, see [Example Policies](opsworks-security-users-examples.md)\.

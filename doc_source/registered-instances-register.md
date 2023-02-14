@@ -3,7 +3,7 @@
 **Note**  
 This feature is supported only for Linux stacks\.
 
-To register an instance that is outside of AWS OpsWorks Stacks, you run the `register` AWS CLI command\. You can run this command from the instance that you want to register, or from another computer\. You apply the `AWSOpsWorksRegisterCLI_EC2` or `AWSOpsWorksRegisterCLI_OnPremises` policies to an IAM user or group to grant permissions required for the AWS CLI to register EC2 or on\-premises instances, respectively\. These policies require version 1\.16\.180 of the AWS CLI or newer\.
+To register an instance that is outside of AWS OpsWorks Stacks, you run the `register` AWS CLI command\. You can run this command from the instance that you want to register, or from another computer\. You apply the `AWSOpsWorksRegisterCLI_EC2` or `AWSOpsWorksRegisterCLI_OnPremises` policies to a user or group to grant permissions required for the AWS CLI to register EC2 or on\-premises instances, respectively\. These policies require version 1\.16\.180 of the AWS CLI or newer\.
 
 The registration process installs an agent on an instance that you want to manage by using AWS OpsWorks Stacks, and registers the instance with an AWS OpsWorks stack that you specify\. After you register an instance, the instance is part of the stack and is managed by AWS OpsWorks Stacks\. For more information, see [Managing Registered Instances](registered-instances-manage.md)\.
 

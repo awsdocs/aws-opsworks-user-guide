@@ -27,7 +27,7 @@ To handle tasks such as installing and configuring software or deploying apps, y
 Windows instances use Chef 12\.22, and run [chef\-client in local mode](https://docs.chef.io/ctl_chef_client.html#run-in-local-mode), which launches a local in\-memory Chef server called [chef\-zero](https://docs.chef.io/ctl_chef_client.html#about-chef-zero)\. The presence of this server enables custom recipes to use Chef search and data bags\.
 
 **Remote Login**  
-AWS OpsWorks Stacks provides authorized AWS Identity and Access Management \(IAM\) users with a password that they can use to log in to Windows instances\. This password expires after a specified time\. Administrators can use an SSH key pair to retrieve an instance's Administrator password, which provides unlimited [RDP access](workinginstances-rdp.md)\. For more information, see [Logging In with RDP](workinginstances-rdp.md)\.
+AWS OpsWorks Stacks provides authorized IAM users with a password that they can use to log in to Windows instances\. This password expires after a specified time\. Administrators can use an SSH key pair to retrieve an instance's Administrator password, which provides unlimited [RDP access](workinginstances-rdp.md)\. For more information, see [Logging In with RDP](workinginstances-rdp.md)\.
 
 **AWS SDK**  
 AWS OpsWorks Stacks automatically installs the [AWS SDK for \.NET](http://aws.amazon.com/sdk-for-net/) on each instance\. This package includes the AWS \.NET libraries and AWS Tools for Windows, including the [AWS Tools for PowerShell](http://aws.amazon.com/powershell/)\. To use the Ruby SDK, you can have a custom recipe install the appropriate gem\.

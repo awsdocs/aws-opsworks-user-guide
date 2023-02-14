@@ -35,7 +35,7 @@ Using an Amazon EC2 key pair is convenient, but has two significant limitations:
 For Linux stacks, AWS OpsWorks Stacks provides a simpler and more flexible way to manage SSH key pairs\.
 + Each user registers a personal key pair\.
 
-  They store the private key locally and register the public key with AWS OpsWorks Stacks, as described in [Registering an IAM User's Public SSH Key](security-settingsshkey.md)\. 
+  They store the private key locally and register the public key with AWS OpsWorks Stacks, as described in [Registering a User's Public SSH Key](security-settingsshkey.md)\. 
 + When you set user permissions for a stack, you specify which users should have SSH access to the stack's instances\.
 
   AWS OpsWorks Stacks automatically creates a system user on the stack's instances for each authorized user and installs their public key\. The user can then use the corresponding private key to log in, as described in [Logging In with SSH](workinginstances-ssh.md)\.

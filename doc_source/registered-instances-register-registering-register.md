@@ -31,7 +31,7 @@ To register an instance with a new stack, you can do so by choosing **Register I
      --stack-id 247be7ea-3551-4177-9524-1ff804f453e3 --ssh-username [username] i-f1245d10
    ```
 **Important**  
-The IAM user that is created during the registration process is required throughout the life of a registered instance\. Deleting the user causes the AWS OpsWorks Stacks agent to be unable to communicate with the service\. To help prevent problems managing registered instances in the event that the IAM user is accidentally deleted, add the `--use-instance-profile` parameter to your `register` command to use the instance's built\-in instance profile instead\. Adding the `--use-instance-profile` parameter also prevents errors from occurring when you rotate AWS account access keys every 90 days \(a recommended best practice\), because it prevents mismatches between the access keys available to the AWS OpsWorks agent and required IAM user\.
+The IAM user that is created during the registration process is required throughout the life of a registered instance\. Deleting the user causes the AWS OpsWorks Stacks agent to be unable to communicate with the service\. To help prevent problems managing registered instances in the event that the user is accidentally deleted, add the `--use-instance-profile` parameter to your `register` command to use the instance's built\-in instance profile instead\. Adding the `--use-instance-profile` parameter also prevents errors from occurring when you rotate AWS account access keys every 90 days \(a recommended best practice\), because it prevents mismatches between the access keys available to the AWS OpsWorks agent and required IAM user\.
 
    If you set **I use SSH keys** to **Yes**, AWS OpsWorks Stacks adds the `--ssh-private-key` argument to the string, which you can use to specify a private SSH key file\.
 **Note**  
@@ -61,7 +61,7 @@ The `register` command does the following\.
    + An IAM user that bootstraps the agent with the AWS OpsWorks Stacks service to provide secure communication\.
 
      The user's permissions allow only the `opsworks:RegisterInstance` action, and they expire after 15 minutes\.
-   + An IAM group for the stack, which contains the registered instances' IAM users\.
+   + An IAM group for the stack, which contains the registered instances' users\.
 
 1. Creates an RSA key pair and sends the public key to AWS OpsWorks Stacks\.
 

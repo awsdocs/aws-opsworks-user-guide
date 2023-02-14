@@ -1,6 +1,6 @@
 # AWS OpsWorks Stacks Permissions Levels<a name="opsworks-security-users-standard"></a>
 
-This section lists the actions that are allowed by the **Show**, **Deploy**, and **Manage** permissions levels on the AWS OpsWorks Stacks **Permissions** page\. It also includes a list of actions that you can grant permissions only by attaching an IAM policy to the user\.
+This section lists the actions that are allowed by the **Show**, **Deploy**, and **Manage** permissions levels on the AWS OpsWorks Stacks **Permissions** page\. It also includes a list of actions that you can grant permissions only by applying an IAM policy to the user\.
 
 **Show**  
 The **Show** level allows `DescribeXYZ` commands, with the following exceptions:  
@@ -67,7 +67,7 @@ UpdateVolume
 ```
 
 **Permissions That Require an IAM Policy**  
-You must grant permissions for the following actions by attaching an appropriate IAM policy to the user\. For some examples, see [Example Policies](opsworks-security-users-examples.md)\.  
+You must grant permissions for the following actions by applying an appropriate IAM policy to the user\. For some examples, see [Example Policies](opsworks-security-users-examples.md)\.  
 
 ```
 CloneStack

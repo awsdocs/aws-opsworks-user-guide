@@ -10,9 +10,6 @@ If an instance belongs to multiple layers, AWS OpsWorks Stacks runs the recipes 
 
 You can also make an instance a member of multiple layers by editing its configuration\. For more information, see [Editing the Instance Configuration](workinginstances-properties.md)\.
 
-**Note**  
-[Spot instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html) are not supported\.
-
 **To add a new instance to a layer**
 
 1. On the **Instances** page, choose **\+Instance** for the appropriate layer and \(if necessary\) choose the **New** tab\. If you want to configure more than just the **Host name**, **Size**, and **Subnet** or **Availability Zone**, choose **Advanced >>** to see more options\. The following shows the complete set of options:  

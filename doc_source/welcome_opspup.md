@@ -31,7 +31,7 @@ For more information about encryption and security of your data and applications
 
 ## Region Support for OpsWorks for Puppet Enterprise<a name="opspup-region"></a>
 
-The following regional endpoints support OpsWorks for Puppet Enterprise masters\. OpsWorks for Puppet Enterprise creates resources that are associated with your Puppet masters, such as instance profiles, IAM users, and service roles, in the same regional endpoint as your Puppet master\. Your Puppet master must be in a VPC\. You can use a VPC that you create or already have, or use the default VPC\.
+The following regional endpoints support OpsWorks for Puppet Enterprise masters\. OpsWorks for Puppet Enterprise creates resources that are associated with your Puppet masters, such as instance profiles, users, and service roles, in the same regional endpoint as your Puppet master\. Your Puppet master must be in a VPC\. You can use a VPC that you create or already have, or use the default VPC\.
 + US East \(Ohio\) Region
 + US East \(N\. Virginia\) Region
 + US West \(N\. California\) Region

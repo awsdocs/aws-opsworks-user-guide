@@ -44,7 +44,7 @@ For more information about encryption of your connections, data, and application
 
 ## Region Support for AWS OpsWorks for Chef Automate<a name="opscm-region"></a>
 
-The following regional endpoints support AWS OpsWorks for Chef Automate servers\. AWS OpsWorks for Chef Automate creates resources that are associated with your Chef servers, such as instance profiles, IAM users, and service roles, in the same regional endpoint as your Chef server\. Your Chef server must be in a VPC\. You can use a VPC that you create or already have, or use the default VPC\.
+The following regional endpoints support AWS OpsWorks for Chef Automate servers\. AWS OpsWorks for Chef Automate creates resources that are associated with your Chef servers, such as instance profiles, users, and service roles, in the same regional endpoint as your Chef server\. Your Chef server must be in a VPC\. You can use a VPC that you create or already have, or use the default VPC\.
 + US East \(Ohio\) Region
 + US East \(N\. Virginia\) Region
 + US West \(N\. California\) Region

@@ -40,23 +40,39 @@ Registration is performed by the `aws opsworks register` AWS CLI command\. Befor
 
 We strongly recommend that you do not skip this step, even if you are already running the AWS CLI on your workstation\. Using the most current release of the AWS CLI is a security best practice\.
 
-You must provide `register` with a set of AWS credentials that have appropriate permissions\. The recommended way to do this—so that you avoid installing credentials directly on an instance—is to register instances that are launched with an instance profile, and then add the `--use-instance-profile` switch to your `register` command\. If you are getting credentials from an instance profile, skip to [Step 3: Register the Instance with the EC2Register Stack](#registered-instances-register-walkthrough-register) in this topic\. However, if your instance was not launched with an instance profile, you can create an IAM user\. The following procedure creates a new IAM user with appropriate permissions, installing the user's credentials on the workstation, and then passing those credentials to `register`\.
+You must provide `register` with a set of AWS credentials that have appropriate permissions\. The recommended way to do this—so that you avoid installing credentials directly on an instance—is to register instances that are launched with an instance profile, and then add the `--use-instance-profile` switch to your `register` command\. If you are getting credentials from an instance profile, skip to [Step 3: Register the Instance with the EC2Register Stack](#registered-instances-register-walkthrough-register) in this topic\. However, if your instance was not launched with an instance profile, you can create an IAM user\. The following procedure creates a new user with appropriate permissions, installing the user's credentials on the workstation, and then passing those credentials to `register`\.
 
-**To create the IAM User**
+**To create the user**
 
 1. On the [IAM console](https://console.aws.amazon.com/iam/), choose **Users** in the navigation pane, and then choose **Add user**\.
 
-1. Add a user named **EC2Register**\. In the **Select AWS access type** area, select **Programmatic access**, and then choose **Next: Permissions**\.
+1. Add a user named **EC2Register**\.
 
-1. On the **Set permissions** page, choose **Attach existing policies directly**\.
+1. Choose **Next**\.
 
-1. Enter **OpsWorks** in the **Policy type** filter box to display the AWS OpsWorks policies, select one of the following policies, and then choose **Next: review**\. The policy grants your user the permissions that are required to run `register`\.
+1. On the **Set permissions** page, choose **Attach policies directly**\.
+
+1. Enter **OpsWorks** in the **Permissions policy** filter box to display the AWS OpsWorks policies, select one of the following policies, and then choose **Next: review**\. The policy grants your user the permissions that are required to run `register`\.
    + Choose `AWSOpsWorksRegisterCLI_EC2` to allow the user permissions to register EC2 instances that use instance profiles\.
    + Choose `AWSOpsWorksRegisterCLI_OnPremises` to allow the user permissions to register on\-premises instances\.
 
+1. Choose **Next**\.
+
 1. On the **Review** page, choose **Create user**\.
 
-1. Choose **Download \.csv**, save the credentials file to a convenient location on your system, and then choose **Close**\.
+1. Now create access keys for your user\. From the navigation pane, choose **Users**, and then choose the user you want to create access keys for\.
+
+1. Choose the **Security credentials** tab, then choose **Create access key**\.
+
+1.  Choose the **Access key best practices & alternatives** that best corresponds to your task\. 
+
+1. Choose **Next**\.
+
+1. \(Optionally\) enter a tag to identify the access keys\.
+
+1. Choose **Next**\.
+
+1. Choose **Download \.csv file**, save the credentials file to a convenient location on your system, and choose **Done**\.
 
 You need to provide the IAM user's credentials to `register`\. This walkthrough handles the task by installing the EC2Register credentials in your workstation's `credentials` file\. For information about other ways to manage credentials for the AWS CLI, see [Configuration and Credential Files](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files)\.
 
@@ -92,11 +108,11 @@ You are now ready to register the instance\.
      --ssh-private-key [key-file] i-f1245d10
    ```
 **Note**  
-You must set the region to the AWS OpsWorks Stacks service's endpoint region, not the stack's region, if the stack is within a classic region associated with the `us-east-1` regional endpoint\. AWS OpsWorks Stacks determines the stack's region from the stack ID\.
+You must set the Region to the AWS OpsWorks Stacks service's endpoint Region, not the stack's Region, if the stack is within a classic Region associated with the `us-east-1` regional endpoint\. AWS OpsWorks Stacks determines the stack's Region from the stack ID\.
 
 1. The command template contains several user\-specific argument values, which are indicated by brackets and must be replaced with appropriate values\. Copy the command template to a text editor and edit it as follows\.
 **Important**  
-The IAM user that is created during the registration process is required throughout the life of a registered instance\. Deleting the user causes the AWS OpsWorks Stacks agent to be unable to communicate with the service\. To help prevent problems managing registered instances in the event that the IAM user is accidentally deleted, add the `--use-instance-profile` parameter to your `register` command to use the instance's built\-in instance profile instead\. Adding the `--use-instance-profile` parameter also prevents errors from occurring when you rotate AWS account access keys every 90 days \(a recommended best practice\), because it prevents mismatches between the access keys available to the AWS OpsWorks agent and required IAM user\.
+The IAM user that is created during the registration process is required throughout the life of a registered instance\. Deleting the user causes the AWS OpsWorks Stacks agent to be unable to communicate with the service\. To help prevent problems managing registered instances in the event that the user is accidentally deleted, add the `--use-instance-profile` parameter to your `register` command to use the instance's built\-in instance profile instead\. Adding the `--use-instance-profile` parameter also prevents errors from occurring when you rotate AWS account access keys every 90 days \(a recommended best practice\), because it prevents mismatches between the access keys available to the AWS OpsWorks agent and required IAM user\.
    + Replace *key file* with the fully qualified path of the private key file for the Amazon EC2 key pair that you saved when you created the instance\.
 
      You can use a relative path, if you prefer\.

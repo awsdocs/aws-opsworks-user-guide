@@ -28,9 +28,9 @@ This walkthrough assumes the following:
 + You will create your stack in a [default VPC](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)\.
 
   You can use EC2\-Classic for this walkthrough, but some of the details will differ slightly\. For example, with EC2\-Classic, you specify an instance's Availability Zone \(AZ\) instead of its subnet\.
-+ Your AWS Identity and Access Management \(IAM\) user has full\-access permissions for AWS OpsWorks Stacks\.
++ Your IAM user has full\-access permissions for AWS OpsWorks Stacks\.
 
-  For security reasons, we strongly recommend that you do not use your account's root credentials for this walkthrough\. Instead, create an IAM user with AWS OpsWorks Stacks full\-access permissions and use those credentials with AWS OpsWorks Stacks\. For more information, see [Creating an Administrative User](opsworks-security-users-manage-admin.md)\.
+  For security reasons, we strongly recommend that you do not use your account's root credentials for this walkthrough\. Instead, create a user with AWS OpsWorks Stacks full\-access permissions and use those credentials with AWS OpsWorks Stacks\. For more information, see [Creating an Administrative User](opsworks-security-users-manage-admin.md)\.
 
 ## Implementing the Application<a name="gettingstarted-node-app"></a>
 

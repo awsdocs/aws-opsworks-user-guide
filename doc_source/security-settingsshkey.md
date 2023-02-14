@@ -1,4 +1,4 @@
-# Registering an IAM User's Public SSH Key<a name="security-settingsshkey"></a>
+# Registering a User's Public SSH Key<a name="security-settingsshkey"></a>
 
 There are two ways to register a user's public SSH key:
 + An administrative user can assign a public SSH key to one or more users and provide them with the corresponding private key\.
@@ -10,7 +10,7 @@ For more information how administrative users can enable self management or assi
 
 Connecting to Linux\-based instances by using SSH in a PuTTY terminal requires additional steps\. For more information, see [Connecting to Your Linux Instance from Windows Using PuTTY](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) and [Troubleshooting Connecting to Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html) in the AWS documentation\.
 
-The following describes how an IAM user with self\-management enabled can specify their public key\.
+The following describes how a user with self\-management enabled can specify their public key\.
 
 **To specify your SSH public key**
 
@@ -24,7 +24,7 @@ If you use [PuTTYgen](http://www.putty.org/) to generate your key pair, copy the
 **Important**  
 If you sign in as an account owner, or as an IAM user that does not have self\-management enabled, AWS OpsWorks Stacks does not display **My Settings**\. If you are an administrative user or the account owner, you can instead specify SSH keys by going to the **Users** page and [editing the user settings](opsworks-security-users-manage-edit.md)\.
 
-1. Select **My Settings**, which displays the settings for the signed\-in IAM user\.  
+1. Select **My Settings**, which displays the settings for the signed\-in user\.  
 ![\[My Settings link in OpsWorks dashboard.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/permissions-mysettings-link.png)
 
 1. On the **My Settings** page, click **Edit**\.  

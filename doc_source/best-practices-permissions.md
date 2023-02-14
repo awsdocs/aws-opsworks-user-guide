@@ -3,7 +3,7 @@
 You must have some form of AWS credentials to access your account's resources\. The following are some general guidelines for providing access to your employees\.
 + First and foremost, we recommend that you do not use your account's root credentials to access AWS resources\.
 
-  Instead, create [IAM users](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html) for your employees and attach policies that provide appropriate access\. Each employee can then use their IAM user credentials to access resources\.
+  Instead, create [IAM Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html) for your employees and add permissions that provide appropriate access\. Each employee can then use their credentials to access resources\.
 + Employees should have permissions to access only those resources that they need to perform their jobs\.
 
   For example, application developers need to access only the stacks that run their applications\. 
@@ -25,16 +25,16 @@ The **Manage** permissions level does not grant permissions for a small number o
 In addition to setting permissions levels, you can also use a stack's **Permissions** page to specify whether users have SSH/RDP and sudo/admin privileges on the stack's instances\. For more information about AWS OpsWorks Stacks permissions management, see [Granting Per\-Stack Permissions](opsworks-security-users-console.md)\. For more information about managing SSH access, see [Managing SSH Access](security-ssh-access.md)\.
 
 **IAM Permissions Management**  
-With IAM permissions management, you use the IAM console, API, or CLI to attach a JSON\-formatted policy to a user that explicitly specifies their permissions\. For more information about IAM permissions management, see [What Is IAM?](http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_Introduction.html)\.
+With IAM permissions management, you use the IAM console, API, or CLI to attach a JSON\-formatted policy to a user that explicitly specifies their permissions\. For more information about IAM permissions management, see [What is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/Introduction.html)\.
 
 **Recommendation:** Start with AWS OpsWorks Stacks **Permissions** management\. If you need to fine tune a user's permissions, or grant a user permissions that aren't included in the **Manage** permissions levels, you can combine the two approaches\. AWS OpsWorks Stacks then evaluates both policies to determine the user's permissions\. 
 
 **Important**  
-If an IAM user has multiple policies with conflicting permissions, denial always wins\. For example, suppose that you attach an IAM policy to a user that allows access to a particular stack but also use the stack's **Permissions** page to assign the user a **Deny** permissions level\. The **Deny** permissions level takes precedence, and the user will not be able to access the stack\. For more information, see [IAM Policy Evaluation Logic](http://docs.aws.amazon.com/IAM/latest/UserGuide/AccessPolicyLanguage_EvaluationLogic.html)\. 
+If a user has multiple policies with conflicting permissions, denial always wins\. For example, suppose that you attach an IAM policy to a user that allows access to a particular stack but also use the stack's **Permissions** page to assign the user a **Deny** permissions level\. The **Deny** permissions level takes precedence, and the user will not be able to access the stack\. For more information, see [IAM policy evaluation logic](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)\. 
 
 For example, suppose you want a user to be able to perform most operations on a stack, except for adding or deleting layers\.
 + Specify a **Manage** permissions level, which allows the user to perform most stack management actions, including creating and deleting layers\.
-+ Attach the following [customer\-managed policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingPolicies.html) to the user, which denies permissions to use the [CreateLayer](http://docs.aws.amazon.com/opsworks/latest/APIReference/API_CreateLayer.html) and [DeleteLayer](http://docs.aws.amazon.com/opsworks/latest/APIReference/API_DeleteLayer.html) actions on that stack\. You identify the stack by its *[Amazon Resource Name \(ARN\)](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#ARN)*, which can be found on the stack's **Settings** page\.
++ Attach the following [customer\-managed policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingPolicies.html) to the user, which denies permissions to use the [CreateLayer](http://docs.aws.amazon.com/opsworks/latest/APIReference/API_CreateLayer.html) and [DeleteLayer](http://docs.aws.amazon.com/opsworks/latest/APIReference/API_DeleteLayer.html) actions on that stack\. You identify the stack by its *[Amazon Resource Name \(ARN\)](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#ARN)*, which can be found on the stack's **Settings** page\.
 
   ```
   {

@@ -52,7 +52,7 @@ If you have not done so already, follow the steps in [\(Alternate\) Use Berkshel
 
    This script runs the `opsworks-cm` API [http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_AssociateNode.html](http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_AssociateNode.html) command to associate a new node with your Chef server\.
 
-   By default, the name of the new registered node is the instance ID, but you can change the name by modifying the value of the `NODE_NAME` variable in the `userdata` script\. Because changing the organization name in the Chef console UI is currently not possible, leave `CHEF_ORGANIZATION` set to `default`\.
+   By default, the name of the new registered node is the instance ID, but you can change the name by modifying the value of the `NODE_NAME` variable in the `userdata` script\. Because changing the organization name in the Chef console UI is currently not possible, leave `CHEF_AUTOMATE_ORGANIZATION` set to `default`\.
 
 1. Follow the procedure in [Launching an Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html) in the EC2 documentation, with modifications here\. In the EC2 instance launch wizard, choose an Amazon Linux AMI\.
 

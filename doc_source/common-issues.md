@@ -28,7 +28,7 @@ perform: iam:CreateGroup on resource:
 arn:aws:iam::123456789012:group/AWS/OpsWorks/OpsWorks-b583ce55-1d01-4695-b3e5-ee19257d1911
 ```
 
-**Cause:** The `register` command is running with IAM user credentials that do not grant the required permissions\. The user's policy must allow the `iam:CreateGroup` action, among others\.
+**Cause:** The `register` command is running with credentials that do not grant the required permissions\. The user's policy must allow the `iam:CreateGroup` action, among others\.
 
 **Solution** Provide `register` with IAM user credentials that have the required permissions\. For more information, see [Installing and Configuring the AWS CLI](registered-instances-register-registering-cli.md)\.
 

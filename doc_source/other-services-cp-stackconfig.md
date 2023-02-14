@@ -8,8 +8,8 @@ Chef 12 stacks in AWS OpsWorks Stacks require your own or community\-created coo
 
 1. From the **Repository type** drop\-down list, choose **S3 Archive**\. To work with both CodePipeline and AWS OpsWorks, your cookbook source must be S3\.
 
-1. For **Repository URL**, specify `https://s3.amazonaws.com/opsworks-codepipeline-demo/opsworks-nodejs-demo-cookbook.zip`\. Your settings should resemble the following\.  
-![\[Use custom Chef cookbooks setttings.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cp_integ_usecustomcook.png)
+1. For **Repository URL**, specify **https://s3\.amazonaws\.com/opsworks\-demo\-assets/opsworks\-linux\-demo\-cookbooks\-nodejs\.tar\.gz**\. Your settings should resemble the following\.  
+![\[Use custom Chef cookbooks settings.\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cp_integ_usecustomcook.png)
 
 1. Choose **Save**\.
 
@@ -20,9 +20,6 @@ Chef 12 stacks in AWS OpsWorks Stacks require your own or community\-created coo
 1. On the **General Settings** tab, be sure that the layer name is **Node\.js App Server**, and the layer short name is **app1**\. Choose **Recipes**\.
 
 1. On the **Recipes** tab, specify **nodejs\_demo** as the recipe you want to run during the **Deploy** lifecycle event\. Choose **Save**\.
-
-   Your recipe settings should resemble the following:  
-![\[Layer recipe settings\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cp_integ_layerconfig.png)
 
 1. On the **Security** tab, from the **Security groups** drop\-down list, choose the **AWS\-OpsWorks\-Webapp** security group\.
 

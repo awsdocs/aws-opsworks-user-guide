@@ -116,7 +116,7 @@ You can verify that the pivotal user is part of the default organization by runn
 
 ### Chef server doesn't recognize organization names added in the Chef Automate dashboard<a name="w2ab1b9c52b9c12"></a>
 
-**Problem:** You've added new Workflow organization names in the Chef Automate dashboard, or specified a `CHEF_ORGANIZATION` value other than `"default"` in the [unattended node association script](opscm-unattend-assoc.md), but node association fails\. Your AWS OpsWorks for Chef Automate server does not recognize the new organization names\.
+**Problem:** You've added new Workflow organization names in the Chef Automate dashboard, or specified a `CHEF_AUTOMATE_ORGANIZATION` value other than `"default"` in the [unattended node association script](opscm-unattend-assoc.md), but node association fails\. Your AWS OpsWorks for Chef Automate server does not recognize the new organization names\.
 
 **Cause:** Workflow organization names and Chef server organization names are not the same\. You can create new Workflow organizations in the web\-based Chef Automate dashboard, but not Chef server organization names\. You can use the Chef Automate dashboard only to view existing Chef server organizations\. A new organization that you create in the Chef Automate dashboard is a Workflow organization, and is not recognized by the Chef server\. You cannot create new organization names by specifying them in the node association script\. Referring to an organization name in a node association script when the organization has not first been added to the Chef server will cause node association to fail\.
 

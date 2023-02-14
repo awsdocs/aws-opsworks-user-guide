@@ -6,17 +6,11 @@ Content delivered to Amazon S3 buckets might contain customer content\. For more
 
 This topic describes how to use the [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/) on an AWS OpsWorks Stacks Windows instance to download a file from an S3 bucket\.
 
-If a Ruby application needs to access an AWS resource, you must provide it with a set of AWS credentials with the appropriate permissions\. For recipes, your best option for providing AWS credentials is to use an AWS Identity and Access Management \([IAM\) role](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html)\. An IAM role works much like an IAM user; it has an attached policy that grants permissions to use the various AWS services\. However, you assign a role to an Amazon Elastic Compute Cloud \(Amazon EC2\) instance instead of to an individual\. Applications running on that instance can then acquire the permissions granted by the attached policy\. With a role, credentials never appear in your code, even indirectly\. 
+If a Ruby application needs to access an AWS resource, you must provide it with a set of AWS credentials with the appropriate permissions\. For recipes, your best option for providing AWS credentials is to use an AWS Identity and Access Management \([IAM\) role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)\. An IAM role works much like an IAM user it has an attached policy that grants permissions to use the various AWS services\. However, you assign a role to an Amazon Elastic Compute Cloud \(Amazon EC2\) instance instead of to an individual\. Applications running on that instance can then acquire the permissions granted by the attached policy\. With a role, credentials never appear in your code, even indirectly\. 
 
-The first step is to set up the IAM role\. This example takes the simplest approach, which is to use the Amazon EC2 role that AWS OpsWorks Stacks creates when you create your first stack\. It is named `aws-opsworks-ec2-role`\. However, AWS OpsWorks Stacks does not attach a policy to that role, so by default it grants no permissions\. You must attach a policy that grants appropriate permissions to the role, in this case, read\-only permissions for Amazon S3\.
+The first step is to set up the IAM role\. This example takes the simplest approach, which is to use the Amazon EC2 role that AWS OpsWorks Stacks creates when you create your first stack\. It is named `aws-opsworks-ec2-role`\. However, AWS OpsWorks Stacks does not attach a policy to that role, so by default it grants no permissions\. 
 
-**To attach a policy to a role**
-
-1. Open the [IAM console](https://console.aws.amazon.com/iam/) and choose **Roles** in the navigation pane\.
-
-1. Choose `aws-opsworks-ec2-role` and, under **Permissions**, choose **Attach Policy**\.
-
-1. Type **S3** in the **Policy Type** search box to display the Amazon S3 policies\. Choose AmazonS3ReadOnlyAccess and choose **Attach Policy**\.
+You must attach the `AmazonS3ReadOnlyAccess` policy to the `aws-opsworks-ec2-role` role to grants appropriate permissions\. For more information about how to attach a policy to a role, see [Adding IAM identity permissions \(console\)](https://docs.aws.amazon.com/access_policies_manage-attach-detach.html#add-policies-console) in the *IAM User Guide*\.
 
 You specify the role when you create or update a stack\. Set up a stack with a custom layer, as described in [Running a Recipe on a Windows Instance](cookbooks-101-opsworks-opsworks-windows.md), with one addition\. On the **Add Stack** page, confirm that **Default IAM instance profile** is set to **aws\-opsworks\-ec2\-role**\. AWS OpsWorks Stacks will then assign that role to all of the stack's instances\.
 

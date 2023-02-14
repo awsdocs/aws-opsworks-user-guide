@@ -3,26 +3,30 @@
 This topic describes how a recipe running on a Vagrant instance can use the [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/) to download a file from Amazon S3\. Before starting, you must first have a set of AWS credentials—an access key and a secret access key—that allow the recipe to access Amazon S3\.
 
 **Important**  
-We strongly recommend that you do not use root account credentials for this purpose\. Instead, create an IAM user with an appropriate policy and provide those credentials to the recipe\. For more information, see [Best Practices for Managing AWS Access Keys](http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html)\.  
+We strongly recommend that you do not use root account credentials for this purpose\. Instead, create a user with an appropriate policy and provide those credentials to the recipe\.   
 Be careful not to put credentials—even IAM user credentials—in a publicly accessible location, such as by uploading a file containing the credentials to a public GitHub or Bitbucket repository\. Doing so exposes your credentials and could compromise your account's security\.  
  Recipes running on an EC2Amazon EC2 instance can use an even better approach, an IAM role, as described in [Using the SDK for Ruby on an AWS OpsWorks Stacks Linux Instance](cookbooks-101-opsworks-s3-opsworks.md)\.  
 Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
-If you don't already have an appropriate IAM user, you can create one as follows\. For more information, see [What Is IAM](http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_Introduction.html)\.
+If you don't already have an appropriate user, you can create one as follows\. For more information, see [What is IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/Introduction.html)\.
 
 **To create an IAM user**
 
 1. Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
 
-1. In the navigation pane, choose **Users** and, if necessary, choose **Create New Users** to create a new IAM user for the administrative user\.
+1. In the navigation pane, choose **Users** and, if necessary, choose **Add users** to create a new administrative user\.
 
-1. Type a user name, select **Generate an access key for each user**, and choose **Create**\.
+1. On the **Set permissions** page, choose **Attach policies directly**\.
 
-1. Choose **Download Credentials**, save the credentials file to a convenient location on your system, and choose **Close**\.
+1. Type **S3** in the **Permissions policies** search box to display the Amazon S3 policies\.
 
-1. On the **Users** page, choose the new user's name and then choose **Attach Policy**\.
+   Choose **AmazonS3ReadOnlyAccess**\. If you prefer, you can specify a policy that grants broader permissions, such as **AmazonS3FullAccess**, but standard practice is to grant only those permissions that are required\. In this case, the recipe will only be downloading a file, so read\-only access is sufficient\.
 
-1. Type **S3** in the **Policy Type** search box to display the Amazon S3 policies\. Select **AmazonS3ReadOnlyAccess** and choose **Attach Policy**\. If you prefer, you can specify a policy that grants broader permissions, such as **AmazonS3FullAccess**, but standard practice is to grant only those permissions that are required\. In this case, the recipe will only be downloading a file, so read\-only access is sufficient\.
+1. Choose **Next**\.
+
+1. Choose **Create user**
+
+1. Next create access keys for your user\. For more information about creating access keys, see [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) in the *IAM User Guide*\.
 
 You must next provide a file to be downloaded\. This example assumes that you will put a file named `myfile.txt` in a newly created S3 bucket named `cookbook_bucket`\. 
 
@@ -70,7 +74,7 @@ Set the cookbook up as follows\.
 
 1. Add two directories to `s3bucket`: `recipes` and `environments`\.
 
-1. Create an environment file named `test.json` with the following `default_attributes` section, replacing the `access_key` and `secret_key` values with the corresponding keys for your IAM user\. Save the file to the cookbook's `environments` folder\.
+1. Create an environment file named `test.json` with the following `default_attributes` section, replacing the `access_key` and `secret_key` values with the corresponding keys for your user\. Save the file to the cookbook's `environments` folder\.
 
    ```
    {

@@ -1,10 +1,10 @@
 # Instance Registration Policies<a name="registered-instances-register-registering-template"></a>
 
-The `AWSOpsWorksRegisterCLI_EC2` and `AWSOpsWorksRegisterCLI_OnPremises` policies provide the correct permissions for registering EC2 and on\-premises instances, respectively\. You add `AWSOpsWorksRegisterCLI_EC2` to your IAM user to register EC2 instances, but add `AWSOpsWorksRegisterCLI_OnPremises` to your IAM user to register on\-premises instances\. To use these policies, you must be running at least version 1\.16\.180 of the AWS CLI or newer\.
+The `AWSOpsWorksRegisterCLI_EC2` and `AWSOpsWorksRegisterCLI_OnPremises` policies provide the correct permissions for registering EC2 and on\-premises instances, respectively\. You add `AWSOpsWorksRegisterCLI_EC2` to your IAM user to register EC2 instances, but add `AWSOpsWorksRegisterCLI_OnPremises` to your user to register on\-premises instances\. To use these policies, you must be running at least version 1\.16\.180 of the AWS CLI or newer\.
 
 ## The `AWSOpsWorksRegisterCLI_EC2` Policy<a name="instance-profile-policy"></a>
 
-Add `AWSOpsWorksRegisterCLI_EC2` to your IAM user to register EC2 instances\. You should use this profile if you plan to register only EC2 instances\. When you use this policy, permissions are provided by the EC2 instance's instance profile\.
+Add `AWSOpsWorksRegisterCLI_EC2` to your user to register EC2 instances\. You should use this profile if you plan to register only EC2 instances\. When you use this policy, permissions are provided by the EC2 instance's instance profile\.
 
 ```
 {
@@ -40,7 +40,7 @@ Add `AWSOpsWorksRegisterCLI_EC2` to your IAM user to register EC2 instances\. Yo
 
 ## The `AWSOpsWorksRegisterCLI_OnPremises` Policy<a name="register-onprem-policy"></a>
 
-Add `AWSOpsWorksRegisterCLI_OnPremises` to your IAM user to register on\-premises instances\. This policy includes IAM permissions, such as `AttachUserPolicy`, but the resources on which those permissions work are restricted\.
+Add `AWSOpsWorksRegisterCLI_OnPremises` to your user to register on\-premises instances\. This policy includes IAM permissions, such as `AttachUserPolicy`, but the resources on which those permissions work are restricted\.
 
 ```
     {

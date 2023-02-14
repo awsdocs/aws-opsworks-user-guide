@@ -8,7 +8,7 @@ CloudWatch Logs monitors selected logs for the occurrence of a user\-specified p
 
 Before you can enable CloudWatch Logs, your instances must be running version 3444 or later of the AWS OpsWorks Stacks agent in Chef 11\.10 stacks, and 4023 or later in Chef 12 stacks\. You must also use a compatible instance profile for any instances that you are monitoring by using CloudWatch Logs\.
 
-If you are using a custom instance profile \(one that AWS OpsWorks Stacks did not provide when you created the stack\), AWS OpsWorks Stacks cannot automatically upgrade the instance profile\. You must manually attach the **AWSOpsWorksCloudWatchLogs** policy to your profile by using IAM\. For information, see [Attaching Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-using.html#attach-managed-policy-console) in the *IAM User Guide*\.
+If you are using a custom instance profile \(one that AWS OpsWorks Stacks did not provide when you created the stack\), AWS OpsWorks Stacks cannot automatically upgrade the instance profile\. You must manually attach the **AWSOpsWorksCloudWatchLogs** policy to your profile by using IAM\. For information, see [Managing IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-using.html#attach-managed-policy-console) in the *IAM User Guide*\.
 
 If you need to upgrade your agent version or instance profile, AWS OpsWorks Stacks displays a reminder similar to following screen shot when you open the CloudWatch Logs tab on the **Layer** page\.
 

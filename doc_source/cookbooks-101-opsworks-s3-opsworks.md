@@ -4,21 +4,15 @@ This topic describes how to use the SDK for Ruby on an AWS OpsWorks Stacks Linux
 
 Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
- [Using the SDK for Ruby on a Vagrant Instance](cookbooks-101-opsworks-s3-vagrant.md) shows how to mitigate the risk of exposing your credentials by storing the credentials in the node object and referencing the attributes in your recipe code\. When you run recipes on an Amazon EC2 instance, you have an even better option, an [IAM role](http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html)\.
+ [Using the SDK for Ruby on a Vagrant Instance](cookbooks-101-opsworks-s3-vagrant.md) shows how to mitigate the risk of exposing your credentials by storing the credentials in the node object and referencing the attributes in your recipe code\. When you run recipes on an Amazon EC2 instance, you have an even better option, an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)\.
 
 An IAM role works much like an IAM user\. It has an attached policy that grants permissions to use the various AWS services\. However, you assign a role to an Amazon EC2 instance rather than to an individual\. Applications running on that instance can then acquire the permissions granted by the attached policy\. With a role, credentials never appear in your code, even indirectly\. This topic describes how you can use an IAM role to run the recipe from [Using the SDK for Ruby on a Vagrant Instance](cookbooks-101-opsworks-s3-vagrant.md) on an Amazon EC2 instance\.
 
 You could run this recipe with Test Kitchen using the kitchen\-ec2 driver, as described in [Example 9: Using Amazon EC2 Instances](cookbooks-101-basics-ec2.md)\. However, installing the SDK for Ruby on Amazon EC2 instances is somewhat complicated and not something you need to be concerned with for AWS OpsWorks Stacks\. All AWS OpsWorks Stacks Linux instances have the SDK for Ruby installed by default\. For simplicity, the example therefore uses an AWS OpsWorks Stacks instance\. 
 
-The first step is to set up the IAM role\. This example takes the simplest approach, which is to use the Amazon EC2 role that AWS OpsWorks Stacks creates when you create your first stack\. It is named `aws-opsworks-ec2-role`\. However, AWS OpsWorks Stacks does not attach a policy to that role, so by default it grants no permissions\. You must attach a policy to the role that grants appropriate permissions, in this case, read\-only permissions for Amazon S3\. The procedure is much like the one you used to attach a policy to an IAM user in the preceding section\.
+The first step is to set up the IAM role\. This example takes the simplest approach, which is to use the Amazon EC2 role that AWS OpsWorks Stacks creates when you create your first stack\. It is named `aws-opsworks-ec2-role`\. However, AWS OpsWorks Stacks does not attach a policy to that role, so by default it grants no permissions\.
 
-**To attach a policy to a role**
-
-1. Open the [IAM console](https://console.aws.amazon.com/iam/) and click **Roles** in the navigation pane\.
-
-1. Click `aws-opsworks-ec2-role` and under **Permissions**, select **Attach Policy**\.
-
-1. Type **S3** in the **Policy Type** search box to display the Amazon S3 policies\. Select AmazonS3ReadOnlyAccess and click **Attach Policy**\.
+You must attach the `AmazonS3ReadOnlyAccess` policy to the `aws-opsworks-ec2-role` role to grants appropriate permissions\. For more information about how to attach a policy to a role, see [Adding IAM identity permissions \(console\)](https://docs.aws.amazon.com/access_policies_manage-attach-detach.html#add-policies-console) in the *IAM User Guide*\.
 
 You specify the role when you create or update a stack\. Set up a stack with a custom layer, as described in [Running a Recipe on a Linux Instance](cookbooks-101-opsworks-opsworks-instance.md), with one addition\. On the **Add Stack** page, confirm that **Default IAM instance profile** is set to **aws\-opsworks\-ec2\-role**\. AWS OpsWorks Stacks will then assign that role to all of the stack's instances\.
 
@@ -65,7 +59,7 @@ This recipe is similar the one used by the previous example, with the following 
 + Because AWS OpsWorks Stacks has already installed the SDK for Ruby, the `chef_gem` resource has been deleted\.
 + The recipe does not pass any credentials to `AWS::S3.new`\.
 
-  Credentials are automatically assigned to the application based on the instance's role\. For more information, see [Using IAM Roles for Amazon EC2 Instances with the AWS SDK for Ruby](http://docs.aws.amazon.com/AWSSdkDocsRuby/latest/DeveloperGuide/ruby-dg-roles.html)\.
+  Credentials are automatically assigned to the application based on the instance's role\.
 + The recipe uses `Chef::Log.info` to add a message to the Chef log\.
 
 Create a stack for this example as follows\. You can also use an existing Windows stack\. Just update the cookbooks, as described later\.

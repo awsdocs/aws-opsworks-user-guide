@@ -6,7 +6,7 @@ Before you begin this step, complete the [prerequisites](gettingstarted-intro-pr
 
 **To create the stack**
 
-1. Using your IAM user, sign in to the AWS OpsWorks Stacks console at [https://console\.aws\.amazon\.com/opsworks](https://console.aws.amazon.com/opsworks)\.
+1. Sign in to the AWS Management Console and open the AWS OpsWorks console at [https://console\.aws\.amazon\.com/opsworks/](https://console.aws.amazon.com/opsworks/)\.
 
 1. Do any of the following, if they apply:
    + If the **Welcome to AWS OpsWorks Stacks** page is displayed, choose **Add your first stack** or **Add your first AWS OpsWorks Stacks stack** \(both choices do the same thing\)\. The **Add stack** page displays\.

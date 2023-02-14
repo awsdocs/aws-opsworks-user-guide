@@ -18,9 +18,9 @@ This topic describes how to use a pipeline to run and update an app on a Chef 11
 
 ## Prerequisites<a name="w2ab1c14c67c17c11b9"></a>
 
-Before you start this walkthrough, be sure that you have administrator permissions to perform all of the following tasks\. You can be a member of a group that has the **AdministratorAccess** policy applied, or you can be a member of a group that has the permissions and policies shown in the following table\. As a security best practice, you should belong to a group that has permissions to do the following tasks, instead of assigning required permissions to individual user accounts\.
+Before you start this walkthrough, be sure that you have administrator permissions to perform all of the following tasks\. You can be a member of a group that has the **AdministratorAccess** policy applied, or you can be a member of a group that has the permissions and policies shown in the following table\. As a security best practice, you should belong to a group that has permissions to do the following tasks, instead of assigning required permissions to individual users\.
 
-For more information about creating a security group in IAM and assigning permissions to the group, see [Creating Your First IAM User and Administrators Group](http://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html)\. For more information about managing AWS OpsWorks Stacks permissions, see [Best Practices: Managing Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/best-practices-permissions.html)\. For more information about managing CodePipeline permissions, see [AWS CodePipeline Access Permissions Reference](http://docs.aws.amazon.com/codepipeline/latest/userguide/access-permissions.html) in the CodePipeline documentation\.
+For more information about creating a security group in IAM and assigning permissions to the group, see [Creating IAM user groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_create.html)\. For more information about managing AWS OpsWorks Stacks permissions, see [Best Practices: Managing Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/best-practices-permissions.html)\.
 
 
 | Permissions | Recommended Policy to Attach to Group | 

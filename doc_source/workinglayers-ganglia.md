@@ -1,7 +1,7 @@
 # Ganglia Layer<a name="workinglayers-ganglia"></a>
 
 **Note**  
-This layer is available only for for Chef 11 and earlier Linux\-based stacks\.
+This layer is available only for Chef 11 and earlier Linux\-based stacks\.
 
 AWS OpsWorks Stacks sends all of your instance and volume metrics to [Amazon CloudWatch](http://aws.amazon.com/documentation/cloudwatch/), making it easy to view graphs and set alarms to help you troubleshoot and take automated action based on the state of your resources\. You can also use the Ganglia AWS OpsWorks Stacks layer for additional application monitoring options such as storing your chosen metrics\.
 

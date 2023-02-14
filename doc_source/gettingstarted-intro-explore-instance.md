@@ -32,6 +32,6 @@ To learn more about what some of the instance settings represent, return to the 
 When you have finished reviewing settings, choose **Start** to restart the instance, and wait until **Status** changes to **online**\. Otherwise, you won't be able to test the app later, because the instance will remain stopped\.
 
 **Note**  
-If you want to log in to the instance to explore it further, you must first provide AWS OpsWorks Stacks with information about your public SSH key \(which you can create with tools such as ssh\-keygen or PuTTYgen\), and then you must set permissions on the **My Sample Stack \(Linux\)** stack to enable your IAM user to log in to the instance\. For instructions, see [Registering an IAM User's Public SSH Key](security-settingsshkey.md) and [Logging In with SSH](workinginstances-ssh.md)\.
+If you want to log in to the instance to explore it further, you must first provide AWS OpsWorks Stacks with information about your public SSH key \(which you can create with tools such as ssh\-keygen or PuTTYgen\), and then you must set permissions on the **My Sample Stack \(Linux\)** stack to enable your user to log in to the instance\. For instructions, see [Registering a User's Public SSH Key](security-settingsshkey.md) and [Logging In with SSH](workinginstances-ssh.md)\.
 
 In the [next step](gettingstarted-intro-explore-app.md), explore the app's settings\.

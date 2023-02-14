@@ -26,8 +26,8 @@ The following arguments are common to all AWS CLI commands\.
 \(Optional\) The credential's profile name\. If you omit this argument, the command runs with your default credentials\. For more information about how the AWS CLI determines default credentials, see [Configuring the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)\.
 
 **`--region`**  
- \(Optional\) The AWS OpsWorks Stacks service endpoint's region\. Do not set `--region` to the stack's region\. AWS OpsWorks Stacks automatically determines the stack's region from the stack ID\.  
-If your default region is already set, you can omit this argument\. For more information about how to specify a default region, see [Configuring the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)\.
+ \(Optional\) The AWS OpsWorks Stacks service endpoint's Region\. Do not set `--region` to the stack's Region\. AWS OpsWorks Stacks automatically determines the stack's Region from the stack ID\.  
+If your default Region is already set, you can omit this argument\. For more information about how to specify a default Region, see [Configuring the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)\.
 
 Use the following arguments for both Amazon EC2 and on\-premises instances\.
 
@@ -63,7 +63,7 @@ For more information about `ssh`, see [SSH](http://www.openbsd.org/cgi-bin/man.c
 
 **`--use-instance-profile`**  
 \(Optional, but highly recommended for Amazon EC2 instances\) Lets the `register` command use an attached instance profile, instead of creating an IAM user\. Adding this parameter can help prevent errors that occur if you try to manage a registered instance when the IAM user has accidentally been deleted\.  
-The IAM user that is created during the registration process is required throughout the life of a registered instance\. Deleting the user causes the AWS OpsWorks Stacks agent to be unable to communicate with the service\. To help prevent problems managing registered instances in the event that the IAM user is accidentally deleted, add the `--use-instance-profile` parameter to your `register` command to use the instance's built\-in instance profile instead\. Adding the `--use-instance-profile` parameter also prevents errors from occurring when you rotate AWS account access keys every 90 days \(a recommended best practice\), because it prevents mismatches between the access keys available to the AWS OpsWorks agent and required IAM user\.
+The IAM user that is created during the registration process is required throughout the life of a registered instance\. Deleting the user causes the AWS OpsWorks Stacks agent to be unable to communicate with the service\. To help prevent problems managing registered instances in the event that the user is accidentally deleted, add the `--use-instance-profile` parameter to your `register` command to use the instance's built\-in instance profile instead\. Adding the `--use-instance-profile` parameter also prevents errors from occurring when you rotate AWS account access keys every 90 days \(a recommended best practice\), because it prevents mismatches between the access keys available to the AWS OpsWorks agent and required user\.
 
 **Target**  
 \(Conditional\) If you run this command from a workstation, the final value in the command string specifies the registration target in one of the following ways\.  

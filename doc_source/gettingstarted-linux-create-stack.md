@@ -6,7 +6,7 @@ Before you begin, complete the [prerequisites](gettingstarted-linux-prerequisite
 
 **To create the stack**
 
-1. Using your IAM user, sign in to the AWS OpsWorks Stacks console at [https://console\.aws\.amazon\.com/opsworks](https://console.aws.amazon.com/opsworks)\.
+1. Sign in to the AWS Management Console and open the AWS OpsWorks console at [https://console\.aws\.amazon\.com/opsworks/](https://console.aws.amazon.com/opsworks/)\.
 
 1. Do any of the following, if they apply:
    + If the **Welcome to AWS OpsWorks Stacks** page is displayed, choose **Add your first stack** or **Add your first AWS OpsWorks Stacks stack** \(both choices do the same thing\)\. The **Add stack** page is displayed\.
@@ -47,9 +47,9 @@ Before you begin, complete the [prerequisites](gettingstarted-linux-prerequisite
    + If **aws\-opsworks\-ec2\-role** is available, choose it\.
    + If **aws\-opsworks\-ec2\-role** is not available, choose **New IAM instance profile**\.
 
-1. For **API endpoint region**, choose the regional API endpoint with which you want the stack to be associated\. If you want the stack to be in the US West \(Oregon\) region within the US East \(N\. Virginia\) regional endpoint, choose **us\-east\-1**\. If you want the stack to be both in the US West \(Oregon\) region and associated with the US West \(Oregon\) regional endpoint, choose **us\-west\-2**\.
+1. For **API endpoint region**, choose the regional API endpoint with which you want the stack to be associated\. If you want the stack to be in the US West \(Oregon\) Region within the US East \(N\. Virginia\) regional endpoint, choose **us\-east\-1**\. If you want the stack to be both in the US West \(Oregon\) Region and associated with the US West \(Oregon\) regional endpoint, choose **us\-west\-2**\.
 **Note**  
-The US East \(N\. Virginia\) regional endpoint includes older AWS regions for backward compatibility, but it is a best practice to choose the regional endpoint that is closest to where you manage AWS\. For more information, see [Region Support](gettingstarted_intro.md#gettingstarted-intro-region)\.
+The US East \(N\. Virginia\) regional endpoint includes older AWS Regions for backward compatibility, but it is a best practice to choose the regional endpoint that is closest to where you manage AWS\. For more information, see [Region Support](gettingstarted_intro.md#gettingstarted-intro-region)\.
 
 1. Leave the defaults for the following:
    + **Default root device type** \(**EBS backed**\)

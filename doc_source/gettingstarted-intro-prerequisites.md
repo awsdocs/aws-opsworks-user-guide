@@ -1,15 +1,13 @@
 # Step 1: Complete the Prerequisites<a name="gettingstarted-intro-prerequisites"></a>
 
-You must complete the following setup steps before you can start the walkthrough\. These setup steps include signing up for an AWS account, creating an IAM user in your AWS account, and assigning the IAM user access permissions to AWS OpsWorks Stacks\.
+You must complete the following setup steps before you can start the walkthrough\. These setup steps include signing up for an AWS account, creating an administrative user, and assigning access permissions to AWS OpsWorks Stacks\.
 
 **Topics**
-+ [Step 1\.1: Sign up for an AWS Account](#gettingstarted-intro-prerequisites-aws-account)
-+ [Step 1\.2: Create an IAM User in Your AWS Account](#gettingstarted-intro-prerequisites-iam-user)
-+ [Step 1\.3: Assign Service Access Permissions to Your IAM User](#gettingstarted-intro-prerequisites-permissions)
++ [Sign up for an AWS account](#sign-up-for-aws)
++ [Create an administrative user](#create-an-admin)
++ [Assign Service Access Permissions](#gettingstarted-intro-prerequisites-permissions)
 
-## Step 1\.1: Sign up for an AWS Account<a name="gettingstarted-intro-prerequisites-aws-account"></a>
-
-In this step, you will sign up for an AWS account\. If you already have an AWS account that you want to use for this walkthrough, you can skip ahead to [Step 1\.2: Create an IAM User in Your AWS Account](#gettingstarted-intro-prerequisites-iam-user)\. You cannot use an AWS Free Tier account for this walkthrough\.
+## Sign up for an AWS account<a name="sign-up-for-aws"></a>
 
 If you do not have an AWS account, complete the following steps to create one\.
 
@@ -21,18 +19,38 @@ If you do not have an AWS account, complete the following steps to create one\.
 
    Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
-   When you sign up for an AWS account, an *AWS account root user* is created\. The root user has access to all AWS services and resources in the account\. As a security best practice, [assign administrative access to an administrative user](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html), and use only the root user to perform [tasks that require root user access](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html#aws_tasks-that-require-root)\.
+   When you sign up for an AWS account, an *AWS account root user* is created\. The root user has access to all AWS services and resources in the account\. As a security best practice, [assign administrative access to an administrative user](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html), and use only the root user to perform [tasks that require root user access](https://docs.aws.amazon.com/accounts/latest/reference/root-user-tasks.html)\.
 
-## Step 1\.2: Create an IAM User in Your AWS Account<a name="gettingstarted-intro-prerequisites-iam-user"></a>
+AWS sends you a confirmation email after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and choosing **My Account**\.
 
-Use your AWS account to create an AWS Identity and Access Management \(IAM\) user\. You use an IAM user to access the AWS OpsWorks Stacks service\. \(We don't recommend that you use your AWS account to access AWS OpsWorks Stacks directly\. Doing so is generally less secure and can make it more difficult for you to troubleshoot service access issues later\.\) If you already have an IAM user that you want to use for this walkthrough, you can skip ahead to [Step 1\.3: Assign Service Access Permissions to Your IAM User](#gettingstarted-intro-prerequisites-permissions)\.
+## Create an administrative user<a name="create-an-admin"></a>
 
-To create an IAM user, see [Creating IAM Users \(AWS Management Console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console)\. For this walkthrough, the user name is `OpsWorksDemoUser`\. However, you can use a different name\.
+After you sign up for an AWS account, create an administrative user so that you don't use the root user for everyday tasks\.
 
-## Step 1\.3: Assign Service Access Permissions to Your IAM User<a name="gettingstarted-intro-prerequisites-permissions"></a>
+**Secure your AWS account root user**
 
-Set up your IAM user to enable access to the AWS OpsWorks Stacks service \(and related services that AWS OpsWorks Stacks relies on\)\.
+1.  Sign in to the [AWS Management Console](https://console.aws.amazon.com/) as the account owner by choosing **Root user** and entering your AWS account email address\. On the next page, enter your password\.
 
-To assign service access permissions to your IAM user, see [Attaching Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-using.html#attach-managed-policy-console)\. Attach the `AWSOpsWorks_FullAccess` and `AmazonS3FullAccess` policies to the user you created in the previous step or to the existing IAM user that you want to use\.
+   For help signing in by using root user, see [Signing in as the root user](https://docs.aws.amazon.com/signin/latest/userguide/console-sign-in-tutorials.html#introduction-to-root-user-sign-in-tutorial) in the *AWS Sign\-In User Guide*\.
+
+1. Turn on multi\-factor authentication \(MFA\) for your root user\.
+
+   For instructions, see [Enable a virtual MFA device for your AWS account root user \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html#enable-virt-mfa-for-root) in the *IAM User Guide*\.
+
+**Create an administrative user**
++ For your daily administrative tasks, grant administrative access to an administrative user in AWS IAM Identity Center \(successor to AWS Single Sign\-On\)\.
+
+  For instructions, see [Getting started](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html) in the *AWS IAM Identity Center \(successor to AWS Single Sign\-On\) User Guide*\.
+
+**Sign in as the administrative user**
++ To sign in with your IAM Identity Center user, use the sign\-in URL that was sent to your email address when you created the IAM Identity Center user\.
+
+  For help signing in using an IAM Identity Center user, see [Signing in to the AWS access portal](https://docs.aws.amazon.com/signin/latest/userguide/iam-id-center-sign-in-tutorial.html) in the *AWS Sign\-In User Guide*\.
+
+## Assign Service Access Permissions<a name="gettingstarted-intro-prerequisites-permissions"></a>
+
+Enable access to the AWS OpsWorks Stacks service \(and related services that AWS OpsWorks Stacks relies on\) by adding the `AWSOpsWorks_FullAccess` and `AmazonS3FullAccess` permissions to your role or user\.
+
+For more information about adding permissions, see [Adding IAM identity permissions \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#add-policies-console)\.
 
 You have now completed all of the setup steps and can [start this walkthrough](gettingstarted-intro-create-stack.md)\.

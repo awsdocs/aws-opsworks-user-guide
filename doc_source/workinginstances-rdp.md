@@ -39,16 +39,16 @@ Before you can use RDP to log into a Windows instance, the instance's security g
 
 An authorized user can log in to instances using a temporary password, provided by AWS OpsWorks Stacks\.
 
-**To authorize RDP for an IAM user**
+**To authorize RDP for a user;**
 
 1. In the AWS OpsWorks Stacks navigation pane, click **Permissions**\.
 
-1. Select the **SSH/RDP** checkbox for the desired IAM user to grant the necessary permissions\. If you want the user to have administrator permissions, you should also select **sudo/admin**\.  
+1. Select the **SSH/RDP** checkbox for the desired user to grant the necessary permissions\. If you want the user to have administrator permissions, you should also select **sudo/admin**\.  
 ![\[SSH and sudo permissions for users\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/permissions.png)
 
 Authorized users can log in to any of the stack's online instances, as follows\.
 
-**To log in as an ordinary user**
+**To log in as an ordinary IAM user**
 
 1. Log in as an IAM user\.
 

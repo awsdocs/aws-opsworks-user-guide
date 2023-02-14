@@ -51,7 +51,7 @@ After you have a stack with a layer and at least one instance configured in AWS 
    }
    ```
 
-   When you are finished making changes to the policy document, choose **Allow**\. Your changes will be dsplayed in the IAM console\.  
+   When you are finished making changes to the policy document, choose **Allow**\. Your changes will be displayed in the IAM console\.  
 ![\[\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/cp_integ_iamrole.png)
 **Note**  
 If role creation fails, it might be because you already have an IAM role named **AWS\-CodePipeline\-Service**\. If you have been using the **AWS\-CodePipeline\-Service** role before May 2016, the role might not have permissions to use AWS OpsWorks Stacks as a deployment provider\. In this case, you must update the policy statement as shown in this step\. If you see an error message, go back to the beginning of this step, and choose **Use existing role** instead of **Create role**\. If you use an existing role, the role should have a policy attached that includes the permissions shown in this step\. For more information about the service role and its policy statement, see [Edit a Policy for an IAM Service Role](http://docs.aws.amazon.com/codepipeline/latest/userguide/access-permissions.html#how-to-custom-role)\.

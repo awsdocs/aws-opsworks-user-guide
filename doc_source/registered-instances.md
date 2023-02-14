@@ -12,7 +12,7 @@ These computing resources become AWS OpsWorks Stacks\-managed instances, and you
 + **Automate tasks** – You can have AWS OpsWorks Stacks run custom Chef recipes to perform tasks such as executing scripts on any or all of a stack's instances with a single command\.
 
   If you assign the instance to a [layer](workinglayers.md), AWS OpsWorks Stacks automatically runs a specified set of Chef recipes on the instance at key points in its [lifecycle](workingcookbook-events.md), including your custom recipes\. Note that you can assign registered Amazon EC2 instances to [custom layers](workinglayers-custom.md) only\.
-+ **Manage resources** – A stack lets you group and manage resources in an AWS region, and the OpsWorks dashboard shows the status of your stacks across all regions\.
++ **Manage resources** – A stack lets you group and manage resources in an AWS Region, and the OpsWorks dashboard shows the status of your stacks across all Regions\.
 + **Install packages** – You can use Chef recipes to install packages on any instance in a stack\.
 + **Update the operating system** – AWS OpsWorks Stacks provides a simple way to install operating system security patches and updates on a stack's instances\.
 + **Deploy applications** – AWS OpsWorks Stacks deploys applications consistently to all of the stack's application server instances\.

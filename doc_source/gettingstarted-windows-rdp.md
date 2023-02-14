@@ -28,7 +28,7 @@ The security group allows the instance to receive RDP connection requests, but t
 
 1. On the Permissions page, choose **Edit**\.
 
-1. In the list of users, select the checkbox for **SSH/RDP** for the IAM user to whom you want to grant necessary permissions\. If you want the user to also have administrator permissions, select **sudo/admin** as well\.  
+1. In the list of users, select the checkbox for **SSH/RDP** for the user to whom you want to grant necessary permissions\. If you want the user to also have administrator permissions, select **sudo/admin** as well\.  
 ![\[SSH and sudo permissions for users\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/permissions.png)
 
 1. Choose **Save**\.

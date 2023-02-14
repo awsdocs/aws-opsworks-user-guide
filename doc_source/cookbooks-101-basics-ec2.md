@@ -11,7 +11,11 @@ An alternative approach is to use the `vagrant-aws` Vagrant plug\-in\. For more 
 
 You will need AWS credentials to create an Amazon EC2 instance\. If you don't have an AWS account you can obtain one, as follows\. 
 
-**To sign up for AWS**
+## Sign up for an AWS account<a name="sign-up-for-aws"></a>
+
+If you do not have an AWS account, complete the following steps to create one\.
+
+**To sign up for an AWS account**
 
 1. Open [https://portal\.aws\.amazon\.com/billing/signup](https://portal.aws.amazon.com/billing/signup)\.
 
@@ -19,13 +23,39 @@ You will need AWS credentials to create an Amazon EC2 instance\. If you don't ha
 
    Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
-   When you sign up for an AWS account, an *AWS account root user* is created\. The root user has access to all AWS services and resources in the account\. As a security best practice, [assign administrative access to an administrative user](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html), and use only the root user to perform [tasks that require root user access](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html#aws_tasks-that-require-root)\.
+   When you sign up for an AWS account, an *AWS account root user* is created\. The root user has access to all AWS services and resources in the account\. As a security best practice, [assign administrative access to an administrative user](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html), and use only the root user to perform [tasks that require root user access](https://docs.aws.amazon.com/accounts/latest/reference/root-user-tasks.html)\.
 
-You should then [create an IAM user](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_SettingUpUser.html) with permissions to access Amazon EC2 and save the user's access and secret keys to a secure location on your workstation\. Test Kitchen will use those credentials to create the instance\. The preferred way to provide credentials to Test Kitchen is to assign the keys to the following environment variables on your workstation\.
+AWS sends you a confirmation email after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and choosing **My Account**\.
+
+## Create an administrative user<a name="create-an-admin"></a>
+
+After you sign up for an AWS account, create an administrative user so that you don't use the root user for everyday tasks\.
+
+**Secure your AWS account root user**
+
+1.  Sign in to the [AWS Management Console](https://console.aws.amazon.com/) as the account owner by choosing **Root user** and entering your AWS account email address\. On the next page, enter your password\.
+
+   For help signing in by using root user, see [Signing in as the root user](https://docs.aws.amazon.com/signin/latest/userguide/console-sign-in-tutorials.html#introduction-to-root-user-sign-in-tutorial) in the *AWS Sign\-In User Guide*\.
+
+1. Turn on multi\-factor authentication \(MFA\) for your root user\.
+
+   For instructions, see [Enable a virtual MFA device for your AWS account root user \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html#enable-virt-mfa-for-root) in the *IAM User Guide*\.
+
+**Create an administrative user**
++ For your daily administrative tasks, grant administrative access to an administrative user in AWS IAM Identity Center \(successor to AWS Single Sign\-On\)\.
+
+  For instructions, see [Getting started](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html) in the *AWS IAM Identity Center \(successor to AWS Single Sign\-On\) User Guide*\.
+
+**Sign in as the administrative user**
++ To sign in with your IAM Identity Center user, use the sign\-in URL that was sent to your email address when you created the IAM Identity Center user\.
+
+  For help signing in using an IAM Identity Center user, see [Signing in to the AWS access portal](https://docs.aws.amazon.com/signin/latest/userguide/iam-id-center-sign-in-tutorial.html) in the *AWS Sign\-In User Guide*\.
+
+You should[create an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) with permissions to access Amazon EC2 and save the user's access and secret keys to a secure location on your workstation\. Test Kitchen will use those credentials to create the instance\. The preferred way to provide credentials to Test Kitchen is to assign the keys to the following environment variables on your workstation\.
 + AWS\_ACCESS\_KEY – your user's access key, which will look something like AKIAIOSFODNN7EXAMPLE\.
 + AWS\_SECRET\_KEY – your user's secret key, which will look something like wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\.
 
-This approach reduces the chances of accidentally compromising your account by, for example, uploading a project containing your credentials to a public repository\. For more information, see [Best Practices for Managing AWS Access Keys](http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html)\.
+This approach reduces the chances of accidentally compromising your account by, for example, uploading a project containing your credentials to a public repository\.
 
 **To set up the cookbook**
 
@@ -60,7 +90,7 @@ This approach reduces the chances of accidentally compromising your account by, 
 
 1. Add a `recipes` subdirectory to `createdir-ec2`\.
 
-## Configuring \.kitchen\.yml for Amazon EC2<a name="w2ab1c14c65b7c13c15c29c23"></a>
+## Configuring \.kitchen\.yml for Amazon EC2<a name="w2ab1c14c65b7c13c15c29c33"></a>
 
 You configure `.kitchen.yml` with the information that the `kitchen-ec2` driver needs to launch an appropriately configured Amazon EC2 instance\. The following is an example of a `.kitchen.yml` file for an Amazon Linux instance in the US West \(N\. California\) region\.
 
@@ -137,7 +167,7 @@ The host name configuration type that you use to access the instance\. Valid val
 1. Private DNS name
 
 **Important**  
-Rather than use your account credentials for the access and secret keys, you should create an IAM user and provide those credentials to Test Kitchen\. For more information, see [Best Practices for Managing AWS Access Keys](http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html)\.  
+Rather than use your account credentials for the access and secret keys, you should create a user and provide those credentials to Test Kitchen\. For more information, see [Best Practices for Managing AWS Access Keys](http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html)\.  
 Be careful not to put `.kitchen.yml` in a publicly accessible location, such as uploading it to a public GitHub or Bitbucket repository\. Doing so exposes your credentials and could compromise your account's security\.
 
 The `kitchen-ec2` driver provides default support for the following platforms:
@@ -166,7 +196,7 @@ The `driver` attributes, which include the following:
 
 Replace the code in `.kitchen.yml` with the example, and assign appropriate values to account\-specific attributes such as `aws_access_key_id`\.
 
-## Running the Recipe<a name="w2ab1c14c65b7c13c15c29c25"></a>
+## Running the Recipe<a name="w2ab1c14c65b7c13c15c29c35"></a>
 
 This example uses the recipe from [Iteration](cookbooks-101-basics-ruby.md#cookbooks-101-basics-ruby-iteration)\.
 

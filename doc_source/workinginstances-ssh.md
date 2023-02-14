@@ -10,11 +10,11 @@ You can log into your online Linux instances with SSH using either the built\-in
 
 A user must have SSH authorization to use the MindTerm SSH client or to use their personal key pair to log in to a stack's instances\.
 
-**To authorize SSH for an IAM user**
+**To authorize SSH for a user**
 
 1. In the AWS OpsWorks Stacks navigation pane, click **Permissions**\.
 
-1. Select **SSH/RDP** for the desired AWS Identity and Access Management \(IAM\) user to grant the necessary permissions\. If you want to allow the user to use `sudo` to elevate privileges—for example, to run [agent CLI](agent.md) commands—select **sudo/admin** also\.  
+1. Select **SSH/RDP** for the desired IAM user to grant the necessary permissions\. If you want to allow the user to use `sudo` to elevate privileges—for example, to run [agent CLI](agent.md) commands—select **sudo/admin** also\.  
 ![\[SSH and sudo permissions for users\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/permissions.png)
 
 For more information on how to use AWS OpsWorks Stacks to manage SSH access, see [Managing SSH Access](security-ssh-access.md)\. 

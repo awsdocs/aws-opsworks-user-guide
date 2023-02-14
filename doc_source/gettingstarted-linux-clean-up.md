@@ -35,6 +35,6 @@ Content stored in the resources that you created for this walkthrough can contai
 
 1. Choose **Delete Stack**\. When you see the confirmation message, choose **Delete**\. AWS OpsWorks Stacks deletes the stack and displays the **OpsWorks Dashboard** page\.
 
-Optionally, you can delete the IAM user and Amazon EC2 key pair that you used for this walkthrough, if you don't want to reuse them for access to other AWS services and EC2 instances\. For instructions, see [Deleting an IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_deleting) and [Deleting Your Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#delete-key-pair)\.
+Optionally, you can delete the user and Amazon EC2 key pair that you used for this walkthrough, if you don't want to reuse them for access to other AWS services and EC2 instances\. For instructions, see [Deleting an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_deleting) and [Amazon EC2 key pairs and Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#delete-key-pair)\.
 
 You have now completed this walkthrough\. For more information, see [Next Steps](gettingstarted-linux-next-steps.md)\.

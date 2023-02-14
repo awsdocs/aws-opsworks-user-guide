@@ -57,7 +57,7 @@ AWS OpsWorks Stacks does not support uncompressed tarballs\.
 
 1. To specify the repository in the console, select HTTP Archive as the repository type and enter the URL\.
 
-    If the archive is password\-protected, under **Application Source**, specify the user name and password\.
+    If the archive is password\-protected, under **Application Source**, specify the sign\-in credentials\.
 
 #### Amazon S3 Archive<a name="w2ab1c14c51c11b9b8c10"></a>
 
@@ -65,7 +65,7 @@ To use an Amazon Simple Storage Service bucket as a repository:
 
 1. Create a public or private Amazon S3 bucket\. For more information, see [Amazon S3 Documentation](http://aws.amazon.com/documentation/s3/)\.
 
-1. For AWS OpsWorks Stacks to access private buckets, you must be an IAM user with at least read\-only rights to the Amazon S3 bucket and you will need the access key ID and secret access key\. For more information, see [AWS Identity and Access Management \(IAM\) Documentation](http://aws.amazon.com/documentation/iam/)\.
+1. For AWS OpsWorks Stacks to access private buckets, you must be a user with at least read\-only rights to the Amazon S3 bucket and you will need the access key ID and secret access key\. For more information, see [AWS Identity and Access Management Documentation](https://docs.aws.amazon.com/iam/)\.
 
 1. Put the code and any associated files in a folder and store the folder in a compressed archive—zip, gzip, bzip2, Java WAR, or tarball\.
 **Note**  
