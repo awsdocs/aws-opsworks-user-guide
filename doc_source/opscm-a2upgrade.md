@@ -72,7 +72,7 @@ A server running Chef Automate 1 must have had at least one successful maintenan
 
    If the upgrade was unsuccessful, AWS OpsWorks for Chef Automate automatically rolls back your server to Chef Automate 1\.
 
-   If the upgrade was successful but the server is not functioning the same as before the upgrade \(for example, if managed nodes are not reporting\), you can roll the server back manually\. For manual rollback information, see \.
+   If the upgrade was successful but the server is not functioning the same as before the upgrade \(for example, if managed nodes are not reporting\), you can roll the server back manually\. For manual rollback information, see [Roll Back an AWS OpsWorks for Chef Automate Server to Chef Automate 1 \(CLI\)](#opscm-a2upgrade-rollback-cli)\.
 
 ## Roll Back an AWS OpsWorks for Chef Automate Server to Chef Automate 1 \(CLI\)<a name="opscm-a2upgrade-rollback-cli"></a>
 

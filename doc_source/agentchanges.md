@@ -7,6 +7,8 @@ The following table describes important changes to the Chef 12 agent that AWS Op
 
 | Agent Version | Description | Release Date | 
 | --- | --- | --- | 
+| 4040 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | July 22, 2022 | 
+| 4039 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | April 30, 2020 | 
 | 4038 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | March 5, 2020 | 
 | 4037 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | June 4, 2019 | 
 | 4035 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | May 8, 2019 | 
@@ -43,6 +45,8 @@ The following table describes important changes to the Chef 11\.10 agent that AW
 
 | Agent Version | Description | Release Date | 
 | --- | --- | --- | 
+| 3455 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | November 1, 2022 | 
+| 3454 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | April 28, 2020 | 
 | 3453 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | March 5, 2020 | 
 | 3452 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | August 13, 2019 | 
 | 3451 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/opsworks/latest/userguide/agentchanges.html)  | March 20, 2019 | 

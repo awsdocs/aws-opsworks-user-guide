@@ -29,7 +29,7 @@
 | [AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise](#history) | OpsWorks for Puppet Enterprise has upgraded to PE 2018\.1\.2\. AWS OpsWorks for Chef Automate has upgraded to Chef Automate 1\.8\.68\. | June 29, 2018 | 
 + **AWS OpsWorks for Chef Automate and OpsWorks for Puppet Enterprise API version:** 2016\-11\-01
 + **AWS OpsWorks Stacks API version: **2016\-03\-08
-+ **Latest documentation update: **2023\-02\-14
++ **Latest documentation update: **2023\-02\-22
 
 ## Earlier updates<a name="history-older"></a>
 
