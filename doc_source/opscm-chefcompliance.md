@@ -102,7 +102,7 @@ Instructions in this section show you how to implement the `opsworks-audit` cook
 
 1. Add nodes to your server to manage, if you have not already done so\. To connect your first node to the AWS OpsWorks for Chef Automate server, use the `userdata.sh` script that is included in this Starter Kit\. It uses the AWS OpsWorks `AssociateNode` API to connect a node to your server\.
 
-   You can automate the association of nodes by following steps in [Adding Nodes Automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md), or add nodes one at a time by following steps in [Add Nodes for the Chef Server to Manage](opscm-addnodes.md)\. 
+   You can automate the association of nodes by following steps in [Add nodes automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md), or add nodes one at a time by following steps in [Add nodes individually](opscm-addnodes-individually.md)\. 
 
 1. After you update the run list for your nodes, the `chef-client` agent runs your specified recipes on its next run\. By default, this occurs every 1800 seconds \(30 minutes\)\. After the run, you can view and take actions on compliance results from the **Compliance** tab in the Chef Automate dashboard\.  
 ![\[Chef compliance scan results\]](http://docs.aws.amazon.com/opsworks/latest/userguide/images/opscm_compliance_scan.png)
@@ -215,7 +215,7 @@ The AWS OpsWorks for Chef Automate starter kit includes a wrapper cookbook, `ops
    knife cookbook list
    ```
 
-1. Add nodes to your server to manage, if you have not already done so\. You can automate the association of nodes by following steps in [Adding Nodes Automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md), or add nodes one at a time by following steps in [Add Nodes for the Chef Server to Manage](opscm-addnodes.md)\. Edit the run list of your nodes to add the role you specified in Step 1, `opsworks-example-role`\. In this example, we edit the `RUN_LIST` attribute in the `userdata` script that you use to automate the association of nodes\.
+1. Add nodes to your server to manage, if you have not already done so\. You can automate the association of nodes by following steps in [Add nodes automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md), or add nodes one at a time by following steps in [Add nodes individually](opscm-addnodes-individually.md)\. Edit the run list of your nodes to add the role you specified in Step 1, `opsworks-example-role`\. In this example, we edit the `RUN_LIST` attribute in the `userdata` script that you use to automate the association of nodes\.
 
    ```
    RUN_LIST="role[opsworks-example-role]"

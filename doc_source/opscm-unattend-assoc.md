@@ -1,6 +1,6 @@
-# Adding Nodes Automatically in AWS OpsWorks for Chef Automate<a name="opscm-unattend-assoc"></a>
+# Add nodes automatically in AWS OpsWorks for Chef Automate<a name="opscm-unattend-assoc"></a>
 
-This topic describes how to add Amazon Elastic Compute Cloud \(Amazon EC2\) nodes to your Chef server automatically\. In [Add Nodes for the Chef Server to Manage](opscm-addnodes.md), you learned how to use the [https://docs.chef.io/install_bootstrap.html#knife-bootstrap](https://docs.chef.io/install_bootstrap.html#knife-bootstrap) command to add one node at a time to your Chef server\. The code in the [Starter Kit](opscm-starterkit.md) shows how to add nodes automatically using the unattended method\. The recommended method of unattended \(or automatic\) association of new nodes is to configure the [Chef Client Cookbook](https://supermarket.chef.io/cookbooks/chef-client)\. You can use the `userdata` script in the Starter Kit, and change either the `run_list` section of the `userdata` script, or your `Policyfile.rb` with the cookbooks you want to apply to your nodes\. Before you run the `chef-client` agent, install the Chef Client cookbook on your Chef server, and then install the `chef-client` agent in service mode with, for example, an HTTPD role, as shown in the following sample command\. 
+This topic describes how to add Amazon Elastic Compute Cloud \(Amazon EC2\) nodes to your Chef server automatically\. The code in the [Starter Kit](opscm-starterkit.md) shows how to add nodes automatically using the unattended method\. The recommended method of unattended \(or automatic\) association of new nodes is to configure the [Chef Client Cookbook](https://supermarket.chef.io/cookbooks/chef-client)\. You can use the `userdata` script in the Starter Kit, and change either the `run_list` section of the `userdata` script, or your `Policyfile.rb` with the cookbooks you want to apply to your nodes\. Before you run the `chef-client` agent, install the Chef Client cookbook on your Chef server, and then install the `chef-client` agent in service mode with, for example, an HTTPD role, as shown in the following sample command\. 
 
 ```
 chef-client -r "chef-client,role[httpd]"
@@ -12,7 +12,15 @@ The minimum supported version of `chef-client` on nodes associated with an AWS O
 
 For information about how to disassociate a node, see [Disassociate a Node from an AWS OpsWorks for Chef Automate Server](opscm-disassociate-node.md) in this guide, and [http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_DisassociateNode.html](http://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_DisassociateNode.html) in the AWS OpsWorks for Chef Automate API documentation\.
 
-## Supported Operating Systems<a name="w2ab1b9c42c13"></a>
+**Topics**
++ [Supported Operating Systems](#w2ab1b9c26c15c13c15)
++ [Step 1: Create an IAM Role to Use as Your Instance Profile](#opscm-create-instance-profile)
++ [Step 2: Install the Chef Client Cookbook](#w2ab1b9c26c15c13c19)
++ [Step 3: Create Instances by Using an Unattended Association Script](#opscm-unattend-script)
++ [Other Methods of Automating Repeated Runs of `chef-client`](#w2ab1b9c26c15c13c23)
++ [Related Topics](#opscm-unattend-assoc-related)
+
+## Supported Operating Systems<a name="w2ab1b9c26c15c13c15"></a>
 
 For the current list of supported operating systems for nodes, see the [Chef website](https://docs.chef.io/platforms.html)\.
 
@@ -42,7 +50,7 @@ AWS OpsWorks provides an AWS CloudFormation template that you can use to create 
 aws cloudformation --region region ID create-stack --stack-name myChefAutomateinstanceprofile --template-url https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-nodes-roles.yaml --capabilities CAPABILITY_IAM
 ```
 
-## Step 2: Install the Chef Client Cookbook<a name="w2ab1b9c42c17"></a>
+## Step 2: Install the Chef Client Cookbook<a name="w2ab1b9c26c15c13c19"></a>
 
 If you have not done so already, follow the steps in [\(Alternate\) Use Berkshelf to Get Cookbooks from a Remote Source](opscm-starterkit.md#opscm-berkshelf) to ensure that your Berksfile or `Policyfile.rb` file references the Chef Client cookbook and installs the cookbook\.
 
@@ -68,7 +76,7 @@ If you have not done so already, follow the steps in [\(Alternate\) Use Berkshel
 
 1. Optional: If you have added the `nginx` cookbook to your run list, when you open the webpage linked to the public DNS of your new node, you should see a website that is hosted by your nginx web server\.
 
-## Other Methods of Automating Repeated Runs of `chef-client`<a name="w2ab1b9c42c21"></a>
+## Other Methods of Automating Repeated Runs of `chef-client`<a name="w2ab1b9c26c15c13c23"></a>
 
 Although more difficult to achieve, and not recommended, you can run the script in this topic solely as part of standalone instance user data, use a AWS CloudFormation template to add it to new instance user data, configure a `cron` job to run the script regularly, or run `chef-client` within a service\. However, we recommend the Chef Client Cookbook method because there are some disadvantages with other automation techniques\.
 

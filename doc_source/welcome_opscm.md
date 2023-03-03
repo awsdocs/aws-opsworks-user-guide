@@ -31,7 +31,6 @@ You can connect any on\-premises computer or EC2 instance that is running a supp
 + [Back Up and Restore an AWS OpsWorks for Chef Automate Server](opscm-backup-restore.md)
 + [System Maintenance in AWS OpsWorks for Chef Automate](opscm-maintenance.md)
 + [Compliance Scans in AWS OpsWorks for Chef Automate](opscm-chefcompliance.md)
-+ [Adding Nodes Automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md)
 + [Disassociate a Node from an AWS OpsWorks for Chef Automate Server](opscm-disassociate-node.md)
 + [Delete an AWS OpsWorks for Chef Automate Server](opscm-delete-server.md)
 + [Reset Chef Automate Dashboard Credentials](opscm-resetchefcreds.md)

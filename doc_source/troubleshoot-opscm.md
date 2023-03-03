@@ -3,11 +3,11 @@
 This topic contains some common AWS OpsWorks for Chef Automate issues, and suggested solutions for those issues\.
 
 **Topics**
-+ [General troubleshooting tips](#w2ab1b9c52b7)
++ [General troubleshooting tips](#w2ab1b9c50b7)
 + [Troubleshooting specific errors](#tshooterrors-chef)
 + [Additional help and support](#tshooterrors-chef-support)
 
-## General troubleshooting tips<a name="w2ab1b9c52b7"></a>
+## General troubleshooting tips<a name="w2ab1b9c50b7"></a>
 
 If you are unable to create or work with a Chef server, you can view error messages or logs to help you troubleshoot the issue\. The following tasks describe general places to start when you are troubleshooting a Chef server issue\. For information about specific errors and solutions, see the [Troubleshooting specific errors](#tshooterrors-chef) section of this topic\.
 + Use the AWS OpsWorks for Chef Automate console to view error messages if a Chef server fails to start\. On the Chef server detail page, error messages related to launching and running the server are shown at the top of the page\. Errors can come from AWS OpsWorks for Chef Automate, AWS CloudFormation, or Amazon EC2, services that are used to create a Chef server\. On the detail page, you can also view events that occur on a running server, which can contain failure event messages\.
@@ -17,15 +17,15 @@ If you are unable to create or work with a Chef server, you can view error messa
 
 **Topics**
 + [Server is in a **Connection lost** state](#tshooterrors-chef-connection-lost)
-+ [Managed node shows up in the Chef Automate dashboard in the Missing column](#w2ab1b9c52b9b6)
-+ [Cannot create a Chef vault; `knife vault` command fails with errors](#w2ab1b9c52b9b8)
-+ [Server creation fails with "requested configuration is currently not supported" message](#w2ab1b9c52b9c10)
-+ [Chef server doesn't recognize organization names added in the Chef Automate dashboard](#w2ab1b9c52b9c12)
-+ [Unable to create the server's Amazon EC2 instance](#w2ab1b9c52b9c14)
-+ [Service role error prevents server creation](#w2ab1b9c52b9c16)
-+ [Elastic IP address limit exceeded](#w2ab1b9c52b9c18)
-+ [Cannot sign into the Chef Automate dashboard](#w2ab1b9c52b9c20)
-+ [Unattended node association fails](#w2ab1b9c52b9c22)
++ [Managed node shows up in the Chef Automate dashboard in the Missing column](#w2ab1b9c50b9b6)
++ [Cannot create a Chef vault; `knife vault` command fails with errors](#w2ab1b9c50b9b8)
++ [Server creation fails with "requested configuration is currently not supported" message](#w2ab1b9c50b9c10)
++ [Chef server doesn't recognize organization names added in the Chef Automate dashboard](#w2ab1b9c50b9c12)
++ [Unable to create the server's Amazon EC2 instance](#w2ab1b9c50b9c14)
++ [Service role error prevents server creation](#w2ab1b9c50b9c16)
++ [Elastic IP address limit exceeded](#w2ab1b9c50b9c18)
++ [Cannot sign into the Chef Automate dashboard](#w2ab1b9c50b9c20)
++ [Unattended node association fails](#w2ab1b9c50b9c22)
 + [System maintenance fails](#tshooterrors-chef-maintenance-fails)
 
 ### Server is in a **Connection lost** state<a name="tshooterrors-chef-connection-lost"></a>
@@ -66,7 +66,7 @@ If the server status is still **Connection lost** after performing the preceding
 + Replace the server by [creating a new one](gettingstarted-opscm-create.md) and [deleting the original](opscm-delete-server.md)\. If data on the current server is important to you, [restore the server from a recent backup](opscm-chef-restore.md), and verify the data is up to date before [deleting the original, unresponsive server](opscm-delete-server.md)\.
 + [Contact AWS support](#tshooterrors-chef-support)\.
 
-### Managed node shows up in the Chef Automate dashboard in the Missing column<a name="w2ab1b9c52b9b6"></a>
+### Managed node shows up in the Chef Automate dashboard in the Missing column<a name="w2ab1b9c50b9b6"></a>
 
 **Problem:** A managed node is showing up in the Chef Automate dashboard's **Missing** column\.
 
@@ -74,7 +74,7 @@ If the server status is still **Connection lost** after performing the preceding
 
 **Solution:** Verify that the node is online\. Try running `knife node show node_name --run-list` to see whether `chef-client` is able to run on the node, or `knife node show -l node_name` to display all information about the node\. The node might be offline or disconnected from the network\.
 
-### Cannot create a Chef vault; `knife vault` command fails with errors<a name="w2ab1b9c52b9b8"></a>
+### Cannot create a Chef vault; `knife vault` command fails with errors<a name="w2ab1b9c50b9b8"></a>
 
 **Problem:** You are trying to create a vault on your Chef Automate server \(such as a vault for storing credentials for domain\-joining Windows\-based nodes\) by running the `knife vault` command\. The command returns an error message similar to the following\.
 
@@ -106,7 +106,7 @@ knife opc org user add default pivotal
 
 You can verify that the pivotal user is part of the default organization by running `knife user list` again\. `pivotal` should be listed in the results\. Then, try running `knife vault` again\.
 
-### Server creation fails with "requested configuration is currently not supported" message<a name="w2ab1b9c52b9c10"></a>
+### Server creation fails with "requested configuration is currently not supported" message<a name="w2ab1b9c50b9c10"></a>
 
 **Problem:** You are trying to create a Chef Automate server, but server creation fails with an error message that is similar to "The requested configuration is currently not supported\. Please check the documentation for supported configurations\."
 
@@ -114,7 +114,7 @@ You can verify that the pivotal user is part of the default organization by runn
 
 **Solution:** If you choose a VPC that has a non\-default tenancy, use an m4 instance type, which can support dedicated tenancy\.
 
-### Chef server doesn't recognize organization names added in the Chef Automate dashboard<a name="w2ab1b9c52b9c12"></a>
+### Chef server doesn't recognize organization names added in the Chef Automate dashboard<a name="w2ab1b9c50b9c12"></a>
 
 **Problem:** You've added new Workflow organization names in the Chef Automate dashboard, or specified a `CHEF_AUTOMATE_ORGANIZATION` value other than `"default"` in the [unattended node association script](opscm-unattend-assoc.md), but node association fails\. Your AWS OpsWorks for Chef Automate server does not recognize the new organization names\.
 
@@ -122,7 +122,7 @@ You can verify that the pivotal user is part of the default organization by runn
 
 **Solution:** To create new organizations that are recognized on the Chef server, use the [https://docs.chef.io/plugin_knife_opc.html#opc-org-create](https://docs.chef.io/plugin_knife_opc.html#opc-org-create) command, or run [https://docs.chef.io/ctl_chef_server.html#organization-management](https://docs.chef.io/ctl_chef_server.html#organization-management)\.
 
-### Unable to create the server's Amazon EC2 instance<a name="w2ab1b9c52b9c14"></a>
+### Unable to create the server's Amazon EC2 instance<a name="w2ab1b9c50b9c14"></a>
 
 **Problem:** Server creation failed with an error message similar to the following: "The following resource\(s\) failed to create: \[EC2Instance\]\. Failed to receive 1 resource signal\(s\) within the specified duration\."
 
@@ -130,7 +130,7 @@ You can verify that the pivotal user is part of the default organization by runn
 
 **Solution:** Ensure the instance has outbound Internet access, and the AWS service agent is able to issue commands\. Be sure that your VPC \(a VPC with a single public subnet\) has **DNS resolution** enabled, and that your subnet has the **Auto\-assign Public IP** setting enabled\.
 
-### Service role error prevents server creation<a name="w2ab1b9c52b9c16"></a>
+### Service role error prevents server creation<a name="w2ab1b9c50b9c16"></a>
 
 **Problem:** Server creation fails with an error message that states, "Not authorized to perform sts:AssumeRole\."
 
@@ -138,7 +138,7 @@ You can verify that the pivotal user is part of the default organization by runn
 
 **Solution:** Open the AWS OpsWorks for Chef Automate console; use the console to generate a new service role and an instance profile role\. If you would prefer to use your own service role, attach the **AWSOpsWorksCMServiceRole** policy to the role\. Verify that **opsworks\-cm\.amazonaws\.com** is listed among services in the role's **Trust relationships**\. Verify that the service role that is associated with the Chef server has the **AWSOpsWorksCMServiceRole** managed policy attached\.
 
-### Elastic IP address limit exceeded<a name="w2ab1b9c52b9c18"></a>
+### Elastic IP address limit exceeded<a name="w2ab1b9c50b9c18"></a>
 
 **Problem:** Server creation fails with an error message that states, "The following resource\(s\) failed to create: \[EIP, EC2Instance\]\. Resource creation cancelled, the maximum number of addresses has been reached\."
 
@@ -146,7 +146,7 @@ You can verify that the pivotal user is part of the default organization by runn
 
 **Solution:** You can either release existing EIP addresses or delete ones that your account is not actively using, or you can contact AWS Customer Support to increase the limit of EIP addresses that is associated with your account\.
 
-### Cannot sign into the Chef Automate dashboard<a name="w2ab1b9c52b9c20"></a>
+### Cannot sign into the Chef Automate dashboard<a name="w2ab1b9c50b9c20"></a>
 
 **Problem:** The Chef Automate dashboard shows an error similar to the following: "Cross\-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://myserver\-name\.region\.opsworks\-cm\.io/api/v0/e/default/verify\-token\. \(Reason: CORS header 'Access\-Control\-Allow\-Origin' missing\)"\. The error can also be similar to "The User Id / Password combination entered is incorrect\."
 
@@ -154,13 +154,13 @@ You can verify that the pivotal user is part of the default organization by runn
 
 **Solution:** Sign in to the Chef Automate dashboard only by using the Chef server's DNS name entry, not its IP address\. You can also try resetting the Chef Automate dashboard credentials by running an AWS CLI command, as described in [Reset Chef Automate Dashboard Credentials](opscm-resetchefcreds.md)\.
 
-### Unattended node association fails<a name="w2ab1b9c52b9c22"></a>
+### Unattended node association fails<a name="w2ab1b9c50b9c22"></a>
 
 **Problem:** Unattended, or automatic, association of new Amazon EC2 nodes is failing\. Nodes that should have been added to the Chef server are not showing up in the Chef Automate dashboard, and are not listed in results of the `knife client show` or `knife node show` commands\.
 
 **Cause:** This can occur when you do not have an IAM role set up as an instance profile that permits `opsworks-cm` API calls to communicate with new EC2 instances\.
 
-**Solution:** Attach a policy to your EC2 instance profile that allows the `AssociateNode` and `DescribeNodeAssociationStatus` API calls to work with EC2, as described in [Adding Nodes Automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md)\.
+**Solution:** Attach a policy to your EC2 instance profile that allows the `AssociateNode` and `DescribeNodeAssociationStatus` API calls to work with EC2, as described in [Add nodes automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md)\.
 
 ### System maintenance fails<a name="tshooterrors-chef-maintenance-fails"></a>
 
@@ -169,9 +169,9 @@ AWS OpsWorks CM performs weekly system maintenance to ensure that the latest min
 This section describes possible reasons for failure and suggests solutions\.
 
 **Topics**
-+ [Service role or instance profile error prevents system maintenance](#w2ab1b9c52b9c24b8)
++ [Service role or instance profile error prevents system maintenance](#w2ab1b9c50b9c24b8)
 
-#### Service role or instance profile error prevents system maintenance<a name="w2ab1b9c52b9c24b8"></a>
+#### Service role or instance profile error prevents system maintenance<a name="w2ab1b9c50b9c24b8"></a>
 
 **Problem:** System maintenance fails with an error message that states, "Not authorized to perform sts:AssumeRole", or a similar error message about permissions\.
 

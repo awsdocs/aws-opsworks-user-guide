@@ -137,7 +137,7 @@ In this section, edit `Policyfile.rb` to specify cookbooks, then run a Chef comm
    * opsworks-demo:  ec0fe46314
    ```
 
-1. You are now ready to add or bootstrap nodes to your Chef Automate server\. You can automate the association of nodes by following steps in [Adding Nodes Automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md), or add nodes one at a time by following steps in [Add Nodes for the Chef Server to Manage](opscm-addnodes.md)\. 
+1. You are now ready to add or bootstrap nodes to your Chef Automate server\. You can automate the association of nodes by following steps in [Add nodes automatically in AWS OpsWorks for Chef Automate](opscm-unattend-assoc.md), or add nodes one at a time by following steps in [Add nodes individually](opscm-addnodes-individually.md)\. 
 
 ## \(Alternate\) Use Berkshelf to Get Cookbooks from a Remote Source<a name="opscm-berkshelf"></a>
 
