@@ -1,7 +1,0 @@
-# Step 10: Explore Additional Stack Settings<a name="gettingstarted-intro-explore-more"></a>
-
-In this step, you can examine additional stack settings\.
-
-AWS OpsWorks Stacks ran no separate deployments, provisioned no additional resources, and adjusted no additional permissions as part of this stack, so there isn't much of interest on the **Deployments and Commands**, **Resources**, and **Permissions** pages\. If you want to see those settings anyway, choose **Deployments**, **Resources**, and **Permissions** in the service navigation pane, respectively\. If you want more information about what these pages represent, see [Deploying Apps](workingapps-deploying.md), [Resource Management](resources.md), and [Managing User Permissions](opsworks-security-users.md)\.
-
-In the [next step](gettingstarted-intro-clean-up.md), you can clean up the AWS resources that you used for this walkthrough\. This next step is optional\. You may want to keep using these AWS resources as you continue to learn more about AWS OpsWorks Stacks\. However, keeping these AWS resources around may result in some ongoing charges to your AWS account\. If you want to keep these AWS resources around for later use, you have now completed this walkthrough, and you can skip ahead to [Next Steps](gettingstarted-intro-next-steps.md)\.

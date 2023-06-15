@@ -1,6 +1,0 @@
-# Getting Started with a Sample Stack<a name="gettingstarted-intro"></a>
-
-This walkthrough shows how to use AWS OpsWorks Stacks to quickly create a sample Node\.js application environment with just a few mouse clicks and without writing code\. When you are done, you have an Amazon Elastic Compute Cloud \(Amazon EC2\) instance running Chef 12, a Node\.js HTTP server, and a web app that you can use to interact with Twitter and leave comments on a web page\.
-
-**Note**  
-Because completing this walkthrough automatically creates an instance with a type of c3\.large, you cannot use this walkthrough, or the **Sample Stack** creation tool in AWS OpsWorks Stacks, in the [AWS Free Tier](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-limits.html)\. Although using the **Sample Stack** creation tool in a VPC creates a t2\.medium instance, VPCs are not currently available in the [AWS Free Tier](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-limits.html)\.
